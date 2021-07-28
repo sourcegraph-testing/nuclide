@@ -24,10 +24,10 @@ const DEBUG_VERBOSE = false;
 
 const activeTunnels = new Map();
 
-export function createTunnel(
+export const :[fn~\w+] = (
   t: ResolvedTunnel,
   cf: ConnectionFactory,
-): ConnectableObservable<SocketEvent> {
+) =>: ConnectableObservable<SocketEvent> {
   const logStatsIfNecessary = getStatLogger(LOG_DELTA);
   let bytesReceived: number = 0;
   let bytesWritten: number = 0;
@@ -153,7 +153,7 @@ export function createTunnel(
   }).publish();
 }
 
-export function tunnelDescription(tunnel: ResolvedTunnel) {
+export const :[fn~\w+] = (tunnel: ResolvedTunnel) => {
   return `${nuclideUri.nuclideUriToDisplayHostname(tunnel.from.host)}:${
     tunnel.from.port
   }->${nuclideUri.nuclideUriToDisplayHostname(tunnel.to.host)}:${
@@ -200,7 +200,7 @@ export class RemoteSocket implements IRemoteSocket {
   }
 }
 
-function getStatLogger(delta): (number, number) => void {
+const :[fn~\w+] = (delta) =>: (number, number) => void {
   let lastLoggedBytes: number = 0;
   return (bytesWritten: number, bytesReceived: number): void => {
     const totalBytes = bytesWritten + bytesReceived;
@@ -211,16 +211,16 @@ function getStatLogger(delta): (number, number) => void {
   };
 }
 
-function logStats(
+const :[fn~\w+] = (
   bytesWritten: number,
   bytesReceived: number,
   totalBytes: number,
-): void {
+) =>: void {
   trace(
     `Tunnel: ${totalBytes} bytes transferred; ${bytesWritten} written, ${bytesReceived} received`,
   );
 }
 
-function trace(message: string) {
+const :[fn~\w+] = (message: string) => {
   getLogger('SocketService').trace(message);
 }

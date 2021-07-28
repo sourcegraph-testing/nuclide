@@ -32,7 +32,7 @@ const OPTS = {
 
 let serviceRegistry: ?ServiceRegistry = null;
 
-function getServiceRegistry(): ServiceRegistry {
+const :[fn~\w+] = () =>: ServiceRegistry {
   if (serviceRegistry == null) {
     serviceRegistry = new ServiceRegistry(
       [localNuclideUriMarshalers],
@@ -43,7 +43,7 @@ function getServiceRegistry(): ServiceRegistry {
   return serviceRegistry;
 }
 
-async function getServerArgs() {
+const :[fn~\w+] = async () => {
   let overrides = {};
   try {
     // Override the python path and additional sys paths

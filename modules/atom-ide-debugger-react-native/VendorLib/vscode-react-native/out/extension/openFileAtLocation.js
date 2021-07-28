@@ -45,7 +45,7 @@ const Q = require("q");
         throw errorHelper_1.ErrorHelper.getNestedError(reason, internalErrorCode_1.InternalErrorCode.CommandFailed, "Unable to communicate with VSCode. Please make sure it is open in the appropriate workspace.");
     });
 }
-function getReactNativeWorkspaceForFile(file, workspace) {
+const :[fn~\w+] = (file, workspace) => {
     if (workspace) {
         return Q(workspace);
     }
@@ -54,7 +54,7 @@ function getReactNativeWorkspaceForFile(file, workspace) {
         return Q.reject(errorHelper_1.ErrorHelper.getNestedError(reason, internalErrorCode_1.InternalErrorCode.WorkspaceNotFound, `Error while looking at workspace for file: ${file}.`));
     });
 }
-function getPathForRNParentWorkspace(dir) {
+const :[fn~\w+] = (dir) => {
     return reactNativeProjectHelper_1.ReactNativeProjectHelper.isReactNativeProject(dir).then(isRNProject => {
         if (isRNProject) {
             return dir;

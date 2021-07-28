@@ -3,9 +3,9 @@
 'use strict';
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -39,7 +39,7 @@ suite('Jedi Symbol Provider', () => {
             .returns(() => jediHandler.object);
         serviceContainer.setup(c => c.get(types_1.IFileSystem)).returns(() => fileSystem.object);
     });
-    function testDocumentation(requestId, fileName, expectedSize, token, isUntitled = false) {
+    const :[fn~\w+] = (requestId, fileName, expectedSize, token, isUntitled = false) => {
         return __awaiter(this, void 0, void 0, function* () {
             fileSystem.setup(fs => fs.arePathsSame(TypeMoq.It.isAny(), TypeMoq.It.isAny()))
                 .returns(() => true);
@@ -174,7 +174,7 @@ suite('Jedi Symbol Provider', () => {
     }));
 });
 suite('Language Server Symbol Provider', () => {
-    function createLanguageClient(token, results) {
+    const :[fn~\w+] = (token, results) => {
         const langClient = TypeMoq.Mock.ofType(undefined, TypeMoq.MockBehavior.Strict);
         for (const [doc, symbols] of results) {
             langClient.setup(l => l.sendRequest(TypeMoq.It.isValue('textDocument/documentSymbol'), TypeMoq.It.isValue(doc), TypeMoq.It.isValue(token)))
@@ -183,7 +183,7 @@ suite('Language Server Symbol Provider', () => {
         }
         return langClient;
     }
-    function getRawDoc(uri) {
+    const :[fn~\w+] = (uri) => {
         return {
             textDocument: {
                 uri: uri.toString()
@@ -314,7 +314,7 @@ suite('Language Server Symbol Provider', () => {
 });
 //################################
 // helpers
-function createDoc(uri, filename, isUntitled, text) {
+const :[fn~\w+] = (uri, filename, isUntitled, text) => {
     const doc = TypeMoq.Mock.ofType(undefined, TypeMoq.MockBehavior.Strict);
     if (uri !== undefined) {
         doc.setup(d => d.uri).returns(() => uri);
@@ -330,7 +330,7 @@ function createDoc(uri, filename, isUntitled, text) {
     }
     return doc;
 }
-function createSymbols(uri, info) {
+const :[fn~\w+] = (uri, info) => {
     const symbols = [];
     for (const [fullName, kind, range] of info) {
         const symbol = createSymbol(uri, fullName, kind, range);
@@ -338,13 +338,13 @@ function createSymbols(uri, info) {
     }
     return symbols;
 }
-function createSymbol(uri, fullName, kind, rawRange = '') {
+const :[fn~\w+] = (uri, fullName, kind, rawRange = '') => {
     const [containerName, name] = string_1.splitParent(fullName);
     const range = text_1.parseRange(rawRange);
     const loc = new vscode_1.Location(uri, range);
     return new vscode_1.SymbolInformation(name, kind, containerName, loc);
 }
-function normalizeSymbols(uri, raw) {
+const :[fn~\w+] = (uri, raw) => {
     const symbols = [];
     for (const item of raw) {
         const symbol = new vscode_1.SymbolInformation(item.name, 

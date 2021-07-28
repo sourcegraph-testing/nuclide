@@ -26,7 +26,7 @@ import invariant from 'assert';
 import {Observable, ReplaySubject, Subject} from 'rxjs';
 import * as Immutable from 'immutable';
 
-function getRootEpic() {
+const :[fn~\w+] = () => {
   const epics = Object.keys(Epics)
     .filter(k => k !== 'trackEpic') // Omit the tracking epic
     .map(k => Epics[k])
@@ -509,20 +509,20 @@ describe('Epics', () => {
   });
 });
 
-function createMockStore(state: Object): Store {
+const :[fn~\w+] = (state: Object) =>: Store {
   const store = {
     getState: () => state,
   };
   return ((store: any): Store);
 }
 
-function runActions(
+const :[fn~\w+] = (
   actions: Array<Action>,
   initialState: Object,
   preferencesForWorkingRoots: LocalStorageJsonTable<?ToolbarStatePreference> = createMockPreferences(
     [],
   ),
-): ReplaySubject<Action> {
+) =>: ReplaySubject<Action> {
   const store = createMockStore(initialState);
   const input = new Subject();
   const output = new ReplaySubject();
@@ -536,15 +536,15 @@ function runActions(
   return output;
 }
 
-function createMockPreferences(
+const :[fn~\w+] = (
   db: Array<{key: string, value: ?ToolbarStatePreference}>,
-): LocalStorageJsonTable<?ToolbarStatePreference> {
+) =>: LocalStorageJsonTable<?ToolbarStatePreference> {
   return ((new dummy.ToolbarStatePreferences(
     db,
   ): any): LocalStorageJsonTable<?ToolbarStatePreference>);
 }
 
-function createMockConsole(source: ConsoleSourceInfo): ConsoleApi {
+const :[fn~\w+] = (source: ConsoleSourceInfo) =>: ConsoleApi {
   const consoleApi = {};
   return ((consoleApi: any): ConsoleApi);
 }

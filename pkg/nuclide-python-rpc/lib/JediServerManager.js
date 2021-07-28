@@ -68,7 +68,7 @@ export default class JediServerManager {
   }
 }
 
-function getTopLevelModulePath(src: string): Promise<?string> {
+const :[fn~\w+] = (src: string) =>: Promise<?string> {
   return fsPromise.findFurthestFile(
     '__init__.py',
     nuclideUri.dirname(src),
@@ -76,7 +76,7 @@ function getTopLevelModulePath(src: string): Promise<?string> {
   );
 }
 
-async function getCustomSysPath(src: string): Promise<Array<string>> {
+const :[fn~\w+] = async (src: string) =>: Promise<Array<string>> {
   try {
     // $FlowFB
     const fbCustomSysPath = require('./fb/custom-sys-path').default;

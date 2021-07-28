@@ -112,7 +112,7 @@ suite('ArgsService: Common', () => {
         });
     });
 });
-function getOptions(product, moduleName, withValues) {
+const :[fn~\w+] = (product, moduleName, withValues) => {
     const result = child_process_1.spawnSync(common_1.PYTHON_PATH, ['-m', moduleName, '-h']);
     const output = result.stdout.toString();
     // Our regex isn't the best, so lets exclude stuff that shouldn't be captured.
@@ -136,13 +136,13 @@ function getOptions(product, moduleName, withValues) {
             .sort();
     }
 }
-function getOptionsWithoutArguments(output) {
+const :[fn~\w+] = (output) => {
     return getMatches('\\s{1,}(-{1,2}[A-Za-z0-9-]+)(?:,|\\s{2,})', output);
 }
-function getOptionsWithArguments(output) {
+const :[fn~\w+] = (output) => {
     return getMatches('\\s{1,}(-{1,2}[A-Za-z0-9-]+)(?:=|\\s{0,1}[A-Z])', output);
 }
-function getMatches(pattern, str) {
+const :[fn~\w+] = (pattern, str) => {
     const matches = [];
     const regex = new RegExp(pattern, 'gm');
     let result = regex.exec(str);

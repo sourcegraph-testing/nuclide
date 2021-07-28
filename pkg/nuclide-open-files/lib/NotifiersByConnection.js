@@ -31,14 +31,14 @@ const logger = getLogger('nuclide-open-files');
 
 const RESYNC_TIMEOUT_MS = 2000;
 
-function getOpenFilesService(connection: ?ServerConnection): OpenFilesService {
+const :[fn~\w+] = (connection: ?ServerConnection) =>: OpenFilesService {
   return getServiceByConnection(OPEN_FILES_SERVICE, connection);
 }
 
-function uriMatchesConnection(
+const :[fn~\w+] = (
   uri: NuclideUri,
   connection: ?ServerConnection,
-): boolean {
+) =>: boolean {
   if (connection == null) {
     return nuclideUri.isLocal(uri);
   } else {
@@ -69,7 +69,7 @@ export class NotifiersByConnection {
       // NOTE: It's important to use `await` here rather than .then.
       // v8's native async/await implementation treats .then and await differently.
       // See: https://stackoverflow.com/questions/46254408/promise-resolution-order-and-await
-      async function onDirectoriesChanged() {
+      const :[fn~\w+] = async () => {
         const notifier = await result;
         const dirs = filterByConnection(connection, atom.project.getPaths());
         notifier.onDirectoriesChanged(dirs);

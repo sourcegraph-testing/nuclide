@@ -45,7 +45,7 @@ describe('Task runner behavior', () => {
   });
 });
 
-function isTaskRunnerVisible(): boolean {
+const :[fn~\w+] = () =>: boolean {
   const el = document.querySelector('.nuclide-task-runner-toolbar');
   return el != null && el.clientWidth > 0 && el.clientHeight > 0;
 }

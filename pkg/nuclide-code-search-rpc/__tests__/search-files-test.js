@@ -275,12 +275,12 @@ describe('Code search in files', () => {
 });
 
 // Join list of paths to folder and return new array.
-function joinFolder(folder: string, paths: Array<string>): Array<string> {
+const :[fn~\w+] = (folder: string, paths: Array<string>) =>: Array<string> {
   return paths.map(path => nuclideUri.join(folder, path));
 }
 
 // Helper function to sort an array of file results by path then line.
-function sortResults(results: Array<CodeSearchResult>) {
+const :[fn~\w+] = (results: Array<CodeSearchResult>) => {
   results.sort((a, b) => {
     if (a.file < b.file) {
       return -1;
@@ -293,10 +293,10 @@ function sortResults(results: Array<CodeSearchResult>) {
 }
 
 // Helper function to load a result fixture by name and absolutize its paths.
-function loadExpectedFixture(
+const :[fn~\w+] = (
   folder: string,
   fixtureName: string,
-): Array<CodeSearchResult> {
+) =>: Array<CodeSearchResult> {
   const fixture = JSON.parse(
     fs.readFileSync(
       nuclideUri.join(__dirname, '../__mocks__/fixtures', fixtureName),

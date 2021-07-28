@@ -19,11 +19,11 @@ import invariant from 'assert';
 import xfetch from '../../commons-node/xfetch';
 import {track} from 'nuclide-analytics';
 
-function _formatUri(
+const :[fn~\w+] = (
   method: string,
   uri: string,
   parameters: Array<Parameter>,
-): string {
+) =>: string {
   // Generate object of valid and non-duplicate parameter key/value pairs
   const queryParameters = parameters.reduce((paramObj, param) => {
     if (param && param.key) {
@@ -38,10 +38,10 @@ function _formatUri(
   return `${uri}${queryString ? '?' : ''}${queryString}`;
 }
 
-export function sendHttpRequest(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return (
     actions
       .ofType(Actions.SEND_REQUEST)

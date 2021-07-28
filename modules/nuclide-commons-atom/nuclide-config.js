@@ -45,7 +45,7 @@ const nuclideConfigFilePath = nuclideUri.join(
   NUCLIDE_CONFIG_FILE,
 );
 
-function getConfigSettingsFromDisk() {
+const :[fn~\w+] = () => {
   let configSettings = {};
 
   if (fs.existsSync(nuclideConfigFilePath)) {
@@ -75,7 +75,7 @@ config.resetUserSettings(getConfigSettingsFromDisk());
  * Emit nuclide-config's settings so that other processes can update their
  * config settings to reflect changes values
  */
-function emitConfigSettings(settings: NuclideConfigSetArgs) {
+const :[fn~\w+] = (settings: NuclideConfigSetArgs) => {
   ipcRenderer.send(
     UPDATE_NUCLIDE_CONFIG_SETTINGS,
     (settings: NuclideConfigSetArgs),
@@ -153,10 +153,10 @@ type SenderGetBrowserWindow = {|
 |};
 
 // export for testing
-export function __updateConfigSettingsListener(
+export const :[fn~\w+] = (
   event: {returnValue: mixed, sender: WebContents & SenderGetBrowserWindow},
   {settings, options}: NuclideConfigSetArgs,
-) {
+) => {
   if (
     event.sender.getOwnerBrowserWindow().id !== remote.getCurrentWindow().id
   ) {

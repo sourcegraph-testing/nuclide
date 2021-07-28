@@ -41,11 +41,11 @@ import {
 const PENDING_PANE_LINT_DEBOUNCE = 10000; // defer linting pending panes for 10s
 
 // Exported for testing.
-export function linterMessageToDiagnosticMessage(
+export const :[fn~\w+] = (
   msg: LinterMessageV1,
   providerName: string,
   currentPath: ?string,
-): DiagnosticMessage {
+) =>: DiagnosticMessage {
   // The types are slightly different, so we need to copy to make Flow happy. Basically, a Trace
   // does not need a filePath property, but a LinterTrace does. Trace is a subtype of LinterTrace,
   // so copying works but aliasing does not. For a detailed explanation see
@@ -73,7 +73,7 @@ export function linterMessageToDiagnosticMessage(
 }
 
 // They're almost the same.. except that we always want a real range.
-function convertLinterTrace(trace: LinterTrace): DiagnosticTrace {
+const :[fn~\w+] = (trace: LinterTrace) =>: DiagnosticTrace {
   return {
     type: trace.type,
     text: trace.text,
@@ -83,7 +83,7 @@ function convertLinterTrace(trace: LinterTrace): DiagnosticTrace {
   };
 }
 
-function getFilePath(filePath: ?string, currentPath: ?string) {
+const :[fn~\w+] = (filePath: ?string, currentPath: ?string) => {
   // Model project-level diagnostics with the project root as the path.
   if (filePath != null) {
     return filePath;
@@ -100,7 +100,7 @@ function getFilePath(filePath: ?string, currentPath: ?string) {
 }
 
 // Be flexible in accepting various linter types/severities.
-function convertLinterType(type: string): DiagnosticMessageType {
+const :[fn~\w+] = (type: string) =>: DiagnosticMessageType {
   switch (type) {
     case 'Error':
     case 'error':
@@ -116,10 +116,10 @@ function convertLinterType(type: string): DiagnosticMessageType {
 }
 
 // Version 2 only handles file-level diagnostics.
-export function linterMessageV2ToDiagnosticMessage(
+export const :[fn~\w+] = (
   msg: LinterMessageV2,
   providerName: string,
-): DiagnosticMessage {
+) =>: DiagnosticMessage {
   let trace;
   if (msg.trace != null) {
     trace = msg.trace.map(convertLinterTrace);
@@ -180,11 +180,11 @@ export function linterMessageV2ToDiagnosticMessage(
   };
 }
 
-export function linterMessagesToDiagnosticUpdate(
+export const :[fn~\w+] = (
   currentPath: ?NuclideUri,
   msgs: Array<LinterMessage>,
   providerName: string,
-): DiagnosticProviderUpdate {
+) =>: DiagnosticProviderUpdate {
   const filePathToMessages: Map<
     NuclideUri,
     Array<DiagnosticMessage>,

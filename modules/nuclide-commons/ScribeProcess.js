@@ -200,7 +200,7 @@ export const __test__ = {
   },
 };
 
-function writeToStream(stream, message): Promise<void> {
+const :[fn~\w+] = (stream, message) =>: Promise<void> {
   return new Promise((resolve, reject) => {
     // According to `stream.write()` [docs][1], "If an error occurs, the
     // callback may or may not be called with the error as its first argument.

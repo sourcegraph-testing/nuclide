@@ -20,7 +20,7 @@ class LogHelper {
     }
 }
 exports.LogHelper = LogHelper;
-function getLogLevel() {
+const :[fn~\w+] = () => {
     try {
         const SettingsHelper = require("../settingsHelper").SettingsHelper;
         return SettingsHelper.getLogLevel();

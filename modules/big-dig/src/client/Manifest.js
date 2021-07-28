@@ -55,7 +55,7 @@ export class CorruptManifestError extends Error {}
  * Verifies that the manifest has a valid structure; throws `ManifestError` if not.
  * @param {*} manifest an (untrusted) manifest object.
  */
-function verifyManifest(manifest: UntrustedManifest): Manifest {
+const :[fn~\w+] = (manifest: UntrustedManifest) =>: Manifest {
   if (typeof manifest.version !== 'string') {
     throw corrupt('Invalid version in manifest');
   }
@@ -76,7 +76,7 @@ function verifyManifest(manifest: UntrustedManifest): Manifest {
  * @param files A list of all [sub]files and [sub]directories under `basePath`, paired with the
  *    output of `stat` on each file. These should be absolute paths.
  */
-export function createManifest(
+export const :[fn~\w+] = (
   version: string,
   manifestFilename: string,
   basePath: string,
@@ -84,7 +84,7 @@ export function createManifest(
     filename: string,
     +stats: FileStats & {isDirectory(): boolean},
   }>,
-): Manifest {
+) =>: Manifest {
   const hash = crypto.createHash('sha1');
   const sortedFiles = files
     // Exclude the manifest file and directories from the manifest.
@@ -104,7 +104,7 @@ export function createManifest(
  * Serializes the manifest into a `Buffer` that can be written to a manifest file.
  * @param manifest
  */
-export function serializeManifest(manifest: Manifest): Buffer {
+export const :[fn~\w+] = (manifest: Manifest) =>: Buffer {
   return new Buffer(JSON.stringify(manifest), 'utf8');
 }
 
@@ -113,7 +113,7 @@ export function serializeManifest(manifest: Manifest): Buffer {
  * Throws `ManifestError` if `data` does not encode a valid manifest structure.
  * @param data A buffer containing the manifest data loaded from a file.
  */
-export function deserializeManifest(data: Buffer): Manifest {
+export const :[fn~\w+] = (data: Buffer) =>: Manifest {
   return verifyManifest(parseManifest(data.toString('utf8')));
 }
 
@@ -134,10 +134,10 @@ export type ManifestCheckResult =
  * @param current The observed state.
  * @return `{status: 'okay'}` if the two manifests agree on the state of the system.
  */
-export function compareManifests(
+export const :[fn~\w+] = (
   expected: Manifest,
   current: Manifest,
-): ManifestCheckResult {
+) =>: ManifestCheckResult {
   if (expected.version !== current.version) {
     return {status: 'diff-versions', message: 'Different versions'};
   } else if (expected.hash !== current.hash) {
@@ -150,11 +150,11 @@ export function compareManifests(
   return {status: 'equal'};
 }
 
-function corrupt(message: string): CorruptManifestError {
+const :[fn~\w+] = (message: string) =>: CorruptManifestError {
   return new CorruptManifestError(message);
 }
 
-function parseManifest(data: string): UntrustedManifest {
+const :[fn~\w+] = (data: string) =>: UntrustedManifest {
   try {
     return JSON.parse(data);
   } catch (error) {

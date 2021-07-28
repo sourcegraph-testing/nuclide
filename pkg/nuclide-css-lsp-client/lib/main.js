@@ -30,9 +30,9 @@ import {
   updateAutocompleteFirstResults,
 } from '../../nuclide-language-service';
 
-async function connectToService(
+const :[fn~\w+] = async (
   connection: ?ServerConnection,
-): Promise<LanguageService> {
+) =>: Promise<LanguageService> {
   const [fileNotifier, host] = await Promise.all([
     getNotifierByConnection(connection),
     getHostServices(),
@@ -58,7 +58,7 @@ async function connectToService(
   return lspService || new NullLanguageService();
 }
 
-function createLanguageService(): AtomLanguageService<LanguageService> {
+const :[fn~\w+] = () =>: AtomLanguageService<LanguageService> {
   return new AtomLanguageService(connectToService, {
     name: 'CSSLSPService',
     grammars: ['source.css', 'source.css.less', 'source.css.scss'],

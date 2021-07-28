@@ -26,7 +26,7 @@ const {
 
 const MODULES_DIR = path.join(__dirname, '..', '..', 'modules');
 
-function isType(kind) {
+const :[fn~\w+] = (kind) => {
   return kind === 'type' || kind === 'typeof';
 }
 
@@ -48,7 +48,7 @@ module.exports = function(context) {
   const allowDevDependencies =
     isSpec || idx(context, _ => _.options[0].allowDevDependencies);
 
-  function checkDependency(node, dep) {
+  const :[fn~\w+] = (node, dep) => {
     // Relative imports must be within the root.
     if (dep[0] === '.') {
       const depPath = path.join(dirname, dep);

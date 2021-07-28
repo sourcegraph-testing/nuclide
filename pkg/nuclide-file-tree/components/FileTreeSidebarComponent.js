@@ -750,7 +750,7 @@ All the changes across your entire stacked diff.
   );
 }
 
-function observeAllModifiedStatusChanges(): Observable<void> {
+const :[fn~\w+] = () =>: Observable<void> {
   const paneItemChangeEvents = Observable.merge(
     observableFromSubscribeFunction(
       atom.workspace.onDidAddPaneItem.bind(atom.workspace),
@@ -771,7 +771,7 @@ function observeAllModifiedStatusChanges(): Observable<void> {
   );
 }
 
-function getCurrentBuffers(): Array<atom$TextBuffer> {
+const :[fn~\w+] = () =>: Array<atom$TextBuffer> {
   const buffers = [];
   const editors = atom.workspace.getTextEditors();
   editors.forEach(te => {
@@ -789,12 +789,12 @@ function getCurrentBuffers(): Array<atom$TextBuffer> {
   return buffers;
 }
 
-function filterMultiRootFileChanges(
+const :[fn~\w+] = (
   unfilteredFileChanges: Immutable.Map<
     NuclideUri,
     Immutable.Map<NuclideUri, FileChangeStatusValue>,
   >,
-): Map<NuclideUri, Map<NuclideUri, FileChangeStatusValue>> {
+) =>: Map<NuclideUri, Map<NuclideUri, FileChangeStatusValue>> {
   const filteredFileChanges = new Map();
   // Filtering the changes to make sure they only show up under the directory the
   // file exists under.

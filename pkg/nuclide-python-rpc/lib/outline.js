@@ -29,10 +29,10 @@ import {
 
 type ShowVariableMode = 'none' | 'constants' | 'all';
 
-function itemToOutlineTree(
+const :[fn~\w+] = (
   mode: ShowVariableMode,
   item: PythonOutlineItem,
-): ?OutlineTree {
+) =>: ?OutlineTree {
   switch (item.kind) {
     case 'class':
       return classToOutlineTree('all', item);
@@ -43,10 +43,10 @@ function itemToOutlineTree(
   }
 }
 
-function classToOutlineTree(
+const :[fn~\w+] = (
   mode: ShowVariableMode,
   item: PythonClassItem,
-): OutlineTree {
+) =>: OutlineTree {
   return {
     tokenizedText: [keyword('class'), whitespace(' '), method(item.name)],
     representativeName: item.name,
@@ -55,7 +55,7 @@ function classToOutlineTree(
   };
 }
 
-function functionToOutlineTree(item: PythonFunctionItem): OutlineTree {
+const :[fn~\w+] = (item: PythonFunctionItem) =>: OutlineTree {
   return {
     tokenizedText: [
       keyword('def'),
@@ -71,10 +71,10 @@ function functionToOutlineTree(item: PythonFunctionItem): OutlineTree {
   };
 }
 
-function statementToOutlineTree(
+const :[fn~\w+] = (
   mode: ShowVariableMode,
   item: PythonStatementItem,
-): ?OutlineTree {
+) =>: ?OutlineTree {
   if (mode === 'none') {
     return null;
   }
@@ -93,10 +93,10 @@ function statementToOutlineTree(
   };
 }
 
-function argsToText(args: Array<string>): Array<TextToken> {
+const :[fn~\w+] = (args: Array<string>) =>: Array<TextToken> {
   const result = [];
 
-  function startArg() {
+  const :[fn~\w+] = () => {
     if (result.length > 0) {
       result.push(plain(','));
       result.push(whitespace(' '));
@@ -118,9 +118,9 @@ function argsToText(args: Array<string>): Array<TextToken> {
   return result;
 }
 
-function itemToPositions(
+const :[fn~\w+] = (
   item: PythonOutlineItem,
-): {
+) =>: {
   startPosition: atom$Point,
   endPosition: atom$Point,
 } {
@@ -135,10 +135,10 @@ function itemToPositions(
   };
 }
 
-export function itemsToOutline(
+export const :[fn~\w+] = (
   mode: ShowVariableMode,
   items: ?Array<PythonOutlineItem>,
-): Array<OutlineTree> {
+) =>: Array<OutlineTree> {
   if (!items || items.length === 0) {
     return [];
   }

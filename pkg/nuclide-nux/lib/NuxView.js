@@ -28,7 +28,7 @@ const POLL_ELEMENT_INTERVAL = 100; // milliseconds
 
 const logger = getLogger('nuclide-nux');
 
-function validatePlacement(position: string): boolean {
+const :[fn~\w+] = (position: string) =>: boolean {
   return VALID_NUX_POSITIONS.has(position);
 }
 

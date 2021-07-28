@@ -51,7 +51,7 @@ type DropdownGroup = {
   selectableOptions: Array<Option>,
 };
 
-function hasMultipleOptions(platformGroups: Array<PlatformGroup>): boolean {
+const :[fn~\w+] = (platformGroups: Array<PlatformGroup>) =>: boolean {
   if (platformGroups.length === 0) {
     return false;
   }

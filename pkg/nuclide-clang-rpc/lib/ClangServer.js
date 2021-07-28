@@ -37,7 +37,7 @@ export type ClangServerStatus =
 
 let serviceRegistry: ?ServiceRegistry = null;
 
-function getServiceRegistry(): ServiceRegistry {
+const :[fn~\w+] = () =>: ServiceRegistry {
   if (serviceRegistry == null) {
     serviceRegistry = new ServiceRegistry(
       getServerSideMarshalers,
@@ -52,9 +52,9 @@ function getServiceRegistry(): ServiceRegistry {
  * If the compilation flags provide an absolute Clang path, and that Clang path
  * contains an actual libclang.so, then use that first.
  */
-async function getLibClangOverrideFromFlags(
+const :[fn~\w+] = async (
   flagsData: ?ClangServerFlags,
-): Promise<PartialClangServerArgs> {
+) =>: Promise<PartialClangServerArgs> {
   if (
     flagsData == null ||
     flagsData.flags == null ||
@@ -85,11 +85,11 @@ async function getLibClangOverrideFromFlags(
   return {};
 }
 
-function spawnClangProcess(
+const :[fn~\w+] = (
   src: string,
   serverArgsPromise: Promise<ClangServerArgs>,
   flagsPromise: Promise<?ClangServerFlags>,
-): Observable<child_process$ChildProcess> {
+) =>: Observable<child_process$ChildProcess> {
   return Observable.fromPromise(
     Promise.all([
       serverArgsPromise,

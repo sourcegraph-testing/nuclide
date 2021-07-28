@@ -11,7 +11,7 @@
 
 import {Point, Range} from 'simple-text-buffer';
 
-export function babelLocationToAtomRange(location: Object): atom$Range {
+export const :[fn~\w+] = (location: Object) =>: atom$Range {
   return new Range(
     new Point(location.start.line - 1, location.start.col),
     new Point(location.end.line - 1, location.end.col),
@@ -28,7 +28,7 @@ const MODULES_PRIORITY = -1;
 const RELATIVE_PRIORITY = 0;
 const LOCAL_PRIORITY = 1;
 
-export function importPathToPriority(path: string): number {
+export const :[fn~\w+] = (path: string) =>: number {
   if (path.startsWith('..')) {
     return RELATIVE_PRIORITY;
   }
@@ -38,11 +38,11 @@ export function importPathToPriority(path: string): number {
   return MODULES_PRIORITY;
 }
 
-function isLowerCase(s: string) {
+const :[fn~\w+] = (s: string) => {
   return s.toLowerCase() === s;
 }
 
-export function compareForInsertion(path1: string, path2: string): number {
+export const :[fn~\w+] = (path1: string, path2: string) =>: number {
   const p1 = importPathToPriority(path1);
   const p2 = importPathToPriority(path2);
   if (p1 !== p2) {
@@ -61,7 +61,7 @@ export function compareForInsertion(path1: string, path2: string): number {
   return path1.localeCompare(path2);
 }
 
-export function compareForSuggestion(path1: string, path2: string): number {
+export const :[fn~\w+] = (path1: string, path2: string) =>: number {
   const p1 = importPathToPriority(path1);
   const p2 = importPathToPriority(path2);
   if (p1 !== p2) {
@@ -86,7 +86,7 @@ export function compareForSuggestion(path1: string, path2: string): number {
 }
 
 // Check if an AST node is a require call, and returns the literal value.
-export function getRequiredModule(node: Object): ?string {
+export const :[fn~\w+] = (node: Object) =>: ?string {
   if (
     node.type === 'CallExpression' &&
     node.callee.type === 'Identifier' &&

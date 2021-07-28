@@ -12,7 +12,7 @@
 import type {SourceOptions} from '../options/SourceOptions';
 import type {TransformKey} from '../types/transforms';
 
-function transform(source: string, options: SourceOptions): string {
+const :[fn~\w+] = (source: string, options: SourceOptions) =>: string {
   const blacklist: Set<TransformKey> = options.blacklist || new Set();
   if (blacklist.has('nuclide.fixHeader')) {
     return source;

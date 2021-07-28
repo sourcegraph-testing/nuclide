@@ -70,11 +70,11 @@ const ExactStringMatchProvider: Provider<FileResult> = Object.freeze({
 });
 
 // Promise-ify the flux cycle around SearchResultManager::executeQuery.
-function querySingleProvider(
+const :[fn~\w+] = (
   searchResultManager: SearchResultManager,
   query: string,
   providerName: string,
-): Promise<GroupedResults> {
+) =>: Promise<GroupedResults> {
   return new Promise((resolve, reject) => {
     searchResultManager.onResultsChanged(() => {
       resolve(searchResultManager.getResults(query, providerName));
@@ -83,11 +83,11 @@ function querySingleProvider(
   });
 }
 
-function queryOmniSearchProvider(
+const :[fn~\w+] = (
   quickOpenProviderRegistry: QuickOpenProviderRegistry,
   searchResultManager: SearchResultManager,
   query: string,
-): Promise<GroupedResults> {
+) =>: Promise<GroupedResults> {
   return new Promise((resolve, reject) => {
     let pendingUpdates = quickOpenProviderRegistry.getProviders().length;
     searchResultManager.onResultsChanged(() => {
@@ -102,10 +102,10 @@ function queryOmniSearchProvider(
 }
 
 // Helper to construct expected result objects for a global provider.
-function constructSingleProviderResult(
+const :[fn~\w+] = (
   provider: Provider<any>,
   result: ProviderResults,
-): GroupedResults {
+) =>: GroupedResults {
   const groupResult: GroupedResult = {
     priority:
       provider.priority != null ? provider.priority : Number.POSITIVE_INFINITY,

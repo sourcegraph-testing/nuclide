@@ -34,9 +34,9 @@ const SERVICES_PATH_PLACEHOLDER = '{BIG_DIG_SERVICES_PATH}';
 const logger = getLogger('thrift-service-server');
 const cache: Map<string, Observable<ConnectionOptions>> = new Map();
 
-export function startThriftServer(
+export const :[fn~\w+] = (
   serverConfig: ThriftServerConfig,
-): ConnectableObservable<ConnectionOptions> {
+) =>: ConnectableObservable<ConnectionOptions> {
   return Observable.defer(() => {
     const configId = genConfigId(serverConfig);
     let thriftServer = cache.get(configId);
@@ -68,9 +68,9 @@ export function startThriftServer(
   }).publish();
 }
 
-async function replacePlaceholders(
+const :[fn~\w+] = async (
   serverConfig: ThriftServerConfig,
-): Promise<ThriftServerConfig> {
+) =>: Promise<ThriftServerConfig> {
   const replaceBigDigServicesPath = value =>
     value.replace(SERVICES_PATH_PLACEHOLDER, path.join(__dirname, '../../../'));
   const remoteCommand = replaceBigDigServicesPath(serverConfig.remoteCommand);
@@ -143,7 +143,7 @@ async function replacePlaceholders(
   };
 }
 
-function mayKillOldServerProcess(config: ThriftServerConfig): Observable<void> {
+const :[fn~\w+] = (config: ThriftServerConfig) =>: Observable<void> {
   return Observable.defer(async () => {
     if (!config.killOldThriftServerProcess) {
       return;
@@ -168,9 +168,9 @@ function mayKillOldServerProcess(config: ThriftServerConfig): Observable<void> {
   });
 }
 
-function observeServerProcess(
+const :[fn~\w+] = (
   config: ThriftServerConfig,
-): Observable<ProcessMessage> {
+) =>: Observable<ProcessMessage> {
   return observeProcess(config.remoteCommand, config.remoteCommandArgs, {
     isExitError: () => true,
     detached: false,
@@ -184,7 +184,7 @@ function observeServerProcess(
  * Streams `true` when thrift server is listening in the given port.
  * If server is not ready, it tries to reconnects.
  */
-function observeServerStatus(config: ThriftServerConfig): Observable<true> {
+const :[fn~\w+] = (config: ThriftServerConfig) =>: Observable<true> {
   const maxAttempts = 10;
   return Observable.create(observer => {
     let ready = false;
@@ -216,9 +216,9 @@ function observeServerStatus(config: ThriftServerConfig): Observable<true> {
   }).retryWhen(throwOrRetry(maxAttempts));
 }
 
-function throwOrRetry(
+const :[fn~\w+] = (
   maxAttempts: number,
-): (errorStream: Observable<Error>) => Observable<number> {
+) =>: (errorStream: Observable<Error>) => Observable<number> {
   return errorStream =>
     errorStream.switchMap((error, i) => {
       const attempt = i + 1;
@@ -233,7 +233,7 @@ function throwOrRetry(
     });
 }
 
-function logProcessMessage(name: string): ProcessMessage => void {
+const :[fn~\w+] = (name: string) =>: ProcessMessage => void {
   return message => {
     switch (message.kind) {
       case 'stdout':
@@ -253,7 +253,7 @@ function logProcessMessage(name: string): ProcessMessage => void {
   };
 }
 
-function getConnectionOptions(config: ThriftServerConfig): ConnectionOptions {
+const :[fn~\w+] = (config: ThriftServerConfig) =>: ConnectionOptions {
   switch (config.remoteConnection.type) {
     case 'tcp':
       return {port: config.remoteConnection.port, useIPv4: false};

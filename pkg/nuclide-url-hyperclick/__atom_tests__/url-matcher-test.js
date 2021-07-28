@@ -11,10 +11,10 @@
  */
 import {matchUrl} from '../lib/HyperclickProviderHelpers';
 
-function expectMatch(
+const :[fn~\w+] = (
   urlText: string,
   expectedMatch: ?{url: string, index: number},
-) {
+) => {
   const match = matchUrl(urlText);
   expect(match).toEqual(expectedMatch);
 }

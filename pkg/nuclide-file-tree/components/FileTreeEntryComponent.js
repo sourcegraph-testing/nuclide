@@ -661,7 +661,7 @@ const mapDispatchToProps = (dispatch, ownProps): $Shape<Props> => ({
   },
 });
 
-function getExternalDragPath(event: DragEvent): ?NuclideUri {
+const :[fn~\w+] = (event: DragEvent) =>: ?NuclideUri {
   const {dataTransfer} = event;
   if (dataTransfer == null) {
     return null;

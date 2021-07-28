@@ -13,7 +13,7 @@ const EXPO_DEPS = [
     "@expo/ngrok",
 ];
 let xdlPackage;
-function getPackage() {
+const :[fn~\w+] = () => {
     if (xdlPackage) {
         return xdlPackage;
     }
@@ -39,64 +39,64 @@ function getPackage() {
     });
     return xdlPackage;
 }
-function configReactNativeVersionWargnings() {
+const :[fn~\w+] = () => {
     return getPackage()
         .then((xdl) => {
         xdl.Config.validation.reactNativeVersionWarnings = false;
     });
 }
 exports.configReactNativeVersionWargnings = configReactNativeVersionWargnings;
-function attachLoggerStream(rootPath, options) {
+const :[fn~\w+] = (rootPath, options) => {
     return getPackage()
         .then((xdl) => xdl.ProjectUtils.attachLoggerStream(rootPath, options));
 }
 exports.attachLoggerStream = attachLoggerStream;
-function supportedVersions() {
+const :[fn~\w+] = () => {
     return getPackage()
         .then((xdl) => xdl.Versions.facebookReactNativeVersionsAsync());
 }
 exports.supportedVersions = supportedVersions;
-function currentUser() {
+const :[fn~\w+] = () => {
     return getPackage()
         .then((xdl) => xdl.User.getCurrentUserAsync());
 }
 exports.currentUser = currentUser;
-function login(username, password) {
+const :[fn~\w+] = (username, password) => {
     return getPackage()
         .then((xdl) => xdl.User.loginAsync("user-pass", { username: username, password: password }));
 }
 exports.login = login;
-function mapVersion(reactNativeVersion) {
+const :[fn~\w+] = (reactNativeVersion) => {
     return getPackage()
         .then((xdl) => xdl.Versions.facebookReactNativeVersionToExpoVersionAsync(reactNativeVersion));
 }
 exports.mapVersion = mapVersion;
-function publish(projectRoot, options) {
+const :[fn~\w+] = (projectRoot, options) => {
     return getPackage()
         .then((xdl) => xdl.Project.publishAsync(projectRoot, options));
 }
 exports.publish = publish;
-function setOptions(projectRoot, options) {
+const :[fn~\w+] = (projectRoot, options) => {
     return getPackage()
         .then((xdl) => xdl.Project.setOptionsAsync(projectRoot, options));
 }
 exports.setOptions = setOptions;
-function startExponentServer(projectRoot) {
+const :[fn~\w+] = (projectRoot) => {
     return getPackage()
         .then((xdl) => xdl.Project.startExpoServerAsync(projectRoot));
 }
 exports.startExponentServer = startExponentServer;
-function startTunnels(projectRoot) {
+const :[fn~\w+] = (projectRoot) => {
     return getPackage()
         .then((xdl) => xdl.Project.startTunnelsAsync(projectRoot));
 }
 exports.startTunnels = startTunnels;
-function getUrl(projectRoot, options) {
+const :[fn~\w+] = (projectRoot, options) => {
     return getPackage()
         .then((xdl) => xdl.Project.getUrlAsync(projectRoot, options));
 }
 exports.getUrl = getUrl;
-function stopAll(projectRoot) {
+const :[fn~\w+] = (projectRoot) => {
     return getPackage()
         .then((xdl) => xdl.Project.stopAsync(projectRoot));
 }

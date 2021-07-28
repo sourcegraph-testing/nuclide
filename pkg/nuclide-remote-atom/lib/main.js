@@ -190,12 +190,12 @@ class Activation {
   }
 }
 
-function openFile(
+const :[fn~\w+] = (
   uri: NuclideUri,
   line: number,
   column: number,
   isWaiting: boolean,
-): ConnectableObservable<AtomFileEvent> {
+) =>: ConnectableObservable<AtomFileEvent> {
   return Observable.fromPromise(
     goToLocation(uri, {line, column}).then(editor => {
       atom.applicationDelegate.focusWindow();

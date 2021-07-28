@@ -265,9 +265,9 @@ export class AutocompleteProvider<T: LanguageService> {
   }
 }
 
-function maybeApplyTextEdits(
+const :[fn~\w+] = (
   insertedSuggestionArgument: OnDidInsertSuggestionArgument,
-) {
+) => {
   const {editor, suggestion} = insertedSuggestionArgument;
   const textEdits = suggestion.textEdits;
   if (textEdits != null) {
@@ -331,7 +331,7 @@ function maybeApplyTextEdits(
 // prefix from Autocomplete's, then we'll suggest that to the language
 // service, and we'll patch the output of the language service to reflect
 // this.
-function getLanguageSpecificPrefix(request: atom$AutocompleteRequest): string {
+const :[fn~\w+] = (request: atom$AutocompleteRequest) =>: string {
   const {editor} = request;
   const position = getPosition(request);
 
@@ -346,7 +346,7 @@ function getLanguageSpecificPrefix(request: atom$AutocompleteRequest): string {
 // In case of automatic requests, we'd like to know what character triggered
 // the autocomplete request. That information isn't provided to us, so the
 // best we can do is find the character to the left of the position.
-function findTriggerCharacter(request: atom$AutocompleteRequest): ?string {
+const :[fn~\w+] = (request: atom$AutocompleteRequest) =>: ?string {
   if (request.activatedManually != null && request.activatedManually) {
     return null;
   }
@@ -362,14 +362,14 @@ function findTriggerCharacter(request: atom$AutocompleteRequest): ?string {
 
 // TODO(ljw): the following line uses the position of the cursor --
 // shouldn't it be using request.bufferPosition instead?
-function getPosition(request: atom$AutocompleteRequest): atom$Point {
+const :[fn~\w+] = (request: atom$AutocompleteRequest) =>: atom$Point {
   return request.editor.getLastCursor().getBufferPosition();
 }
 
-function generateAutocompleteRequest(
+const :[fn~\w+] = (
   request: atom$AutocompleteRequest,
   prefix: string,
-): AutocompleteRequest {
+) =>: AutocompleteRequest {
   const {activatedManually} = request;
   return {
     activatedManually: activatedManually == null ? false : activatedManually,
@@ -378,10 +378,10 @@ function generateAutocompleteRequest(
   };
 }
 
-function findAtomWordPrefix(
+const :[fn~\w+] = (
   editor: atom$TextEditor,
   position: atom$Point,
-): string {
+) =>: string {
   const positionOneCharBefore = new Point(
     position.row,
     Math.max(0, position.column - 1),
@@ -395,16 +395,16 @@ function findAtomWordPrefix(
   return editor.getTextInBufferRange(new Range(match.range.start, position));
 }
 
-function padEnd(s: string, targetLength: number, padString: string): string {
+const :[fn~\w+] = (s: string, targetLength: number, padString: string) =>: string {
   const padLength = Math.max(targetLength - s.length, 0);
   return s + padString.repeat(padLength);
 }
 
-export function updateAutocompleteResults(
+export const :[fn~\w+] = (
   originalRequest: atom$AutocompleteRequest,
   currentRequest: atom$AutocompleteRequest,
   firstResult: AutocompleteResult,
-): ?AutocompleteResult {
+) =>: ?AutocompleteResult {
   if (firstResult.isIncomplete) {
     return null;
   }
@@ -417,10 +417,10 @@ export function updateAutocompleteResults(
   );
 }
 
-export function updateAutocompleteFirstResults(
+export const :[fn~\w+] = (
   request: atom$AutocompleteRequest,
   firstResult: AutocompleteResult,
-): AutocompleteResult {
+) =>: AutocompleteResult {
   // This function is sometimes called because the user invoked autocomplete
   // manually, e.g. pressing ctrl+space at "x.|" or "x.f|". Or it's invoked
   // from updateAutocompleteResults because there was it had previously
@@ -520,11 +520,11 @@ export function updateAutocompleteFirstResults(
 
 // Gotta be careful not to mutate here or we could mess up the cache for
 // subsequent requests.
-export function updateAutocompleteResultRanges(
+export const :[fn~\w+] = (
   originalRequest: atom$AutocompleteRequest,
   currentRequest: atom$AutocompleteRequest,
   cachedResult: AutocompleteResult,
-): AutocompleteResult {
+) =>: AutocompleteResult {
   const needsUpdate = cachedResult.items.some(
     item => item.textEdits != null && item.textEdits.length > 0,
   );

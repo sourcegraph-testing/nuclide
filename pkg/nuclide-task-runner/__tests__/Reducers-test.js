@@ -82,7 +82,7 @@ describe('Reducers', () => {
   });
 });
 
-function createMockConsole(): ConsoleApi {
+const :[fn~\w+] = () =>: ConsoleApi {
   let disposed = false;
   return (({
     isDisposed: () => disposed,
@@ -92,6 +92,6 @@ function createMockConsole(): ConsoleApi {
   }: any): ConsoleApi);
 }
 
-function consoleIsDisposed(consoleApi: ConsoleApi): boolean {
+const :[fn~\w+] = (consoleApi: ConsoleApi) =>: boolean {
   return (consoleApi: any).isDisposed();
 }

@@ -19,10 +19,10 @@ import {escapeMarkdown} from 'nuclide-commons/string';
 /**
  * WIP: This is just what VSCode displays. We can likely make this more Atom-y.
  */
-export default function getSignatureDatatip(
+export default const :[fn~\w+] = (
   signatureHelp: SignatureHelp,
   point: atom$Point,
-): Datatip {
+) =>: Datatip {
   // Note: empty signatures have already been filtered out above.
   const activeSignature =
     signatureHelp.signatures[signatureHelp.activeSignature || 0];
@@ -89,11 +89,11 @@ export default function getSignatureDatatip(
  *
  * @returns -1 on failure.
  */
-function findIndex(
+const :[fn~\w+] = (
   label: string,
   parameters: Array<SignatureParameter>,
   activeParameterIndex: number,
-): number {
+) =>: number {
   let lastIndex = undefined;
   for (let i = parameters.length - 1; i >= activeParameterIndex; i--) {
     if (lastIndex != null) {

@@ -52,10 +52,10 @@ export type FileIndex = {
   mainFiles: Map<string, string>,
 };
 
-export async function getFileIndex(
+export const :[fn~\w+] = async (
   root: string,
   configFromFlow: ConfigFromFlow,
-): Promise<FileIndex> {
+) =>: Promise<FileIndex> {
   const client = new WatchmanClient();
   const exportCache = new ExportCache({root, configFromFlow});
   const loadPromise = exportCache.load().then(success => {
@@ -100,7 +100,7 @@ export async function getFileIndex(
   return {root, exportCache, jsFiles, nodeModulesPackageJsonFiles, mainFiles};
 }
 
-function getOutputLines(command, args, opts) {
+const :[fn~\w+] = (command, args, opts) => {
   return spawn(command, args, opts).switchMap(proc => {
     return getOutputStream(proc).reduce((acc, result) => {
       if (result.kind === 'stdout') {
@@ -111,22 +111,22 @@ function getOutputLines(command, args, opts) {
   });
 }
 
-function hgListFiles(
+const :[fn~\w+] = (
   root: string,
   pattern: string,
   ignore: Array<string>,
-): Promise<Array<string>> {
+) =>: Promise<Array<string>> {
   const ignorePatterns = arrayFlatten(ignore.map(x => ['-X', x]));
   return getOutputLines('hg', ['files', '-I', pattern, ...ignorePatterns], {
     cwd: root,
   }).toPromise();
 }
 
-function findListFiles(
+const :[fn~\w+] = (
   root: string,
   pattern: string,
   ignore: Array<string>,
-): Promise<Array<string>> {
+) =>: Promise<Array<string>> {
   const ignorePatterns = arrayFlatten(ignore.map(x => ['-not', '-path', x]));
   return (
     getOutputLines('find', ['.', '-name', pattern, ...ignorePatterns], {
@@ -138,19 +138,19 @@ function findListFiles(
   );
 }
 
-function globListFiles(
+const :[fn~\w+] = (
   root: string,
   pattern: string,
   ignore?: Array<string>,
-): Promise<Array<string>> {
+) =>: Promise<Array<string>> {
   return fsPromise.glob(pattern, {cwd: root, ignore});
 }
 
-function watchmanListFiles(
+const :[fn~\w+] = (
   client: WatchmanClient,
   root: string,
   pattern: string,
-): Promise<Array<FileWithHash>> {
+) =>: Promise<Array<FileWithHash>> {
   return client
     .listFiles(root, getWatchmanExpression(root, pattern))
     .then((files: Array<any>) =>
@@ -163,10 +163,10 @@ function watchmanListFiles(
     );
 }
 
-async function getMainFiles(
+const :[fn~\w+] = async (
   root: string,
   packageJsons: Array<string>,
-): Promise<Map<string, string>> {
+) =>: Promise<Map<string, string>> {
   const cpus = os.cpus();
   const results = await asyncLimit(
     packageJsons,
@@ -196,12 +196,12 @@ async function getMainFiles(
   return new Map(results.filter(Boolean));
 }
 
-function filesWithoutHash(files: Array<string>): Array<FileWithHash> {
+const :[fn~\w+] = (files: Array<string>) =>: Array<FileWithHash> {
   return files.map(name => ({name, sha1: null}));
 }
 
 // TODO: watch node_modules and package.json files for changes.
-export function watchDirectory(root: string): Observable<FileChange> {
+export const :[fn~\w+] = (root: string) =>: Observable<FileChange> {
   return Observable.defer(() => {
     const watchmanClient = new WatchmanClient();
     return Observable.using(
@@ -239,7 +239,7 @@ export function watchDirectory(root: string): Observable<FileChange> {
   });
 }
 
-function getWatchmanExpression(root: string, pattern: string) {
+const :[fn~\w+] = (root: string, pattern: string) => {
   return {
     expression: [
       'allof',
@@ -251,7 +251,7 @@ function getWatchmanExpression(root: string, pattern: string) {
   };
 }
 
-function getWatchmanMatchesFromIgnoredFiles() {
+const :[fn~\w+] = () => {
   return TO_IGNORE.map(patternToIgnore => {
     return [
       'not',

@@ -33,7 +33,7 @@ type WriteOptions = {
  * @param prefix optinal prefix for the temp directory name.
  * @return path to a temporary directory.
  */
-function tempdir(prefix: string = ''): Promise<string> {
+const :[fn~\w+] = (prefix: string = '') =>: Promise<string> {
   return new Promise((resolve, reject) => {
     temp.mkdir(prefix, (err, result) => {
       if (err == null) {
@@ -49,7 +49,7 @@ function tempdir(prefix: string = ''): Promise<string> {
  * @return path to a temporary file. The caller is responsible for cleaning up
  *     the file.
  */
-function tempfile(options: any): Promise<string> {
+const :[fn~\w+] = (options: any) =>: Promise<string> {
   return new Promise((resolve, reject) => {
     temp.open(options, (err, info) => {
       if (err) {
@@ -75,10 +75,10 @@ function tempfile(options: any): Promise<string> {
  *   not a file.
  * @return directory that contains the nearest file or null.
  */
-async function findNearestFile(
+const :[fn~\w+] = async (
   fileName: string,
   pathToDirectory: string,
-): Promise<?string> {
+) =>: Promise<?string> {
   // TODO(5586355): If this becomes a bottleneck, we should consider memoizing
   // this function. The downside would be that if someone added a closer file
   // with fileName to pathToFile (or deleted the one that was cached), then we
@@ -98,10 +98,10 @@ async function findNearestFile(
   }
 }
 
-async function findNearestAncestorNamed(
+const :[fn~\w+] = async (
   fileName: string,
   pathToDirectory: string,
-): Promise<?string> {
+) =>: Promise<?string> {
   const directory = await findNearestFile(fileName, pathToDirectory);
   if (directory != null) {
     return nuclideUri.join(directory, fileName);
@@ -110,7 +110,7 @@ async function findNearestAncestorNamed(
   }
 }
 
-function resolveRealPath(path: string): Promise<string> {
+const :[fn~\w+] = (path: string) =>: Promise<string> {
   return realpath(nuclideUri.expandHomeDir(path));
 }
 
@@ -123,11 +123,11 @@ function resolveRealPath(path: string): Promise<string> {
  * @param stopOnMissing Stop searching when we reach a directory without fileName.
  * @return directory that contains the furthest file or null.
  */
-async function findFurthestFile(
+const :[fn~\w+] = async (
   fileName: string,
   pathToDirectory: string,
   stopOnMissing: boolean = false,
-): Promise<?string> {
+) =>: Promise<?string> {
   let currentPath = nuclideUri.resolve(pathToDirectory);
   let result = null;
   for (;;) {
@@ -143,7 +143,7 @@ async function findFurthestFile(
   }
 }
 
-function getCommonAncestorDirectory(filePaths: Array<string>): string {
+const :[fn~\w+] = (filePaths: Array<string>) =>: string {
   let commonDirectoryPath = nuclideUri.dirname(filePaths[0]);
   while (
     filePaths.some(filePath => !filePath.startsWith(commonDirectoryPath))
@@ -153,7 +153,7 @@ function getCommonAncestorDirectory(filePaths: Array<string>): string {
   return commonDirectoryPath;
 }
 
-function exists(filePath: string): Promise<boolean> {
+const :[fn~\w+] = (filePath: string) =>: Promise<boolean> {
   return new Promise((resolve, reject) => {
     fs.exists(filePath, resolve);
   });
@@ -166,7 +166,7 @@ function exists(filePath: string): Promise<boolean> {
  * directories were created for some prefix of the given path.
  * @return true if the path was created; false if it already existed.
  */
-async function mkdirp(filePath: string): Promise<boolean> {
+const :[fn~\w+] = async (filePath: string) =>: Promise<boolean> {
   const isExistingDirectory = await exists(filePath);
   if (isExistingDirectory) {
     return false;
@@ -186,7 +186,7 @@ async function mkdirp(filePath: string): Promise<boolean> {
 /**
  * Removes directories even if they are non-empty. Does not fail if the directory doesn't exist.
  */
-function rimrafWrapper(filePath: string): Promise<void> {
+const :[fn~\w+] = (filePath: string) =>: Promise<void> {
   return new Promise((resolve, reject) => {
     rimraf(filePath, (err, result) => {
       if (err == null) {
@@ -198,7 +198,7 @@ function rimrafWrapper(filePath: string): Promise<void> {
   });
 }
 
-async function getFileSystemType(entityPath: string): Promise<?string> {
+const :[fn~\w+] = async (entityPath: string) =>: Promise<?string> {
   if (process.platform === 'linux' || process.platform === 'darwin') {
     try {
       const stdout = await runCommand('stat', [
@@ -219,18 +219,18 @@ async function getFileSystemType(entityPath: string): Promise<?string> {
 }
 
 /** @return true only if we are sure entityPath is on NFS. */
-async function isNfs(entityPath: string): Promise<boolean> {
+const :[fn~\w+] = async (entityPath: string) =>: Promise<boolean> {
   return (await getFileSystemType(entityPath)) === 'nfs';
 }
 
 /** @return true only if we are sure entityPath is on a Fuse filesystem like
             dewey or gvfs.
 */
-async function isFuse(entityPath: string): Promise<boolean> {
+const :[fn~\w+] = async (entityPath: string) =>: Promise<boolean> {
   return (await getFileSystemType(entityPath)) === 'fuseblk';
 }
 
-function glob(pattern: string, options?: Object): Promise<Array<string>> {
+const :[fn~\w+] = (pattern: string, options?: Object) =>: Promise<Array<string>> {
   return new Promise((resolve, reject) => {
     globLib(pattern, options, (err, result) => {
       if (err == null) {
@@ -242,7 +242,7 @@ function glob(pattern: string, options?: Object): Promise<Array<string>> {
   });
 }
 
-async function isNonNfsDirectory(directoryPath: string): Promise<boolean> {
+const :[fn~\w+] = async (directoryPath: string) =>: Promise<boolean> {
   try {
     const stats = await stat(directoryPath);
     if (stats.isDirectory()) {
@@ -262,7 +262,7 @@ async function isNonNfsDirectory(directoryPath: string): Promise<boolean> {
  * Promisified wrappers around fs-plus functions.
  */
 
-function copy(source: string, dest: string): Promise<void> {
+const :[fn~\w+] = (source: string, dest: string) =>: Promise<void> {
   return new Promise((resolve, reject) => {
     fsPlus.copy(source, dest, (err, result) => {
       if (err == null) {
@@ -274,10 +274,10 @@ function copy(source: string, dest: string): Promise<void> {
   });
 }
 
-async function copyFilePermissions(
+const :[fn~\w+] = async (
   sourcePath: string,
   destinationPath: string,
-): Promise<void> {
+) =>: Promise<void> {
   try {
     const {mode, uid, gid} = await stat(sourcePath);
     await Promise.all([
@@ -302,11 +302,11 @@ async function copyFilePermissions(
  * TODO: the fs-plus `writeFile` implementation runs `mkdirp` first.
  * We should use `fs.writeFile` and have callsites explicitly opt-in to this behaviour.
  */
-function writeFile(
+const :[fn~\w+] = (
   filename: string,
   data: Buffer | string,
   options?: WriteOptions | string,
-): Promise<void> {
+) =>: Promise<void> {
   return new Promise((resolve, reject) => {
     fsPlus.writeFile(filename, data, options, (err, result) => {
       if (err == null) {
@@ -318,11 +318,11 @@ function writeFile(
   });
 }
 
-async function writeFileAtomic(
+const :[fn~\w+] = async (
   path: string,
   data: Buffer | string,
   options?: WriteOptions | string,
-): Promise<void> {
+) =>: Promise<void> {
   const tempFilePath = await tempfile('nuclide');
   try {
     await writeFile(tempFilePath, data, options);
@@ -363,7 +363,7 @@ async function writeFileAtomic(
  * Promisified wrappers around fs functions.
  */
 
-function chmod(path: string, mode: number | string): Promise<void> {
+const :[fn~\w+] = (path: string, mode: number | string) =>: Promise<void> {
   return new Promise((resolve, reject) => {
     fs.chmod(path, mode, (err, result) => {
       if (err == null) {
@@ -375,7 +375,7 @@ function chmod(path: string, mode: number | string): Promise<void> {
   });
 }
 
-function chown(path: string, uid: number, gid: number): Promise<void> {
+const :[fn~\w+] = (path: string, uid: number, gid: number) =>: Promise<void> {
   return new Promise((resolve, reject) => {
     fs.chown(path, uid, gid, (err, result) => {
       if (err == null) {
@@ -387,7 +387,7 @@ function chown(path: string, uid: number, gid: number): Promise<void> {
   });
 }
 
-function close(fd: number): Promise<void> {
+const :[fn~\w+] = (fd: number) =>: Promise<void> {
   return new Promise((resolve, reject) => {
     fs.close(fd, err => {
       if (err == null) {
@@ -399,7 +399,7 @@ function close(fd: number): Promise<void> {
   });
 }
 
-function fstat(fd: number): Promise<fs.Stats> {
+const :[fn~\w+] = (fd: number) =>: Promise<fs.Stats> {
   return new Promise((resolve, reject) => {
     fs.fstat(fd, (err, result) => {
       if (err == null) {
@@ -411,7 +411,7 @@ function fstat(fd: number): Promise<fs.Stats> {
   });
 }
 
-async function fsync(fd: number): Promise<void> {
+const :[fn~\w+] = async (fd: number) =>: Promise<void> {
   return new Promise((resolve, reject) => {
     fs.fsync(fd, (err, result) => {
       if (err == null) {
@@ -423,7 +423,7 @@ async function fsync(fd: number): Promise<void> {
   });
 }
 
-function ftruncate(fd: number, len: number): Promise<void> {
+const :[fn~\w+] = (fd: number, len: number) =>: Promise<void> {
   return new Promise((resolve, reject) => {
     fs.ftruncate(fd, len, (err, result) => {
       if (err == null) {
@@ -435,7 +435,7 @@ function ftruncate(fd: number, len: number): Promise<void> {
   });
 }
 
-function lstat(path: string): Promise<fs.Stats> {
+const :[fn~\w+] = (path: string) =>: Promise<fs.Stats> {
   return new Promise((resolve, reject) => {
     fs.lstat(path, (err, result) => {
       if (err == null) {
@@ -447,7 +447,7 @@ function lstat(path: string): Promise<fs.Stats> {
   });
 }
 
-function mkdir(path: string, mode?: number): Promise<void> {
+const :[fn~\w+] = (path: string, mode?: number) =>: Promise<void> {
   return new Promise((resolve, reject) => {
     fs.mkdir(path, mode, (err, result) => {
       if (err == null) {
@@ -472,11 +472,11 @@ export type MvOptions = {
  * The key difference between 'mv' and 'rename' is that 'mv' works across devices.
  * It's not uncommon to have temporary files in a different disk, for instance.
  */
-async function mv(
+const :[fn~\w+] = async (
   sourcePath: string,
   destinationPath: string,
   options?: MvOptions = {},
-): Promise<void> {
+) =>: Promise<void> {
   // mv-node fails to account for the case where a destination directory exists
   // and `clobber` is false. This can result in the source directory getting
   // deleted but the destination not getting written.
@@ -498,11 +498,11 @@ async function mv(
   });
 }
 
-function open(
+const :[fn~\w+] = (
   path: string | Buffer | URL,
   flags: string | number,
   mode: number = 0o666,
-): Promise<number> {
+) =>: Promise<number> {
   return new Promise((resolve, reject) => {
     fs.open(path, flags, mode, (err, fd) => {
       if (err == null) {
@@ -514,13 +514,13 @@ function open(
   });
 }
 
-function read(
+const :[fn~\w+] = (
   fd: number,
   buffer: Buffer,
   offset: number,
   length: number,
   position: number | null,
-): Promise<number> {
+) =>: Promise<number> {
   return new Promise((resolve, reject) => {
     fs.read(fd, buffer, offset, length, position, (err, bytesRead) => {
       if (err == null) {
@@ -554,7 +554,7 @@ const readFile: ReadFileType = (function(...args: Array<any>) {
   });
 }: any);
 
-function readdir(path: string): Promise<Array<string>> {
+const :[fn~\w+] = (path: string) =>: Promise<Array<string>> {
   return new Promise((resolve, reject) => {
     fs.readdir(path, (err, result) => {
       if (err == null) {
@@ -566,7 +566,7 @@ function readdir(path: string): Promise<Array<string>> {
   });
 }
 
-function readlink(path: string): Promise<string> {
+const :[fn~\w+] = (path: string) =>: Promise<string> {
   return new Promise((resolve, reject) => {
     fs.readlink(path, (err, result) => {
       if (err == null) {
@@ -578,7 +578,7 @@ function readlink(path: string): Promise<string> {
   });
 }
 
-function realpath(path: string, cache?: Object): Promise<string> {
+const :[fn~\w+] = (path: string, cache?: Object) =>: Promise<string> {
   return new Promise((resolve, reject) => {
     fs.realpath(path, cache, (err, result) => {
       if (err == null) {
@@ -590,7 +590,7 @@ function realpath(path: string, cache?: Object): Promise<string> {
   });
 }
 
-function access(path: string, mode: number): Promise<boolean> {
+const :[fn~\w+] = (path: string, mode: number) =>: Promise<boolean> {
   return new Promise((resolve, reject) => {
     fs.access(path, mode, err => {
       if (err == null) {
@@ -602,7 +602,7 @@ function access(path: string, mode: number): Promise<boolean> {
   });
 }
 
-function stat(path: string): Promise<fs.Stats> {
+const :[fn~\w+] = (path: string) =>: Promise<fs.Stats> {
   return new Promise((resolve, reject) => {
     fs.stat(path, (err, result) => {
       if (err == null) {
@@ -614,7 +614,7 @@ function stat(path: string): Promise<fs.Stats> {
   });
 }
 
-function symlink(source: string, dest: string, type?: string): Promise<void> {
+const :[fn~\w+] = (source: string, dest: string, type?: string) =>: Promise<void> {
   return new Promise((resolve, reject) => {
     fs.symlink(source, dest, type, (err, result) => {
       if (err == null) {
@@ -630,7 +630,7 @@ function symlink(source: string, dest: string, type?: string): Promise<void> {
  * A utility function to grab the last N bytes from a file. Attempts to do so
  * without reading the entire file.
  */
-async function tailBytes(file: string, maxBytes: number): Promise<Buffer> {
+const :[fn~\w+] = async (file: string, maxBytes: number) =>: Promise<Buffer> {
   if (maxBytes <= 0) {
     throw new Error('tailbytes expects maxBytes > 0');
   }
@@ -666,7 +666,7 @@ async function tailBytes(file: string, maxBytes: number): Promise<Buffer> {
   }
 }
 
-function unlink(path: string): Promise<void> {
+const :[fn~\w+] = (path: string) =>: Promise<void> {
   return new Promise((resolve, reject) => {
     fs.unlink(path, (err, result) => {
       if (err == null) {
@@ -678,11 +678,11 @@ function unlink(path: string): Promise<void> {
   });
 }
 
-function utimes(
+const :[fn~\w+] = (
   path: string,
   atime: number | Date,
   mtime: number | Date,
-): Promise<void> {
+) =>: Promise<void> {
   return new Promise((resolve, reject) => {
     fs.utimes(path, atime, mtime, err => {
       if (err == null) {
@@ -694,7 +694,7 @@ function utimes(
   });
 }
 
-function rmdir(path: string): Promise<void> {
+const :[fn~\w+] = (path: string) =>: Promise<void> {
   return new Promise((resolve, reject) => {
     fs.rmdir(path, err => {
       if (err == null) {
@@ -711,7 +711,7 @@ function rmdir(path: string): Promise<void> {
  * Sometimes filePath may not exist yet, in which case we need to look upwards
  * for the first prefix that actually does exist.
  */
-async function guessRealPath(filePath: string): Promise<string> {
+const :[fn~\w+] = async (filePath: string) =>: Promise<string> {
   if (nuclideUri.isRemote(filePath)) {
     throw new Error('Only local paths can be used with guessRealPath');
   }

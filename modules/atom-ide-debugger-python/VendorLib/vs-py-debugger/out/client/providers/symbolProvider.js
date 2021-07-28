@@ -7,9 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -20,7 +20,7 @@ const async_1 = require("../common/utils/async");
 const telemetry_1 = require("../telemetry");
 const constants_1 = require("../telemetry/constants");
 const proxy = require("./jediProxy");
-function flattenSymbolTree(tree, uri, containerName = '') {
+const :[fn~\w+] = (tree, uri, containerName = '') => {
     const flattened = [];
     const range = new vscode_1.Range(tree.range.start.line, tree.range.start.character, tree.range.end.line, tree.range.end.character);
     // For whatever reason, the values of VS Code's SymbolKind enum

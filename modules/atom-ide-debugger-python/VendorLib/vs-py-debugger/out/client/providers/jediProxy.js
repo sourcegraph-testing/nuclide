@@ -9,9 +9,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -101,7 +101,7 @@ pythonVSCodeSymbolMappings.set('complex', vscode_1.SymbolKind.Number);
 pythonVSCodeSymbolMappings.set('string', vscode_1.SymbolKind.String);
 pythonVSCodeSymbolMappings.set('unicode', vscode_1.SymbolKind.String);
 pythonVSCodeSymbolMappings.set('list', vscode_1.SymbolKind.Array);
-function getMappedVSCodeType(pythonType) {
+const :[fn~\w+] = (pythonType) => {
     if (pythonVSCodeTypeMappings.has(pythonType)) {
         const value = pythonVSCodeTypeMappings.get(pythonType);
         if (value) {
@@ -110,7 +110,7 @@ function getMappedVSCodeType(pythonType) {
     }
     return vscode_1.CompletionItemKind.Keyword;
 }
-function getMappedVSCodeSymbol(pythonType) {
+const :[fn~\w+] = (pythonType) => {
     if (pythonVSCodeSymbolMappings.has(pythonType)) {
         const value = pythonVSCodeSymbolMappings.get(pythonType);
         if (value) {

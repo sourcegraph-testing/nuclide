@@ -34,17 +34,17 @@ type Extent = {
   endPosition: atom$Point,
 };
 
-export function astToOutline(ast: any): Outline {
+export const :[fn~\w+] = (ast: any) =>: Outline {
   return {
     outlineTrees: itemsToTrees(ast.body),
   };
 }
 
-function itemsToTrees(items: Array<any>): Array<OutlineTree> {
+const :[fn~\w+] = (items: Array<any>) =>: Array<OutlineTree> {
   return arrayCompact(items.map(itemToTree));
 }
 
-function itemToTree(item: any): ?OutlineTree {
+const :[fn~\w+] = (item: any) =>: ?OutlineTree {
   if (item == null) {
     return null;
   }
@@ -128,11 +128,11 @@ function itemToTree(item: any): ?OutlineTree {
   }
 }
 
-function exportDeclaration(
+const :[fn~\w+] = (
   item: any,
   extent: Extent,
   isDefault: boolean,
-): ?OutlineTree {
+) =>: ?OutlineTree {
   const tree = itemToTree(item.declaration);
   if (tree == null) {
     return null;
@@ -153,12 +153,12 @@ function exportDeclaration(
   };
 }
 
-function declarationReducer(
+const :[fn~\w+] = (
   textElements: TokenizedText,
   p: any,
   index: number,
   declarations: Array<any>,
-): TokenizedText {
+) =>: TokenizedText {
   switch (p.type) {
     case 'Identifier':
       textElements.push(param(p.name));
@@ -196,11 +196,11 @@ function declarationReducer(
   return textElements;
 }
 
-function declarationsTokenizedText(declarations: Array<any>): TokenizedText {
+const :[fn~\w+] = (declarations: Array<any>) =>: TokenizedText {
   return declarations.reduce(declarationReducer, []);
 }
 
-function getExtent(item: any): Extent {
+const :[fn~\w+] = (item: any) =>: Extent {
   return {
     startPosition: new Point(
       // It definitely makes sense that the lines we get are 1-based and the columns are
@@ -212,11 +212,11 @@ function getExtent(item: any): Extent {
   };
 }
 
-function functionOutline(
+const :[fn~\w+] = (
   name: string,
   params: Array<any>,
   extent: Extent,
-): OutlineTree {
+) =>: OutlineTree {
   return {
     kind: 'function',
     tokenizedText: [
@@ -233,7 +233,7 @@ function functionOutline(
   };
 }
 
-function typeAliasOutline(typeAliasExpression: any): OutlineTree {
+const :[fn~\w+] = (typeAliasExpression: any) =>: OutlineTree {
   invariant(typeAliasExpression.type === 'TypeAlias');
   const name = typeAliasExpression.id.name;
   return {
@@ -245,7 +245,7 @@ function typeAliasOutline(typeAliasExpression: any): OutlineTree {
   };
 }
 
-function topLevelExpressionOutline(expressionStatement: any): ?OutlineTree {
+const :[fn~\w+] = (expressionStatement: any) =>: ?OutlineTree {
   switch (expressionStatement.expression.type) {
     case 'CallExpression':
       return specOutline(expressionStatement, /* describeOnly */ true);
@@ -256,7 +256,7 @@ function topLevelExpressionOutline(expressionStatement: any): ?OutlineTree {
   }
 }
 
-function moduleExportsOutline(assignmentStatement: any): ?OutlineTree {
+const :[fn~\w+] = (assignmentStatement: any) =>: ?OutlineTree {
   invariant(assignmentStatement.type === 'AssignmentExpression');
 
   const left = assignmentStatement.left;
@@ -282,7 +282,7 @@ function moduleExportsOutline(assignmentStatement: any): ?OutlineTree {
   }
 }
 
-function isModuleExports(left: Object): boolean {
+const :[fn~\w+] = (left: Object) =>: boolean {
   return (
     left.type === 'MemberExpression' &&
     left.object.type === 'Identifier' &&
@@ -292,7 +292,7 @@ function isModuleExports(left: Object): boolean {
   );
 }
 
-function moduleExportsPropertyOutline(property: any): ?OutlineTree {
+const :[fn~\w+] = (property: any) =>: ?OutlineTree {
   invariant(property.type === 'Property');
   if (property.key.type !== 'Identifier') {
     return null;
@@ -337,10 +337,10 @@ function moduleExportsPropertyOutline(property: any): ?OutlineTree {
   };
 }
 
-function specOutline(
+const :[fn~\w+] = (
   expressionStatement: any,
   describeOnly: boolean = false,
-): ?OutlineTree {
+) =>: ?OutlineTree {
   const expression = expressionStatement.expression;
   if (expression.type !== 'CallExpression') {
     return null;
@@ -380,7 +380,7 @@ function specOutline(
 
 // Return the function name as written as a string. Intended to stringify patterns like `describe`
 // and `describe.only` even though `describe.only` is a MemberExpression rather than an Identifier.
-function getFunctionName(callee: any): ?string {
+const :[fn~\w+] = (callee: any) =>: ?string {
   switch (callee.type) {
     case 'Identifier':
       return callee.name;
@@ -397,7 +397,7 @@ function getFunctionName(callee: any): ?string {
   }
 }
 
-function isDescribe(functionName: string): boolean {
+const :[fn~\w+] = (functionName: string) =>: boolean {
   switch (functionName) {
     case 'describe':
     case 'fdescribe':
@@ -426,7 +426,7 @@ function isDescribe(functionName: string): boolean {
   }
 }
 
-function isIt(functionName: string): boolean {
+const :[fn~\w+] = (functionName: string) =>: boolean {
   switch (functionName) {
     case 'it':
     case 'fit':
@@ -442,7 +442,7 @@ function isIt(functionName: string): boolean {
 }
 
 /** If the given AST Node is a string literal, return its literal value. Otherwise return null */
-function getStringLiteralValue(literal: ?any): ?string {
+const :[fn~\w+] = (literal: ?any) =>: ?string {
   if (literal == null) {
     return null;
   }
@@ -456,7 +456,7 @@ function getStringLiteralValue(literal: ?any): ?string {
   return value;
 }
 
-function getFunctionBody(fn: ?any): ?Array<any> {
+const :[fn~\w+] = (fn: ?any) =>: ?Array<any> {
   if (fn == null) {
     return null;
   }
@@ -469,7 +469,7 @@ function getFunctionBody(fn: ?any): ?Array<any> {
   return fn.body.body;
 }
 
-function variableDeclarationOutline(declaration: any): ?OutlineTree {
+const :[fn~\w+] = (declaration: any) =>: ?OutlineTree {
   // If there are multiple var declarations in one line, just take the first.
   return variableDeclaratorOutline(
     declaration.declarations[0],
@@ -478,11 +478,11 @@ function variableDeclarationOutline(declaration: any): ?OutlineTree {
   );
 }
 
-function variableDeclaratorOutline(
+const :[fn~\w+] = (
   declarator: any,
   kind: string,
   extent: Extent,
-): ?OutlineTree {
+) =>: ?OutlineTree {
   if (
     declarator.init != null &&
     (declarator.init.type === 'FunctionExpression' ||
@@ -507,7 +507,7 @@ function variableDeclaratorOutline(
     ...extent,
   };
 }
-function declareClassOutline(item: any, extent: Extent): ?OutlineTree {
+const :[fn~\w+] = (item: any, extent: Extent) =>: ?OutlineTree {
   const tokenizedText = [keyword('class')];
   let representativeName = undefined;
   if (item.id != null) {
@@ -523,7 +523,7 @@ function declareClassOutline(item: any, extent: Extent): ?OutlineTree {
     ...extent,
   };
 }
-function declareClassPropertyOutline(item: any): ?OutlineTree {
+const :[fn~\w+] = (item: any) =>: ?OutlineTree {
   if (item.key == null) {
     return null;
   }
@@ -546,11 +546,11 @@ function declareClassPropertyOutline(item: any): ?OutlineTree {
   }
 }
 
-function declareFunctionOutline(item: any, extent: Extent): ?OutlineTree {
+const :[fn~\w+] = (item: any, extent: Extent) =>: ?OutlineTree {
   const params = item.id.typeAnnotation.typeAnnotation.params;
   return functionOutline(item.id.name, params.map(obj => obj.name), extent);
 }
-function declareModuleOutline(item: any, extent: Extent): ?OutlineTree {
+const :[fn~\w+] = (item: any, extent: Extent) =>: ?OutlineTree {
   const tokenizedText = [keyword('module')];
   let representativeName = undefined;
   if (item.id != null) {
@@ -565,7 +565,7 @@ function declareModuleOutline(item: any, extent: Extent): ?OutlineTree {
     ...extent,
   };
 }
-function declareVariableOutline(item: any, extent: Extent): ?OutlineTree {
+const :[fn~\w+] = (item: any, extent: Extent) =>: ?OutlineTree {
   return {
     kind: 'variable',
     tokenizedText: [keyword('var'), whitespace(' '), method(item.id.name)],
@@ -575,7 +575,7 @@ function declareVariableOutline(item: any, extent: Extent): ?OutlineTree {
   };
 }
 
-function declareInterfaceOutline(item: any, extent: Extent): ?OutlineTree {
+const :[fn~\w+] = (item: any, extent: Extent) =>: ?OutlineTree {
   const tokenizedText = [keyword('interface')];
   let representativeName = undefined;
   if (item.id != null) {

@@ -227,7 +227,7 @@ export default class ContextMenu {
 }
 
 /** Comparator used to sort menu items by priority: lower priorities appear earlier. */
-function compareInternalItems(a: InternalItem, b: InternalItem): number {
+const :[fn~\w+] = (a: InternalItem, b: InternalItem) =>: number {
   return a.priority - b.priority;
 }
 
@@ -238,10 +238,10 @@ function compareInternalItems(a: InternalItem, b: InternalItem): number {
  *
  * [1]: https://github.com/atom/atom/blob/v1.13.0/src/context-menu-manager.coffee#L200
  */
-export function showMenuForEvent(
+export const :[fn~\w+] = (
   event: MouseEvent,
   menuTemplate: Array<Object>,
-): UniversalDisposable {
+) =>: UniversalDisposable {
   invariant(remote != null);
   const win = (remote.getCurrentWindow(): any);
   const originalEmit = win.emit;

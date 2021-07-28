@@ -27,7 +27,7 @@ import UniversalDisposable from 'nuclide-commons/UniversalDisposable';
 import {Emitter} from 'event-kit';
 import {TextDocumentSyncKind} from 'vscode-languageserver';
 
-function textDocumentFromLSPTextDocument(textDocument: TextDocumentItem) {
+const :[fn~\w+] = (textDocument: TextDocumentItem) => {
   return new TextDocument(
     textDocument.uri,
     textDocument.languageId,

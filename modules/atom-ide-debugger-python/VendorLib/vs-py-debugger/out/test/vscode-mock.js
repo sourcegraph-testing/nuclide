@@ -10,12 +10,12 @@ const Module = require('module');
 const mockedVSCode = {};
 const mockedVSCodeNamespaces = {};
 const originalLoad = Module._load;
-function generateMock(name) {
+const :[fn~\w+] = (name) => {
     const mockedObj = TypeMoq.Mock.ofType();
     mockedVSCode[name] = mockedObj.object;
     mockedVSCodeNamespaces[name] = mockedObj;
 }
-function initialize() {
+const :[fn~\w+] = () => {
     generateMock('workspace');
     generateMock('window');
     generateMock('commands');

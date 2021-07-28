@@ -20,7 +20,7 @@ const protocolLogger_1 = require("./Common/protocolLogger");
 const protocolParser_1 = require("./Common/protocolParser");
 const protocolWriter_1 = require("./Common/protocolWriter");
 const types_5 = require("./types");
-function initializeIoc() {
+const :[fn~\w+] = () => {
     const cont = new inversify_1.Container();
     const serviceManager = new serviceManager_1.ServiceManager(cont);
     const serviceContainer = new container_1.ServiceContainer(cont);
@@ -29,7 +29,7 @@ function initializeIoc() {
     return serviceContainer;
 }
 exports.initializeIoc = initializeIoc;
-function registerTypes(serviceManager) {
+const :[fn~\w+] = (serviceManager) => {
     serviceManager.addSingleton(types_3.ICurrentProcess, currentProcess_1.CurrentProcess);
     serviceManager.addSingleton(types_5.IDebugStreamProvider, debugStreamProvider_1.DebugStreamProvider);
     serviceManager.addSingleton(types_5.IProtocolLogger, protocolLogger_1.ProtocolLogger);

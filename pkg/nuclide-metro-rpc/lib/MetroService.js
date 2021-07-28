@@ -35,9 +35,9 @@ import {NO_METRO_PROJECT_ERROR, METRO_PORT_BUSY_ERROR} from './types';
  *       (i.e. where we should look for commands like this) and use that here. The current behavior
  *       of everything having its own algorithm is bad.
  */
-export async function getStartCommand(
+export const :[fn~\w+] = async (
   projectRoot: NuclideUri,
-): Promise<?MetroStartCommand> {
+) =>: Promise<?MetroStartCommand> {
   return (
     (await getStartCommandFromBuck(projectRoot)) ||
     getStartCommandFromNodePackage(projectRoot)
@@ -49,12 +49,12 @@ export async function getStartCommand(
  * IMPORTANT: You likely want to start Metro via the Atom service provided by nuclide-metro,
  * as it sets up Console integration and correctly shares its state across all of Nuclide.
  */
-export function startMetro(
+export const :[fn~\w+] = (
   projectRoot: NuclideUri,
   editorArgs: Array<string>,
   port: number = 8081,
   extraArgs: Array<string> = [],
-): ConnectableObservable<MetroEvent> {
+) =>: ConnectableObservable<MetroEvent> {
   const output = Observable.defer(() => getStartCommand(projectRoot))
     .switchMap(
       commandInfo =>
@@ -94,19 +94,19 @@ export function startMetro(
   return parseMessages(output).publish();
 }
 
-function noMetroProjectError(): Error {
+const :[fn~\w+] = () =>: Error {
   const error = new Error('No Metro project found');
   (error: any).code = NO_METRO_PROJECT_ERROR;
   return error;
 }
 
-function metroPortBusyError(): Error {
+const :[fn~\w+] = () =>: Error {
   const error = new Error('Cannot start Metro because the port is busy');
   (error: any).code = METRO_PORT_BUSY_ERROR;
   return error;
 }
 
-export async function reloadApp(port: number = 8081): Promise<void> {
+export const :[fn~\w+] = async (port: number = 8081) =>: Promise<void> {
   return new Promise((resolve, reject) => {
     const url = `ws://localhost:${port}/message?role=interface&name=Nuclide`;
     const message = {
@@ -126,20 +126,20 @@ export async function reloadApp(port: number = 8081): Promise<void> {
   });
 }
 
-export async function buildBundle(
+export const :[fn~\w+] = async (
   bundleName: string,
   platform: 'ios' | 'android',
   port: number = 8081,
-): Promise<void> {
+) =>: Promise<void> {
   const url = `http://localhost:${port}/${bundleName}.bundle?platform=${platform}&dev=true&minify=false`;
   await xfetch(url, {method: 'HEAD'});
 }
 
-export async function buildSourceMaps(
+export const :[fn~\w+] = async (
   bundleName: string,
   platform: 'ios' | 'android',
   port: number = 8081,
-): Promise<void> {
+) =>: Promise<void> {
   const url = `http://localhost:${port}/${bundleName}.map?platform=${platform}&dev=true&minify=false`;
   await xfetch(url, {method: 'HEAD'});
 }

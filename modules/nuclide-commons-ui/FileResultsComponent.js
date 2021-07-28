@@ -32,7 +32,7 @@ const ASYNC_LINE_LIMIT = 5;
 const TAB_SIZE = 8;
 
 // Return the number of leading tabs in the line.
-function countLeadingTabs(line: string): number {
+const :[fn~\w+] = (line: string) =>: number {
   let tabsSeen = 0;
   for (let index = 0; index < line.length; index++) {
     if (line.charAt(index) === '\t') {
@@ -46,10 +46,10 @@ function countLeadingTabs(line: string): number {
 
 // Renders highlights for matches in the current line.
 // Highlights are designed to be superimposed on the actual code.
-function renderHighlights(
+const :[fn~\w+] = (
   line: string,
   matches: Array<atom$Range>,
-): Array<string | React.Element<any>> {
+) =>: Array<string | React.Element<any>> {
   const pieces = [];
   const leadingTabs = countLeadingTabs(line);
   let curChar = 0;
@@ -82,7 +82,7 @@ function renderHighlights(
   return pieces;
 }
 
-function selectGrammar(path: string): atom$Grammar {
+const :[fn~\w+] = (path: string) =>: atom$Grammar {
   let bestMatch = null;
   let highestScore = -Infinity;
   atom.grammars.forEachGrammar(grammar => {

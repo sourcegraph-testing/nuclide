@@ -27,7 +27,7 @@ export type RenderSegmentProps = {
   content: string,
 };
 
-function ansiToJSON(input, useClasses) {
+const :[fn~\w+] = (input, useClasses) => {
   const classes = useClasses == null || !useClasses ? false : useClasses;
   return Anser.ansiToJson(escapeCarriageReturn(input), {
     use_classes: classes,
@@ -37,7 +37,7 @@ function ansiToJSON(input, useClasses) {
 }
 
 // make sure
-function ansiJSONtoStyleBundle(ansiBundle, colorStyle) {
+const :[fn~\w+] = (ansiBundle, colorStyle) => {
   const style = {};
   if (ansiBundle.bg) {
     style.backgroundColor =
@@ -61,13 +61,13 @@ function ansiJSONtoStyleBundle(ansiBundle, colorStyle) {
   };
 }
 
-function ansiToInlineStyle(text, useClasses, colorStyle) {
+const :[fn~\w+] = (text, useClasses, colorStyle) => {
   return ansiToJSON(text, useClasses).map(input =>
     ansiJSONtoStyleBundle(input, colorStyle),
   );
 }
 
-function defaultRenderSegment({key, style, content}: RenderSegmentProps) {
+const :[fn~\w+] = ({key, style, content}: RenderSegmentProps) => {
   return (
     <span key={key} style={style}>
       {content}

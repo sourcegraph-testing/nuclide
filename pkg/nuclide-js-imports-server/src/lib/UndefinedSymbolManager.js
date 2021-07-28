@@ -37,10 +37,10 @@ export class UndefinedSymbolManager {
   }
 }
 
-function traverseTreeForUndefined(
+const :[fn~\w+] = (
   ast: Object,
   globals: Set<string>,
-): Array<UndefinedSymbol> {
+) =>: Array<UndefinedSymbol> {
   const undefinedSymbols = [];
   const definedTypes = new Set();
   const definedValues = new Set();
@@ -148,11 +148,11 @@ function traverseTreeForUndefined(
   );
 }
 
-function findUndefinedValues(
+const :[fn~\w+] = (
   path: Object,
   undefinedSymbols: Array<UndefinedSymbol>,
   globals: Set<string>,
-) {
+) => {
   const {node, scope} = path;
   const type: string = path.parent.type;
   if (
@@ -178,11 +178,11 @@ function findUndefinedValues(
   });
 }
 
-function findUndefinedReact(
+const :[fn~\w+] = (
   path: Object,
   undefinedSymbols: Array<UndefinedSymbol>,
   globals: Set<string>,
-) {
+) => {
   const {node, scope} = path;
 
   if (scope.hasBinding(REACT_MODULE_NAME)) {
@@ -199,11 +199,11 @@ function findUndefinedReact(
   });
 }
 
-function findUndefinedTypes(
+const :[fn~\w+] = (
   path: Object,
   undefinedSymbols: Array<UndefinedSymbol>,
   globals: Set<string>,
-) {
+) => {
   const {node, scope} = path;
 
   if (
@@ -227,23 +227,23 @@ function findUndefinedTypes(
   }
 }
 
-function saveImports(path: Object, definedTypes: Set<string>) {
+const :[fn~\w+] = (path: Object, definedTypes: Set<string>) => {
   path.node.specifiers.forEach(specifier => {
     definedTypes.add(specifier.local.name);
   });
 }
 
-function save(path: Object, definedTypes: Set<string>) {
+const :[fn~\w+] = (path: Object, definedTypes: Set<string>) => {
   if (path.node.id) {
     definedTypes.add(path.node.id.name);
   }
 }
 
-function saveTypeParameters(path: Object, definedTypes: Set<string>) {
+const :[fn~\w+] = (path: Object, definedTypes: Set<string>) => {
   definedTypes.add(path.node.name);
 }
 
-function isTypeIdentifier(node: string) {
+const :[fn~\w+] = (node: string) => {
   return (
     node === 'GenericTypeAnnotation' ||
     node === 'ObjectTypeIndexer' ||

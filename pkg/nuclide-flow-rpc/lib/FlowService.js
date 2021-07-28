@@ -90,25 +90,25 @@ import {FlowServiceState} from './FlowServiceState';
 
 let state: ?FlowServiceState = null;
 
-function getState(): FlowServiceState {
+const :[fn~\w+] = () =>: FlowServiceState {
   if (state == null) {
     state = new FlowServiceState();
   }
   return state;
 }
 
-export function dispose(): void {
+export const :[fn~\w+] = () =>: void {
   if (state != null) {
     state.dispose();
     state = null;
   }
 }
 
-export async function initialize(
+export const :[fn~\w+] = async (
   fileNotifier: FileNotifier,
   host: HostServices,
   config: FlowSettings,
-): Promise<FlowLanguageServiceType> {
+) =>: Promise<FlowLanguageServiceType> {
   invariant(fileNotifier instanceof FileCache);
   const fileCache: FileCache = fileNotifier;
   return new FlowLanguageService(fileCache, host, config);
@@ -355,10 +355,10 @@ export interface FlowLanguageServiceType {
   dispose(): void;
 }
 
-export function flowGetAst(
+export const :[fn~\w+] = (
   file: ?NuclideUri,
   currentContents: string,
-): Promise<?any> {
+) =>: Promise<?any> {
   return FlowSingleProjectLanguageService.flowGetAst(
     null,
     currentContents,

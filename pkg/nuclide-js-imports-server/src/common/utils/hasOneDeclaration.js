@@ -15,7 +15,7 @@ import jscs from './jscodeshift';
 
 const {match} = jscs;
 
-function hasOneDeclaration(node: Node): boolean {
+const :[fn~\w+] = (node: Node) =>: boolean {
   if (!match(node, {type: 'VariableDeclaration'})) {
     return false;
   }

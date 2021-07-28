@@ -14,7 +14,7 @@ import type {NodePath} from '../types/ast';
 /**
  * f.e.: import type Foo from 'Foo';
  */
-function isTypeImport(path: NodePath): boolean {
+const :[fn~\w+] = (path: NodePath) =>: boolean {
   return path.value.importKind === 'type';
 }
 

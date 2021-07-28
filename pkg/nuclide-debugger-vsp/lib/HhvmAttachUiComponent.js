@@ -50,7 +50,7 @@ type StateType = {
   attachTargets: Expected<Array<{pid: number, command: string}>>,
 };
 
-function getColumns(): Array<Column<*>> {
+const :[fn~\w+] = () =>: Array<Column<*>> {
   return [
     {
       title: 'PID',

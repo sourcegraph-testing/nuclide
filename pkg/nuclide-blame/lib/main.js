@@ -251,9 +251,9 @@ class Activation {
 /**
  * @return list of nodes against which "Toggle Blame" is an appropriate action.
  */
-function findBlameableNodes(
+const :[fn~\w+] = (
   contextMenu: FileTreeContextMenu,
-): Array<FileTreeContextMenuNode> {
+) =>: Array<FileTreeContextMenuNode> {
   const nodes = [];
   for (const node of contextMenu.getSelectedNodes()) {
     if (node == null || !node.uri) {
@@ -269,34 +269,34 @@ function findBlameableNodes(
 
 let activation: ?Activation;
 
-export function activate(state: ?Object): void {
+export const :[fn~\w+] = (state: ?Object) =>: void {
   if (!activation) {
     activation = new Activation();
   }
 }
 
-export function deactivate() {
+export const :[fn~\w+] = () => {
   if (activation) {
     activation.dispose();
     activation = null;
   }
 }
 
-export function consumeBlameProvider(provider: BlameProvider): IDisposable {
+export const :[fn~\w+] = (provider: BlameProvider) =>: IDisposable {
   invariant(activation);
   return activation.consumeBlameProvider(provider);
 }
 
-export function addItemsToFileTreeContextMenu(
+export const :[fn~\w+] = (
   contextMenu: FileTreeContextMenu,
-): IDisposable {
+) =>: IDisposable {
   invariant(activation);
   return activation.addItemsToFileTreeContextMenu(contextMenu);
 }
 
-function getMostRelevantEditor(
+const :[fn~\w+] = (
   fromContextMenu: boolean = false,
-): ?atom$TextEditor {
+) =>: ?atom$TextEditor {
   const editor = atom.workspace.getActiveTextEditor();
   if (fromContextMenu || editor != null) {
     return editor;

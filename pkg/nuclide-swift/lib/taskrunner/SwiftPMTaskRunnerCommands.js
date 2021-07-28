@@ -11,14 +11,14 @@
 
 import featureConfig from 'nuclide-commons-atom/feature-config';
 
-export function buildCommand(
+export const :[fn~\w+] = (
   chdir: string,
   configuration: string,
   Xcc: string,
   Xlinker: string,
   Xswiftc: string,
   buildPath: string,
-): {
+) =>: {
   command: string,
   args: Array<string>,
 } {
@@ -47,10 +47,10 @@ export function buildCommand(
   };
 }
 
-export function testCommand(
+export const :[fn~\w+] = (
   chdir: string,
   buildPath: string,
-): {
+) =>: {
   command: string,
   args: Array<string>,
 } {
@@ -64,7 +64,7 @@ export function testCommand(
   };
 }
 
-function _swiftPath(): string {
+const :[fn~\w+] = () =>: string {
   const path = (featureConfig.get('nuclide-swift.swiftToolchainPath'): any);
   if (path) {
     return `${path}/usr/bin/swift`;

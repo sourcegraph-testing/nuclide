@@ -18,9 +18,9 @@ import invariant from 'assert';
 import nuclideUri from 'nuclide-commons/nuclideUri';
 import yargs from 'yargs';
 
-export default (async function runCommand(
+export default (const :[fn~\w+] = async (
   args: Array<string>,
-): Promise<ExitCode> {
+) =>: Promise<ExitCode> {
   const argv = await new Promise((resolve, reject) => {
     resolve(
       yargs
@@ -110,7 +110,7 @@ export default (async function runCommand(
 });
 
 // TODO(mbolin): Consider using fs-plus to ensure this handles ~ in fileName correctly.
-function resolvePath(fileName): string {
+const :[fn~\w+] = (fileName) =>: string {
   if (!nuclideUri.isAbsolute(fileName)) {
     const pwd = process.env.PWD;
     // flowlint-next-line sketchy-null-string:off

@@ -42,7 +42,7 @@ const CONFIG: Array<ConfigEntry> = [
   },
 ];
 
-function removeUnusedTypes(root: Collection, options: SourceOptions): void {
+const :[fn~\w+] = (root: Collection, options: SourceOptions) =>: void {
   const declared = getDeclaredIdentifiers(root, options);
   const used = getNonDeclarationTypes(root);
   const nonTypeImport = getDeclaredTypes(root, options, [
@@ -65,7 +65,7 @@ function removeUnusedTypes(root: Collection, options: SourceOptions): void {
   });
 }
 
-function isTypeImportDeclaration(node: NodePath): boolean {
+const :[fn~\w+] = (node: NodePath) =>: boolean {
   return match(node, {
     type: 'ImportDeclaration',
     importKind: 'type',

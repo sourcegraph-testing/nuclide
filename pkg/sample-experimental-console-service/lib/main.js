@@ -17,7 +17,7 @@ import {initializeLogging} from '../../nuclide-logging';
 initializeLogging();
 const logger = getLogger('sample-experimental-console-service');
 
-function connectClient(connection: ServiceConnection): void {
+const :[fn~\w+] = (connection: ServiceConnection) =>: void {
   const {sourceName} = connection.config;
   if (sourceName == null) {
     logger.error(

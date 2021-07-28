@@ -27,10 +27,10 @@ import {
 import nuclideUri from 'nuclide-commons/nuclideUri';
 import {getLogger} from 'log4js';
 
-export function setProjectRootEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.SET_PROJECT_ROOT).switchMap(action => {
     invariant(action.type === Actions.SET_PROJECT_ROOT);
     const {projectRoot} = action;
@@ -48,10 +48,10 @@ export function setProjectRootEpic(
   });
 }
 
-export function setBuckRootEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.SET_BUCK_ROOT).switchMap(action => {
     invariant(action.type === Actions.SET_BUCK_ROOT);
     const {buckRoot} = action;
@@ -80,9 +80,9 @@ export function setBuckRootEpic(
   });
 }
 
-async function readBuckversionFile(
+const :[fn~\w+] = async (
   buckRoot: NuclideUri,
-): Promise<string | Error> {
+) =>: Promise<string | Error> {
   const fileSystemService = getFileSystemServiceByNuclideUri(buckRoot);
   try {
     const data = await fileSystemService.readFile(
@@ -98,18 +98,18 @@ async function readBuckversionFile(
 }
 
 // Intentionally not exposed in Actions; this shouldn't be used externally.
-function setRuleType(ruleType: ?ResolvedRuleType): Action {
+const :[fn~\w+] = (ruleType: ?ResolvedRuleType) =>: Action {
   return {type: Actions.SET_RULE_TYPE, ruleType};
 }
 
-function setPlatformGroups(platformGroups: Array<PlatformGroup>): Action {
+const :[fn~\w+] = (platformGroups: Array<PlatformGroup>) =>: Action {
   return {type: Actions.SET_PLATFORM_GROUPS, platformGroups};
 }
 
-export function setBuildTargetEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .ofType(Actions.SET_BUILD_TARGET)
     .switchMap(action => {
@@ -133,10 +133,10 @@ export function setBuildTargetEpic(
     .switchMap(ruleType => Observable.of(setRuleType(ruleType)));
 }
 
-export function setRuleTypeEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.SET_RULE_TYPE).switchMap(action => {
     invariant(action.type === Actions.SET_RULE_TYPE);
     const {ruleType} = action;

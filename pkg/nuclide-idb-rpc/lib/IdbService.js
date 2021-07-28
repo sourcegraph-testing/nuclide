@@ -22,11 +22,11 @@ export type IdbDaemonReadyMessage = {
   port: number,
 };
 
-function filterStdout(msg): Observable<string> {
+const :[fn~\w+] = (msg) =>: Observable<string> {
   return msg.kind === 'stdout' ? Observable.of(msg.data) : Observable.empty();
 }
 
-export function startDaemon(): ConnectableObservable<IdbDaemonReadyMessage> {
+export const :[fn~\w+] = () =>: ConnectableObservable<IdbDaemonReadyMessage> {
   return Observable.defer(() => getAvailableServerPort())
     .switchMap(port =>
       observeProcess('idb', [
@@ -46,9 +46,9 @@ export type IdbCompanionReadyMessage = {
   thrift_port: number,
 };
 
-export function startCompanion(
+export const :[fn~\w+] = (
   udid: string,
-): ConnectableObservable<IdbCompanionReadyMessage> {
+) =>: ConnectableObservable<IdbCompanionReadyMessage> {
   return Observable.defer(() => fsPromise.tempdir())
     .switchMap(tempDir =>
       observeProcess('idb_companion', ['--udid', udid, '--json'], {
@@ -60,7 +60,7 @@ export function startCompanion(
     .publish();
 }
 
-export async function listTargets(): Promise<Array<IdbDevice>> {
+export const :[fn~\w+] = async () =>: Promise<Array<IdbDevice>> {
   const output = await runCommand('idb', ['list-targets', '--json'])
     .catch(e => {
       if (e.stdout != null) {
@@ -77,11 +77,11 @@ export type IdbConnectMessage = {
   udid: string,
 };
 
-export function connect(
+export const :[fn~\w+] = (
   companionHostname: string,
   companionPort: number,
   options?: {daemonHostname?: string, daemonPort?: number} = {},
-): ConnectableObservable<IdbConnectMessage> {
+) =>: ConnectableObservable<IdbConnectMessage> {
   const args = [
     'connect',
     '--json',
@@ -101,10 +101,10 @@ export function connect(
     .publish();
 }
 
-export async function connectToDaemon(
+export const :[fn~\w+] = async (
   hostname: string,
   port: number,
-): Promise<void> {
+) =>: Promise<void> {
   await runCommand('idb', [
     'connect',
     '--daemon',
@@ -113,10 +113,10 @@ export async function connectToDaemon(
   ]).toPromise();
 }
 
-export async function disconnectFromDaemon(
+export const :[fn~\w+] = async (
   hostname: string,
   port: number,
-): Promise<void> {
+) =>: Promise<void> {
   await runCommand('idb', [
     'disconnect',
     '--daemon',
@@ -129,10 +129,10 @@ export type IdbInstallMessage = {
   installedAppBundleId: string,
 };
 
-export function install(
+export const :[fn~\w+] = (
   bundlePath: NuclideUri,
   options?: {daemonHostname?: string, daemonPort?: number} = {},
-): ConnectableObservable<IdbInstallMessage> {
+) =>: ConnectableObservable<IdbInstallMessage> {
   const args = ['install', '--json', bundlePath];
   if (typeof options.daemonHostname === 'string') {
     args.push('--daemon-host', options.daemonHostname);

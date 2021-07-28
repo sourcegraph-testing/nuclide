@@ -18,7 +18,7 @@ const {BrowserWindow} = require('electron');
 const path = require('path');
 const url = require('url');
 
-function createBrowserWindow(loadSettings, parent) {
+const :[fn~\w+] = (loadSettings, parent) => {
   const newWindow = new BrowserWindow({show: false, parent});
   newWindow.loadSettings = loadSettings;
   newWindow.loadSettingsJSON = JSON.stringify(loadSettings);

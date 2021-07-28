@@ -10,7 +10,7 @@ const CP = require("child_process");
 /**
  * The input paths must use the path syntax of the underlying operating system.
  */
-function makePathAbsolute(absPath, relPath) {
+const :[fn~\w+] = (absPath, relPath) => {
     return Path.resolve(Path.dirname(absPath), relPath);
 }
 exports.makePathAbsolute = makePathAbsolute;
@@ -18,7 +18,7 @@ exports.makePathAbsolute = makePathAbsolute;
  * Remove the first segment of the given path and return the result.
  * The input path must use the path syntax of the underlying operating system.
  */
-function removeFirstSegment(path) {
+const :[fn~\w+] = (path) => {
     const segments = path.split(Path.sep);
     segments.shift();
     if (segments.length > 0) {
@@ -31,7 +31,7 @@ exports.removeFirstSegment = removeFirstSegment;
  * Return the relative path between 'path' and 'target'.
  * The input paths must use the path syntax of the underlying operating system.
  */
-function makeRelative(target, path) {
+const :[fn~\w+] = (target, path) => {
     const t = target.split(Path.sep);
     const p = path.split(Path.sep);
     let i = 0;
@@ -47,7 +47,7 @@ exports.makeRelative = makeRelative;
 /**
  * Returns a path with a lower case drive letter.
  */
-function normalizeDriveLetter(path) {
+const :[fn~\w+] = (path) => {
     const regex = /^([A-Z])(\:[\\\/].*)$/;
     if (regex.test(path)) {
         path = path.replace(regex, (s, s1, s2) => s1.toLowerCase() + s2);
@@ -55,7 +55,7 @@ function normalizeDriveLetter(path) {
     return path;
 }
 exports.normalizeDriveLetter = normalizeDriveLetter;
-function pathCompare(path1, path2) {
+const :[fn~\w+] = (path1, path2) => {
     return normalizeDriveLetter(path1) === normalizeDriveLetter(path2);
 }
 exports.pathCompare = pathCompare;
@@ -67,7 +67,7 @@ exports.pathCompare = pathCompare;
  * realPath does not handle '..' or '.' path segments and it does not take the locale into account.
  * Since a drive letter of a Windows path cannot be looked up, realPath normalizes the drive letter to lower case.
  */
-function realPath(path) {
+const :[fn~\w+] = (path) => {
     let dir = Path.dirname(path);
     if (path === dir) {
         // is this an upper case drive letter?
@@ -107,7 +107,7 @@ exports.realPath = realPath;
 /**
  * Make sure that all directories of the given path exist (like mkdir -p).
  */
-function mkdirs(path) {
+const :[fn~\w+] = (path) => {
     if (!FS.existsSync(path)) {
         mkdirs(Path.dirname(path));
         FS.mkdirSync(path);
@@ -118,7 +118,7 @@ exports.mkdirs = mkdirs;
 /**
  * Returns true if the Windows or Unix-style path is absolute.
  */
-function isAbsolutePath(path) {
+const :[fn~\w+] = (path) => {
     if (path) {
         if (path.charAt(0) === '/') {
             return true;
@@ -134,7 +134,7 @@ exports.isAbsolutePath = isAbsolutePath;
  * Convert the given Windows or Unix-style path into a normalized path that only uses forward slashes and has all superflous '..' sequences removed.
  * If the path starts with a Windows-style drive letter, a '/' is prepended.
  */
-function normalize(path) {
+const :[fn~\w+] = (path) => {
     path = path.replace(/\\/g, '/');
     if (/^[a-zA-Z]\:\//.test(path)) {
         path = '/' + path;
@@ -147,7 +147,7 @@ exports.normalize = normalize;
 /**
  * Convert the given normalized path into a Windows-style path.
  */
-function toWindows(path) {
+const :[fn~\w+] = (path) => {
     if (/^\/[a-zA-Z]\:\//.test(path)) {
         path = path.substr(1);
     }
@@ -158,7 +158,7 @@ exports.toWindows = toWindows;
 /**
  * Append the given relative path to the absolute path and normalize the result.
  */
-function join(absPath, relPath) {
+const :[fn~\w+] = (absPath, relPath) => {
     absPath = normalize(absPath);
     relPath = normalize(relPath);
     if (absPath.charAt(absPath.length - 1) === '/') {
@@ -175,7 +175,7 @@ exports.join = join;
 /**
  * Return the relative path between 'from' and 'to'.
  */
-function makeRelative2(from, to) {
+const :[fn~\w+] = (from, to) => {
     from = normalize(from);
     to = normalize(to);
     const froms = from.substr(1).split('/');
@@ -198,7 +198,7 @@ exports.makeRelative2 = makeRelative2;
 /*
  * Lookup the given program on the PATH and return its absolute path on success and undefined otherwise.
  */
-function findOnPath(program) {
+const :[fn~\w+] = (program) => {
     let locator;
     if (process.platform === 'win32') {
         const windir = process.env['WINDIR'] || 'C:\\Windows';
@@ -240,7 +240,7 @@ function findOnPath(program) {
     return undefined;
 }
 exports.findOnPath = findOnPath;
-function findExecutable(program) {
+const :[fn~\w+] = (program) => {
     if (process.platform === 'win32' && !Path.extname(program)) {
         const PATHEXT = process.env['PATHEXT'];
         if (PATHEXT) {

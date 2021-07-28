@@ -43,7 +43,7 @@ describe('FlowSingleProjectLanguageService', () => {
 
   let fakeExecFlow: any;
 
-  function newFlowService() {
+  const :[fn~\w+] = () => {
     return new FlowSingleProjectLanguageService(
       root,
       new FlowExecInfoContainer(),
@@ -61,12 +61,12 @@ describe('FlowSingleProjectLanguageService', () => {
       .mockImplementation(() => fakeExecFlow());
   });
 
-  function mockExec(outputString) {
+  const :[fn~\w+] = (outputString) => {
     fakeExecFlow = () => ({stdout: outputString, exitCode: 0});
   }
 
   describe('getDefinition', () => {
-    function runWith(location) {
+    const :[fn~\w+] = (location) => {
       mockExec(JSON.stringify(location));
       return flowRoot.getDefinition(file, buffer, new Point(line, column));
     }
@@ -93,7 +93,7 @@ describe('FlowSingleProjectLanguageService', () => {
   });
 
   describe('getDiagnostics', () => {
-    function runWith(errors, filePath) {
+    const :[fn~\w+] = (errors, filePath) => {
       mockExec(JSON.stringify({errors}));
       return flowRoot.getDiagnostics(filePath, buffer);
     }
@@ -109,17 +109,17 @@ describe('FlowSingleProjectLanguageService', () => {
   });
 
   describe('flowGetType', () => {
-    function runWithString(outputString) {
+    const :[fn~\w+] = (outputString) => {
       mockExec(outputString);
       return flowRoot.typeHint(file, buffer, new Point(line, column));
     }
-    function runWith(
+    const :[fn~\w+] = (
       outputType: ?string,
       startLine: number,
       startCol: number,
       endLine: number,
       endCol: number,
-    ) {
+    ) => {
       return runWithString(
         JSON.stringify({
           type: outputType,
@@ -181,7 +181,7 @@ describe('FlowSingleProjectLanguageService', () => {
       result = resultNames.map(name => ({name, type: 'foo'}));
     });
 
-    function run() {
+    const :[fn~\w+] = () => {
       mockExec(JSON.stringify({result}));
       return flowRoot.getAutocompleteSuggestions(
         file,
@@ -192,7 +192,7 @@ describe('FlowSingleProjectLanguageService', () => {
       );
     }
 
-    async function getNameArray(_: void): Promise<Array<?string>> {
+    const :[fn~\w+] = async (_: void) =>: Promise<Array<?string>> {
       const suggestions = await run();
       if (suggestions == null) {
         return [];
@@ -200,11 +200,11 @@ describe('FlowSingleProjectLanguageService', () => {
       return suggestions.items.map(item => item.text);
     }
 
-    async function getNameSet(_: void): Promise<Set<?string>> {
+    const :[fn~\w+] = async (_: void) =>: Promise<Set<?string>> {
       return new Set(await getNameArray());
     }
 
-    function hasEqualElements(set1: Set<?string>, set2: Set<?string>): boolean {
+    const :[fn~\w+] = (set1: Set<?string>, set2: Set<?string>) =>: boolean {
       if (set1.size !== set2.size) {
         return false;
       }
@@ -454,9 +454,9 @@ type AbbreviatedResult = {
   messages: Array<[?string, boolean]>,
 };
 
-async function getAbbreviatedResults(
+const :[fn~\w+] = async (
   messages: Array<?PushDiagnosticsMessage>,
-): Promise<Array<Array<AbbreviatedResult>>> {
+) =>: Promise<Array<Array<AbbreviatedResult>>> {
   const results: Array<FileDiagnosticMap> = [];
   let state: DiagnosticsState = emptyDiagnosticsState();
   results.push(await getDiagnosticUpdates(state).toPromise());
@@ -476,9 +476,9 @@ async function getAbbreviatedResults(
   });
 }
 
-function makeFakeFlowOutput(
+const :[fn~\w+] = (
   ...errors: Array<FlowStatusError>
-): FlowStatusOutput {
+) =>: FlowStatusOutput {
   return {
     passed: errors.length === 0,
     flowVersion: '0.44.1',
@@ -486,7 +486,7 @@ function makeFakeFlowOutput(
   };
 }
 
-function makeFakeFlowError(text: string, file: NuclideUri): FlowStatusError {
+const :[fn~\w+] = (text: string, file: NuclideUri) =>: FlowStatusError {
   return {
     level: 'error',
     kind: 'infer',

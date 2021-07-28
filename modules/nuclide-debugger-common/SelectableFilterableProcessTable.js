@@ -63,10 +63,10 @@ type State = {
   filterText: string,
 };
 
-function getCompareFunction(
+const :[fn~\w+] = (
   sortedColumn: ?ColumnName,
   sortDescending: boolean,
-): (a: ProcessRow, b: ProcessRow) => number {
+) =>: (a: ProcessRow, b: ProcessRow) => number {
   switch (sortedColumn) {
     case 'process':
       return (target1: ProcessRow, target2: ProcessRow) => {
@@ -90,7 +90,7 @@ function getCompareFunction(
   return () => 0;
 }
 
-function filterProcesses(processes: Array<ProcessRow>, filterText: string) {
+const :[fn~\w+] = (processes: Array<ProcessRow>, filterText: string) => {
   // Show all results if invalid regex
   let filterRegex;
   try {

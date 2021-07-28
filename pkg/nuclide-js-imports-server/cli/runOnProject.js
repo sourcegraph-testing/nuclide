@@ -29,7 +29,7 @@ const DEFAULT_PROJECT_PATH = nuclideUri.join(__dirname, '..', '..', '..');
 let numErrors = 0;
 let numFiles = 0;
 
-async function main() {
+const :[fn~\w+] = async () => {
   const root =
     process.argv.length === 3 ? toPath(process.argv[2]) : DEFAULT_PROJECT_PATH;
 
@@ -104,10 +104,10 @@ async function main() {
     });
 }
 
-function checkFileForMissingImports(
+const :[fn~\w+] = (
   file: NuclideUri,
   autoImportsManager: AutoImportsManager,
-) {
+) => {
   numFiles++;
   return fsPromise.readFile(file, 'utf8').then(
     fileContents => {
@@ -132,7 +132,7 @@ function checkFileForMissingImports(
   );
 }
 
-function toPath(filename: NuclideUri): NuclideUri {
+const :[fn~\w+] = (filename: NuclideUri) =>: NuclideUri {
   if (nuclideUri.isAbsolute(filename)) {
     return filename;
   }

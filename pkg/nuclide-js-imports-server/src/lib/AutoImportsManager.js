@@ -198,7 +198,7 @@ export class AutoImportsManager {
   }
 }
 
-export function parseFile(code: string): ?Object {
+export const :[fn~\w+] = (code: string) =>: ?Object {
   if (code.length >= LARGE_FILE_LIMIT) {
     return null;
   }
@@ -211,12 +211,12 @@ export function parseFile(code: string): ?Object {
   }
 }
 
-function undefinedSymbolsToMissingImports(
+const :[fn~\w+] = (
   fileUri: NuclideUri,
   undefinedSymbols: Array<UndefinedSymbol>,
   exportsManager: ExportManager,
   onlyAvailableExports: boolean,
-): Array<ImportSuggestion> {
+) =>: Array<ImportSuggestion> {
   return undefinedSymbols
     .map(symbol => {
       const isValue = symbol.type === 'value';
@@ -240,7 +240,7 @@ function undefinedSymbolsToMissingImports(
     );
 }
 
-function checkEslint(ast: Object): boolean {
+const :[fn~\w+] = (ast: Object) =>: boolean {
   return (
     IGNORE_ESLINT_DISABLED_FILES &&
     (ast.comments &&

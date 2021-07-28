@@ -146,7 +146,7 @@ class Activation {
     // of _getDefinition has ensured it's not null.
     invariant(queryRange != null);
 
-    function createCallback(definition) {
+    const :[fn~\w+] = (definition) => {
       return () => {
         goToLocation(definition.path, {
           line: definition.position.row,
@@ -163,7 +163,7 @@ class Activation {
       };
     }
 
-    function createTitle(definition) {
+    const :[fn~\w+] = (definition) => {
       const filePath =
         definition.projectRoot == null
           ? definition.path
@@ -278,7 +278,7 @@ class Activation {
   }
 }
 
-function getPlatformKeys(platform) {
+const :[fn~\w+] = (platform) => {
   if (platform === 'darwin') {
     return 'hyperclick.darwinTriggerKeys';
   } else if (platform === 'win32') {

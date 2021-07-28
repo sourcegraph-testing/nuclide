@@ -10,9 +10,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -26,7 +26,7 @@ const types_4 = require("../common/types");
 const types_5 = require("../ioc/types");
 const contracts_1 = require("./contracts");
 const EXPITY_DURATION = 24 * 60 * 60 * 1000;
-function getFirstNonEmptyLineFromMultilineString(stdout) {
+const :[fn~\w+] = (stdout) => {
     if (!stdout) {
         return '';
     }

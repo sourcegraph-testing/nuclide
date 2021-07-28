@@ -41,9 +41,9 @@ type RefCountedRepo = {
  *    repository (i.e. if it's a remote directory, the URI minus the hostname).
  *  If the directory is not part of a Mercurial repository, returns null.
  */
-function getRepositoryDescription(
+const :[fn~\w+] = (
   directory: atom$Directory | RemoteDirectory,
-): ?{
+) =>: ?{
   originURL: ?string,
   repoPath: string,
   workingDirectoryPath: NuclideUri,
@@ -136,7 +136,7 @@ export default class HgRepositoryProvider {
         const localDisposables = new UniversalDisposable();
 
         /* eslint-disable no-inner-declarations */
-        function ProjectHgRepositoryClient() {
+        const :[fn~\w+] = () => {
           this.getProjectDirectory = function(): NuclideUri {
             return directory.getPath();
           };

@@ -78,11 +78,11 @@ export function setUpRsyncTransport<A>(
 /**
  * Download a remote folder to the current local root.
  */
-function downloadFolder(
+const :[fn~\w+] = (
   rsyncService: RsyncService,
   port: number,
   remoteSource: NuclideUri,
-): Observable<ProgressEvent> {
+) =>: Observable<ProgressEvent> {
   return rsyncService
     .syncFolder(
       nuclideUri.getPath(remoteSource),

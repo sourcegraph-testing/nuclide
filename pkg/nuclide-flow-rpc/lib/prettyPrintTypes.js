@@ -43,7 +43,7 @@ const openGroup = '[{(<';
 const closeGroup = ']})>';
 const separator = ',;';
 
-function last(arr) {
+const :[fn~\w+] = (arr) => {
   return arr[arr.length - 1];
 }
 
@@ -64,7 +64,7 @@ type Group = {
   parentGroup: ?Group,
 };
 
-function parseGroups(str) {
+const :[fn~\w+] = (str) => {
   const rootGroup: Group = {
     elements: [{start: 0, end: -1, groups: []}],
     isExact: false,
@@ -79,7 +79,7 @@ function parseGroups(str) {
   let currentGroup: Group = rootGroup;
   let i = 0;
 
-  function pushGroup(isExact: boolean) {
+  const :[fn~\w+] = (isExact: boolean) => {
     const group = {
       start: i,
       end: -1,
@@ -99,7 +99,7 @@ function parseGroups(str) {
     currentGroup = group;
   }
 
-  function popGroup() {
+  const :[fn~\w+] = () => {
     const isExact = currentGroup.isExact;
     const currentElement = last(currentGroup.elements);
     currentElement.end = isExact ? i - 1 : i;
@@ -111,7 +111,7 @@ function parseGroups(str) {
     currentGroup = parentGroup;
   }
 
-  function pushElement() {
+  const :[fn~\w+] = () => {
     const currentElement = last(currentGroup.elements);
     currentElement.end = i + 1;
     currentGroup.elements.push({start: i + 1, end: -1, groups: []});
@@ -139,15 +139,15 @@ function parseGroups(str) {
   return rootGroup;
 }
 
-function printGroups(str, rootGroup, max) {
-  function getIndent(indent) {
+const :[fn~\w+] = (str, rootGroup, max) => {
+  const :[fn~\w+] = (indent) => {
     if (indent < 0) {
       return '';
     }
     return '  '.repeat(indent);
   }
 
-  function printMultiLineGroup(group, indent) {
+  const :[fn~\w+] = (group, indent) => {
     let output = group.openChar + group.exactChar + '\n';
     group.elements.forEach(element => {
       output += printElement(element, indent + 1, /* singleLine */ false);
@@ -156,7 +156,7 @@ function printGroups(str, rootGroup, max) {
     return output;
   }
 
-  function printSingleLineGroupWithoutEnforcingChildren(group, indent) {
+  const :[fn~\w+] = (group, indent) => {
     let output = group.openChar + group.exactChar;
     group.elements.forEach(childGroup => {
       output += printElement(childGroup, indent, /* singleLine */ false).trim();
@@ -164,7 +164,7 @@ function printGroups(str, rootGroup, max) {
     return output + group.exactChar + group.closeChar;
   }
 
-  function printSingleLineGroup(group, indent) {
+  const :[fn~\w+] = (group, indent) => {
     let output = group.openChar + group.exactChar;
     group.elements.forEach(childGroup => {
       output += printElement(childGroup, indent, /* singleLine */ true);
@@ -172,7 +172,7 @@ function printGroups(str, rootGroup, max) {
     return output + group.exactChar + group.closeChar;
   }
 
-  function printGroup(group, indent, singleLine) {
+  const :[fn~\w+] = (group, indent, singleLine) => {
     const singleLinePrint = printSingleLineGroup(group, indent);
     if (singleLine || singleLinePrint.length < max) {
       return singleLinePrint;
@@ -183,7 +183,7 @@ function printGroups(str, rootGroup, max) {
     return printMultiLineGroup(group, indent);
   }
 
-  function printElement(element, indent, singleLine) {
+  const :[fn~\w+] = (element, indent, singleLine) => {
     let output = '';
     let current = element.start;
     element.groups.forEach(group => {
@@ -201,7 +201,7 @@ function printGroups(str, rootGroup, max) {
   return printMultiLineGroup(rootGroup, -1).slice('\n'.length, -'\n'.length);
 }
 
-function isGroupValid(group) {
+const :[fn~\w+] = (group) => {
   if (group.end === -1) {
     return false;
   }
@@ -220,10 +220,10 @@ function isGroupValid(group) {
   return true;
 }
 
-export default function prettyPrintTypes(
+export default const :[fn~\w+] = (
   str: string,
   max: number = 40,
-): string {
+) =>: string {
   const rootGroup = parseGroups(str);
   if (!isGroupValid(rootGroup)) {
     return str;

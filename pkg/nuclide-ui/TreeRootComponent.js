@@ -50,11 +50,11 @@ type TreeComponentState = {
  * @returns `true` if the value was added to the set, otherwise `false`. If
  *     `forceHas` is defined, the return value will be equal to `forceHas`.
  */
-function toggleSetHas(
+const :[fn~\w+] = (
   set: Set<string>,
   value: string,
   forceHas?: ?boolean,
-): boolean {
+) =>: boolean {
   let added;
 
   if (forceHas || (forceHas === undefined && !set.has(value))) {

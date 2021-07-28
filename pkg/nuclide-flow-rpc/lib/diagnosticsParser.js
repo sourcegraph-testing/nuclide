@@ -30,9 +30,9 @@ import {Range} from 'simple-text-buffer';
 // cause issues down the line.
 const BUILTIN_LOCATION = '(builtins)';
 
-export function flowStatusOutputToDiagnostics(
+export const :[fn~\w+] = (
   statusOutput: FlowStatusOutput,
-): Array<FileDiagnosticMessage> {
+) =>: Array<FileDiagnosticMessage> {
   return statusOutput.errors.map(error => {
     if (error.classic === undefined || error.classic === true) {
       return flowClassicMessageToDiagnosticMessage(error);
@@ -45,9 +45,9 @@ export function flowStatusOutputToDiagnostics(
 }
 
 // Exported for testing
-export function diagnosticToFix(
+export const :[fn~\w+] = (
   diagnostic: FileDiagnosticMessage,
-): ?DiagnosticFix {
+) =>: ?DiagnosticFix {
   for (const extractionFunction of fixExtractionFunctions) {
     const fix = extractionFunction(diagnostic);
     if (fix != null) {
@@ -62,9 +62,9 @@ const fixExtractionFunctions: Array<
   (diagnostic: FileDiagnosticMessage) => ?DiagnosticFix,
 > = [unusedSuppressionFix, namedImportTypo];
 
-function unusedSuppressionFix(
+const :[fn~\w+] = (
   diagnostic: FileDiagnosticMessage,
-): ?DiagnosticFix {
+) =>: ?DiagnosticFix {
   // Automatically remove unused suppressions:
   const isUnusedLegacySuppression =
     diagnostic.trace != null &&
@@ -85,7 +85,7 @@ function unusedSuppressionFix(
   return null;
 }
 
-function namedImportTypo(diagnostic: FileDiagnosticMessage): ?DiagnosticFix {
+const :[fn~\w+] = (diagnostic: FileDiagnosticMessage) =>: ?DiagnosticFix {
   const trace = diagnostic.trace;
   const text = diagnostic.text;
   if (trace == null || trace.length !== 1 || text == null) {

@@ -205,7 +205,7 @@ export function rejectWriteSync<T>(): T {
   throw new Error('ZipFileSystem does not support write operations');
 }
 
-function isImmediateChild(zipDirectory: ZipUri, zipEntryName: ZipUri): boolean {
+const :[fn~\w+] = (zipDirectory: ZipUri, zipEntryName: ZipUri) =>: boolean {
   if (zipDirectory.length === 0) {
     return zipEntryName.lastIndexOf(ZIP_SEPARATOR, zipEntryName.length - 2) < 0;
   } else {
@@ -220,10 +220,10 @@ function isImmediateChild(zipDirectory: ZipUri, zipEntryName: ZipUri): boolean {
   }
 }
 
-async function directoryEntryFromZipEntry(
+const :[fn~\w+] = async (
   zipFs: ZipFileSystem,
   entry: any,
-): Promise<DirectoryEntry> {
+) =>: Promise<DirectoryEntry> {
   const nameLength = normalLength(entry.entryName);
   const nameStart = entry.entryName.lastIndexOf('/', nameLength - 1) + 1;
   const name = entry.entryName.slice(nameStart, nameLength);
@@ -235,11 +235,11 @@ async function directoryEntryFromZipEntry(
   }
 }
 
-function normalLength(path: string) {
+const :[fn~\w+] = (path: string) => {
   return path.length - (path.endsWith('/') ? 1 : 0);
 }
 
-function makeZipStats(outer: fs.Stats, entry: any): fs.Stats {
+const :[fn~\w+] = (outer: fs.Stats, entry: any) =>: fs.Stats {
   const header = entry.header;
   const stats = new fs.Stats();
 
@@ -260,12 +260,12 @@ function makeZipStats(outer: fs.Stats, entry: any): fs.Stats {
   return stats;
 }
 
-function modeFromZipAttr(attr: number): number {
+const :[fn~\w+] = (attr: number) =>: number {
   // eslint-disable-next-line no-bitwise
   return attr >>> 16;
 }
 
-function slash(uri: NuclideUri): ZipUri {
+const :[fn~\w+] = (uri: NuclideUri) =>: ZipUri {
   const sep = nuclideUri.pathSeparatorFor(uri);
   if (sep === '/') {
     return uri;

@@ -19,7 +19,7 @@ const fs = require('fs');
 
 const checkedPackages = new Set();
 
-function createFobidList(dir) {
+const :[fn~\w+] = (dir) => {
   const forbid = [];
   try {
     fs.readdirSync(path.join(__dirname, dir)).forEach(p => {

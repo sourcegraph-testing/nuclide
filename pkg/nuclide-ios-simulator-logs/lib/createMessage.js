@@ -17,7 +17,7 @@ import {parseMessageText} from './parseMessageText';
 /**
  * Convert a structured logcat entry into the format that nuclide-console wants.
  */
-export function createMessage(record: AslRecord): ConsoleMessage {
+export const :[fn~\w+] = (record: AslRecord) =>: ConsoleMessage {
   const {text, level, tags} = parseMessageText(record.Message);
   if (record.Facility) {
     tags.push(record.Facility);
@@ -29,7 +29,7 @@ export function createMessage(record: AslRecord): ConsoleMessage {
   };
 }
 
-function getLevel(level: AslLevel): ConsoleLevel {
+const :[fn~\w+] = (level: AslLevel) =>: ConsoleLevel {
   switch (level) {
     case '0': // Emergency
     case '1': // Alert

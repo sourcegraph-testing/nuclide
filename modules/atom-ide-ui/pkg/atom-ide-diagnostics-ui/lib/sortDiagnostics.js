@@ -27,11 +27,11 @@ type DiagnosticsComparison = (
 /*
  * Sorts the diagnostics according to given column and sort direction
  */
-export default function sortDiagnostics(
+export default const :[fn~\w+] = (
   diagnostics: Array<Row<DisplayDiagnostic>>,
   sortedColumnName: $Keys<DisplayDiagnostic>,
   sortDescending: boolean,
-): Array<Row<DisplayDiagnostic>> {
+) =>: Array<Row<DisplayDiagnostic>> {
   const compare = SORT_FUNCTIONS[sortedColumnName];
   invariant(compare != null);
   // Don't sort in place.
@@ -86,9 +86,9 @@ const SORT_FUNCTIONS = {
  * Compose comparison functions so that, when one identifies the items as equal, the subsequent
  * functions are used to resolve the abiguity.
  */
-function compose(
+const :[fn~\w+] = (
   ...comparisons: Array<DiagnosticsComparison>
-): DiagnosticsComparison {
+) =>: DiagnosticsComparison {
   return (a, b) => {
     for (const compare of comparisons) {
       const val = compare(a, b);
@@ -100,10 +100,10 @@ function compose(
   };
 }
 
-function compareClassification(
+const :[fn~\w+] = (
   a: Row<DisplayDiagnostic>,
   b: Row<DisplayDiagnostic>,
-): number {
+) =>: number {
   return (
     compareClassificationKind(
       a.data.classification.kind,
@@ -118,10 +118,10 @@ function compareClassification(
 
 const KIND_ORDER = ['review', 'lint'];
 
-function compareClassificationKind(
+const :[fn~\w+] = (
   a: ?DiagnosticMessageKind,
   b: ?DiagnosticMessageKind,
-): number {
+) =>: number {
   const aKind = a || 'lint';
   const bKind = b || 'lint';
   return KIND_ORDER.indexOf(aKind) - KIND_ORDER.indexOf(bKind);
@@ -129,31 +129,31 @@ function compareClassificationKind(
 
 const SEVERITY_ORDER = ['Info', 'Warning', 'Error'];
 
-function compareClassificationSeverity(
+const :[fn~\w+] = (
   a: DiagnosticMessageType,
   b: DiagnosticMessageType,
-): number {
+) =>: number {
   return SEVERITY_ORDER.indexOf(a) - SEVERITY_ORDER.indexOf(b);
 }
 
-function compareSource(
+const :[fn~\w+] = (
   a: Row<DisplayDiagnostic>,
   b: Row<DisplayDiagnostic>,
-): number {
+) =>: number {
   return compareStrings(a.data.providerName, b.data.providerName);
 }
 
-function compareDescription(
+const :[fn~\w+] = (
   a: Row<DisplayDiagnostic>,
   b: Row<DisplayDiagnostic>,
-): number {
+) =>: number {
   return compareStrings(a.data.description.text, b.data.description.text);
 }
 
-function comparePath(
+const :[fn~\w+] = (
   a: Row<DisplayDiagnostic>,
   b: Row<DisplayDiagnostic>,
-): number {
+) =>: number {
   const aLocation = a.data.location;
   const bLocation = b.data.location;
   if (aLocation == null && bLocation == null) {
@@ -176,10 +176,10 @@ function comparePath(
   return compareNumbers(aLine, bLine);
 }
 
-function compareBasename(
+const :[fn~\w+] = (
   a: Row<DisplayDiagnostic>,
   b: Row<DisplayDiagnostic>,
-): number {
+) =>: number {
   const aLocationInFile = a.data.location && a.data.location.locationInFile;
   const bLocationInFile = b.data.location && b.data.location.locationInFile;
   if (aLocationInFile == null && bLocationInFile == null) {
@@ -197,10 +197,10 @@ function compareBasename(
   );
 }
 
-function compareStrings(a: string, b: string): number {
+const :[fn~\w+] = (a: string, b: string) =>: number {
   return a.toLowerCase().localeCompare(b.toLowerCase());
 }
 
-function compareNumbers(a: number, b: number): number {
+const :[fn~\w+] = (a: number, b: number) =>: number {
   return a - b;
 }

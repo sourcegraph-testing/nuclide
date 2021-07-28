@@ -22,7 +22,7 @@ import NuclideUri from 'nuclide-commons/nuclideUri';
 import url from 'url';
 import {logger} from 'vscode-debugadapter';
 
-function uriToModuleName(uri: string) {
+const :[fn~\w+] = (uri: string) => {
   const pathname = uri.startsWith('file://') ? url.parse(uri).pathname : uri;
   invariant(pathname != null && pathname !== '');
   const fileName = NuclideUri.basename(pathname).replace(/\.[^.]+$/, '');

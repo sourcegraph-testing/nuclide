@@ -640,13 +640,13 @@ export class TerminalView implements PtyClient, TerminalInstance {
   }
 }
 
-export function deserializeTerminalView(
+export const :[fn~\w+] = (
   state: TerminalViewState,
-): TerminalView {
+) =>: TerminalView {
   return new TerminalView(state.initialInfo);
 }
 
-function registerLinkHandlers(terminal: Terminal, cwd: ?NuclideUri): void {
+const :[fn~\w+] = (terminal: Terminal, cwd: ?NuclideUri) =>: void {
   const diffPattern = toString(
     featureConfig.get('atom-ide-console.diffUrlPattern'),
   );

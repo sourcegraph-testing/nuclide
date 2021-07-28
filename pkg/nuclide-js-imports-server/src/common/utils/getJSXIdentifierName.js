@@ -21,7 +21,7 @@ const LOWER_CASE_WHITE_LIST = new Set(['fbt']);
 /**
  * Returns an array of nodes for convenience.
  */
-function getJSXIdentifierName(path: NodePath): Array<Node> {
+const :[fn~\w+] = (path: NodePath) =>: Array<Node> {
   if (jscs.JSXIdentifier.check(path.node.name)) {
     const name = path.node.name.name;
     // TODO: should this be here or in addMissingRequires?

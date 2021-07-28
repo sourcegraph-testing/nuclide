@@ -16,7 +16,7 @@ import {Point} from 'simple-text-buffer';
 import {getDefinitionPreview} from '../symbol-definition-preview';
 import invariant from 'assert';
 
-function javascriptFixtureDefinitionWithPoint(point: Point) {
+const :[fn~\w+] = (point: Point) => {
   return {
     path: nuclideUri.join(
       __dirname,
@@ -29,7 +29,7 @@ function javascriptFixtureDefinitionWithPoint(point: Point) {
   };
 }
 
-function pythonFixtureDefinitionWithPoint(point: Point) {
+const :[fn~\w+] = (point: Point) => {
   return {
     path: nuclideUri.join(
       __dirname,

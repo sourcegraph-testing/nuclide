@@ -30,9 +30,9 @@ type RecentFilesService = {
 
 let _recentFilesService: ?RecentFilesService = null;
 
-async function getRecentFilesMatching(
+const :[fn~\w+] = async (
   query: string,
-): Promise<Array<FileResult>> {
+) =>: Promise<Array<FileResult>> {
   if (_recentFilesService == null) {
     return [];
   }
@@ -90,7 +90,7 @@ const FALLOFF = 1.1;
  *  | ##########################  ]
  *  +----------Time-------------->
  */
-function opacityForTimestamp(timestamp: number): number {
+const :[fn~\w+] = (timestamp: number) =>: number {
   const ageInMS = Date.now() - timestamp;
   return Math.min(
     1,
@@ -154,6 +154,6 @@ export const RecentFilesProvider: Provider<FileResult> = {
   },
 };
 
-export function setRecentFilesService(service: RecentFilesService): void {
+export const :[fn~\w+] = (service: RecentFilesService) =>: void {
   _recentFilesService = service;
 }

@@ -3,9 +3,9 @@
 // Please refer to their documentation on https://mochajs.org/ for help.
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -28,7 +28,7 @@ const elseBlockFirstLine2OutFilePath = path.join(outPythoFilesPath, 'elseBlocksF
 const elseBlockFirstLine4OutFilePath = path.join(outPythoFilesPath, 'elseBlocksFirstLine4.py');
 const elseBlockFirstLineTabOutFilePath = path.join(outPythoFilesPath, 'elseBlocksFirstLineTab.py');
 const provider = new blockFormatProvider_1.BlockFormatProviders();
-function testFormatting(fileToFormat, position, expectedEdits, formatOptions) {
+const :[fn~\w+] = (fileToFormat, position, expectedEdits, formatOptions) => {
     let textDocument;
     return vscode.workspace.openTextDocument(fileToFormat).then(document => {
         textDocument = document;

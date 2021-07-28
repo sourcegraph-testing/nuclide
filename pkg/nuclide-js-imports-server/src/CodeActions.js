@@ -54,12 +54,12 @@ export class CodeActions {
   }
 }
 
-function diagnosticToCommands(
+const :[fn~\w+] = (
   autoImportsManager: AutoImportsManager,
   importFormatter: ImportFormatter,
   diagnostic: Diagnostic,
   fileWithDiagnostic: NuclideUri,
-): Array<Command> {
+) =>: Array<Command> {
   if (
     diagnostic.source === DIAGNOSTIC_SOURCE ||
     FLOW_DIAGNOSTIC_SOURCES.includes(diagnostic.source)

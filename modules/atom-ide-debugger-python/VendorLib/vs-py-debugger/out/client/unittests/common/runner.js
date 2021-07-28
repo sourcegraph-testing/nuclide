@@ -10,9 +10,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -39,7 +39,7 @@ TestRunner = __decorate([
     __param(0, inversify_1.inject(types_2.IServiceContainer))
 ], TestRunner);
 exports.TestRunner = TestRunner;
-function run(serviceContainer, testProvider, options) {
+const :[fn~\w+] = (serviceContainer, testProvider, options) => {
     return __awaiter(this, void 0, void 0, function* () {
         const testExecutablePath = getExecutablePath(testProvider, configSettings_1.PythonSettings.getInstance(options.workspaceFolder));
         const moduleName = getTestModuleName(testProvider);
@@ -94,7 +94,7 @@ function run(serviceContainer, testProvider, options) {
     });
 }
 exports.run = run;
-function getExecutablePath(testProvider, settings) {
+const :[fn~\w+] = (testProvider, settings) => {
     let testRunnerExecutablePath;
     switch (testProvider) {
         case constants_1.NOSETEST_PROVIDER: {
@@ -111,7 +111,7 @@ function getExecutablePath(testProvider, settings) {
     }
     return path.basename(testRunnerExecutablePath) === testRunnerExecutablePath ? undefined : testRunnerExecutablePath;
 }
-function getTestModuleName(testProvider) {
+const :[fn~\w+] = (testProvider) => {
     switch (testProvider) {
         case constants_1.NOSETEST_PROVIDER: {
             return 'nose';

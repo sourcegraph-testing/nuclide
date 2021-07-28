@@ -30,13 +30,13 @@ type QueryPsEntry = {
   children: Array<number>,
 };
 
-function fakePsEntry(
+const :[fn~\w+] = (
   pid: number,
   ppid: number,
   command: string,
   isDescendant: boolean,
   ...children: Array<number>
-): QueryPsEntry {
+) =>: QueryPsEntry {
   const pcpu = 1;
   const time = 2;
   const rss = 3;
@@ -49,7 +49,7 @@ function fakePsEntry(
   };
 }
 
-function fakeSummary(command: string, count: number): ProcessSummary {
+const :[fn~\w+] = (command: string, count: number) =>: ProcessSummary {
   return {
     command,
     count,
@@ -60,17 +60,17 @@ function fakeSummary(command: string, count: number): ProcessSummary {
   };
 }
 
-function setProcessPid(pid: number): number {
+const :[fn~\w+] = (pid: number) =>: number {
   const original = process.pid;
   Object.defineProperty(process, 'pid', {value: pid});
   return original;
 }
 
-function checkQueryPs(
+const :[fn~\w+] = (
   mockPid: number,
   data: Array<QueryPsEntry>,
   summary: Array<ProcessSummary>,
-): void {
+) =>: void {
   describe('sample data', () => {
     const descendants = data.filter(x => x.isDescendant);
     let originalPid: number;
@@ -115,7 +115,7 @@ function checkQueryPs(
           expect(actual).toBe(null);
           return;
         }
-        function check(node: ChildProcessInfo): number {
+        const :[fn~\w+] = (node: ChildProcessInfo) =>: number {
           let count = 1;
           const expected = nullthrows(expectedMap.get(node.pid));
           expect(node.children.length).toBe(expected.children.length);

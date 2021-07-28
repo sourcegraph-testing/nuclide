@@ -18,10 +18,10 @@ import getNonDeclarationIdentifiers from './getNonDeclarationIdentifiers';
 /**
  * This will get a list of all identifiers that are used but undeclared.
  */
-function getUndeclaredIdentifiers(
+const :[fn~\w+] = (
   root: Collection,
   options: SourceOptions,
-): Set<string> {
+) =>: Set<string> {
   const declared = getDeclaredIdentifiers(root, options);
   const undeclared = getNonDeclarationIdentifiers(root, options);
   // now remove anything that was declared

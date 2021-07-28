@@ -35,7 +35,7 @@ const FILE_CONTENTS = fs.readFileSync(TEST_FILE).toString('utf8');
 // Disable buckd so it doesn't linger around after the test.
 process.env.NO_BUCKD = '1';
 
-function bufferOfContents(contents: string): simpleTextBuffer$TextBuffer {
+const :[fn~\w+] = (contents: string) =>: simpleTextBuffer$TextBuffer {
   return new TextBuffer(contents);
 }
 
@@ -311,12 +311,12 @@ describe('PythonService', () => {
   });
 
   describe('Outlines', () => {
-    async function getOutline(src, contents) {
+    const :[fn~\w+] = async (src, contents) => {
       const service = await serverManager.getJediService();
       return service.get_outline(src, contents);
     }
 
-    async function checkOutlineTree(testName: string) {
+    const :[fn~\w+] = async (testName: string) => {
       const dirName = nuclideUri.join(
         __dirname,
         '../__mocks__/fixtures',

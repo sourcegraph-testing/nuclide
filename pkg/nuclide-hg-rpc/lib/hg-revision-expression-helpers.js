@@ -85,10 +85,10 @@ const SUCCESSOR_TEMPLATE_ORDER = [
  * that you want a revision expression for. Passing 0 here will simply return 'revisionExpression'.
  * @return An expression for the 'numberOfRevsBefore'th revision before the given revision.
  */
-function expressionForRevisionsBefore(
+const :[fn~\w+] = (
   revisionExpression: string,
   numberOfRevsBefore: number,
-): string {
+) =>: string {
   if (numberOfRevsBefore === 0) {
     return revisionExpression;
   } else {
@@ -96,9 +96,9 @@ function expressionForRevisionsBefore(
   }
 }
 
-export function expressionForRevisionsBeforeHead(
+export const :[fn~\w+] = (
   numberOfRevsBefore_: number,
-): string {
+) =>: string {
   let numberOfRevsBefore = numberOfRevsBefore_;
   if (numberOfRevsBefore < 0) {
     numberOfRevsBefore = 0;
@@ -111,7 +111,7 @@ export function expressionForRevisionsBeforeHead(
 
 // Section: Revision Sets
 
-export function expressionForCommonAncestor(revision: string): string {
+export const :[fn~\w+] = (revision: string) =>: string {
   const commonAncestorExpression = `ancestor(${revision}, ${HEAD_REVISION_EXPRESSION})`;
   // shell-escape does not wrap ancestorExpression in quotes without this toString conversion.
   return commonAncestorExpression.toString();
@@ -123,10 +123,10 @@ export function expressionForCommonAncestor(revision: string): string {
  * @return An expression for the common ancestor of the revision of interest and
  * the current Hg head.
  */
-export async function fetchCommonAncestorOfHeadAndRevision(
+export const :[fn~\w+] = async (
   revision: string,
   workingDirectory: string,
-): Promise<string> {
+) =>: Promise<string> {
   const ancestorExpression = expressionForCommonAncestor(revision);
   // shell-escape does not wrap '{rev}' in quotes unless it is double-quoted.
   const args = [
@@ -160,14 +160,14 @@ export async function fetchCommonAncestorOfHeadAndRevision(
   }
 }
 
-export function fetchRevisionsInfo(
+export const :[fn~\w+] = (
   revisionExpression: string,
   workingDirectory: string,
   options?: {
     shouldLimit?: boolean,
     hidden?: boolean,
   },
-): Observable<Array<RevisionInfo>> {
+) =>: Observable<Array<RevisionInfo>> {
   const revisionLogArgs = [
     'log',
     '--template',
@@ -211,19 +211,19 @@ export function fetchRevisionsInfo(
  * For each RevisionInfo, the `bookmarks` field will contain the list
  * of bookmark names applied to that revision.
  */
-export function fetchRevisionInfoBetweenRevisions(
+export const :[fn~\w+] = (
   revisionFrom: string,
   revisionTo: string,
   workingDirectory: string,
-): Promise<Array<RevisionInfo>> {
+) =>: Promise<Array<RevisionInfo>> {
   const revisionExpression = `${revisionFrom}::${revisionTo}`;
   return fetchRevisionsInfo(revisionExpression, workingDirectory).toPromise();
 }
 
-export async function fetchRevisionInfo(
+export const :[fn~\w+] = async (
   revisionExpression: string,
   workingDirectory: string,
-): Promise<RevisionInfo> {
+) =>: Promise<RevisionInfo> {
   const [revisionInfo] = await fetchRevisionsInfo(
     revisionExpression,
     workingDirectory,
@@ -231,9 +231,9 @@ export async function fetchRevisionInfo(
   return revisionInfo;
 }
 
-export function fetchHeadRevisionInfo(
+export const :[fn~\w+] = (
   workingDirectory: string,
-): ConnectableObservable<Array<RevisionInfo>> {
+) =>: ConnectableObservable<Array<RevisionInfo>> {
   return fetchRevisionsInfo(
     `predecessors(${HEAD_REVISION_EXPRESSION})`,
     workingDirectory,
@@ -243,9 +243,9 @@ export function fetchHeadRevisionInfo(
   ).publish();
 }
 
-export function fetchSmartlogRevisions(
+export const :[fn~\w+] = (
   workingDirectory: string,
-): ConnectableObservable<Array<RevisionInfo>> {
+) =>: ConnectableObservable<Array<RevisionInfo>> {
   const revisionExpression = 'smartlog()';
   return fetchRevisionsInfo(revisionExpression, workingDirectory, {
     shouldLimit: false,
@@ -255,9 +255,9 @@ export function fetchSmartlogRevisions(
 /**
  * Helper function to `fetchRevisionInfoBetweenRevisions`.
  */
-export function parseRevisionInfoOutput(
+export const :[fn~\w+] = (
   revisionsInfoOutput: string,
-): Array<RevisionInfo> {
+) =>: Array<RevisionInfo> {
   const revisions = revisionsInfoOutput.split(INFO_REV_END_MARK);
   const revisionInfo = [];
   for (const chunk of revisions) {
@@ -291,9 +291,9 @@ export function parseRevisionInfoOutput(
   return revisionInfo;
 }
 
-export function parseSuccessorData(
+export const :[fn~\w+] = (
   successorLines: Array<string>,
-): ?RevisionSuccessorInfo {
+) =>: ?RevisionSuccessorInfo {
   invariant(successorLines.length === SUCCESSOR_TEMPLATE_ORDER.length);
   for (let i = 0; i < SUCCESSOR_TEMPLATE_ORDER.length; i++) {
     if (successorLines[i].length > 0) {
@@ -306,9 +306,9 @@ export function parseSuccessorData(
   return null;
 }
 
-export function successorInfoToDisplay(
+export const :[fn~\w+] = (
   successorInfo: ?RevisionSuccessorInfo,
-): string {
+) =>: string {
   if (successorInfo == null) {
     return '';
   }
@@ -332,6 +332,6 @@ export function successorInfoToDisplay(
   }
 }
 
-function splitLine(line: string): Array<string> {
+const :[fn~\w+] = (line: string) =>: Array<string> {
   return line.split(NULL_CHAR).filter(e => e.length > 0);
 }

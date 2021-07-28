@@ -12,7 +12,7 @@
 
 import {logger} from 'vscode-debugadapter';
 
-function timestamp(): string {
+const :[fn~\w+] = () =>: string {
   let ts = `${new Date().getTime()}`;
 
   // This code put seperators in the timestamp in groups of thousands
@@ -37,6 +37,6 @@ function timestamp(): string {
   return fmt;
 }
 
-export function logVerbose(line: string): void {
+export const :[fn~\w+] = (line: string) =>: void {
   logger.verbose(`${timestamp()} ${line}`);
 }

@@ -296,10 +296,10 @@ export class DiagnosticsViewModel {
   };
 }
 
-function goToDiagnosticLocation(
+const :[fn~\w+] = (
   message: DiagnosticMessage,
   options: {|focusEditor: boolean, pendingPane: boolean|},
-): void {
+) =>: void {
   // TODO: what should we do for project-path diagnostics?
   if (nuclideUri.endsWithSeparator(message.filePath)) {
     return;
@@ -320,7 +320,7 @@ function goToDiagnosticLocation(
   });
 }
 
-function patternsAreEqual(a: ?RegExp, b: ?RegExp) {
+const :[fn~\w+] = (a: ?RegExp, b: ?RegExp) => {
   if (a === b) {
     return true;
   }

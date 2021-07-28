@@ -64,7 +64,7 @@ import {
  * Determine what the applicable shortcut for a given action is within this component's context.
  * For example, this will return different keybindings on windows vs linux.
  */
-function _findKeybindingForAction(action: string, target: HTMLElement): string {
+const :[fn~\w+] = (action: string, target: HTMLElement) =>: string {
   const matchingKeyBindings = atom.keymaps.findKeyBindings({
     command: action,
     target,

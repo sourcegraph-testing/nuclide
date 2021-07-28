@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
-function formatErrorForLogging(error) {
+const :[fn~\w+] = (error) => {
     let message = '';
     if (typeof error === 'string') {
         message = error;

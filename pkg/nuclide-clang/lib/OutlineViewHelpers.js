@@ -47,7 +47,7 @@ const CLASS_KIND_NAMES = {
 const LONG_TYPE_LENGTH = 50;
 
 // TODO(hansonw): Highlight tokens inside types.
-function tokenizeType(type: string): TokenizedText {
+const :[fn~\w+] = (type: string) =>: TokenizedText {
   if (type.length > LONG_TYPE_LENGTH) {
     const openIndex = type.indexOf('<');
     if (openIndex !== -1) {
@@ -64,7 +64,7 @@ function tokenizeType(type: string): TokenizedText {
   return [plain(type)];
 }
 
-function tokenizeCursor(cursor: ClangOutlineTree): TokenizedText {
+const :[fn~\w+] = (cursor: ClangOutlineTree) =>: TokenizedText {
   if (cursor.children != null) {
     return [
       keyword(CLASS_KIND_NAMES[cursor.cursor_kind] || 'class'),
@@ -110,9 +110,9 @@ function tokenizeCursor(cursor: ClangOutlineTree): TokenizedText {
   return [plain(cursor.name)];
 }
 
-export function outlineFromClangOutline(
+export const :[fn~\w+] = (
   outline: Array<ClangOutlineTree>,
-): Array<OutlineTree> {
+) =>: Array<OutlineTree> {
   return outline.map(cursor => {
     return {
       tokenizedText: tokenizeCursor(cursor),

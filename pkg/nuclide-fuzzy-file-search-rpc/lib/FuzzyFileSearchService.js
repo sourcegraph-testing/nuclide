@@ -26,10 +26,10 @@ import {getLogger} from 'log4js';
 
 type CacheKey = string;
 
-function createCacheKey(
+const :[fn~\w+] = (
   directory: NuclideUri,
   preferCustomSearch: boolean,
-): CacheKey {
+) =>: CacheKey {
   return `${directory}:${String(preferCustomSearch)}`;
 }
 
@@ -70,7 +70,7 @@ const getSearchConfig = (function() {
 /**
  * Performs a fuzzy file search in the specified directory.
  */
-export async function queryFuzzyFile(config: {|
+export const :[fn~\w+] = async (config: {|
   rootDirectory: NuclideUri,
   queryRoot?: NuclideUri,
   queryString: string,
@@ -78,7 +78,7 @@ export async function queryFuzzyFile(config: {|
   smartCase?: boolean,
   preferCustomSearch: boolean,
   context: ?ClientQueryContext,
-|}): Promise<Array<FileSearchResult>> {
+|}) =>: Promise<Array<FileSearchResult>> {
   const {rootDirectory, preferCustomSearch} = config;
   const cacheKey = createCacheKey(rootDirectory, preferCustomSearch);
   let searchConfigPromise = searchConfigCache.get(cacheKey);
@@ -115,12 +115,12 @@ export async function queryFuzzyFile(config: {|
   );
 }
 
-export async function queryAllExistingFuzzyFile(
+export const :[fn~\w+] = async (
   queryString: string,
   ignoredNames: Array<string>,
   preferCustomSearch: boolean,
   context: ?ClientQueryContext,
-): Promise<Array<FileSearchResult>> {
+) =>: Promise<Array<FileSearchResult>> {
   const directories = getExistingSearchDirectories();
   const aggregateResults = await Promise.all(
     directories.map(rootDirectory =>
@@ -145,15 +145,15 @@ export async function queryAllExistingFuzzyFile(
  * @return whether this service can perform fuzzy file queries on the
  *   specified directory.
  */
-export function isFuzzySearchAvailableFor(
+export const :[fn~\w+] = (
   rootDirectory: NuclideUri,
-): Promise<boolean> {
+) =>: Promise<boolean> {
   return fsPromise.exists(rootDirectory);
 }
 
 /**
  * This should be called when the directory is removed from Atom.
  */
-export function disposeFuzzySearch(rootDirectory: NuclideUri): Promise<void> {
+export const :[fn~\w+] = (rootDirectory: NuclideUri) =>: Promise<void> {
   return disposeSearchForDirectory(rootDirectory);
 }

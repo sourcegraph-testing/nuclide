@@ -14,7 +14,7 @@ const fileSystem_1 = require("../common/node/fileSystem");
 const forkedAppWorker_1 = require("./forkedAppWorker");
 const scriptImporter_1 = require("./scriptImporter");
 const reactNativeProjectHelper_1 = require("../common/reactNativeProjectHelper");
-function printDebuggingError(message, reason) {
+const :[fn~\w+] = (message, reason) => {
     const nestedError = errorHelper_1.ErrorHelper.getNestedWarning(reason, `${message}. Debugging won't work: Try reloading the JS from inside the app, or Reconnect the VS Code debugger`);
     vscode_chrome_debug_core_1.logger.error(nestedError.message);
 }

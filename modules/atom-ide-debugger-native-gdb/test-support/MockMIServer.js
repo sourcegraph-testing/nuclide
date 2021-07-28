@@ -27,7 +27,7 @@ type Handler = (
   token: number,
 ) => void;
 
-function writeResult(token: number, resultClass: string, result: string): void {
+const :[fn~\w+] = (token: number, resultClass: string, result: string) =>: void {
   process.stdout.write(`${token}^${resultClass},${result}\n`);
 }
 
@@ -35,15 +35,15 @@ const handlers: Map<string, Handler> = new Map([
   ['list-features', listFeatures],
 ]);
 
-function listFeatures(
+const :[fn~\w+] = (
   positionals: Array<string>,
   args: Object,
   token: number,
-): void {
+) =>: void {
   writeResult(token, 'done', 'features=["argle", "bargle", "blab"]');
 }
 
-function respondTo(line: string): void {
+const :[fn~\w+] = (line: string) =>: void {
   process.stderr.write(`got line ${line}`);
 
   const args = yargs.parse(line.split(/\s+/));

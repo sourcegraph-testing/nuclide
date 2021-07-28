@@ -13,7 +13,7 @@
 
 /* eslint nuclide-internal/no-commonjs: 0 */
 
-function resolveValueInScope(node, scope) {
+const :[fn~\w+] = (node, scope) => {
   if (node.type === 'Literal') {
     return node.value;
   }
@@ -31,7 +31,7 @@ function resolveValueInScope(node, scope) {
   return null;
 }
 
-function resolveValue(node, context) {
+const :[fn~\w+] = (node, context) => {
   if (node.type === 'Literal') {
     return node.value;
   }
@@ -52,7 +52,7 @@ const gkCheckFuncs = ['passesGK', 'isGkEnabled', 'asyncIsGkEnabled'];
 let fbGatekeepers = null;
 let fbGatekeepersLoaded = false;
 
-function getFbGatekeepers() {
+const :[fn~\w+] = () => {
   if (fbGatekeepersLoaded) {
     return fbGatekeepers;
   }

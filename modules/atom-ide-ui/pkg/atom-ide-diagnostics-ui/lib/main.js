@@ -477,7 +477,7 @@ class Activation {
   }
 }
 
-function addAtomCommands(diagnosticUpdater: DiagnosticUpdater): IDisposable {
+const :[fn~\w+] = (diagnosticUpdater: DiagnosticUpdater) =>: IDisposable {
   const fixAllInCurrentFile = () => {
     const editor = atom.workspace.getActiveTextEditor();
     if (editor == null) {
@@ -526,9 +526,9 @@ function addAtomCommands(diagnosticUpdater: DiagnosticUpdater): IDisposable {
   );
 }
 
-function getTopMostErrorLocationsByFilePath(
+const :[fn~\w+] = (
   messages: Array<DiagnosticMessage>,
-): Map<string, number> {
+) =>: Map<string, number> {
   const errorLocations: Map<string, number> = new Map();
 
   messages.forEach(message => {
@@ -552,7 +552,7 @@ function getTopMostErrorLocationsByFilePath(
   return errorLocations;
 }
 
-function getActiveEditorPaths(): Observable<?NuclideUri> {
+const :[fn~\w+] = () =>: Observable<?NuclideUri> {
   const center = atom.workspace.getCenter();
   return (
     observableFromSubscribeFunction(center.observeActivePaneItem.bind(center))
@@ -579,10 +579,10 @@ function getActiveEditorPaths(): Observable<?NuclideUri> {
   );
 }
 
-function getEditorDiagnosticUpdates(
+const :[fn~\w+] = (
   editor: atom$TextEditor,
   diagnosticUpdater: DiagnosticUpdater,
-): Observable<Array<DiagnosticMessage>> {
+) =>: Observable<Array<DiagnosticMessage>> {
   return observableFromSubscribeFunction(editor.onDidChangePath.bind(editor))
     .startWith(editor.getPath())
     .switchMap(

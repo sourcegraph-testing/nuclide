@@ -31,7 +31,7 @@ const workspaceVirtualEnvService_1 = require("./locators/services/workspaceVirtu
 const workspaceVirtualEnvWatcherService_1 = require("./locators/services/workspaceVirtualEnvWatcherService");
 const index_2 = require("./virtualEnvs/index");
 const types_3 = require("./virtualEnvs/types");
-function registerTypes(serviceManager) {
+const :[fn~\w+] = (serviceManager) => {
     serviceManager.addSingleton(contracts_1.IKnownSearchPathsForInterpreters, KnownPathsService_1.KnownSearchPathsForInterpreters);
     serviceManager.addSingleton(contracts_1.IVirtualEnvironmentsSearchPathProvider, globalVirtualEnvService_1.GlobalVirtualEnvironmentsSearchPathProvider, 'global');
     serviceManager.addSingleton(contracts_1.IVirtualEnvironmentsSearchPathProvider, workspaceVirtualEnvService_1.WorkspaceVirtualEnvironmentsSearchPathProvider, 'workspace');

@@ -38,7 +38,7 @@ const debugRequests: Subject<RemoteDebugCommandRequest> = new Subject();
 const attachReady: Map<number, PythonDebuggerAttachTarget> = new Map();
 const DEBUGGER_REGISTRY_PORT = 9615;
 
-export function observeRemoteDebugCommands(): ConnectableObservable<
+export const :[fn~\w+] = () =>: ConnectableObservable<
   RemoteDebugCommandRequest,
 > {
   let setupStep;
@@ -50,7 +50,7 @@ export function observeRemoteDebugCommands(): ConnectableObservable<
   return setupStep.concat(debugRequests).publish();
 }
 
-export function observeAttachDebugTargets(): ConnectableObservable<
+export const :[fn~\w+] = () =>: ConnectableObservable<
   Array<PythonDebuggerAttachTarget>,
 > {
   // Validate attach-ready values with the processes with used ports (ready to attach).
@@ -71,7 +71,7 @@ export function observeAttachDebugTargets(): ConnectableObservable<
     .publish();
 }
 
-function isPortUsed(port: number): Promise<boolean> {
+const :[fn~\w+] = (port: number) =>: Promise<boolean> {
   const tryConnectPromise = new Promise((resolve, reject) => {
     const client = new net.Socket();
     client
@@ -84,7 +84,7 @@ function isPortUsed(port: number): Promise<boolean> {
         resolve(err.code !== 'ECONNREFUSED');
       });
 
-    function cleanUp() {
+    const :[fn~\w+] = () => {
       client.removeAllListeners('connect');
       client.removeAllListeners('error');
       client.end();
@@ -100,7 +100,7 @@ function isPortUsed(port: number): Promise<boolean> {
   return Promise.race([tryConnectPromise, connectTimeoutPromise]);
 }
 
-function setupServer(): Promise<void> {
+const :[fn~\w+] = () =>: Promise<void> {
   return new Promise((resolve, reject) => {
     http
       .createServer((req, res) => {
@@ -125,7 +125,7 @@ function setupServer(): Promise<void> {
   });
 }
 
-function handleJsonRequest(body, res) {
+const :[fn~\w+] = (body, res) => {
   res.writeHead(200, {'Content-Type': 'application/json'});
   const {domain, command, type} = body;
   let success = false;

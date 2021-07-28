@@ -17,9 +17,9 @@ import {createMessage} from './createMessage';
 import plist from 'plist';
 import {Observable} from 'rxjs';
 
-export function createMessageStream(
+export const :[fn~\w+] = (
   line$: Observable<string>,
-): Observable<ConsoleMessage> {
+) =>: Observable<ConsoleMessage> {
   // Group the lines into valid plist strings.
   const messages = line$
     .let(bufferUntil(line => line.trim() === '</plist>'))
@@ -47,9 +47,9 @@ export function createMessageStream(
   return filter(messages);
 }
 
-function filter(
+const :[fn~\w+] = (
   messages: Observable<ConsoleMessage>,
-): Observable<ConsoleMessage> {
+) =>: Observable<ConsoleMessage> {
   const patterns = featureConfig
     .observeAsStream('nuclide-ios-simulator-logs.whitelistedTags')
     .map((source: any) => {

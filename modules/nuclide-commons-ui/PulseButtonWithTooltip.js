@@ -142,7 +142,7 @@ export default class PulseButtonWithTooltip extends React.Component<
   }
 }
 
-function createTooltipBody(title, onDismiss) {
+const :[fn~\w+] = (title, onDismiss) => {
   const div = document.createElement('div');
   const p = document.createElement('p');
   p.innerText = title;

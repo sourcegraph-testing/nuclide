@@ -16,7 +16,7 @@ import type {DispatcherInterface} from './DispatcherInterface';
 import invariant from 'assert';
 import TokenizedLine from './TokenizedLine';
 
-function regexpEscape(str: string): string {
+const :[fn~\w+] = (str: string) =>: string {
   // return str with all characters of significance to a regular expression escaped
   return str.replace(/[.*+?$^(){}[\]|\\]/g, '\\$&');
 }

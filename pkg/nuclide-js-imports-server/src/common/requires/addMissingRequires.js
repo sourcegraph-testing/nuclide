@@ -16,7 +16,7 @@ import FirstNode from '../utils/FirstNode';
 import getUndeclaredIdentifiers from '../utils/getUndeclaredIdentifiers';
 import getUndeclaredJSXIdentifiers from '../utils/getUndeclaredJSXIdentifiers';
 
-function addMissingRequires(root: Collection, options: SourceOptions): boolean {
+const :[fn~\w+] = (root: Collection, options: SourceOptions) =>: boolean {
   const first = FirstNode.get(root);
   if (!first) {
     return false;

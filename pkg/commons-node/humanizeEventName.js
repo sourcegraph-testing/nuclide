@@ -12,14 +12,14 @@
 // Adapted from https://github.com/atom/underscore-plus/blob/master/src/underscore-plus.coffee
 
 // TODO: Consider combining with the similar function in `./humanizeKeystoke.js`
-function capitalize(word: string): string {
+const :[fn~\w+] = (word: string) =>: string {
   if (!word) {
     return '';
   }
   return word[0].toUpperCase() + word.slice(1);
 }
 
-function undasherize(string: string): string {
+const :[fn~\w+] = (string: string) =>: string {
   return string
     ? string
         .split('-')
@@ -28,7 +28,7 @@ function undasherize(string: string): string {
     : '';
 }
 
-function humanizeEventName(eventName: string): string {
+const :[fn~\w+] = (eventName: string) =>: string {
   const [namespace, event] = eventName.split(':');
   if (!event) {
     return undasherize(namespace);

@@ -157,12 +157,12 @@ export type InstallOptions = {
   force?: boolean,
 };
 
-function okay(): PackageOkay {
+const :[fn~\w+] = () =>: PackageOkay {
   getLogger().info('Verify installation: OKAY.');
   return {status: 'okay'};
 }
 
-function needsUpdate(expected: string, current: string): PackageNeedsUpdate {
+const :[fn~\w+] = (expected: string, current: string) =>: PackageNeedsUpdate {
   const message = `Found remote server version ${current}, but expected version ${expected}.`;
   getLogger().info(`Verify installation: ${message}`);
   return {
@@ -173,12 +173,12 @@ function needsUpdate(expected: string, current: string): PackageNeedsUpdate {
   };
 }
 
-function corrupt(message: string, reason: CorruptionReason): PackageCorrupt {
+const :[fn~\w+] = (message: string, reason: CorruptionReason) =>: PackageCorrupt {
   getLogger().info(`Verify installation: CORRUPT - ${message}`);
   return {status: 'corrupt', reason, message};
 }
 
-function needsInstall(message: string): PackageNeedsInstall {
+const :[fn~\w+] = (message: string) =>: PackageNeedsInstall {
   getLogger().info(`Verify installation: NEEDS INSTALL - ${message}`);
   return {status: 'needs-install', message};
 }
@@ -220,7 +220,7 @@ export interface RemotePackage {
  * installation, or a managed installation by big-dig (which may need installation).
  * @param pkg
  */
-export function getPackage(pkg: PackageParams): RemotePackage {
+export const :[fn~\w+] = (pkg: PackageParams) =>: RemotePackage {
   if (pkg.package) {
     return new ManagedPackage(pkg);
   } else {
@@ -228,12 +228,12 @@ export function getPackage(pkg: PackageParams): RemotePackage {
   }
 }
 
-async function runPackage(
+const :[fn~\w+] = async (
   command: string,
   cwd?: string,
   options: ExecOptions,
   ssh: SshClient,
-): Promise<{stdout: string, code: number | null}> {
+) =>: Promise<{stdout: string, code: number | null}> {
   const cmd = cwd == null ? `${command}` : `cd ${cwd} && ${command}`;
 
   const {stdout, result} = await ssh.exec(cmd, options);

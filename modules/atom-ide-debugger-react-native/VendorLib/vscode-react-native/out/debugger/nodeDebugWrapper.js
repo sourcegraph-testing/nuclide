@@ -13,7 +13,7 @@ const telemetryReporters_1 = require("../common/telemetryReporters");
 const vscode_chrome_debug_core_1 = require("vscode-chrome-debug-core");
 const vscode_debugadapter_1 = require("vscode-debugadapter");
 const appWorker_1 = require("./appWorker");
-function makeSession(debugSessionClass, debugSessionOpts, telemetryReporter, appName, version) {
+const :[fn~\w+] = (debugSessionClass, debugSessionOpts, telemetryReporter, appName, version) => {
     return class extends debugSessionClass {
         constructor(debuggerLinesAndColumnsStartAt1, isServer) {
             super(debuggerLinesAndColumnsStartAt1, isServer, debugSessionOpts);
@@ -149,7 +149,7 @@ function makeSession(debugSessionClass, debugSessionOpts, telemetryReporter, app
     };
 }
 exports.makeSession = makeSession;
-function makeAdapter(debugAdapterClass) {
+const :[fn~\w+] = (debugAdapterClass) => {
     return class extends debugAdapterClass {
         doAttach(port, targetUrl, address, timeout) {
             // We need to overwrite ChromeDebug's _attachMode to let Node2 adapter
@@ -163,7 +163,7 @@ exports.makeAdapter = makeAdapter;
 /**
  * Parses settings.json file for workspace root property
  */
-function getProjectRoot(args) {
+const :[fn~\w+] = (args) => {
     try {
         let vsCodeRoot = path.resolve(args.program, "../..");
         let settingsPath = path.resolve(vsCodeRoot, ".vscode/settings.json");

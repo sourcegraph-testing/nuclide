@@ -207,7 +207,7 @@ describe('MessageRangeTracker', () => {
  * Ensures that the representation invariants hold. Obviously, this breaks abstraction by reaching
  * into private properties.
  */
-function checkRep(tracker: MessageRangeTracker): void {
+const :[fn~\w+] = (tracker: MessageRangeTracker) =>: void {
   const openFiles = new Set(
     atom.workspace.getTextEditors().map(editor => editor.getPath()),
   );

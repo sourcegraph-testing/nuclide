@@ -20,7 +20,7 @@ import StringUtils from './StringUtils';
 // eslint-disable-next-line nuclide-internal/prefer-nuclide-uri
 import path from 'path';
 
-function getIdentifiersFromPath(filePath: AbsolutePath): Set<Identifier> {
+const :[fn~\w+] = (filePath: AbsolutePath) =>: Set<Identifier> {
   const ids = new Set();
 
   const baseName = path.basename(filePath);
@@ -44,21 +44,21 @@ function getIdentifiersFromPath(filePath: AbsolutePath): Set<Identifier> {
   return ids;
 }
 
-function getLiteralFromPath(filePath: AbsolutePath): Literal {
+const :[fn~\w+] = (filePath: AbsolutePath) =>: Literal {
   const baseName = path.basename(filePath);
   return removeFileType(baseName);
 }
 
-function relativizeForRequire(
+const :[fn~\w+] = (
   sourcePath: AbsolutePath,
   destPath: AbsolutePath,
-): RelativePath {
+) =>: RelativePath {
   const relativePath = path.relative(path.dirname(sourcePath), destPath);
   const noFileType = removeFileType(relativePath);
   return !noFileType.startsWith('.') ? '.' + path.sep + noFileType : noFileType;
 }
 
-function removeFileType(str: string): string {
+const :[fn~\w+] = (str: string) =>: string {
   const splits = str.split('.');
   if (splits.length <= 1) {
     return str;

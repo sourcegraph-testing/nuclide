@@ -26,7 +26,7 @@ import {ActionType, EMPTY_SHORTHEAD} from './constants';
 import * as Immutable from 'immutable';
 import invariant from 'assert';
 
-function getEmptyRepositoryState(): BookShelfRepositoryState {
+const :[fn~\w+] = () =>: BookShelfRepositoryState {
   return {
     activeShortHead: EMPTY_SHORTHEAD,
     isRestoring: false,
@@ -34,10 +34,10 @@ function getEmptyRepositoryState(): BookShelfRepositoryState {
   };
 }
 
-export function accumulateState(
+export const :[fn~\w+] = (
   state: BookShelfState,
   action: Action,
-): BookShelfState {
+) =>: BookShelfState {
   switch (action.type) {
     case ActionType.ADD_PROJECT_REPOSITORY:
       return accumulateAddProjectRepository(state, action);
@@ -58,10 +58,10 @@ export function accumulateState(
   }
 }
 
-function accumulateAddProjectRepository(
+const :[fn~\w+] = (
   state: BookShelfState,
   action: AddProjectRepositoryAction,
-): BookShelfState {
+) =>: BookShelfState {
   const repositoryPath = action.payload.repository.getWorkingDirectory();
   const newRepositoryState =
     state.repositoryPathToState.get(repositoryPath) ||
@@ -75,10 +75,10 @@ function accumulateAddProjectRepository(
   };
 }
 
-function accumulateRemoveProjectRepository(
+const :[fn~\w+] = (
   state: BookShelfState,
   action: RemoveProjectRepositoryAction,
-): BookShelfState {
+) =>: BookShelfState {
   const repositoryPath = action.payload.repository.getWorkingDirectory();
   return {
     ...state,
@@ -86,13 +86,13 @@ function accumulateRemoveProjectRepository(
   };
 }
 
-function accumulateRepositoryStateAction(
+const :[fn~\w+] = (
   state: BookShelfState,
   action:
     | UpdateRepositoryBookmarksAction
     | StartRestoringRepositoryStateAction
     | CompleteRestoringRepositoryStateAction,
-): BookShelfState {
+) =>: BookShelfState {
   const repositoryPath = action.payload.repository.getWorkingDirectory();
 
   const newRepositoryState = accumulateRepositoryState(
@@ -108,10 +108,10 @@ function accumulateRepositoryStateAction(
   };
 }
 
-function accumulateRepositoryState(
+const :[fn~\w+] = (
   repositoryState: ?BookShelfRepositoryState,
   action: Action,
-): BookShelfRepositoryState {
+) =>: BookShelfRepositoryState {
   switch (action.type) {
     case ActionType.UPDATE_REPOSITORY_BOOKMARKS:
       return accumulateRepositoryStateUpdateBookmarks(repositoryState, action);
@@ -138,10 +138,10 @@ function accumulateRepositoryState(
   }
 }
 
-function accumulateRepositoryStateUpdateBookmarks(
+const :[fn~\w+] = (
   repositoryState_: ?BookShelfRepositoryState,
   action: UpdateRepositoryBookmarksAction,
-): BookShelfRepositoryState {
+) =>: BookShelfRepositoryState {
   let repositoryState = repositoryState_;
 
   repositoryState = repositoryState || getEmptyRepositoryState();
@@ -162,10 +162,10 @@ function accumulateRepositoryStateUpdateBookmarks(
   };
 }
 
-function accumulateUpdatePaneItemState(
+const :[fn~\w+] = (
   state: BookShelfState,
   action: UpdatePaneItemStateAction,
-): BookShelfState {
+) =>: BookShelfState {
   const {repositoryPathToEditors} = action.payload;
   return {
     ...state,
@@ -188,10 +188,10 @@ function accumulateUpdatePaneItemState(
   };
 }
 
-function accumulateRepositoryStateUpdatePaneItemState(
+const :[fn~\w+] = (
   repositoryState: BookShelfRepositoryState,
   fileList: Array<NuclideUri>,
-): BookShelfRepositoryState {
+) =>: BookShelfRepositoryState {
   if (repositoryState.isRestoring) {
     return repositoryState;
   }

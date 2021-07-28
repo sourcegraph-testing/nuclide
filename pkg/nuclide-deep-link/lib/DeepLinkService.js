@@ -28,7 +28,7 @@ invariant(ipcRenderer != null && remote != null);
 
 // This function relies on each step being synchronous.
 // May break in future Atom versions.
-export function _openInNewWindow(uri: string): void {
+export const :[fn~\w+] = (uri: string) =>: void {
   const windows = remote.BrowserWindow.getAllWindows();
 
   // First, open a new window.
@@ -57,7 +57,7 @@ export function _openInNewWindow(uri: string): void {
   });
 }
 
-function isWindowBlank(lastDeepLinkUptime: ?number): boolean {
+const :[fn~\w+] = (lastDeepLinkUptime: ?number) =>: boolean {
   // A window is considered empty if:
   // 1) it has no open projects
   // 2) it has no visible modal panels

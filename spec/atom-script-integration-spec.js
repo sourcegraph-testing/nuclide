@@ -60,7 +60,7 @@ describe('atom-script', () => {
   });
 });
 
-function runAtomScript(script: string, args = []): Promise<string> {
+const :[fn~\w+] = (script: string, args = []) =>: Promise<string> {
   return runCommand(
     require.resolve('../pkg/nuclide-atom-script/bin/atom-script'),
     [script].concat(args),

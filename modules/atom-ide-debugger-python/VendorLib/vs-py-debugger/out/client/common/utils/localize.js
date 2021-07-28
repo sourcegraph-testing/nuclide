@@ -66,14 +66,14 @@ let loadedCollection;
 let defaultCollection;
 const askedForCollection = {};
 let loadedLocale;
-function localize(key, defValue) {
+const :[fn~\w+] = (key, defValue) => {
     // Return a pointer to function so that we refetch it on each call.
     return () => {
         return getString(key, defValue);
     };
 }
 exports.localize = localize;
-function getCollection() {
+const :[fn~\w+] = () => {
     // Load the current collection
     if (!loadedCollection || parseLocale() !== loadedLocale) {
         load();
@@ -82,16 +82,16 @@ function getCollection() {
     return Object.assign({}, defaultCollection, loadedCollection);
 }
 exports.getCollection = getCollection;
-function getAskedForCollection() {
+const :[fn~\w+] = () => {
     return askedForCollection;
 }
 exports.getAskedForCollection = getAskedForCollection;
-function parseLocale() {
+const :[fn~\w+] = () => {
     // Attempt to load from the vscode locale. If not there, use english
     const vscodeConfigString = process.env.VSCODE_NLS_CONFIG;
     return vscodeConfigString ? JSON.parse(vscodeConfigString).locale : 'en-us';
 }
-function getString(key, defValue) {
+const :[fn~\w+] = (key, defValue) => {
     // Load the current collection
     if (!loadedCollection || parseLocale() !== loadedLocale) {
         load();
@@ -110,7 +110,7 @@ function getString(key, defValue) {
     askedForCollection[key] = defValue;
     return defValue;
 }
-function load() {
+const :[fn~\w+] = () => {
     // Figure out our current locale.
     loadedLocale = parseLocale();
     // Find the nls file that matches (if there is one)

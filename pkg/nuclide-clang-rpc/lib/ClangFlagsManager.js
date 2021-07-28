@@ -50,7 +50,7 @@ type ClangProjectFlags = {
 };
 
 let _customFlags;
-function getCustomFlags() {
+const :[fn~\w+] = () => {
   if (_customFlags !== undefined) {
     return _customFlags;
   }
@@ -63,7 +63,7 @@ function getCustomFlags() {
   return _customFlags;
 }
 
-function overrideIncludePath(src: string): string {
+const :[fn~\w+] = (src: string) =>: string {
   const customFlags = getCustomFlags();
   if (customFlags != null) {
     return customFlags.overrideIncludePath(src);

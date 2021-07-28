@@ -37,7 +37,7 @@ const WARNING_HINT =
 const SHOW_NOTIFICATION_CONFIG = 'nuclide-buck.buildDbErrorNotify';
 
 // Strip off remote error, which is JSON object on last line of error message.
-function cleanupErrorMessage(message: string): string {
+const :[fn~\w+] = (message: string) =>: string {
   const trimmed = message.trim();
   const lastNewline = trimmed.lastIndexOf('\n');
   if (lastNewline !== -1) {
@@ -46,9 +46,9 @@ function cleanupErrorMessage(message: string): string {
   return trimmed;
 }
 
-function constructNotificationOptions(
+const :[fn~\w+] = (
   clickCallback?: () => void,
-): atom$NotificationOptions {
+) =>: atom$NotificationOptions {
   const buttons = [
     {
       text: 'Show in console',
@@ -73,10 +73,10 @@ function constructNotificationOptions(
   return {dismissable: true, buttons};
 }
 
-function emitCompilationDbWarnings(
+const :[fn~\w+] = (
   db: BuckClangCompilationDatabase,
   consolePrinter: ?ConsolePrinter,
-): void {
+) =>: void {
   if (db.warnings.length > 0) {
     if (consolePrinter) {
       db.warnings.forEach(text => consolePrinter({text, level: 'warning'}));
@@ -97,10 +97,10 @@ function emitCompilationDbWarnings(
   }
 }
 
-function emitCompilationDbError(
+const :[fn~\w+] = (
   errorMessage: string,
   consolePrinter: ?ConsolePrinter,
-): void {
+) =>: void {
   if (consolePrinter) {
     consolePrinter({text: cleanupErrorMessage(errorMessage), level: 'error'});
   }
@@ -214,10 +214,10 @@ const providersCache = new SimpleCache({
   dispose: provider => provider.reset(),
 });
 
-function getProvider(
+const :[fn~\w+] = (
   host: NuclideUri,
   params: CompilationDatabaseParams,
-): Provider {
+) =>: Provider {
   return providersCache.getOrCreate(
     [host, params],
     () => new Provider(host, params),
@@ -229,11 +229,11 @@ const supportsSourceCache: SimpleCache<
   Promise<boolean>,
 > = new SimpleCache();
 
-export function getClangProvider(
+export const :[fn~\w+] = (
   taskRunner: BuckTaskRunner,
   getBusySignalService: () => ?BusySignalService,
   getConsolePrinter: () => ?ConsolePrinter,
-): ClangConfigurationProvider {
+) =>: ClangConfigurationProvider {
   return {
     async supportsSource(src: string): Promise<boolean> {
       return supportsSourceCache.getOrCreate(

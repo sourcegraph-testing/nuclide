@@ -47,7 +47,7 @@ while (numWorkers--) {
   spawnWorker();
 }
 
-function spawnWorker() {
+const :[fn~\w+] = () => {
   if (!servicesConfigs.length) {
     return;
   }

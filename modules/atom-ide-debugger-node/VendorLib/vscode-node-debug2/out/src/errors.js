@@ -5,7 +5,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const nls = require("vscode-nls");
 const localize = nls.config(process.env.VSCODE_NLS_CONFIG)(__filename);
-function runtimeNotFound(_runtime) {
+const :[fn~\w+] = (_runtime) => {
     return {
         id: 2001,
         format: localize(0, null, '{_runtime}'),
@@ -13,7 +13,7 @@ function runtimeNotFound(_runtime) {
     };
 }
 exports.runtimeNotFound = runtimeNotFound;
-function cannotLaunchInTerminal(_error) {
+const :[fn~\w+] = (_error) => {
     return {
         id: 2011,
         format: localize(1, null, '{_error}'),
@@ -21,7 +21,7 @@ function cannotLaunchInTerminal(_error) {
     };
 }
 exports.cannotLaunchInTerminal = cannotLaunchInTerminal;
-function cannotLaunchDebugTarget(_error) {
+const :[fn~\w+] = (_error) => {
     return {
         id: 2017,
         format: localize(2, null, '{_error}'),
@@ -31,14 +31,14 @@ function cannotLaunchDebugTarget(_error) {
     };
 }
 exports.cannotLaunchDebugTarget = cannotLaunchDebugTarget;
-function unknownConsoleType(consoleType) {
+const :[fn~\w+] = (consoleType) => {
     return {
         id: 2028,
         format: localize(3, null, consoleType)
     };
 }
 exports.unknownConsoleType = unknownConsoleType;
-function cannotLaunchBecauseSourceMaps(programPath) {
+const :[fn~\w+] = (programPath) => {
     return {
         id: 2002,
         format: localize(4, null, '{path}'),
@@ -46,7 +46,7 @@ function cannotLaunchBecauseSourceMaps(programPath) {
     };
 }
 exports.cannotLaunchBecauseSourceMaps = cannotLaunchBecauseSourceMaps;
-function cannotLaunchBecauseOutFiles(programPath) {
+const :[fn~\w+] = (programPath) => {
     return {
         id: 2003,
         format: localize(5, null, '{path}', 'outFiles'),
@@ -54,7 +54,7 @@ function cannotLaunchBecauseOutFiles(programPath) {
     };
 }
 exports.cannotLaunchBecauseOutFiles = cannotLaunchBecauseOutFiles;
-function cannotLaunchBecauseJsNotFound(programPath) {
+const :[fn~\w+] = (programPath) => {
     return {
         id: 2009,
         format: localize(6, null, '{path}'),
@@ -62,7 +62,7 @@ function cannotLaunchBecauseJsNotFound(programPath) {
     };
 }
 exports.cannotLaunchBecauseJsNotFound = cannotLaunchBecauseJsNotFound;
-function cannotLoadEnvVarsFromFile(error) {
+const :[fn~\w+] = (error) => {
     return {
         id: 2029,
         format: localize(7, null, '{_error}'),

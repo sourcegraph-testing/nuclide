@@ -54,7 +54,7 @@ module.exports = function(context) {
   };
 };
 
-function isNewUniversalDisposableExpression(node) {
+const :[fn~\w+] = (node) => {
   return (
     node.type === 'NewExpression' &&
     node.callee.type === 'Identifier' &&
@@ -62,7 +62,7 @@ function isNewUniversalDisposableExpression(node) {
   );
 }
 
-function isNewDisposableExpression(node) {
+const :[fn~\w+] = (node) => {
   if (node.type !== 'NewExpression' || node.callee.type !== 'Identifier') {
     return;
   }

@@ -50,7 +50,7 @@ class Activation {
   }
 }
 
-function getLevel(atomNotificationType: string): ConsoleLevel {
+const :[fn~\w+] = (atomNotificationType: string) =>: ConsoleLevel {
   switch (atomNotificationType) {
     case 'debug':
     case 'error':

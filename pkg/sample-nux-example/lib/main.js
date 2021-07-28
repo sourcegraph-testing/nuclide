@@ -51,29 +51,29 @@ class Activation {
 
 let activation: ?Activation = null;
 
-export function activate() {
+export const :[fn~\w+] = () => {
   if (activation == null) {
     activation = new Activation();
   }
 }
 
-export function deactivate() {
+export const :[fn~\w+] = () => {
   if (activation != null) {
     activation.dispose();
     activation = null;
   }
 }
 
-export function consumeToolBar(getToolBar: toolbar$GetToolbar): IDisposable {
+export const :[fn~\w+] = (getToolBar: toolbar$GetToolbar) =>: IDisposable {
   invariant(activation != null);
   return activation.consumeToolBar(getToolBar);
 }
 
-function generateTestNuxTour(
+const :[fn~\w+] = (
   id: number,
   name: string,
   numViews: number = 1,
-): NuxTourModel {
+) =>: NuxTourModel {
   const getNuxViewModel = viewNumber => ({
     content: `Content NUX #${viewNumber}`,
     selector: '.sample-nux-toolbar-button',
@@ -117,7 +117,7 @@ function generateTestNuxTour(
   };
 }
 
-export function consumeRegisterNuxService(addNewNux: RegisterNux): IDisposable {
+export const :[fn~\w+] = (addNewNux: RegisterNux) =>: IDisposable {
   invariant(activation != null);
   const disposable = addNewNux(
     generateTestNuxTour(SAMPLE_NUX_ID, SAMPLE_NUX_NAME, 2),
@@ -126,6 +126,6 @@ export function consumeRegisterNuxService(addNewNux: RegisterNux): IDisposable {
   return disposable;
 }
 
-export function consumeTriggerNuxService(tryTriggerNux: TriggerNux): void {
+export const :[fn~\w+] = (tryTriggerNux: TriggerNux) =>: void {
   tryTriggerNux(SAMPLE_NUX_ID);
 }

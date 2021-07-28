@@ -28,9 +28,9 @@ import {
 import {removePrefix} from './utils';
 import {LEADING_COMMENT_LIMIT} from './constants';
 
-export function getSnippetFromDefinition(
+export const :[fn~\w+] = (
   definition: ComponentDefinition,
-): string {
+) =>: string {
   let snippet = definition.name;
   if (definition.requiredProps.length === 0) {
     snippet += ' $1/>';
@@ -73,10 +73,10 @@ export function getSnippetFromDefinition(
 // possible.
 const componentNameRegexp = new RegExp('<[a-zA-Z_]+');
 
-function getComponentNameFromPositionParams(
+const :[fn~\w+] = (
   document: TextDocument,
   positionParams: TextDocumentPositionParams,
-): ?string {
+) =>: ?string {
   const rowRange = document.buffer.rangeForRow(positionParams.position.line);
   rowRange.end = lspPositionToAtomPoint(positionParams.position);
 
@@ -87,9 +87,9 @@ function getComponentNameFromPositionParams(
   return word;
 }
 
-export function getDocumentationObject(
+export const :[fn~\w+] = (
   definition: ComponentDefinition,
-): {documentation?: string} {
+) =>: {documentation?: string} {
   if (
     definition.leadingComment == null ||
     !definition.leadingComment.startsWith('@explorer-desc') ||
@@ -122,11 +122,11 @@ export function getDocumentationObject(
  * (originally intended for consumption by UICE) to Markdown consumable by
  * Nuclide. This function does not fully convert Remarkup to Markdown.
  */
-function remarkupToMarkdown(remarkup: string): string {
+const :[fn~\w+] = (remarkup: string) =>: string {
   return remarkup.replace(/^={6}/gm, '###');
 }
 
-function countMinimumLeadingSpaces(text: string): number {
+const :[fn~\w+] = (text: string) =>: number {
   const whitespaceRegexp = /^\s+/;
   let min = -1;
   // Avoiding reduce so that we can terminate early on 0.
@@ -147,9 +147,9 @@ function countMinimumLeadingSpaces(text: string): number {
   return min === -1 ? 0 : min;
 }
 
-export function getHoverFromComponentDefinition(
+export const :[fn~\w+] = (
   definition: ?ComponentDefinition,
-): Hover {
+) =>: Hover {
   if (definition == null || definition.leadingComment == null) {
     return emptyHoverObject;
   }

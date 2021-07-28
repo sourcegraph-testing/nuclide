@@ -75,11 +75,11 @@ export default class ChildProcessTreeComponent extends React.Component<Props> {
   }
 }
 
-function flatten(
+const :[fn~\w+] = (
   handles: Array<ProcessWithLevel>,
   process: ChildProcessInfo,
   level: number,
-): void {
+) =>: void {
   handles.push({process, level});
   process.children.forEach(child => flatten(handles, child, level + 1));
 }

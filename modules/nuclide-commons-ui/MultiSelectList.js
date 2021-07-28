@@ -174,6 +174,6 @@ export type OptionComponentProps = {
   /* eslint-enable react/no-unused-prop-types */
 };
 
-function DefaultOptionComponent(props: OptionComponentProps) {
+const :[fn~\w+] = (props: OptionComponentProps) => {
   return <span>{props.option.label}</span>;
 }

@@ -57,7 +57,7 @@ type StatCheck = {
   isSymbolicLink: boolean,
 };
 
-function statsDir(): StatCheck {
+const :[fn~\w+] = () =>: StatCheck {
   return {
     // eslint-disable-next-line no-bitwise
     mode: MODE_DIRECTORY | MODE_RWXR_XR_X,
@@ -68,7 +68,7 @@ function statsDir(): StatCheck {
   };
 }
 
-function statsFile(size: number): StatCheck {
+const :[fn~\w+] = (size: number) =>: StatCheck {
   return {
     // eslint-disable-next-line no-bitwise
     mode: MODE_FILE | MODE_RW_R__R__,
@@ -79,7 +79,7 @@ function statsFile(size: number): StatCheck {
   };
 }
 
-function statsDirLink(): StatCheck {
+const :[fn~\w+] = () =>: StatCheck {
   return {
     // eslint-disable-next-line no-bitwise
     mode: MODE_SYMLINK | MODE_RWXR_XR_X,
@@ -90,7 +90,7 @@ function statsDirLink(): StatCheck {
   };
 }
 
-function statsFileLink(size: number): StatCheck {
+const :[fn~\w+] = (size: number) =>: StatCheck {
   return {
     // eslint-disable-next-line no-bitwise
     mode: MODE_SYMLINK | MODE_RWXR_XR_X,
@@ -133,13 +133,13 @@ describe('ZipFS dir.jar', () => {
   checkRoot(zipFs, 'dir', 'dir', false, nuclideUri.join);
 });
 
-function checkRoot(
+const :[fn~\w+] = (
   checkFs: FileSystem,
   linkRootPath: NuclideUri,
   realRootPath: NuclideUri,
   checkLinks: boolean,
   rootJoin: (string, string) => string,
-) {
+) => {
   const linkPath = path => rootJoin(linkRootPath, path);
   const realPath = path => rootJoin(realRootPath, path);
 
@@ -237,7 +237,7 @@ function checkRoot(
     });
   }
 
-  function checkExistingPath(path: NuclideUri): void {
+  const :[fn~\w+] = (path: NuclideUri) =>: void {
     describe(path, () => {
       it('exists', async () => {
         expect(await checkFs.exists(path)).toBeTruthy();
@@ -253,7 +253,7 @@ function checkRoot(
     });
   }
 
-  function checkNonExistingPath(path: NuclideUri): void {
+  const :[fn~\w+] = (path: NuclideUri) =>: void {
     describe(path, () => {
       it('does not exist', async () => {
         expect(await checkFs.exists(path)).toBe(false);
@@ -261,22 +261,22 @@ function checkRoot(
     });
   }
 
-  function checkBothStat(path: NuclideUri, expected: StatCheck) {
+  const :[fn~\w+] = (path: NuclideUri, expected: StatCheck) => {
     checkStat(path, expected);
     checkLStat(path, expected);
   }
 
-  function checkStat(path: NuclideUri, expected: StatCheck) {
+  const :[fn~\w+] = (path: NuclideUri, expected: StatCheck) => {
     describe('stat', () => {
       checkStatValues(() => checkFs.stat(path), expected);
     });
   }
 
-  function checkLStat(
+  const :[fn~\w+] = (
     path: NuclideUri,
     expected: StatCheck,
     options: {checkLinksMode?: boolean} = {},
-  ) {
+  ) => {
     describe('lstat', () => {
       checkStatValues(() => checkFs.lstat(path), expected, {
         checkLinksMode: options.checkLinksMode,
@@ -284,11 +284,11 @@ function checkRoot(
     });
   }
 
-  function checkStatValues(
+  const :[fn~\w+] = (
     get: () => Promise<fs.Stats>,
     expected: StatCheck,
     options: {checkLinksMode?: boolean} = {},
-  ) {
+  ) => {
     let actual;
     beforeEach(async () => {
       actual = await get();
@@ -315,10 +315,10 @@ function checkRoot(
     }
   }
 
-  function checkReaddir(
+  const :[fn~\w+] = (
     path: NuclideUri,
     expected: Array<DirectoryEntry>,
-  ): void {
+  ) =>: void {
     describe('readdir', () => {
       let actual;
       beforeEach(async () => {
@@ -330,7 +330,7 @@ function checkRoot(
     });
   }
 
-  function checkRealPath(path: NuclideUri, expected: NuclideUri) {
+  const :[fn~\w+] = (path: NuclideUri, expected: NuclideUri) => {
     describe('realpath', () => {
       it('has expected value', async () => {
         expect(await checkFs.realpath(path)).toEqual(expected);
@@ -338,14 +338,14 @@ function checkRoot(
     });
   }
 
-  function checkTextFile(path: NuclideUri, contents: string) {
+  const :[fn~\w+] = (path: NuclideUri, contents: string) => {
     describe(`text file ${nuclideUri.basename(path)}`, () => {
       checkExistingPath(path);
       checkText(path, contents);
     });
   }
 
-  function checkText(path: NuclideUri, contents: string): void {
+  const :[fn~\w+] = (path: NuclideUri, contents: string) =>: void {
     describe(path, () => {
       it('has expected contents', async () => {
         expect((await checkFs.readFile(path)).toString()).toEqual(contents);
@@ -354,7 +354,7 @@ function checkRoot(
   }
 }
 
-function fixture(dir: string, archiveOffset?: string): string {
+const :[fn~\w+] = (dir: string, archiveOffset?: string) =>: string {
   const fsDir = nuclideUri.join(fixtures, dir);
   if (archiveOffset == null) {
     return fsDir;
@@ -363,6 +363,6 @@ function fixture(dir: string, archiveOffset?: string): string {
   }
 }
 
-function names(entries: Array<DirectoryEntry>): Array<string> {
+const :[fn~\w+] = (entries: Array<DirectoryEntry>) =>: Array<string> {
   return entries.map(([name, isFile, isLink]) => name);
 }

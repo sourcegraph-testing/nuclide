@@ -20,10 +20,10 @@ import type {JSExport} from './types';
 
 const logger = getLogger();
 
-export function getExportsFromAst(
+export const :[fn~\w+] = (
   fileUri: NuclideUri,
   ast: Object,
-): Array<JSExport> {
+) =>: Array<JSExport> {
   const exports = [];
   try {
     traverseTreeAndIndexExports(ast, fileUri, exports);
@@ -63,7 +63,7 @@ export class ExportManager {
   }
 }
 
-function isModuleExports(node: Object): boolean {
+const :[fn~\w+] = (node: Object) =>: boolean {
   return (
     (t.isMemberExpression(node) &&
       node.object.name === 'module' &&
@@ -72,22 +72,22 @@ function isModuleExports(node: Object): boolean {
   );
 }
 
-function addModuleExports(
+const :[fn~\w+] = (
   rightNode: Object,
   fileUri: NuclideUri,
   exportIndex: Array<JSExport>,
-): void {
+) =>: void {
   const isTypeExport = false; // You can only module.exports a value (not a type)
   expressionToExports(rightNode, isTypeExport, fileUri).forEach(exp => {
     exportIndex.push(exp);
   });
 }
 
-function addDefaultDeclarationToExportIndex(
+const :[fn~\w+] = (
   node: Object,
   fileUri: NuclideUri,
   exportIndex: Array<JSExport>,
-): void {
+) =>: void {
   // Only values can be exported as default (not types)
   const isTypeExport = false;
   const isDefault = true;
@@ -116,11 +116,11 @@ function addDefaultDeclarationToExportIndex(
   });
 }
 
-function addNamedDeclarationToExportIndex(
+const :[fn~\w+] = (
   node: Object,
   fileUri: NuclideUri,
   exportIndex: Array<JSExport>,
-): void {
+) =>: void {
   const isDefault = false;
   // export class Foo
   if (node && node.declaration) {
@@ -146,12 +146,12 @@ function addNamedDeclarationToExportIndex(
   }
 }
 
-function specifierToExport(
+const :[fn~\w+] = (
   node: Object,
   fileUri: NuclideUri,
   isTypeExport: boolean,
   isDefault: boolean,
-): JSExport {
+) =>: JSExport {
   return {
     id: node.exported.name,
     uri: fileUri,
@@ -161,11 +161,11 @@ function specifierToExport(
   };
 }
 
-function expressionToExports(
+const :[fn~\w+] = (
   expression: Object,
   isTypeExport: boolean,
   fileUri: NuclideUri,
-): Array<JSExport> {
+) =>: Array<JSExport> {
   // Index the entire 'module.exports' as a default export.
   const defaultId = idFromFileName(fileUri);
   const result = [
@@ -227,12 +227,12 @@ function expressionToExports(
   return result;
 }
 
-function declarationToExport(
+const :[fn~\w+] = (
   declaration: Object,
   isTypeExport: boolean,
   fileUri: NuclideUri,
   isDefault: boolean,
-): Array<JSExport> {
+) =>: Array<JSExport> {
   // export MyType;
   if (declaration.id || declaration.name) {
     return [
@@ -278,11 +278,11 @@ function declarationToExport(
   return [];
 }
 
-function traverseTreeAndIndexExports(
+const :[fn~\w+] = (
   ast: Object,
   fileUri: NuclideUri,
   exportIndex: Array<JSExport>,
-): void {
+) =>: void {
   // As an optimization, only traverse top-level nodes instead of the whole AST.
   if (ast && ast.program && ast.program.body) {
     const {body} = ast.program;
@@ -331,14 +331,14 @@ function traverseTreeAndIndexExports(
   }
 }
 
-export function idFromFileName(fileUri: NuclideUri): string {
+export const :[fn~\w+] = (fileUri: NuclideUri) =>: string {
   const fileName = nuclideUri.basename(fileUri);
   const dotIndex = fileName.indexOf('.');
   const stripped = dotIndex >= 0 ? fileName.substr(0, dotIndex) : fileName;
   return stripped.indexOf('-') >= 0 ? dashToCamelCase(stripped) : stripped;
 }
 
-function dashToCamelCase(string: string): string {
+const :[fn~\w+] = (string: string) =>: string {
   return string // Maintain capitalization of the first "word"
     ? string
         .split('-')
@@ -347,7 +347,7 @@ function dashToCamelCase(string: string): string {
     : '';
 }
 
-function capitalize(word: string): string {
+const :[fn~\w+] = (word: string) =>: string {
   if (!word) {
     return '';
   }

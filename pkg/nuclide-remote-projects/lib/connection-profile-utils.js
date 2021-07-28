@@ -34,13 +34,13 @@ import lookupPreferIpv6 from '../../nuclide-remote-connection/lib/lookup-prefer-
  * the connection dialog and the default settings, plus the update logic we use
  * to change the remote server command.
  */
-export function getDefaultConnectionProfile(
+export const :[fn~\w+] = (
   options?: {
     initialServer?: string,
     initialCwd?: string,
     initialRemoteServerCommand?: string,
   } = {},
-): NuclideRemoteConnectionProfile {
+) =>: NuclideRemoteConnectionProfile {
   const defaultConnectionSettings = getDefaultConfig();
   const currentOfficialRSC = defaultConnectionSettings.remoteServerCommand;
 
@@ -112,7 +112,7 @@ export function getDefaultConnectionProfile(
 /**
  * Returns an array of saved connection profiles.
  */
-export function getSavedConnectionProfiles(): Array<
+export const :[fn~\w+] = () =>: Array<
   NuclideRemoteConnectionProfile,
 > {
   const connectionProfiles: ?Array<
@@ -126,9 +126,9 @@ export function getSavedConnectionProfiles(): Array<
 /**
  * Saves the connection profiles. Overwrites any existing profiles.
  */
-export function saveConnectionProfiles(
+export const :[fn~\w+] = (
   profiles: Array<NuclideRemoteConnectionProfile>,
-): void {
+) =>: void {
   prepareConnectionProfilesForSaving(profiles);
   featureConfig.set('nuclide-remote-projects.connectionProfiles', profiles);
 }
@@ -142,9 +142,9 @@ type ConnectionProfileChange = {
  * Calls the callback when the saved connection profiles change.
  * @return Disposable that can be disposed to stop listening for changes.
  */
-export function onSavedConnectionProfilesDidChange(
+export const :[fn~\w+] = (
   callback: (newProfiles: ?Array<NuclideRemoteConnectionProfile>) => mixed,
-): IDisposable {
+) =>: IDisposable {
   return featureConfig.onDidChange(
     'nuclide-remote-projects.connectionProfiles',
     (event: ConnectionProfileChange) => {
@@ -158,9 +158,9 @@ export function onSavedConnectionProfilesDidChange(
 /**
  * Returns an array of host names for a given array of connection profiles
  */
-export function getUniqueHostsForProfiles(
+export const :[fn~\w+] = (
   profiles: Array<NuclideRemoteConnectionProfile>,
-): Array<string> {
+) =>: Array<string> {
   const uniqueHosts = new Set();
   for (let i = 0; i < profiles.length; i++) {
     uniqueHosts.add(profiles[i].params.server);
@@ -171,9 +171,9 @@ export function getUniqueHostsForProfiles(
 /**
  * Returns an array of IP addresses for a given array of host names
  */
-export async function getIPsForHosts(
+export const :[fn~\w+] = async (
   hosts: Array<string>,
-): Promise<Array<DnsLookup>> {
+) =>: Promise<Array<DnsLookup>> {
   const promise_array = hosts.map(host =>
     lookupPreferIpv6(host).catch(() => {}),
   );
@@ -188,10 +188,10 @@ export async function getIPsForHosts(
 /**
  * Saves a connection configuration along with the last official server command.
  */
-export function saveConnectionConfig(
+export const :[fn~\w+] = (
   config: SshConnectionConfiguration,
   lastOfficialRemoteServerCommand: string,
-): void {
+) =>: void {
   // Don't store user's password.
   const updatedConfig = {...config, password: ''};
   // SshConnectionConfiguration's sshPort type is 'number', but we want to save
@@ -212,7 +212,7 @@ let defaultConfig: ?any = null;
  * This fetches the 'default' connection configuration supplied to the user
  * regardless of any connection profiles they might have saved.
  */
-export function getDefaultConfig(): any {
+export const :[fn~\w+] = () =>: any {
   if (defaultConfig) {
     return defaultConfig;
   }
@@ -227,13 +227,13 @@ export function getDefaultConfig(): any {
   return defaultConfig;
 }
 
-export function getOfficialRemoteServerCommand(): string {
+export const :[fn~\w+] = () =>: string {
   return getDefaultConfig().remoteServerCommand;
 }
 
-function prepareSavedConnectionProfilesForDisplay(
+const :[fn~\w+] = (
   connectionProfiles: ?Array<NuclideRemoteConnectionProfile>,
-): void {
+) =>: void {
   if (!connectionProfiles) {
     return;
   }
@@ -248,9 +248,9 @@ function prepareSavedConnectionProfilesForDisplay(
   });
 }
 
-function prepareConnectionProfilesForSaving(
+const :[fn~\w+] = (
   connectionProfiles: Array<NuclideRemoteConnectionProfile>,
-): void {
+) =>: void {
   // If a connection profile has a default remote server command, replace it with
   // an empty string. This indicates that this server command should be filled in
   // when this profile is used.

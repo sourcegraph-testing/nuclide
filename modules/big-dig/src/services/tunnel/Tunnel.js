@@ -209,11 +209,11 @@ export class ReverseTunnel extends Tunnel {
 
 // TODO: this should really be a UUID
 let nextId = 1;
-function generateId() {
+const :[fn~\w+] = () => {
   return 'tunnel' + nextId++;
 }
 
-function reverseTunnelConfig(tunnelConfig: TunnelConfig): TunnelConfig {
+const :[fn~\w+] = (tunnelConfig: TunnelConfig) =>: TunnelConfig {
   return {
     // NB: on the server, the remote port and local ports are reversed.
     // We want to start the proxy on the remote port (relative to the

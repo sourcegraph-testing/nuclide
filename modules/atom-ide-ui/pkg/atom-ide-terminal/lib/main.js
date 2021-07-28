@@ -256,11 +256,11 @@ module.exports = {
 
 createPackage(module.exports, Activation);
 
-async function openTerminalInNewPaneItem(
+const :[fn~\w+] = async (
   options: atom$WorkspaceOpenOptions & {
     terminalInfo: TerminalInfo,
   },
-): Promise<atom$PaneItem> {
+) =>: Promise<atom$PaneItem> {
   const existingPane = atom.workspace.paneForURI(TERMINAL_URI);
 
   // TODO: The flow types are wrong. paneForURI returns a nullable pane
@@ -285,7 +285,7 @@ async function openTerminalInNewPaneItem(
   return item;
 }
 
-function showTooltipForPaneItem(paneItem: TerminalView): IDisposable {
+const :[fn~\w+] = (paneItem: TerminalView) =>: IDisposable {
   return new UniversalDisposable(
     Observable.create(() => {
       const tooltip = atom.tooltips.add(paneItem.getElement(), {

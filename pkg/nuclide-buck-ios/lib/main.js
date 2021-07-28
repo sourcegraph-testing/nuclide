@@ -24,22 +24,22 @@ import consumeFirstProvider from 'nuclide-commons-atom/consumeFirstProvider';
 
 let disposable: ?IDisposable = null;
 
-export function deactivate(): void {
+export const :[fn~\w+] = () =>: void {
   if (disposable != null) {
     disposable.dispose();
     disposable = null;
   }
 }
 
-export function consumePlatformService(service: PlatformService): void {
+export const :[fn~\w+] = (service: PlatformService) =>: void {
   disposable = service.register(provideIosPlatformGroup);
 }
 
-function provideIosPlatformGroup(
+const :[fn~\w+] = (
   buckRoot: NuclideUri,
   ruleType: string,
   buildTarget: string,
-): Observable<?PlatformGroup> {
+) =>: Observable<?PlatformGroup> {
   if (!SUPPORTED_RULE_TYPES.has(ruleType)) {
     return Observable.of(null);
   }
@@ -70,9 +70,9 @@ function provideIosPlatformGroup(
   });
 }
 
-async function _getDebuggerCallback(
+const :[fn~\w+] = async (
   buckRoot: NuclideUri,
-): Promise<?(Observable<LegacyProcessMessage>) => Observable<BuckEvent>> {
+) =>: Promise<?(Observable<LegacyProcessMessage>) => Observable<BuckEvent>> {
   const nativeDebuggerService = await consumeFirstProvider(
     'debugger.native-debugger-service',
   );

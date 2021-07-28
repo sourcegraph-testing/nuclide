@@ -202,7 +202,7 @@ export default class ConsoleHeader extends React.Component<Props> {
   }
 }
 
-function sortAlpha(a: string, b: string): number {
+const :[fn~\w+] = (a: string, b: string) =>: number {
   const aLower = a.toLowerCase();
   const bLower = b.toLowerCase();
   if (aLower < bLower) {
@@ -217,7 +217,7 @@ type LabelProps = {
   selectedOptions: Array<{value: string, label: string}>,
 };
 
-function MultiSelectLabel(props: LabelProps): React.Element<any> {
+const :[fn~\w+] = (props: LabelProps) =>: React.Element<any> {
   const {selectedOptions} = props;
   const label =
     selectedOptions.length === 1
@@ -232,7 +232,7 @@ type FilterButtonProps = {|
   toggleSeverity: Severity => void,
 |};
 
-function FilterButton(props: FilterButtonProps): React.Element<any> {
+const :[fn~\w+] = (props: FilterButtonProps) =>: React.Element<any> {
   const {severity} = props;
   const selected = props.selectedSeverities.has(props.severity);
   let tooltipTitle = selected ? 'Hide ' : 'Show ';

@@ -17,7 +17,7 @@ import ReactDOM from 'react-dom';
 
 let reactElement: any;
 
-function createWithProps(props: any): any {
+const :[fn~\w+] = (props: any) =>: any {
   const hostEl = document.createElement('div');
   return ReactDOM.render(<AtomInput {...props} />, hostEl);
 }

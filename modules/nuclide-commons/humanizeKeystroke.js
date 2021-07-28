@@ -71,13 +71,13 @@ function flatten<T>(arr: Array<T | Array<T>>): Array<T> {
   return flattened;
 }
 
-function capitalize(word: string): string {
+const :[fn~\w+] = (word: string) =>: string {
   const first = word[0] || '';
   const rest = word.slice(1);
   return first.toUpperCase() + rest;
 }
 
-function humanizeKey(key: string, platform: ?string): string | Array<string> {
+const :[fn~\w+] = (key: string, platform: ?string) =>: string | Array<string> {
   if (!key) {
     return key;
   }
@@ -111,10 +111,10 @@ function humanizeKey(key: string, platform: ?string): string | Array<string> {
  * @param platform An optional String platform to humanize for (default: `process.platform`).
  * @return a humanized representation of the keystroke.
  */
-export default function humanizeKeystroke(
+export default const :[fn~\w+] = (
   keystroke: string,
   platform_: ?string,
-): string {
+) =>: string {
   let platform = platform_;
   if (!keystroke) {
     return keystroke;

@@ -9,7 +9,7 @@ var _invariant = require("../invariant.js");
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const :[fn~\w+] = (obj) => { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const LENGTH_SEPARATOR = "--";
 

@@ -32,10 +32,10 @@ import {getLogger} from 'log4js';
 
 let _rpcService: ?nuclide$RpcService = null;
 
-function getPythonAttachTargetProcessConfig(
+const :[fn~\w+] = (
   targetRootUri: NuclideUri,
   target: PythonDebuggerAttachTarget,
-): IProcessConfig {
+) =>: IProcessConfig {
   return {
     targetUri: targetRootUri,
     debugMode: 'attach',
@@ -45,9 +45,9 @@ function getPythonAttachTargetProcessConfig(
   };
 }
 
-function getPythonAttachTargetConfig(
+const :[fn~\w+] = (
   target: PythonDebuggerAttachTarget,
-): Object {
+) =>: Object {
   return {
     localRoot: target.localRoot,
     remoteRoot: target.remoteRoot,
@@ -56,14 +56,14 @@ function getPythonAttachTargetConfig(
   };
 }
 
-export function setRpcService(rpcService: nuclide$RpcService): IDisposable {
+export const :[fn~\w+] = (rpcService: nuclide$RpcService) =>: IDisposable {
   _rpcService = rpcService;
   return new UniversalDisposable(() => {
     _rpcService = null;
   });
 }
 
-export function listenToRemoteDebugCommands(): IDisposable {
+export const :[fn~\w+] = () =>: IDisposable {
   const addedHostnames = observeAddedHostnames().startWith('local');
 
   const remoteDebuggerServices = addedHostnames.flatMap(hostname => {
@@ -123,7 +123,7 @@ export function listenToRemoteDebugCommands(): IDisposable {
 let shouldNotifyDuplicateTargets = true;
 let duplicateTargetsNotification;
 
-function notifyDuplicateDebugTargets(duplicateTargetIds: Set<string>): void {
+const :[fn~\w+] = (duplicateTargetIds: Set<string>) =>: void {
   if (
     duplicateTargetIds.size > 0 &&
     shouldNotifyDuplicateTargets &&
@@ -156,9 +156,9 @@ function notifyDuplicateDebugTargets(duplicateTargetIds: Set<string>): void {
   }
 }
 
-function findDuplicateAttachTargetIds(
+const :[fn~\w+] = (
   targets: Array<PythonDebuggerAttachTarget>,
-): Set<string> {
+) =>: Set<string> {
   const targetIds = new Set();
   const duplicateTargetIds = new Set();
   targets.forEach(target => {
@@ -175,9 +175,9 @@ function findDuplicateAttachTargetIds(
   return duplicateTargetIds;
 }
 
-export function getRemoteDebuggerCommandServiceByNuclideUri(
+export const :[fn~\w+] = (
   uri: NuclideUri,
-): RemoteDebuggerCommandService {
+) =>: RemoteDebuggerCommandService {
   if (_rpcService == null && !nuclideUri.isRemote(uri)) {
     return RemoteDebuggerCommandServiceLocal;
   }

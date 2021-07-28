@@ -56,7 +56,7 @@ class Activation {
   }
 }
 
-export function getPythonAutoGenConfig(): AutoGenConfig {
+export const :[fn~\w+] = () =>: AutoGenConfig {
   const program = {
     name: 'program',
     type: 'path',
@@ -168,7 +168,7 @@ export function getPythonAutoGenConfig(): AutoGenConfig {
   };
 }
 
-function isNuclideEnvironment(): boolean {
+const :[fn~\w+] = () =>: boolean {
   return atom.packages.isPackageLoaded('nuclide');
 }
 

@@ -5,7 +5,7 @@ const fs = require("fs");
 const child_process = require("child_process");
 const isWindows = process.platform === 'win32';
 const is64bit = process.arch === 'x64';
-function subsystemForLinuxPresent() {
+const :[fn~\w+] = () => {
     if (!isWindows) {
         return false;
     }
@@ -15,7 +15,7 @@ function subsystemForLinuxPresent() {
     return fs.existsSync(bashPathHost);
 }
 exports.subsystemForLinuxPresent = subsystemForLinuxPresent;
-function windowsPathToWSLPath(windowsPath) {
+const :[fn~\w+] = (windowsPath) => {
     if (!isWindows || !windowsPath) {
         return undefined;
     }
@@ -26,7 +26,7 @@ function windowsPathToWSLPath(windowsPath) {
         return windowsPath.replace(/\\/g, '/');
     }
 }
-function createLaunchArg(useSubsytemLinux, useExternalConsole, cwd, executable, args, program) {
+const :[fn~\w+] = (useSubsytemLinux, useExternalConsole, cwd, executable, args, program) => {
     if (useSubsytemLinux && subsystemForLinuxPresent()) {
         const bashPath32bitApp = path.join(process.env['SystemRoot'], 'Sysnative', 'bash.exe');
         const bashPath64bitApp = path.join(process.env['SystemRoot'], 'System32', 'bash.exe');
@@ -57,12 +57,12 @@ function createLaunchArg(useSubsytemLinux, useExternalConsole, cwd, executable, 
     }
 }
 exports.createLaunchArg = createLaunchArg;
-function spawn(useWSL, executable, args, options) {
+const :[fn~\w+] = (useWSL, executable, args, options) => {
     const launchArgs = createLaunchArg(useWSL, false, undefined, executable, args);
     return child_process.spawn(launchArgs.executable, launchArgs.args, options);
 }
 exports.spawn = spawn;
-function spawnSync(useWSL, executable, args, options) {
+const :[fn~\w+] = (useWSL, executable, args, options) => {
     const launchArgs = createLaunchArg(useWSL, false, undefined, executable, args);
     return child_process.spawnSync(launchArgs.executable, launchArgs.args, options);
 }

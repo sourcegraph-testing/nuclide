@@ -30,10 +30,10 @@ import type {
 
 import invariant from 'assert';
 
-export default function refactorReducers(
+export default const :[fn~\w+] = (
   state_: ?RefactorState,
   action: RefactorAction,
-): RefactorState {
+) =>: RefactorState {
   let state = state_;
   if (state == null) {
     state = {type: 'closed'};
@@ -74,7 +74,7 @@ export default function refactorReducers(
   }
 }
 
-function open(state: RefactorState, action: OpenAction): RefactorState {
+const :[fn~\w+] = (state: RefactorState, action: OpenAction) =>: RefactorState {
   invariant(state.type === 'closed');
 
   return {
@@ -86,10 +86,10 @@ function open(state: RefactorState, action: OpenAction): RefactorState {
   };
 }
 
-function gotRefactorings(
+const :[fn~\w+] = (
   state: RefactorState,
   action: GotRefactoringsAction,
-): RefactorState {
+) =>: RefactorState {
   invariant(state.type === 'open');
   invariant(state.phase.type === 'get-refactorings');
 
@@ -108,17 +108,17 @@ function gotRefactorings(
   };
 }
 
-function close(state: RefactorState): RefactorState {
+const :[fn~\w+] = (state: RefactorState) =>: RefactorState {
   invariant(state.type === 'open');
   return {
     type: 'closed',
   };
 }
 
-function backFromDiffPreview(
+const :[fn~\w+] = (
   state: RefactorState,
   action: BackFromDiffPreviewAction,
-): RefactorState {
+) =>: RefactorState {
   invariant(state.type === 'open');
 
   return {
@@ -127,10 +127,10 @@ function backFromDiffPreview(
   };
 }
 
-function pickedRefactor(
+const :[fn~\w+] = (
   state: RefactorState,
   action: PickedRefactorAction,
-): RefactorState {
+) =>: RefactorState {
   invariant(state.type === 'open');
   invariant(state.phase.type === 'pick');
 
@@ -144,12 +144,12 @@ function pickedRefactor(
   };
 }
 
-function getRefactoringPhase(
+const :[fn~\w+] = (
   refactoring: AvailableRefactoring,
   providers: RefactorProvider[],
   editor: atom$TextEditor,
   originalRange: atom$Range,
-): RefactoringPhase {
+) =>: RefactoringPhase {
   switch (refactoring.kind) {
     case 'freeform':
       return {
@@ -164,10 +164,10 @@ function getRefactoringPhase(
   }
 }
 
-function executeRefactor(
+const :[fn~\w+] = (
   state: RefactorState,
   action: ExecuteAction,
-): RefactorState {
+) =>: RefactorState {
   invariant(state.type === 'open');
   return {
     type: 'open',
@@ -178,10 +178,10 @@ function executeRefactor(
   };
 }
 
-function confirmRefactor(
+const :[fn~\w+] = (
   state: RefactorState,
   action: ConfirmAction,
-): RefactorState {
+) =>: RefactorState {
   invariant(state.type === 'open');
   return {
     type: 'open',
@@ -193,10 +193,10 @@ function confirmRefactor(
   };
 }
 
-function loadDiffPreview(
+const :[fn~\w+] = (
   state: RefactorState,
   action: LoadDiffPreviewAction,
-): RefactorState {
+) =>: RefactorState {
   invariant(state.type === 'open');
 
   return {
@@ -210,10 +210,10 @@ function loadDiffPreview(
   };
 }
 
-function displayDiffPreview(
+const :[fn~\w+] = (
   state: RefactorState,
   action: DisplayDiffPreviewAction,
-): RefactorState {
+) =>: RefactorState {
   invariant(state.type === 'open');
   invariant(state.phase.type === 'diff-preview');
 
@@ -227,10 +227,10 @@ function displayDiffPreview(
   };
 }
 
-function displayRename(
+const :[fn~\w+] = (
   state: RefactorState,
   action: DisplayRenameAction,
-): RefactorState {
+) =>: RefactorState {
   const {
     providers,
     editor,
@@ -253,7 +253,7 @@ function displayRename(
   };
 }
 
-function progress(state: RefactorState, action: ProgressAction): RefactorState {
+const :[fn~\w+] = (state: RefactorState, action: ProgressAction) =>: RefactorState {
   invariant(state.type === 'open');
   return {
     type: 'open',

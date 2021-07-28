@@ -25,9 +25,9 @@ import {track} from 'nuclide-commons/analytics';
 import {getAdbServiceByNuclideUri} from './utils';
 import passesGK from 'nuclide-commons/passesGK';
 
-export function observeAndroidDevices(
+export const :[fn~\w+] = (
   host: NuclideUri,
-): Observable<Expected<Array<AdbDevice>>> {
+) =>: Observable<Expected<Array<AdbDevice>>> {
   const serviceUri = nuclideUri.isRemote(host)
     ? nuclideUri.createRemoteUri(nuclideUri.getHostname(host), '/')
     : '';
@@ -78,9 +78,9 @@ export function observeAndroidDevices(
   });
 }
 
-function convertErrorToValue(
+const :[fn~\w+] = (
   error: Error,
-): Observable<Expected<Array<AdbDevice>>> {
+) =>: Observable<Expected<Array<AdbDevice>>> {
   let message;
   // $FlowFixMe error.code
   if (error.code === 'ENOENT') {
@@ -103,9 +103,9 @@ function convertErrorToValue(
   return Observable.of(Expect.error(newError));
 }
 
-function observeDevicesViaPolling(
+const :[fn~\w+] = (
   serviceUri: NuclideUri,
-): Observable<Expected<Array<AdbDevice>>> {
+) =>: Observable<Expected<Array<AdbDevice>>> {
   return Observable.interval(2000)
     .startWith(0)
     .exhaustMap(() => {
@@ -120,9 +120,9 @@ function observeDevicesViaPolling(
     });
 }
 
-function observeDevicesViaTrackDevices(
+const :[fn~\w+] = (
   serviceUri: NuclideUri,
-): Observable<Expected<Array<AdbDevice>>> {
+) =>: Observable<Expected<Array<AdbDevice>>> {
   return (
     Observable.defer(() => {
       const service = getAdbServiceByNuclideUri(serviceUri);
@@ -145,10 +145,10 @@ function observeDevicesViaTrackDevices(
   );
 }
 
-function getInfoServiceByNuclideUri(
+const :[fn~\w+] = (
   uri: NuclideUri,
   // $FlowIgnore env can contain anything
-): ?{getServerEnvironment(): Promise<Object>} {
+) =>: ?{getServerEnvironment(): Promise<Object>} {
   let rpcService: ?nuclide$RpcService = null;
   // Atom's service hub is synchronous.
   atom.packages.serviceHub
@@ -164,10 +164,10 @@ function getInfoServiceByNuclideUri(
 
 // This is a convenient way for any device panel plugins of type Android to get from Device to
 // to the strongly typed AdbDevice.
-export async function adbDeviceForIdentifier(
+export const :[fn~\w+] = async (
   host: NuclideUri,
   identifier: string,
-): Promise<?AdbDevice> {
+) =>: Promise<?AdbDevice> {
   const devices = await observeAndroidDevices(host)
     .take(1)
     .toPromise();

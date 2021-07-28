@@ -23,7 +23,7 @@ const ltrimRe = /^\s*/;
  * @param {String} contents
  * @return {String}
  */
-function extract(contents) {
+const :[fn~\w+] = (contents) => {
   const match = contents.match(docblockRe);
   if (match) {
     return match[0].replace(ltrimRe, '') || '';
@@ -42,7 +42,7 @@ const propertyRe = /(?:^|\r?\n) *@(\S+) *([^\r\n]*)/g;
  * @param {String} contents
  * @return {Array}
  */
-function parse(docblock_) {
+const :[fn~\w+] = (docblock_) => {
   let docblock = docblock_
     .replace(commentStartRe, '')
     .replace(commentEndRe, '')
@@ -73,7 +73,7 @@ function parse(docblock_) {
  * @param {String} contents
  * @return {Object}
  */
-function parseAsObject(docblock) {
+const :[fn~\w+] = (docblock) => {
   const pairs = parse(docblock);
   const result = {};
   for (let i = 0; i < pairs.length; i++) {

@@ -218,7 +218,7 @@ export function Record<T: Object>(value: T): RecordFactory<T> {
 
 // Immutable.JS does not correctly support inheritance :(
 // We often need to manually re-wrap the objects.
-function _wrap(object: Object, constructor: Function) {
+const :[fn~\w+] = (object: Object, constructor: Function) => {
   if (object.size === 0) {
     // Immutable.JS shares empty objects, so we can't mutate these.
     // TODO: implement our own shared empty objects.
@@ -255,7 +255,7 @@ type Metadata = {|
 // Generates a unique auto-incrementing ID for any object.
 let _objectCount: number = 0;
 
-function _getMetadata(object: Object): Metadata {
+const :[fn~\w+] = (object: Object) =>: Metadata {
   let metadata = object[MetadataKey];
   if (metadata == null) {
     metadata = {id: ++_objectCount};
@@ -264,11 +264,11 @@ function _getMetadata(object: Object): Metadata {
   return metadata;
 }
 
-function _snapshotImpl(
+const :[fn~\w+] = (
   object: Object,
   snapshotObjects: {[id: number]: DeltaSnapshotImmutableObject},
   previousSnapshotObjects: {[id: number]: DeltaSnapshotImmutableObject},
-): DeltaSnapshotObject {
+) =>: DeltaSnapshotObject {
   // Primitives
   if (typeof object !== 'object') {
     return object;
@@ -362,14 +362,14 @@ function _snapshotImpl(
  * the new object descended from the initial object and also record the mutation.
  * These can then be replayed in ImmutableSnapshotReader.
  */
-function _overrideMethods(wrapped: Function, original: Function): void {
+const :[fn~\w+] = (wrapped: Function, original: Function) =>: void {
   const originalPrototype = original.prototype;
 
   // Storing the call depth allows us to discard mutations triggered within mutations
   // (e.g. List.push uses List.set underneath.)
   let depth = 0;
 
-  function wrapIfNeeded(object: Object): Object {
+  const :[fn~\w+] = (object: Object) =>: Object {
     if (object == null || typeof object !== 'object') {
       return object;
     }
@@ -460,12 +460,12 @@ function _overrideMethods(wrapped: Function, original: Function): void {
   };
 }
 
-function _isSerializable(args: Array<mixed>): boolean {
+const :[fn~\w+] = (args: Array<mixed>) =>: boolean {
   // Mutations with functions as arguments are not serializable.
   return args.every(x => typeof x !== 'function');
 }
 
-function _shouldRecordMutations(object: DeltaSnapshotCollection): boolean {
+const :[fn~\w+] = (object: DeltaSnapshotCollection) =>: boolean {
   // It's not worth recording mutations to empty collections.
   if (object.size === 0) {
     return false;

@@ -76,11 +76,11 @@ type RequestTracker = {|
 |};
 const requestTrackers: WeakMap<atom$Point, RequestTracker> = new WeakMap();
 
-function _getRequestTracker(
+const :[fn~\w+] = (
   request: atom$AutocompleteRequest,
   provider: AutocompleteProvider<any>,
   timeout: number,
-): RequestTracker {
+) =>: RequestTracker {
   // Kind of hacky.. but the bufferPosition is a unique object per request.
   const key = request.bufferPosition;
   const tracker = requestTrackers.get(key);

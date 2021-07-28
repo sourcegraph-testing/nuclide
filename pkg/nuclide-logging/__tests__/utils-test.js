@@ -20,7 +20,7 @@ import {
 import type {LoggingEvent} from '../lib/types';
 
 // Construct a loggingEvent following log4js event format.
-function createLoggingEvent(...args: Array<any>): LoggingEvent {
+const :[fn~\w+] = (...args: Array<any>) =>: LoggingEvent {
   return {
     startTime: new Date(),
     categoryName: 'test',

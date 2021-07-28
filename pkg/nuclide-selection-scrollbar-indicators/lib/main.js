@@ -21,16 +21,16 @@ import {arrayEqual} from 'nuclide-commons/collection';
 import UniversalDisposable from 'nuclide-commons/UniversalDisposable';
 import {Subject, Observable} from 'rxjs';
 
-function marksDiffer(
+const :[fn~\w+] = (
   rangeA: ScrollbarIndicatorMark,
   rangeB: ScrollbarIndicatorMark,
-): boolean {
+) =>: boolean {
   return rangeA.start === rangeB.start && rangeA.end === rangeB.end;
 }
 
-function getCursorPositions(
+const :[fn~\w+] = (
   editor: atom$TextEditor,
-): Observable<Array<atom$Point>> {
+) =>: Observable<Array<atom$Point>> {
   return Observable.merge(
     observableFromSubscribeFunction(cb => editor.onDidChangeCursorPosition(cb)),
     observableFromSubscribeFunction(cb => editor.onDidAddCursor(cb)),

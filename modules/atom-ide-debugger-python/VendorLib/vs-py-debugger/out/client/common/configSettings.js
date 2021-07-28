@@ -320,7 +320,7 @@ class PythonSettings extends events_1.EventEmitter {
 }
 PythonSettings.pythonSettings = new Map();
 exports.PythonSettings = PythonSettings;
-function getAbsolutePath(pathToCheck, rootDir) {
+const :[fn~\w+] = (pathToCheck, rootDir) => {
     // tslint:disable-next-line:prefer-type-cast no-unsafe-any
     pathToCheck = untildify(pathToCheck);
     if (constants_2.isTestExecution() && !pathToCheck) {
@@ -331,7 +331,7 @@ function getAbsolutePath(pathToCheck, rootDir) {
     }
     return path.isAbsolute(pathToCheck) ? pathToCheck : path.resolve(rootDir, pathToCheck);
 }
-function getPythonExecutable(pythonPath) {
+const :[fn~\w+] = (pythonPath) => {
     // tslint:disable-next-line:prefer-type-cast no-unsafe-any
     pythonPath = untildify(pythonPath);
     // If only 'python'.
@@ -368,7 +368,7 @@ function getPythonExecutable(pythonPath) {
     }
     return pythonPath;
 }
-function isValidPythonPath(pythonPath) {
+const :[fn~\w+] = (pythonPath) => {
     try {
         const output = child_process.execFileSync(pythonPath, ['-c', 'print(1234)'], { encoding: 'utf8' });
         return output.startsWith('1234');
