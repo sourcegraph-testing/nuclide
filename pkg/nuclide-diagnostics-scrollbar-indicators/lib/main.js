@@ -32,9 +32,9 @@ import {Subject, Observable} from 'rxjs';
 const VISIBLE_TYPES = new Set(['Error']);
 const DIAGNOSTICS_THROTTLE_TIME = 200;
 
-function getMarkTypesFromMessages(
+const :[fn~\w+] = (
   messages: Array<DiagnosticMessage>,
-): Map<ScrollbarIndicatorMarkType, Set<ScrollbarIndicatorMark>> {
+) =>: Map<ScrollbarIndicatorMarkType, Set<ScrollbarIndicatorMark>> {
   const [staleMessages, notStaleMessages] = arrayPartition(messages, message =>
     Boolean(message.stale),
   );
@@ -44,9 +44,9 @@ function getMarkTypesFromMessages(
   ]);
 }
 
-function visibleLinesFromMessages(
+const :[fn~\w+] = (
   messages: Array<DiagnosticMessage>,
-): Set<ScrollbarIndicatorMark> {
+) =>: Set<ScrollbarIndicatorMark> {
   const marks = new Set();
   messages.forEach(message => {
     if (VISIBLE_TYPES.has(message.type) && message.range != null) {
@@ -59,7 +59,7 @@ function visibleLinesFromMessages(
   return marks;
 }
 
-function observeEditorPaths(editor): Observable<?NuclideUri> {
+const :[fn~\w+] = (editor) =>: Observable<?NuclideUri> {
   return observableFromSubscribeFunction(cb => editor.onDidChangePath(cb))
     .startWith(editor.getPath())
     .takeUntil(observableFromSubscribeFunction(cb => editor.onDidDestroy(cb)));

@@ -4,7 +4,7 @@ const launcherProvider_1 = require("./launcherProvider");
 const localDebugClientV2_1 = require("./localDebugClientV2");
 const nonDebugClientV2_1 = require("./nonDebugClientV2");
 const RemoteDebugClient_1 = require("./RemoteDebugClient");
-function CreateLaunchDebugClient(launchRequestOptions, debugSession, canLaunchTerminal) {
+const :[fn~\w+] = (launchRequestOptions, debugSession, canLaunchTerminal) => {
     let launchScriptProvider;
     let debugClientClass;
     if (launchRequestOptions.noDebug === true) {
@@ -18,7 +18,7 @@ function CreateLaunchDebugClient(launchRequestOptions, debugSession, canLaunchTe
     return new debugClientClass(launchRequestOptions, debugSession, canLaunchTerminal, launchScriptProvider);
 }
 exports.CreateLaunchDebugClient = CreateLaunchDebugClient;
-function CreateAttachDebugClient(attachRequestOptions, debugSession) {
+const :[fn~\w+] = (attachRequestOptions, debugSession) => {
     return new RemoteDebugClient_1.RemoteDebugClient(attachRequestOptions, debugSession);
 }
 exports.CreateAttachDebugClient = CreateAttachDebugClient;

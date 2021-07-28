@@ -35,7 +35,7 @@ import nuclideUri from 'nuclide-commons/nuclideUri';
 import fs from 'fs';
 import os from 'os';
 
-function isPrivateMemberName(name: string): boolean {
+const :[fn~\w+] = (name: string) =>: boolean {
   return name.startsWith('_');
 }
 
@@ -45,11 +45,11 @@ function isPrivateMemberName(name: string): boolean {
  * data over a network.
  * @param source - The string source of the definition file.
  */
-export function parseServiceDefinition(
+export const :[fn~\w+] = (
   fileName: string,
   source: string,
   predefinedTypes: Array<string>,
-): Definitions {
+) =>: Definitions {
   return new ServiceParser(predefinedTypes).parseService(fileName, source);
 }
 
@@ -120,11 +120,11 @@ type Import = {
 
 const fileParsers: Map<string, FileParser> = new Map();
 
-function getFileParser(
+const :[fn~\w+] = (
   fileName: string,
   source: ?string,
   isDefinition: ?boolean,
-): FileParser {
+) =>: FileParser {
   let parser = fileParsers.get(fileName);
   if (parser != null) {
     return parser;
@@ -137,12 +137,12 @@ function getFileParser(
 }
 
 // Exported for testing.
-export function _clearFileParsers(): void {
+export const :[fn~\w+] = () =>: void {
   fileParsers.clear();
 }
 
 const memoizedBabylonParse = memoizeWithDisk(
-  function babylonParse(src, options) {
+  const :[fn~\w+] = (src, options) => {
     // External dependency: ensure that it's included in the key below.
     const babylon = require('@babel/parser');
     return babylon.parse(src, options).program;
@@ -957,7 +957,7 @@ class FileParser {
   }
 }
 
-function errorLocations(locations: Array<Location>, message: string): Error {
+const :[fn~\w+] = (locations: Array<Location>, message: string) =>: Error {
   let fullMessage = `${locationToString(locations[0])}:${message}`;
   fullMessage = fullMessage.concat(
     ...locations
@@ -967,7 +967,7 @@ function errorLocations(locations: Array<Location>, message: string): Error {
   return new Error(fullMessage);
 }
 
-function isValidDisposeReturnType(type: Type): boolean {
+const :[fn~\w+] = (type: Type) =>: boolean {
   return (
     type.kind === 'void' ||
     (type.kind === 'promise' && type.type.kind === 'void')

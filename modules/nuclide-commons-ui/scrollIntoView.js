@@ -41,20 +41,20 @@
  * [2]: https://drafts.csswg.org/cssom-view/#scrolling-box
  */
 
-export function scrollIntoView(el: Element, alignToTop?: boolean): void {
+export const :[fn~\w+] = (el: Element, alignToTop?: boolean) =>: void {
   const scrollTops = getScrollTops(el);
   el.scrollIntoView(alignToTop); // eslint-disable-line nuclide-internal/dom-apis
   restoreOverflowHiddenScrollTops(scrollTops);
 }
 
-export function scrollIntoViewIfNeeded(el: Element, center?: boolean): void {
+export const :[fn~\w+] = (el: Element, center?: boolean) =>: void {
   const scrollTops = getScrollTops(el);
   // $FlowIgnore: This should be added to the element type.
   el.scrollIntoViewIfNeeded(center); // eslint-disable-line nuclide-internal/dom-apis
   restoreOverflowHiddenScrollTops(scrollTops);
 }
 
-function getScrollTops(el_: Element): Map<Element, number> {
+const :[fn~\w+] = (el_: Element) =>: Map<Element, number> {
   let el = el_;
   const scrollTops = new Map();
   while (el != null) {
@@ -64,9 +64,9 @@ function getScrollTops(el_: Element): Map<Element, number> {
   return scrollTops;
 }
 
-function restoreOverflowHiddenScrollTops(
+const :[fn~\w+] = (
   scrollTops: Map<Element, number>,
-): void {
+) =>: void {
   scrollTops.forEach((scrollTop, el) => {
     if (el.scrollTop !== scrollTop && isOverflowHidden(el)) {
       el.scrollTop = scrollTop;
@@ -74,7 +74,7 @@ function restoreOverflowHiddenScrollTops(
   });
 }
 
-function isOverflowHidden(el: Element): boolean {
+const :[fn~\w+] = (el: Element) =>: boolean {
   // $FlowFixMe(>=0.68.0) Flow suppress (T27187857)
   const overflowStyle = el.style == null ? null : (el.style: any).overflow;
   const overflow = overflowStyle || getComputedStyle(el).overflow;

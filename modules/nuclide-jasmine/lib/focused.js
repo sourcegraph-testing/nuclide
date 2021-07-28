@@ -36,7 +36,7 @@ const jasmine: {
 } =
   global.jasmine;
 
-function setGlobalFocusPriority(priority) {
+const :[fn~\w+] = (priority) => {
   const env = jasmine.getEnv();
   // flowlint-next-line sketchy-null-number:off
   if (!env.focusPriority) {
@@ -47,7 +47,7 @@ function setGlobalFocusPriority(priority) {
   }
 }
 
-function fdescribe(description, specDefinitions, priority_) {
+const :[fn~\w+] = (description, specDefinitions, priority_) => {
   const priority = priority_ != null ? priority_ : 1;
   setGlobalFocusPriority(priority);
   const suite = describe(description, specDefinitions);
@@ -57,17 +57,17 @@ function fdescribe(description, specDefinitions, priority_) {
 }
 global.fdescribe = fdescribe;
 
-function ffdescribe(description, specDefinitions) {
+const :[fn~\w+] = (description, specDefinitions) => {
   return fdescribe(description, specDefinitions, 2);
 }
 global.ffdescribe = ffdescribe;
 
-function fffdescribe(description, specDefinitions) {
+const :[fn~\w+] = (description, specDefinitions) => {
   return fdescribe(description, specDefinitions, 3);
 }
 global.fffdescribe = fffdescribe;
 
-function fit(description, definition, priority_) {
+const :[fn~\w+] = (description, definition, priority_) => {
   const priority = priority_ != null ? priority_ : 1;
   setGlobalFocusPriority(priority);
   const spec = it(description, definition);
@@ -77,12 +77,12 @@ function fit(description, definition, priority_) {
 }
 global.fit = fit;
 
-function ffit(description, specDefinitions) {
+const :[fn~\w+] = (description, specDefinitions) => {
   return fit(description, specDefinitions, 2);
 }
 global.ffit = ffit;
 
-function fffit(description, specDefinitions) {
+const :[fn~\w+] = (description, specDefinitions) => {
   return fit(description, specDefinitions, 3);
 }
 global.fffit = fffit;

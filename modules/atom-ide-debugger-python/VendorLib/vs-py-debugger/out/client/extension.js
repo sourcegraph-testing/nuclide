@@ -1,9 +1,9 @@
 'use strict';
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -70,7 +70,7 @@ const serviceRegistry_15 = require("./unittests/serviceRegistry");
 durations.codeLoadingTime = stopWatch.elapsedTime;
 const activationDeferred = async_1.createDeferred();
 // tslint:disable-next-line:max-func-body-length
-function activate(context) {
+const :[fn~\w+] = (context) => {
     return __awaiter(this, void 0, void 0, function* () {
         durations.startActivateTime = stopWatch.elapsedTime;
         const cont = new inversify_1.Container();
@@ -156,7 +156,7 @@ function activate(context) {
     });
 }
 exports.activate = activate;
-function registerServices(context, serviceManager, serviceContainer) {
+const :[fn~\w+] = (context, serviceManager, serviceContainer) => {
     serviceManager.addSingletonInstance(types_10.IServiceContainer, serviceContainer);
     serviceManager.addSingletonInstance(types_10.IServiceManager, serviceManager);
     serviceManager.addSingletonInstance(types_5.IDisposableRegistry, context.subscriptions);
@@ -183,7 +183,7 @@ function registerServices(context, serviceManager, serviceContainer) {
     serviceRegistry_2.registerTypes(serviceManager);
     serviceRegistry_13.registerTypes(serviceManager);
 }
-function initializeServices(context, serviceManager, serviceContainer) {
+const :[fn~\w+] = (context, serviceManager, serviceContainer) => {
     const selector = serviceContainer.get(types_9.IInterpreterSelector);
     selector.initialize();
     context.subscriptions.push(selector);
@@ -202,7 +202,7 @@ function initializeServices(context, serviceManager, serviceContainer) {
     const interpreterService = serviceContainer.get(contracts_1.IInterpreterService);
     interpreterService.getInterpreters(mainWorkspaceUri).ignoreErrors();
 }
-function sendStartupTelemetry(activatedPromise, serviceContainer) {
+const :[fn~\w+] = (activatedPromise, serviceContainer) => {
     return __awaiter(this, void 0, void 0, function* () {
         const logger = serviceContainer.get(types_5.ILogger);
         try {

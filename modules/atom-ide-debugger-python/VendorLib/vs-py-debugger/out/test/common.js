@@ -3,9 +3,9 @@
 'use strict';
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -29,7 +29,7 @@ exports.sleep = core_1.sleep;
 const fileInNonRootWorkspace = path.join(constants_1.EXTENSION_ROOT_DIR, 'src', 'test', 'pythonFiles', 'dummy.py');
 exports.rootWorkspaceUri = getWorkspaceRoot();
 exports.PYTHON_PATH = getPythonPath();
-function updateSetting(setting, value, resource, configTarget) {
+const :[fn~\w+] = (setting, value, resource, configTarget) => {
     return __awaiter(this, void 0, void 0, function* () {
         const settings = vscode_1.workspace.getConfiguration('python', resource);
         const currentValue = settings.inspect(setting);
@@ -55,7 +55,7 @@ const globalPythonPathSetting = vscode_1.workspace.getConfiguration('python') ? 
 exports.clearPythonPathInWorkspaceFolder = (resource) => __awaiter(this, void 0, void 0, function* () { return retryAsync(setPythonPathInWorkspace)(resource, vscode_1.ConfigurationTarget.WorkspaceFolder); });
 exports.setPythonPathInWorkspaceRoot = (pythonPath) => __awaiter(this, void 0, void 0, function* () { return retryAsync(setPythonPathInWorkspace)(undefined, vscode_1.ConfigurationTarget.Workspace, pythonPath); });
 exports.resetGlobalPythonPathSetting = () => __awaiter(this, void 0, void 0, function* () { return retryAsync(restoreGlobalPythonPathSetting)(); });
-function getWorkspaceRoot() {
+const :[fn~\w+] = () => {
     if (!Array.isArray(vscode_1.workspace.workspaceFolders) || vscode_1.workspace.workspaceFolders.length === 0) {
         return vscode_1.Uri.file(path.join(constants_1.EXTENSION_ROOT_DIR, 'src', 'test'));
     }
@@ -65,7 +65,7 @@ function getWorkspaceRoot() {
     const workspaceFolder = vscode_1.workspace.getWorkspaceFolder(vscode_1.Uri.file(fileInNonRootWorkspace));
     return workspaceFolder ? workspaceFolder.uri : vscode_1.workspace.workspaceFolders[0].uri;
 }
-function retryAsync(wrapped, retryCount = 2) {
+const :[fn~\w+] = (wrapped, retryCount = 2) => {
     return (...args) => __awaiter(this, void 0, void 0, function* () {
         return new Promise((resolve, reject) => {
             const reasons = [];
@@ -87,7 +87,7 @@ function retryAsync(wrapped, retryCount = 2) {
     });
 }
 exports.retryAsync = retryAsync;
-function setPythonPathInWorkspace(resource, config, pythonPath) {
+const :[fn~\w+] = (resource, config, pythonPath) => {
     return __awaiter(this, void 0, void 0, function* () {
         if (config === vscode_1.ConfigurationTarget.WorkspaceFolder && !initialize_1.IS_MULTI_ROOT_TEST) {
             return;
@@ -102,7 +102,7 @@ function setPythonPathInWorkspace(resource, config, pythonPath) {
         }
     });
 }
-function restoreGlobalPythonPathSetting() {
+const :[fn~\w+] = () => {
     return __awaiter(this, void 0, void 0, function* () {
         const pythonConfig = vscode_1.workspace.getConfiguration('python', null);
         const currentGlobalPythonPathSetting = pythonConfig.inspect('pythonPath').globalValue;
@@ -112,7 +112,7 @@ function restoreGlobalPythonPathSetting() {
         configSettings_1.PythonSettings.dispose();
     });
 }
-function deleteDirectory(dir) {
+const :[fn~\w+] = (dir) => {
     return __awaiter(this, void 0, void 0, function* () {
         const exists = yield fs.pathExists(dir);
         if (exists) {
@@ -121,7 +121,7 @@ function deleteDirectory(dir) {
     });
 }
 exports.deleteDirectory = deleteDirectory;
-function deleteFile(file) {
+const :[fn~\w+] = (file) => {
     return __awaiter(this, void 0, void 0, function* () {
         const exists = yield fs.pathExists(file);
         if (exists) {
@@ -130,7 +130,7 @@ function deleteFile(file) {
     });
 }
 exports.deleteFile = deleteFile;
-function deleteFiles(globPattern) {
+const :[fn~\w+] = (globPattern) => {
     return __awaiter(this, void 0, void 0, function* () {
         const items = yield new Promise((resolve, reject) => {
             glob(globPattern, (ex, files) => ex ? reject(ex) : resolve(files));
@@ -139,7 +139,7 @@ function deleteFiles(globPattern) {
     });
 }
 exports.deleteFiles = deleteFiles;
-function getPythonPath() {
+const :[fn~\w+] = () => {
     if (process.env.CI_PYTHON_PATH && fs.existsSync(process.env.CI_PYTHON_PATH)) {
         return process.env.CI_PYTHON_PATH;
     }
@@ -151,7 +151,7 @@ function getPythonPath() {
  * @param {OSes} OSType[] List of operating system Ids to check within.
  * @return true if the current OS matches one from the list, false otherwise.
  */
-function isOs(...OSes) {
+const :[fn~\w+] = (...OSes) => {
     // get current OS
     const currentOS = platform_1.getOSType();
     // compare and return
@@ -167,7 +167,7 @@ exports.isOs = isOs;
  * @param {procService} IProcessService Optionally specify the IProcessService implementation to use to execute with.
  * @return `SemVer` version of the Python interpreter, or `undefined` if an error occurs.
  */
-function getPythonSemVer(procService) {
+const :[fn~\w+] = (procService) => {
     return __awaiter(this, void 0, void 0, function* () {
         const pythonProcRunner = procService ? procService : new proc_1.ProcessService(new decoder_1.BufferDecoder());
         const pyVerArgs = ['-c', 'import sys;print("{0}.{1}.{2}".format(*sys.version_info[:3]))'];
@@ -199,7 +199,7 @@ exports.getPythonSemVer = getPythonSemVer;
  * @param {version} SemVer the version to look for.
  * @param {searchVersions} string[] List of loosely-specified versions to match against.
  */
-function isVersionInList(version, ...searchVersions) {
+const :[fn~\w+] = (version, ...searchVersions) => {
     // see if the major/minor version matches any member of the skip-list.
     const isPresent = searchVersions.findIndex(ver => {
         const semverChecker = semver_1.coerce(ver);
@@ -251,7 +251,7 @@ exports.isVersionInList = isVersionInList;
  * @param {versions} string[] Python versions to test for, specified as described above.
  * @return true if the current Python version matches a version in the skip list, false otherwise.
  */
-function isPythonVersionInProcess(procService, ...versions) {
+const :[fn~\w+] = (procService, ...versions) => {
     return __awaiter(this, void 0, void 0, function* () {
         // get the current python version major/minor
         const currentPyVersion = yield getPythonSemVer(procService);
@@ -286,7 +286,7 @@ exports.isPythonVersionInProcess = isPythonVersionInProcess;
  * @param {resource} vscode.Uri Current workspace resource Uri or undefined.
  * @return true if the current Python version matches a version in the skip list, false otherwise.
  */
-function isPythonVersion(...versions) {
+const :[fn~\w+] = (...versions) => {
     return __awaiter(this, void 0, void 0, function* () {
         const currentPyVersion = yield getPythonSemVer();
         if (currentPyVersion) {

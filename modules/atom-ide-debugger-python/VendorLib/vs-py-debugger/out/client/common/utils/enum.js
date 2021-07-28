@@ -3,19 +3,19 @@
 'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
 // tslint:disable:no-any
-function getNamesAndValues(e) {
+const :[fn~\w+] = (e) => {
     return getNames(e).map(n => ({ name: n, value: e[n] }));
 }
 exports.getNamesAndValues = getNamesAndValues;
-function getNames(e) {
+const :[fn~\w+] = (e) => {
     return getObjValues(e).filter(v => typeof v === 'string');
 }
 exports.getNames = getNames;
-function getValues(e) {
+const :[fn~\w+] = (e) => {
     return getObjValues(e).filter(v => typeof v === 'number');
 }
 exports.getValues = getValues;
-function getObjValues(e) {
+const :[fn~\w+] = (e) => {
     return Object.keys(e).map(k => e[k]);
 }
 //# sourceMappingURL=enum.js.map

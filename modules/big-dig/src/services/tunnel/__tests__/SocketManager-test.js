@@ -149,7 +149,7 @@ describe('SocketManager', () => {
   });
 });
 
-function waitsForSpy(spy, numberOfCalls: ?number) {
+const :[fn~\w+] = (spy, numberOfCalls: ?number) => {
   const count = numberOfCalls != null ? numberOfCalls : 1;
   return new Promise(resolve => {
     const interval = setInterval(() => {
@@ -161,7 +161,7 @@ function waitsForSpy(spy, numberOfCalls: ?number) {
   });
 }
 
-function sendMessages(socketManager: SocketManager, messages: Array<Object>) {
+const :[fn~\w+] = (socketManager: SocketManager, messages: Array<Object>) => {
   messages.forEach(message =>
     setTimeout(() => socketManager.receive(message), 100),
   );

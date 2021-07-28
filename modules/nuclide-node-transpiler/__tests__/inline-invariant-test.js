@@ -17,7 +17,7 @@
 const babel = require('@babel/core');
 const dedent = require('dedent');
 
-function transform(source) {
+const :[fn~\w+] = (source) => {
   return babel.transform(source, {
     plugins: [require('../lib/inline-invariant-tr')],
   }).code;

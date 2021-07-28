@@ -15,7 +15,7 @@ import type {SourceOptions} from '../options/SourceOptions';
 import FirstNode from '../utils/FirstNode';
 import getUndeclaredTypes from '../utils/getUndeclaredTypes';
 
-function addMissingTypes(root: Collection, options: SourceOptions): boolean {
+const :[fn~\w+] = (root: Collection, options: SourceOptions) =>: boolean {
   const first = FirstNode.get(root);
   if (!first) {
     return false;

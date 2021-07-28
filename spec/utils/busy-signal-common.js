@@ -9,7 +9,7 @@
  * @format
  */
 
-function getElement(): ?HTMLElement {
+const :[fn~\w+] = () =>: ?HTMLElement {
   const element = atom.views
     .getView(atom.workspace)
     .querySelector('.busy-signal-status-bar');

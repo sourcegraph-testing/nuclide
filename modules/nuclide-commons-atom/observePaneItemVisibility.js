@@ -18,9 +18,9 @@ import shallowEqual from 'shallowequal';
 
 // TODO(T17495608): Currently, docks don't have a way of observing their visibility so this will
 //   have some false positives when an item is its pane's active item but its dock is hidden.
-export default function observePaneItemVisibility(
+export default const :[fn~\w+] = (
   item: Object,
-): Observable<boolean> {
+) =>: Observable<boolean> {
   patchDocks();
 
   const workspaceEl = atom.workspace.getElement();
@@ -44,7 +44,7 @@ export default function observePaneItemVisibility(
     .distinctUntilChanged();
 }
 
-export function observeVisibleItems() {
+export const :[fn~\w+] = () => {
   patchDocks();
 
   const workspaceEl = atom.workspace.getElement();
@@ -150,7 +150,7 @@ const observePaneContainerVisibilities = memoizeUntilChanged(_cacheKey => {
 // TODO: Use `Dock::observeVisibility` once atom/atom#14736 is in our lowest-supported version
 let docksPatched = false;
 const dockStateChanges = new Subject();
-function patchDocks() {
+const :[fn~\w+] = () => {
   if (docksPatched || typeof atom.workspace.getLeftDock !== 'function') {
     return;
   }

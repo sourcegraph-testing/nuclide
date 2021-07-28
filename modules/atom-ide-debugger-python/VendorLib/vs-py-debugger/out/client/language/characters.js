@@ -3,7 +3,7 @@
 // Licensed under the MIT License.
 Object.defineProperty(exports, "__esModule", { value: true });
 const unicode_1 = require("./unicode");
-function isIdentifierStartChar(ch) {
+const :[fn~\w+] = (ch) => {
     switch (ch) {
         // Underscore is explicitly allowed to start an identifier
         case 95 /* Underscore */:
@@ -35,7 +35,7 @@ function isIdentifierStartChar(ch) {
     return false;
 }
 exports.isIdentifierStartChar = isIdentifierStartChar;
-function isIdentifierChar(ch) {
+const :[fn~\w+] = (ch) => {
     if (isIdentifierStartChar(ch)) {
         return true;
     }
@@ -70,31 +70,31 @@ function isIdentifierChar(ch) {
     return false;
 }
 exports.isIdentifierChar = isIdentifierChar;
-function isWhiteSpace(ch) {
+const :[fn~\w+] = (ch) => {
     return ch <= 32 /* Space */ || ch === 0x200B; // Unicode whitespace
 }
 exports.isWhiteSpace = isWhiteSpace;
-function isLineBreak(ch) {
+const :[fn~\w+] = (ch) => {
     return ch === 13 /* CarriageReturn */ || ch === 10 /* LineFeed */;
 }
 exports.isLineBreak = isLineBreak;
-function isNumber(ch) {
+const :[fn~\w+] = (ch) => {
     return ch >= 48 /* _0 */ && ch <= 57 /* _9 */ || ch === 95 /* Underscore */;
 }
 exports.isNumber = isNumber;
-function isDecimal(ch) {
+const :[fn~\w+] = (ch) => {
     return ch >= 48 /* _0 */ && ch <= 57 /* _9 */ || ch === 95 /* Underscore */;
 }
 exports.isDecimal = isDecimal;
-function isHex(ch) {
+const :[fn~\w+] = (ch) => {
     return isDecimal(ch) || (ch >= 97 /* a */ && ch <= 102 /* f */) || (ch >= 65 /* A */ && ch <= 70 /* F */) || ch === 95 /* Underscore */;
 }
 exports.isHex = isHex;
-function isOctal(ch) {
+const :[fn~\w+] = (ch) => {
     return ch >= 48 /* _0 */ && ch <= 55 /* _7 */ || ch === 95 /* Underscore */;
 }
 exports.isOctal = isOctal;
-function isBinary(ch) {
+const :[fn~\w+] = (ch) => {
     return ch === 48 /* _0 */ || ch === 49 /* _1 */ || ch === 95 /* Underscore */;
 }
 exports.isBinary = isBinary;

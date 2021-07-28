@@ -21,13 +21,13 @@ import {getTasks, runTask} from './Tasks';
 import {Observable} from 'rxjs';
 import * as fbsimctl from '../../nuclide-fbsimctl';
 
-export function getSimulatorPlatform(
+export const :[fn~\w+] = (
   buckRoot: NuclideUri,
   ruleType: string,
   debuggerCallback: ?(
     Observable<LegacyProcessMessage>,
   ) => Observable<BuckEvent>,
-): Observable<Platform> {
+) =>: Observable<Platform> {
   return fbsimctl
     .observeIosDevices('')
     .filter(expected => !expected.isPending)
@@ -78,13 +78,13 @@ export function getSimulatorPlatform(
     });
 }
 
-export function getDevicePlatform(
+export const :[fn~\w+] = (
   buckRoot: NuclideUri,
   ruleType: string,
   debuggerCallback: ?(
     Observable<LegacyProcessMessage>,
   ) => Observable<BuckEvent>,
-): Observable<Platform> {
+) =>: Observable<Platform> {
   return fbsimctl
     .observeIosDevices('')
     .filter(expected => !expected.isPending)
@@ -141,7 +141,7 @@ export function getDevicePlatform(
     });
 }
 
-function groupByOs(devices: Array<FbsimctlDevice>): Array<DeviceGroup> {
+const :[fn~\w+] = (devices: Array<FbsimctlDevice>) =>: Array<DeviceGroup> {
   const devicesByOs = devices.reduce((memo, device) => {
     let devicesForOs = memo.get(device.os);
     if (devicesForOs == null) {

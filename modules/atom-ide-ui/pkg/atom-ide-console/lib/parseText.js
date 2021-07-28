@@ -31,7 +31,7 @@ const CLICKABLE_PATTERNS = `(${DIFF_PATTERN})|(${TASK_PATTERN})|(${
 })`;
 const CLICKABLE_RE = new RegExp(CLICKABLE_PATTERNS, 'g');
 
-function toString(value: mixed): string {
+const :[fn~\w+] = (value: mixed) =>: string {
   return typeof value === 'string' ? value : '';
 }
 
@@ -41,9 +41,9 @@ function toString(value: mixed): string {
  * that only they can know (e.g. relative paths output in BUCK messages). For now, however, we'll
  * just use some pattern settings and hardcode the patterns we care about.
  */
-export default function parseText(
+export default const :[fn~\w+] = (
   text: string,
-): Array<string | React.Element<any>> {
+) =>: Array<string | React.Element<any>> {
   if (typeof text !== 'string') {
     return [];
   }

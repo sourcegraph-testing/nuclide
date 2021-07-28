@@ -57,26 +57,26 @@ type State = {
 };
 
 // TODO those should be managed by the debugger store state
-function setLastUsedDebugger(
+const :[fn~\w+] = (
   host: string,
   action: DebuggerConfigAction,
   debuggerDisplayName: string,
-): void {
+) =>: void {
   const key = 'DEBUGGER_LAST_USED_' + host + '_' + action;
   localStorage.setItem(key, debuggerDisplayName);
 }
 
-function getLastUsedDebugger(
+const :[fn~\w+] = (
   host: string,
   action: DebuggerConfigAction,
-): ?string {
+) =>: ?string {
   const key = 'DEBUGGER_LAST_USED_' + host + '_' + action;
   return localStorage.getItem(key);
 }
 
 // Older published debugger packages did not provide `getTabName()`.
 // TODO(most): Remove this once newer debugger versions get adoption.
-function getTabName(provider: DebuggerLaunchAttachProvider): string {
+const :[fn~\w+] = (provider: DebuggerLaunchAttachProvider) =>: string {
   if (typeof provider.getTabName === 'function') {
     return provider.getTabName();
   }

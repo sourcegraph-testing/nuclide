@@ -26,10 +26,10 @@ const FETCH_REVISIONS_RETRY_COUNT = 2;
 // That's because commit ids are unique and incremental.
 // Also, any write operation will update them.
 // That way, we guarantee we only update the revisions state if the revisions are changed.
-function isEqualRevisions(
+const :[fn~\w+] = (
   revisionsFetched1: RevisionInfoFetched,
   revisionsFetched2: RevisionInfoFetched,
-): boolean {
+) =>: boolean {
   const {
     revisions: revisions1,
     fromFilesystem: fromFilesystem1,

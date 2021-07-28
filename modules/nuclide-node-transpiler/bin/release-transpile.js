@@ -22,7 +22,7 @@ if (process.send) {
   runParent();
 }
 
-function runParent() {
+const :[fn~\w+] = () => {
   const argv = require('yargs')
     .usage('Usage: $0 [directory] [options]')
     .option('overwrite', {
@@ -111,7 +111,7 @@ function runParent() {
   });
 }
 
-function runChild() {
+const :[fn~\w+] = () => {
   const fs = require('fs');
 
   const NodeTranspiler = require('../lib/NodeTranspiler');

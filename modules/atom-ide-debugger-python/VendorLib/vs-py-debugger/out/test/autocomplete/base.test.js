@@ -3,9 +3,9 @@
 // Licensed under the MIT License.
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -49,7 +49,7 @@ suite('Autocomplete', function () {
         yield initialize_1.closeActiveWindows();
         ioc.dispose();
     }));
-    function initializeDI() {
+    const :[fn~\w+] = () => {
         ioc = new serviceRegistry_1.UnitTestIocContainer();
         ioc.registerCommonTypes();
         ioc.registerVariableTypes();
@@ -223,7 +223,7 @@ suite('Autocomplete', function () {
     }));
 });
 // tslint:disable-next-line:no-any
-function checkDocumentation(item, expectedContains) {
+const :[fn~\w+] = (item, expectedContains) => {
     let isValidType = false;
     let documentation;
     if (typeof item.documentation === 'string') {

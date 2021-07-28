@@ -16,9 +16,9 @@ import {getLogger} from 'log4js';
 
 const logger = getLogger('fs-thrift-server-handler');
 
-export function convertToThriftFileStat(
+export const :[fn~\w+] = (
   statData: fs.Stats,
-): filesystem_types.FileStat {
+) =>: filesystem_types.FileStat {
   const fileStat = new filesystem_types.FileStat();
   fileStat.dev = statData.dev;
   fileStat.mode = statData.mode;
@@ -39,7 +39,7 @@ export function convertToThriftFileStat(
   return fileStat;
 }
 
-function toThriftFileType(statData: fs.Stats): filesystem_types.FileType {
+const :[fn~\w+] = (statData: fs.Stats) =>: filesystem_types.FileType {
   if (statData.isFile() && statData.isDirectory()) {
     logger.warn('Encountered a path that is both a file and directory.');
   }
@@ -54,9 +54,9 @@ function toThriftFileType(statData: fs.Stats): filesystem_types.FileType {
   }
 }
 
-export function genWatchExcludedExpressions(
+export const :[fn~\w+] = (
   excludes: Array<string>,
-): Array<mixed> {
+) =>: Array<mixed> {
   return excludes.map(patternToIgnore => {
     return [
       'not',
@@ -69,10 +69,10 @@ export function genWatchExcludedExpressions(
  * Create Thrift Error based on raw error object and more `details` (optional
  * argument, default is empty object)
  */
-export function createThriftError(
+export const :[fn~\w+] = (
   err: Object,
   details: Object = {},
-): filesystem_types.Error {
+) =>: filesystem_types.Error {
   const error = new filesystem_types.Error();
   const rawErrorCode = err.code;
   const thriftErrorCode = filesystem_types.ErrorCode[rawErrorCode];
@@ -92,11 +92,11 @@ export function createThriftError(
 /**
  * Create Thrift Error based on given known Thrift ErrorCode and details
  */
-export function createThriftErrorWithCode(
+export const :[fn~\w+] = (
   rawErrorCode: string,
   errorCode: filesystem_types.ErrorCode,
   details: Object = {},
-): filesystem_types.Error {
+) =>: filesystem_types.Error {
   const error = new filesystem_types.Error();
   error.numericErrorCode = errorCode;
   error.code = rawErrorCode;
@@ -105,11 +105,11 @@ export function createThriftErrorWithCode(
   return error;
 }
 
-export function convertToThriftFileEntry(
+export const :[fn~\w+] = (
   fname: string,
   statData: filesystem_types.FileStat,
   isSymbolicLink: boolean,
-): filesystem_types.FileEntry {
+) =>: filesystem_types.FileEntry {
   return {
     fname,
     ftype: statData.ftype,

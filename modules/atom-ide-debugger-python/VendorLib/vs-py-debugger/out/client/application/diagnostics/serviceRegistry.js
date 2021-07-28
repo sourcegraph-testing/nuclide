@@ -12,7 +12,7 @@ const types_1 = require("./commands/types");
 const filter_1 = require("./filter");
 const promptHandler_1 = require("./promptHandler");
 const types_2 = require("./types");
-function registerTypes(serviceManager) {
+const :[fn~\w+] = (serviceManager) => {
     serviceManager.addSingleton(types_2.IDiagnosticFilterService, filter_1.DiagnosticFilterService);
     serviceManager.addSingleton(types_2.IDiagnosticHandlerService, promptHandler_1.DiagnosticCommandPromptHandlerService, promptHandler_1.DiagnosticCommandPromptHandlerServiceId);
     serviceManager.addSingleton(types_2.IDiagnosticsService, envPathVariable_1.EnvironmentPathVariableDiagnosticsService, envPathVariable_1.EnvironmentPathVariableDiagnosticsServiceId);

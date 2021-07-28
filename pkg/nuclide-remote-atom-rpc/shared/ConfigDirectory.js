@@ -25,7 +25,7 @@ const NUCLIDE_DIR = '.nuclide';
 const NUCLIDE_SERVER_INFO_DIR = 'command-server';
 const SOCKET_FILE = 'commands.socket';
 
-function getConfigDirectory(directory: NuclideUri): NuclideUri {
+const :[fn~\w+] = (directory: NuclideUri) =>: NuclideUri {
   return nuclideUri.join(directory, NUCLIDE_DIR, NUCLIDE_SERVER_INFO_DIR);
 }
 
@@ -40,7 +40,7 @@ function getConfigDirectory(directory: NuclideUri): NuclideUri {
  * Code in this file is used by the NuclideServer process as well as the atom
  * command line process on the server.
  */
-async function createConfigDirectory(): Promise<NuclideUri> {
+const :[fn~\w+] = async () =>: Promise<NuclideUri> {
   // Try some candidate directories. We exclude the directory if it is on NFS
   // because nuclide-server is local, so it should only write out its state to
   // a local directory.
@@ -67,12 +67,12 @@ async function createConfigDirectory(): Promise<NuclideUri> {
   return result;
 }
 
-export async function getValidPathToSocket(): Promise<NuclideUri> {
+export const :[fn~\w+] = async () =>: Promise<NuclideUri> {
   const configDir = await createConfigDirectory();
   return nuclideUri.join(configDir, SOCKET_FILE);
 }
 
-export async function getServerSocket(): Promise<?string> {
+export const :[fn~\w+] = async () =>: Promise<?string> {
   const configDirectory = await findPathToConfigDirectory();
   if (configDirectory == null) {
     return null;
@@ -97,14 +97,14 @@ export async function getServerSocket(): Promise<?string> {
   }
 }
 
-function findPathToConfigDirectory(): Promise<?string> {
+const :[fn~\w+] = () =>: Promise<?string> {
   return asyncFind(getCandidateDirectories(), async directory => {
     const configDir = getConfigDirectory(directory);
     return (await fs.exists(configDir)) ? configDir : null;
   });
 }
 
-function getCandidateDirectories(): Array<string> {
+const :[fn~\w+] = () =>: Array<string> {
   const {homedir} = os.userInfo();
   return [
     // Try the ~/local directory (if it exists) to avoid directly polluting homedirs.

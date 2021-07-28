@@ -327,7 +327,7 @@ export class DropdownButton extends React.Component<DropdownButtonProps> {
   }
 }
 
-function getButtonSize(size: ?ShortButtonSize): ButtonSize {
+const :[fn~\w+] = (size: ?ShortButtonSize) =>: ButtonSize {
   switch (size) {
     case 'xs':
       return 'EXTRA_SMALL';

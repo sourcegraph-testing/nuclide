@@ -14,13 +14,13 @@ import openPreview from '../openPreview';
 import fsPromise from 'nuclide-commons/fsPromise';
 import invariant from 'assert';
 
-function getActiveTextEditor(): atom$TextEditor {
+const :[fn~\w+] = () =>: atom$TextEditor {
   const activeTextEditor = atom.workspace.getActiveTextEditor();
   invariant(activeTextEditor);
   return activeTextEditor;
 }
 
-function getPendingItem(): atom$PaneItem {
+const :[fn~\w+] = () =>: atom$PaneItem {
   const pane = atom.workspace.paneForItem(getActiveTextEditor());
   invariant(pane);
   return pane.getPendingItem();

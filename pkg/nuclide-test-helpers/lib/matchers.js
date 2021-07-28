@@ -44,7 +44,7 @@ type Change = {
  * @this A JasmineMatcher object.
  * @returns True if the objects are identical.
  */
-export function diffJson(expected: Object): boolean {
+export const :[fn~\w+] = (expected: Object) =>: boolean {
   const parts = diff.diffJson(expected, this.actual);
   const {message, changes} = formatMessage(parts);
   invariant(this instanceof jasmine.Matchers);
@@ -59,7 +59,7 @@ export function diffJson(expected: Object): boolean {
  * @this A JasmineMatcher object.
  * @returns True if the strings are identical.
  */
-export function diffLines(expected: string): boolean {
+export const :[fn~\w+] = (expected: string) =>: boolean {
   const parts = diff.diffLines(expected, this.actual);
   const {message, changes} = formatMessage(parts);
   invariant(this instanceof jasmine.Matchers);
@@ -74,9 +74,9 @@ export function diffLines(expected: string): boolean {
  * @returns On object containing the number of changes (added or removed parts),
  *   and a string containing the colored diff output.
  */
-function formatMessage(
+const :[fn~\w+] = (
   parts: Array<Change>,
-): {changes: number, message: string} {
+) =>: {changes: number, message: string} {
   let changes = 0;
   let message = '';
   for (const part of parts) {
@@ -90,7 +90,7 @@ function formatMessage(
   return {changes, message};
 }
 
-export function addMatchers(spec: JasmineSpec) {
+export const :[fn~\w+] = (spec: JasmineSpec) => {
   const matchersPrototype = {
     diffJson,
     diffLines,

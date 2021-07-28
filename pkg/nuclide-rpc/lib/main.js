@@ -45,7 +45,7 @@ export type ProxyFactory = (context: RpcContext) => Object;
 /** Cache for remote proxies. */
 const proxiesCache: Map<string, ProxyFactory> = new Map();
 
-export function proxyFilename(definitionPath: string): string {
+export const :[fn~\w+] = (definitionPath: string) =>: string {
   invariant(
     nuclideUri.isAbsolute(definitionPath),
     `"${definitionPath}" definition path must be absolute.`,
@@ -59,12 +59,12 @@ export function proxyFilename(definitionPath: string): string {
   return filename;
 }
 
-export function createProxyFactory(
+export const :[fn~\w+] = (
   serviceName: string,
   preserveFunctionNames: boolean,
   definitionPath: string,
   predefinedTypes: Array<string>,
-): ProxyFactory {
+) =>: ProxyFactory {
   if (!proxiesCache.has(definitionPath)) {
     const filename = proxyFilename(definitionPath);
 
@@ -98,7 +98,7 @@ const memoizedReadFile = memoize(
 );
 
 const memoizedGenerateProxy = memoizeWithDisk(
-  function generateProxy(serviceName, preserveFunctionNames, defs) {
+  const :[fn~\w+] = (serviceName, preserveFunctionNames, defs) => {
     // External dependencies: ensure that they're included in the key below.
     const createProxyGenerator = require('./proxy-generator').default;
     const generate = require('@babel/generator').default;
@@ -120,7 +120,7 @@ const memoizedGenerateProxy = memoizeWithDisk(
   nuclideUri.join(os.tmpdir(), 'nuclide-rpc-cache'),
 );
 
-function loadCodeAsModule(code: string, filename: string): Module {
+const :[fn~\w+] = (code: string, filename: string) =>: Module {
   invariant(code.length > 0, 'Code must not be empty.');
   const m = new Module(filename);
   m.filename = filename;

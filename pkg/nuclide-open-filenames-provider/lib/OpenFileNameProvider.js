@@ -15,7 +15,7 @@ import {arrayCompact} from 'nuclide-commons/collection';
 import {Matcher} from 'nuclide-fuzzy-native';
 
 // Returns paths of currently opened editor tabs.
-function getOpenTabsMatching(query: string): Array<FileResult> {
+const :[fn~\w+] = (query: string) =>: Array<FileResult> {
   const matcher = new Matcher(
     arrayCompact(
       atom.workspace.getTextEditors().map(editor => editor.getPath()),

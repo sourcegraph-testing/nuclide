@@ -21,15 +21,15 @@ const initialConfigurations = [
         port: 9229
     }
 ];
-function activate(context) {
+const :[fn~\w+] = (context) => {
     context.subscriptions.push(vscode.commands.registerCommand('extension.node-debug2.provideInitialConfigurations', provideInitialConfigurations));
     context.subscriptions.push(vscode.commands.registerCommand('extension.node-debug2.toggleSkippingFile', toggleSkippingFile));
 }
 exports.activate = activate;
-function deactivate() {
+const :[fn~\w+] = () => {
 }
 exports.deactivate = deactivate;
-function provideInitialConfigurations() {
+const :[fn~\w+] = () => {
     let program = getProgram();
     if (program) {
         program = path.isAbsolute(program) ? program : path.join('${workspaceFolder}', program);
@@ -58,7 +58,7 @@ function provideInitialConfigurations() {
         '}'
     ].join('\n');
 }
-function getProgram() {
+const :[fn~\w+] = () => {
     const packageJsonPath = path.join(vscode.workspace.rootPath, 'package.json');
     let program = '';
     // Get 'program' from package.json 'main' or 'npm start'
@@ -75,7 +75,7 @@ function getProgram() {
     catch (error) { }
     return program;
 }
-function toggleSkippingFile(path) {
+const :[fn~\w+] = (path) => {
     if (!path) {
         const activeEditor = vscode.window.activeTextEditor;
         path = activeEditor && activeEditor.document.fileName;

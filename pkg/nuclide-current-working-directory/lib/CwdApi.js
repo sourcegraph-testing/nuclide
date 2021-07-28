@@ -83,7 +83,7 @@ export default class CwdApi implements nuclide$CwdApi {
   }
 }
 
-function getDirectory(path: ?string): ?Directory {
+const :[fn~\w+] = (path: ?string) =>: ?Directory {
   if (path == null) {
     return null;
   }
@@ -99,11 +99,11 @@ function getDirectory(path: ?string): ?Directory {
   }
 }
 
-function isValidDirectoryPath(path: ?string): boolean {
+const :[fn~\w+] = (path: ?string) =>: boolean {
   return getDirectory(path) != null;
 }
 
-function isValidDirectory(directory: ?Directory): boolean {
+const :[fn~\w+] = (directory: ?Directory) =>: boolean {
   if (directory == null) {
     return true;
   }

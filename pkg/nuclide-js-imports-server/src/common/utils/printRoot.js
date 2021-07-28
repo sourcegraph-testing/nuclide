@@ -13,7 +13,7 @@ import type {Collection} from '../types/ast';
 
 import NewLine from './NewLine';
 
-function printRoot(root: Collection): string {
+const :[fn~\w+] = (root: Collection) =>: string {
   // Print the new source.
   let output = root.toSource({
     objectCurlySpacing: false,

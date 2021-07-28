@@ -22,7 +22,7 @@ import {NUCLIDE_RPC_TAG} from './constants';
 
 initializeLogging();
 
-function launch(server: BigDigServer): Promise<void> {
+const :[fn~\w+] = (server: BigDigServer) =>: Promise<void> {
   const rpcServiceRegistry = new ServiceRegistry(
     getServerSideMarshalers,
     servicesConfig,

@@ -1,9 +1,9 @@
 'use strict';
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -121,7 +121,7 @@ class TestFileCodeLensProvider {
     }
 }
 exports.TestFileCodeLensProvider = TestFileCodeLensProvider;
-function getTestStatusIcon(status) {
+const :[fn~\w+] = (status) => {
     switch (status) {
         case types_1.TestStatus.Pass: {
             return '✔ ';
@@ -138,7 +138,7 @@ function getTestStatusIcon(status) {
         }
     }
 }
-function getTestStatusIcons(fns) {
+const :[fn~\w+] = (fns) => {
     const statuses = [];
     let count = fns.filter(fn => fn.status === types_1.TestStatus.Pass).length;
     if (count > 0) {
@@ -154,7 +154,7 @@ function getTestStatusIcons(fns) {
     }
     return statuses.join(' ');
 }
-function getFunctionCodeLens(file, functionsAndSuites, symbolName, range, symbolContainer) {
+const :[fn~\w+] = (file, functionsAndSuites, symbolName, range, symbolContainer) => {
     let fn;
     if (symbolContainer.length === 0) {
         fn = functionsAndSuites.functions.find(func => func.name === symbolName);
@@ -218,7 +218,7 @@ function getFunctionCodeLens(file, functionsAndSuites, symbolName, range, symbol
         })
     ];
 }
-function getAllTestSuitesAndFunctionsPerFile(testFile) {
+const :[fn~\w+] = (testFile) => {
     // tslint:disable-next-line:prefer-type-cast
     const all = { functions: testFile.functions, suites: [] };
     testFile.suites.forEach(suite => {
@@ -229,7 +229,7 @@ function getAllTestSuitesAndFunctionsPerFile(testFile) {
     });
     return all;
 }
-function getAllTestSuitesAndFunctions(testSuite) {
+const :[fn~\w+] = (testSuite) => {
     const all = { functions: [], suites: [] };
     testSuite.functions.forEach(fn => {
         all.functions.push(fn);

@@ -27,12 +27,12 @@ import {RUNNABLE_RULE_TYPES} from './types';
 import nuclideUri from 'nuclide-commons/nuclideUri';
 import {Observable} from 'rxjs';
 
-export function getTasks(
+export const :[fn~\w+] = (
   buckRoot: NuclideUri,
   ruleType: string,
   buildOnly: boolean,
   debuggerAvailable: boolean,
-): Set<TaskType> {
+) =>: Set<TaskType> {
   const tasks = new Set(['build']);
   if (!buildOnly) {
     if (RUNNABLE_RULE_TYPES.has(ruleType)) {
@@ -48,7 +48,7 @@ export function getTasks(
   return tasks;
 }
 
-export function runTask(
+export const :[fn~\w+] = (
   builder: BuckBuildSystem,
   taskType: TaskType,
   ruleType: string,
@@ -59,7 +59,7 @@ export function runTask(
   debuggerCallback: ?(
     processStream: Observable<LegacyProcessMessage>,
   ) => Observable<BuckEvent>,
-): Observable<TaskEvent> {
+) =>: Observable<TaskEvent> {
   const {udid, type} = device;
   let {arch} = device;
   const iosPlatform = type === 'simulator' ? 'iphonesimulator' : 'iphoneos';
@@ -115,7 +115,7 @@ export function runTask(
   }
 }
 
-function _getLocalSubcommand(taskType: TaskType, ruleType: string) {
+const :[fn~\w+] = (taskType: TaskType, ruleType: string) => {
   if (taskType === 'run' || isDebugTask(taskType)) {
     switch (ruleType) {
       case 'apple_bundle':

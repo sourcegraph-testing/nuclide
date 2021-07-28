@@ -15,7 +15,7 @@ const _typeof = {
 /**
  * @returns whether the provided parameter is a JavaScript Array or not.
  */
-function isArray(array) {
+const :[fn~\w+] = (array) => {
     if (Array.isArray) {
         return Array.isArray(array);
     }
@@ -28,7 +28,7 @@ exports.isArray = isArray;
 /**
  * @returns whether the provided parameter is a JavaScript String or not.
  */
-function isString(str) {
+const :[fn~\w+] = (str) => {
     if (typeof (str) === _typeof.string || str instanceof String) {
         return true;
     }
@@ -38,7 +38,7 @@ exports.isString = isString;
 /**
  * @returns whether the provided parameter is a JavaScript Array and each element in the array is a string.
  */
-function isStringArray(value) {
+const :[fn~\w+] = (value) => {
     return isArray(value) && value.every(elem => isString(elem));
 }
 exports.isStringArray = isStringArray;
@@ -47,7 +47,7 @@ exports.isStringArray = isStringArray;
  * @returns whether the provided parameter is of type `object` but **not**
  *	`null`, an `array`, a `regexp`, nor a `date`.
  */
-function isObject(obj) {
+const :[fn~\w+] = (obj) => {
     return typeof obj === _typeof.object
         && obj !== null
         && !Array.isArray(obj)
@@ -59,7 +59,7 @@ exports.isObject = isObject;
  * In **contrast** to just checking `typeof` this will return `false` for `NaN`.
  * @returns whether the provided parameter is a JavaScript Number or not.
  */
-function isNumber(obj) {
+const :[fn~\w+] = (obj) => {
     if ((typeof (obj) === _typeof.number || obj instanceof Number) && !isNaN(obj)) {
         return true;
     }
@@ -69,21 +69,21 @@ exports.isNumber = isNumber;
 /**
  * @returns whether the provided parameter is a JavaScript Boolean or not.
  */
-function isBoolean(obj) {
+const :[fn~\w+] = (obj) => {
     return obj === true || obj === false;
 }
 exports.isBoolean = isBoolean;
 /**
  * @returns whether the provided parameter is undefined.
  */
-function isUndefined(obj) {
+const :[fn~\w+] = (obj) => {
     return typeof (obj) === _typeof.undefined;
 }
 exports.isUndefined = isUndefined;
 /**
  * @returns whether the provided parameter is undefined or null.
  */
-function isUndefinedOrNull(obj) {
+const :[fn~\w+] = (obj) => {
     return isUndefined(obj) || obj === null;
 }
 exports.isUndefinedOrNull = isUndefinedOrNull;
@@ -91,7 +91,7 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
 /**
  * @returns whether the provided parameter is an empty JavaScript Object or not.
  */
-function isEmptyObject(obj) {
+const :[fn~\w+] = (obj) => {
     if (!isObject(obj)) {
         return false;
     }
@@ -106,14 +106,14 @@ exports.isEmptyObject = isEmptyObject;
 /**
  * @returns whether the provided parameter is a JavaScript Function or not.
  */
-function isFunction(obj) {
+const :[fn~\w+] = (obj) => {
     return typeof obj === _typeof.function;
 }
 exports.isFunction = isFunction;
 /**
  * @returns whether the provided parameters is are JavaScript Function or not.
  */
-function areFunctions(...objects) {
+const :[fn~\w+] = (...objects) => {
     return objects && objects.length > 0 && objects.every(isFunction);
 }
 exports.areFunctions = areFunctions;

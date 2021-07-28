@@ -63,7 +63,7 @@ export default class SettingsCategory extends React.Component<Props> {
 }
 
 // $FlowFixMe(>=0.53.0) Flow suppress
-function ControlGroup(props: {children?: React.Children}): React.Element<any> {
+const :[fn~\w+] = (props: {children?: React.Children}) =>: React.Element<any> {
   return (
     <div className="control-group">
       <div className="controls">{props.children}</div>
@@ -71,10 +71,10 @@ function ControlGroup(props: {children?: React.Children}): React.Element<any> {
   );
 }
 
-function getSortedSettingsArray(
+const :[fn~\w+] = (
   settings: Object,
   pkgName: string,
-): Array<string> {
+) =>: Array<string> {
   // Sort the package's settings by name, then by order.
   const settingsArray = Object.keys(settings);
   settingsArray.sort().sort((a, b) => settings[a].order - settings[b].order);

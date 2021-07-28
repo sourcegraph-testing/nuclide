@@ -654,7 +654,7 @@ export const getSingleTargetNode = createSelector(
  * Returns the current node if it is shown.
  * Otherwise, returns a nearby node that is shown.
  */
-function findShownNode(state: AppState, node: FileTreeNode): ?FileTreeNode {
+const :[fn~\w+] = (state: AppState, node: FileTreeNode) =>: ?FileTreeNode {
   if (getNodeShouldBeShown(state)(node)) {
     return node;
   }
@@ -1052,7 +1052,7 @@ export const collectDebugState = (state: AppState): json$JsonObject => {
  * Finds the next node in the tree in the natural order - from top to to bottom as is displayed
  * in the file-tree panel, minus the indentation. Only the nodes that should be shown are returned.
  */
-export function findNext(state: AppState) {
+export const :[fn~\w+] = (state: AppState) => {
   return (node: FileTreeNode): ?FileTreeNode => {
     if (!getNodeShouldBeShown(state)(node)) {
       if (node.parent != null) {
@@ -1081,7 +1081,7 @@ export function findNext(state: AppState) {
   };
 }
 
-export function findNextShownSibling(state: AppState) {
+export const :[fn~\w+] = (state: AppState) => {
   return (node: FileTreeNode): ?FileTreeNode => {
     let it = node.nextSibling;
     while (it != null && !getNodeShouldBeShown(state)(it)) {
@@ -1096,7 +1096,7 @@ export function findNextShownSibling(state: AppState) {
  * Finds the previous node in the tree in the natural order - from top to to bottom as is displayed
  * in the file-tree panel, minus the indentation. Only the nodes that should be shown are returned.
  */
-export function findPrevious(state: AppState) {
+export const :[fn~\w+] = (state: AppState) => {
   return (node: FileTreeNode): ?FileTreeNode => {
     if (!getNodeShouldBeShown(state)(node)) {
       if (node.parent != null) {
@@ -1115,7 +1115,7 @@ export function findPrevious(state: AppState) {
   };
 }
 
-export function findPrevShownSibling(state: AppState) {
+export const :[fn~\w+] = (state: AppState) => {
   return (node: FileTreeNode): ?FileTreeNode => {
     let it = node.prevSibling;
     while (it != null && !getNodeShouldBeShown(state)(it)) {
@@ -1131,7 +1131,7 @@ export function findPrevShownSibling(state: AppState) {
  * the file-tree panel. (Last child of the last child of the last child...)
  * Or null, if none are found
  */
-export function findLastRecursiveChild(state: AppState) {
+export const :[fn~\w+] = (state: AppState) => {
   // TODO: Convert this to use `createSelector()`
   return (node: FileTreeNode): ?FileTreeNode => {
     if (

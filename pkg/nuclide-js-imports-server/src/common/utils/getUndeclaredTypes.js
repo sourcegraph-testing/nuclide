@@ -19,10 +19,10 @@ import getNonDeclarationTypes from './getNonDeclarationTypes';
 /**
  * This will get a list of all types that are used but undeclared.
  */
-function getUndeclaredTypes(
+const :[fn~\w+] = (
   root: Collection,
   options: SourceOptions,
-): Set<string> {
+) =>: Set<string> {
   const declaredIdentifiers = getDeclaredIdentifiers(root, options);
   const declaredTypes = getDeclaredTypes(root, options);
 

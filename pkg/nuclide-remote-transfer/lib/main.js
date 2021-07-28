@@ -34,13 +34,13 @@ const REMOTE_TRANSFER_FILE_TREE_CONTEXT_MENU_PRIORITY = 500;
 
 invariant(remote != null);
 
-function trackTransfer(
+const :[fn~\w+] = (
   uploadOrDownload: string,
   outcome: string,
   numFiles: number,
   fileSize: number,
   durationMs?: number,
-): void {
+) =>: void {
   track('fb-nuclide-remote-transfer:' + uploadOrDownload + ':' + outcome, {
     numFiles,
     fileSize,
@@ -48,7 +48,7 @@ function trackTransfer(
   });
 }
 
-function shortenedEnglishListJoin(items: Array<string>): string {
+const :[fn~\w+] = (items: Array<string>) =>: string {
   if (items.length > 3) {
     return (
       items.slice(0, 3).join(', ') + ' and ' + (items.length - 3) + ' more'
@@ -60,14 +60,14 @@ function shortenedEnglishListJoin(items: Array<string>): string {
   }
 }
 
-function getDestinationPath(
+const :[fn~\w+] = (
   destinationDirectory: string,
   sourceFile: string,
-): string {
+) =>: string {
   return nuclideUri.join(destinationDirectory, nuclideUri.basename(sourceFile));
 }
 
-async function sumLocalFileSizes(localFiles: Array<string>): Promise<number> {
+const :[fn~\w+] = async (localFiles: Array<string>) =>: Promise<number> {
   const sizes = await Promise.all(
     localFiles.map(async localFile => {
       const stat = await fsPromise.stat(localFile);
@@ -77,7 +77,7 @@ async function sumLocalFileSizes(localFiles: Array<string>): Promise<number> {
   return sizes.reduce((a, b) => a + b);
 }
 
-async function sumRemoteFileSizes(remoteFiles: Array<string>): Promise<number> {
+const :[fn~\w+] = async (remoteFiles: Array<string>) =>: Promise<number> {
   const sizes = await Promise.all(
     remoteFiles.map(async remoteFile => {
       const fsService = getFileSystemServiceByNuclideUri(remoteFile);
@@ -88,10 +88,10 @@ async function sumRemoteFileSizes(remoteFiles: Array<string>): Promise<number> {
   return sizes.reduce((a, b) => a + b);
 }
 
-async function uploadFile(
+const :[fn~\w+] = async (
   localFile: string,
   remoteDirectory: string,
-): Promise<void> {
+) =>: Promise<void> {
   const fsService = getFileSystemServiceByNuclideUri(remoteDirectory);
   const [buffer, stat] = await Promise.all([
     fsPromise.readFile(localFile),
@@ -104,10 +104,10 @@ async function uploadFile(
   );
 }
 
-async function downloadFile(
+const :[fn~\w+] = async (
   remoteFile: string,
   localDirectory: string,
-): Promise<void> {
+) =>: Promise<void> {
   const fsService = getFileSystemServiceByNuclideUri(remoteFile);
   const stat = await fsService.stat(remoteFile);
   await writeToStream(
@@ -118,29 +118,29 @@ async function downloadFile(
   ).toPromise();
 }
 
-async function uploadFiles(
+const :[fn~\w+] = async (
   localFiles: Array<string>,
   remoteDirectory: string,
-): Promise<void> {
+) =>: Promise<void> {
   for (const localFile of localFiles) {
     // eslint-disable-next-line no-await-in-loop
     await uploadFile(localFile, remoteDirectory);
   }
 }
 
-async function downloadFiles(
+const :[fn~\w+] = async (
   remoteFiles: Array<string>,
   localDirectory: string,
-): Promise<void> {
+) =>: Promise<void> {
   for (const remoteFile of remoteFiles) {
     // eslint-disable-next-line no-await-in-loop
     await downloadFile(remoteFile, localDirectory);
   }
 }
 
-function getUploadDirectoryFromContextMenuSelection(
+const :[fn~\w+] = (
   contextMenu: FileTreeContextMenu,
-): ?string {
+) =>: ?string {
   const node = contextMenu.getSingleSelectedNode();
   if (
     node != null &&
@@ -153,9 +153,9 @@ function getUploadDirectoryFromContextMenuSelection(
   return null;
 }
 
-function getDownloadFilesFromContextMenuSelection(
+const :[fn~\w+] = (
   contextMenu: FileTreeContextMenu,
-): ?Array<string> {
+) =>: ?Array<string> {
   const selectedNodes = contextMenu.getSelectedNodes();
   const validNodes = contextMenu
     .getSelectedNodes()
@@ -175,10 +175,10 @@ function getDownloadFilesFromContextMenuSelection(
   return validNodes.map(node => node.uri).toArray();
 }
 
-function confirmNotification(
+const :[fn~\w+] = (
   message: string,
   detail: ?string = null,
-): Promise<void> {
+) =>: Promise<void> {
   return new Promise((resolve, reject) => {
     const notification = atom.notifications.addError(message, {
       ...(detail != null ? {detail} : {}),
@@ -204,9 +204,9 @@ function confirmNotification(
   });
 }
 
-async function confirmIfUploadWouldOverwrite(
+const :[fn~\w+] = async (
   remotePaths: Array<string>,
-): Promise<void> {
+) =>: Promise<void> {
   const results = await Promise.all(
     remotePaths.map(async remotePath => {
       const fsService = getFileSystemServiceByNuclideUri(remotePath);
@@ -235,9 +235,9 @@ async function confirmIfUploadWouldOverwrite(
   }
 }
 
-async function confirmIfDownloadWouldOverwrite(
+const :[fn~\w+] = async (
   localPaths: Array<string>,
-): Promise<void> {
+) =>: Promise<void> {
   const results = await Promise.all(
     localPaths.map(async localPath => {
       if (await fsPromise.exists(localPath)) {
@@ -265,11 +265,11 @@ async function confirmIfDownloadWouldOverwrite(
   }
 }
 
-function delayedWarning(
+const :[fn~\w+] = (
   message: string,
   msDelay: number = 1000,
   options?: atom$NotificationOptions,
-): IDisposable {
+) =>: IDisposable {
   const disposables = new UniversalDisposable();
   const timeout = setTimeout(() => {
     const notification = atom.notifications.addWarning(message, options);
@@ -279,10 +279,10 @@ function delayedWarning(
   return disposables;
 }
 
-async function uploadFilesWithNotifications(
+const :[fn~\w+] = async (
   localFiles: Array<string>,
   remoteDirectory: string,
-): Promise<void> {
+) =>: Promise<void> {
   const sizePromise = sumLocalFileSizes(localFiles);
   try {
     await confirmIfUploadWouldOverwrite(
@@ -336,10 +336,10 @@ async function uploadFilesWithNotifications(
   }
 }
 
-async function downloadFilesWithNotifications(
+const :[fn~\w+] = async (
   remoteFiles: Array<string>,
   localDirectory: string,
-): Promise<void> {
+) =>: Promise<void> {
   const sizePromise = sumRemoteFileSizes(remoteFiles);
   try {
     await confirmIfDownloadWouldOverwrite(

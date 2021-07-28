@@ -70,7 +70,7 @@ const GLOBAL_KEY = 'global';
 // Quick-open generates a *ton* of queries - sample the tracking.
 const TRACK_SOURCE_RATE = 10;
 
-function getQueryDebounceDelay(provider: Provider<ProviderResult>) {
+const :[fn~\w+] = (provider: Provider<ProviderResult>) => {
   return provider.debounceDelay != null
     ? provider.debounceDelay
     : DEFAULT_QUERY_DEBOUNCE_DELAY;

@@ -17,7 +17,7 @@ import nuclideUri from 'nuclide-commons/nuclideUri';
 
 const CACHE_DIR = 'nuclide-cache';
 
-function getCachePath(key: string, cacheDir?: string) {
+const :[fn~\w+] = (key: string, cacheDir?: string) => {
   const sha1 = crypto
     .createHash('sha1')
     .update(key)

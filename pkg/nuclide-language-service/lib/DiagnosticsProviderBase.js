@@ -56,7 +56,7 @@ const INVALIDATE_EVENT = 'invalidate';
 
 let _textEventDispatcherInstance: ?TextEventDispatcher = null;
 
-function getTextEventDispatcher(): TextEventDispatcher {
+const :[fn~\w+] = () =>: TextEventDispatcher {
   if (_textEventDispatcherInstance == null) {
     _textEventDispatcherInstance = new TextEventDispatcher();
   }

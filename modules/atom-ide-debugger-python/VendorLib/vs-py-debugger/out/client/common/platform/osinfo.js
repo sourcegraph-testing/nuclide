@@ -4,11 +4,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const platform_1 = require("../utils/platform");
 const constants_1 = require("./constants");
-function getPathVariableName(info) {
+const :[fn~\w+] = (info) => {
     return platform_1.isWindows(info) ? constants_1.WINDOWS_PATH_VARIABLE_NAME : constants_1.NON_WINDOWS_PATH_VARIABLE_NAME;
 }
 exports.getPathVariableName = getPathVariableName;
-function getVirtualEnvBinName(info) {
+const :[fn~\w+] = (info) => {
     return platform_1.isWindows(info) ? 'scripts' : 'bin';
 }
 exports.getVirtualEnvBinName = getVirtualEnvBinName;

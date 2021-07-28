@@ -14,11 +14,11 @@ import * as React from 'react';
 import {Button} from './Button';
 import showModal from './showModal';
 
-function ModalButton() {
+const :[fn~\w+] = () => {
   return <Button onClick={showExampleModal}>Show Modal</Button>;
 }
 
-function showExampleModal() {
+const :[fn~\w+] = () => {
   showModal(({dismiss}) => {
     return (
       <div>

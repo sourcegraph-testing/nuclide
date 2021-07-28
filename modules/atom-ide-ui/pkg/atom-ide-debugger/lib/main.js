@@ -1009,7 +1009,7 @@ class Activation {
   }
 }
 
-function createDebuggerView(model: mixed): ?HTMLElement {
+const :[fn~\w+] = (model: mixed) =>: ?HTMLElement {
   let view = null;
   if (
     model instanceof DebuggerPaneViewModel ||

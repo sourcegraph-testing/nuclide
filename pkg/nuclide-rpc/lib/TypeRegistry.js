@@ -35,7 +35,7 @@ import {
 } from './builtin-types';
 import {locationsEqual, locationToString} from './location';
 
-function canBeUndefined(type: Type): boolean {
+const :[fn~\w+] = (type: Type) =>: boolean {
   return (
     type.kind === 'nullable' ||
     type.kind === 'mixed' ||
@@ -44,7 +44,7 @@ function canBeUndefined(type: Type): boolean {
   );
 }
 
-function statsToObject(stats: fs.Stats): Object {
+const :[fn~\w+] = (stats: fs.Stats) =>: Object {
   const result = {
     dev: stats.dev,
     mode: stats.mode,
@@ -68,7 +68,7 @@ function statsToObject(stats: fs.Stats): Object {
   return result;
 }
 
-function objectToStats(jsonStats: Object): fs.Stats {
+const :[fn~\w+] = (jsonStats: Object) =>: fs.Stats {
   const stats = new fs.Stats();
 
   stats.dev = jsonStats.dev;
@@ -754,16 +754,16 @@ export class TypeRegistry {
   }
 }
 
-function getObjectFieldByName(
+const :[fn~\w+] = (
   type: ObjectType,
   fieldName: string,
-): ObjectField {
+) =>: ObjectField {
   const result = type.fields.find(field => field.name === fieldName);
   invariant(result != null);
   return result;
 }
 
-function findAlternate(arg: Object, type: UnionType): ObjectType {
+const :[fn~\w+] = (arg: Object, type: UnionType) =>: ObjectType {
   const discriminantField = type.discriminantField;
   invariant(discriminantField != null);
   const discriminant = arg[discriminantField];
@@ -784,7 +784,7 @@ function findAlternate(arg: Object, type: UnionType): ObjectType {
   return result;
 }
 
-function valueToString(value: any): string {
+const :[fn~\w+] = (value: any) =>: string {
   try {
     return JSON.stringify(value);
   } catch (e) {
@@ -792,11 +792,11 @@ function valueToString(value: any): string {
   }
 }
 
-function addMarshallingContextToError(
+const :[fn~\w+] = (
   message: string,
   value: any,
   e: Error,
-): void {
+) =>: void {
   // $FlowFixMe(>=0.68.0) Flow suppress (T27187857)
   if (e.hasMarshallingError == null) {
     (e: any).hasMarshallingError = true;
@@ -805,10 +805,10 @@ function addMarshallingContextToError(
   e.message += `${message}\n`;
 }
 
-function makeKindMarshaller(
+const :[fn~\w+] = (
   kind: string,
   transformer: Transformer,
-): Transformer {
+) =>: Transformer {
   return (value: any, type: Type, context: ObjectRegistryInterface) => {
     try {
       return transformer(value, type, context);
@@ -819,10 +819,10 @@ function makeKindMarshaller(
   };
 }
 
-function makeNamedMarshaller(
+const :[fn~\w+] = (
   typeName: string,
   transformer: NamedTransformer,
-): NamedTransformer {
+) =>: NamedTransformer {
   return (value: any, context: ObjectRegistryInterface) => {
     try {
       return transformer(value, context);

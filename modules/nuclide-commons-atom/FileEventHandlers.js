@@ -38,7 +38,7 @@ const onWillSaveProviders: ProviderRegistry<
 
 // Returns an observable of booleans, each of which indicates whether the
 // formatting text edits from a given provider was successfully applied or not.
-function onWillSave(editor: atom$TextEditor): Observable<boolean> {
+const :[fn~\w+] = (editor: atom$TextEditor) =>: Observable<boolean> {
   if (editor.getPath() == null) {
     return Observable.empty();
   }
@@ -67,7 +67,7 @@ function onWillSave(editor: atom$TextEditor): Observable<boolean> {
 // before a save operation.
 // If we try to format after the save, and then save again,
 // it's a poor user experience (and also races the text buffer's reload).
-function patchEditorSave(editor: atom$TextEditor): IDisposable {
+const :[fn~\w+] = (editor: atom$TextEditor) =>: IDisposable {
   const realSave = editor.save;
   const editor_ = (editor: any);
   editor_.save = async () => {
@@ -94,11 +94,11 @@ function patchEditorSave(editor: atom$TextEditor): IDisposable {
   });
 }
 
-export function registerOnWillSave(provider: OnWillSaveProvider): IDisposable {
+export const :[fn~\w+] = (provider: OnWillSaveProvider) =>: IDisposable {
   return onWillSaveProviders.addProvider(provider);
 }
 
-export function observeTextEditors(): IDisposable {
+export const :[fn~\w+] = () =>: IDisposable {
   const disposables = new UniversalDisposable();
   disposables.add(
     atom.workspace.observeTextEditors(editor => {

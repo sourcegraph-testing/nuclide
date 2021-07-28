@@ -26,7 +26,7 @@ import {
   waitsForFilePosition,
 } from '../pkg/commons-atom/testHelpers';
 
-function getOutlineData(node) {
+const :[fn~\w+] = (node) => {
   return {
     name: node.innerText,
     classes: node.className.split(' ').sort(),

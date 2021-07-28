@@ -298,7 +298,7 @@ describe('Remote Atom Search by directory', () => {
 // Helper function to sort an array of file results - first by their filepath,
 // and then by the number of matches.
 // This also relativizes paths (since they're in a tmpdir).
-function sortResults(results: Array<search$FileResult>, folder: string) {
+const :[fn~\w+] = (results: Array<search$FileResult>, folder: string) => {
   results.forEach(result => {
     result.filePath = nuclideUri.relative(folder, result.filePath);
   });

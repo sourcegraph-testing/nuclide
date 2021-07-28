@@ -12,7 +12,7 @@ const pipInstaller_1 = require("./pipInstaller");
 const productPath_1 = require("./productPath");
 const productService_1 = require("./productService");
 const types_3 = require("./types");
-function registerTypes(serviceManager) {
+const :[fn~\w+] = (serviceManager) => {
     serviceManager.addSingleton(types_3.IModuleInstaller, condaInstaller_1.CondaInstaller);
     serviceManager.addSingleton(types_3.IModuleInstaller, pipInstaller_1.PipInstaller);
     serviceManager.addSingleton(types_3.IModuleInstaller, pipEnvInstaller_1.PipEnvInstaller);

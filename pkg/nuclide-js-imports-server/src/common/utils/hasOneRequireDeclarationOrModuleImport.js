@@ -16,7 +16,7 @@ import isRequireExpression from './isRequireExpression';
 import isValueImport from '../utils/isValueImport';
 import jscs from 'jscodeshift';
 
-function hasOneRequireDeclarationOrModuleImport(node: Node): boolean {
+const :[fn~\w+] = (node: Node) =>: boolean {
   if (
     jscs.ImportDeclaration.check(node) &&
     isValueImport(node) &&

@@ -13,11 +13,11 @@ import fs from 'fs';
 
 // For the purposes of the benchmarker, a TSV file always has a column heading row at the top.
 
-function writeTsv(
+const :[fn~\w+] = (
   location: string,
   columns: Array<string>,
   record: ?Object,
-): void {
+) =>: void {
   const file = fs.openSync(location, 'a');
   if (record) {
     fs.writeSync(file, columns.map(column => record[column]).join('\t') + '\n');
@@ -27,18 +27,18 @@ function writeTsv(
   fs.closeSync(file);
 }
 
-function writeAllTsv(
+const :[fn~\w+] = (
   location: string,
   columns: Array<string>,
   records: Array<Object>,
-): void {
+) =>: void {
   writeTsv(location, columns);
   records.forEach(record => writeTsv(location, columns, record));
 }
 
-function readAllTsv(
+const :[fn~\w+] = (
   location: string,
-): {columns: Array<string>, records: Array<Object>} {
+) =>: {columns: Array<string>, records: Array<Object>} {
   let columns = [];
   const records = [];
   fs.readFileSync(location, 'utf8')

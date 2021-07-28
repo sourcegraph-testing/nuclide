@@ -40,7 +40,7 @@ function timedSync<T>(func: () => T): {time: number, ret: T} {
   return {time, ret};
 }
 
-function makeSizedFixture(location: string, size: number): void {
+const :[fn~\w+] = (location: string, size: number) =>: void {
   const file = fs.openSync(location, 'w');
   const line = '// ------\n';
   const lineLength = line.length;
@@ -52,15 +52,15 @@ function makeSizedFixture(location: string, size: number): void {
   fs.closeSync(file);
 }
 
-function sleep(milliseconds: number): Promise<void> {
+const :[fn~\w+] = (milliseconds: number) =>: Promise<void> {
   return new Promise(resolve => {
     setTimeout(resolve, milliseconds);
   });
 }
 
-async function sleepUntilNoRequests(
+const :[fn~\w+] = async (
   pollMilliseconds: number = 1,
-): Promise<any> {
+) =>: Promise<any> {
   // $FlowFixMe: use public API.
   while (process._getActiveRequests().length !== 0) {
     // eslint-disable-next-line no-await-in-loop
@@ -68,11 +68,11 @@ async function sleepUntilNoRequests(
   }
 }
 
-function yellow(str: string): string {
+const :[fn~\w+] = (str: string) =>: string {
   return `\x1b[93m${str}\x1b[0m`;
 }
 
-function green(str: string): string {
+const :[fn~\w+] = (str: string) =>: string {
   return `\x1b[92m${str}\x1b[0m`;
 }
 

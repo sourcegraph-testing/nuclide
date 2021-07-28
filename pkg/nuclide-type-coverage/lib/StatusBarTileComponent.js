@@ -90,10 +90,10 @@ export class StatusBarTileComponent extends React.Component<Props> {
   }
 }
 
-function getTooltipString(
+const :[fn~\w+] = (
   formattedPercentage: string,
   providerName: string,
-): string {
+) =>: string {
   return (
     `This file is ${formattedPercentage} covered by ${providerName}.<br/>` +
     'Click to toggle display of uncovered areas.'

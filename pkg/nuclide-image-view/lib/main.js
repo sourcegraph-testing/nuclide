@@ -48,6 +48,6 @@ class Activation {
 
 createPackage(module.exports, Activation);
 
-function openUri(uri: string): ?ImageEditor {
+const :[fn~\w+] = (uri: string) =>: ?ImageEditor {
   return nuclideUri.looksLikeImageUri(uri) ? new ImageEditor(uri) : null;
 }

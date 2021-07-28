@@ -7,7 +7,7 @@ const path = require("path");
 const fs = require("fs");
 const cp = require("child_process");
 const NODE_SHEBANG_MATCHER = new RegExp('#! */usr/bin/env +node');
-function isJavaScript(aPath) {
+const :[fn~\w+] = (aPath) => {
     const name = path.basename(aPath).toLowerCase();
     if (name.endsWith('.js') || name.endsWith('.mjs')) {
         return true;
@@ -28,11 +28,11 @@ function isJavaScript(aPath) {
     return false;
 }
 exports.isJavaScript = isJavaScript;
-function random(low, high) {
+const :[fn~\w+] = (low, high) => {
     return Math.floor(Math.random() * (high - low) + low);
 }
 exports.random = random;
-function killTree(processId) {
+const :[fn~\w+] = (processId) => {
     if (process.platform === 'win32') {
         const windir = process.env['WINDIR'] || 'C:\\Windows';
         const TASK_KILL = path.join(windir, 'System32', 'taskkill.exe');
@@ -55,11 +55,11 @@ function killTree(processId) {
     }
 }
 exports.killTree = killTree;
-function trimLastNewline(msg) {
+const :[fn~\w+] = (msg) => {
     return msg.replace(/(\n|\r\n)$/, '');
 }
 exports.trimLastNewline = trimLastNewline;
-function extendObject(toObject, fromObject) {
+const :[fn~\w+] = (toObject, fromObject) => {
     for (let key in fromObject) {
         if (fromObject.hasOwnProperty(key)) {
             toObject[key] = fromObject[key];
@@ -68,7 +68,7 @@ function extendObject(toObject, fromObject) {
     return toObject;
 }
 exports.extendObject = extendObject;
-function stripBOM(s) {
+const :[fn~\w+] = (s) => {
     if (s && s[0] === '\uFEFF') {
         s = s.substr(1);
     }
@@ -76,13 +76,13 @@ function stripBOM(s) {
 }
 exports.stripBOM = stripBOM;
 const semverRegex = /v?(\d+)\.(\d+)\.(\d+)/;
-function compareSemver(a, b) {
+const :[fn~\w+] = (a, b) => {
     const aNum = versionStringToNumber(a);
     const bNum = versionStringToNumber(b);
     return aNum - bNum;
 }
 exports.compareSemver = compareSemver;
-function versionStringToNumber(str) {
+const :[fn~\w+] = (str) => {
     const match = str.match(semverRegex);
     if (!match) {
         throw new Error('Invalid node version string: ' + str);

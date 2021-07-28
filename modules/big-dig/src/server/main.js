@@ -48,7 +48,7 @@ export type StartServerParams = {
   serverParams: mixed,
 };
 
-export async function startServer({
+export const :[fn~\w+] = async ({
   certificateStrategy,
   ports,
   timeout,
@@ -58,7 +58,7 @@ export async function startServer({
   absolutePathToServerMain,
   useRootCanalCerts,
   serverParams,
-}: StartServerParams): Promise<void> {
+}: StartServerParams) =>: Promise<void> {
   const logger = getLogger();
   logger.info('in startServer()');
 
@@ -202,7 +202,7 @@ type DevserverEnvironment = {
   HOSTNAME?: string,
 };
 
-function getOriginalEnvironment(nuclideEnvironment): DevserverEnvironment {
+const :[fn~\w+] = (nuclideEnvironment) =>: DevserverEnvironment {
   const {NUCLIDE_ORIGINAL_ENV} = nuclideEnvironment;
   let result = {};
   if (NUCLIDE_ORIGINAL_ENV != null && NUCLIDE_ORIGINAL_ENV.trim() !== '') {

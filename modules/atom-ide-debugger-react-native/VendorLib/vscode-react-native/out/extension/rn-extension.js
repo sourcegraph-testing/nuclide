@@ -26,7 +26,7 @@ const qrCodeContentProvider_1 = require("./qrCodeContentProvider");
 const outputChannelLogger = OutputChannelLogger_1.OutputChannelLogger.getMainChannel();
 const entryPointHandler = new entryPointHandler_1.EntryPointHandler(entryPointHandler_1.ProcessType.Extension, outputChannelLogger);
 const fsUtil = new fileSystem_1.FileSystem();
-function activate(context) {
+const :[fn~\w+] = (context) => {
     const appVersion = require("../../package.json").version;
     const reporter = telemetry_1.Telemetry.defaultTelemetryReporter(appVersion);
     entryPointHandler.runApp("react-native", appVersion, errorHelper_1.ErrorHelper.getInternalError(internalErrorCode_1.InternalErrorCode.ExtensionActivationFailed), reporter, () => {
@@ -45,7 +45,7 @@ function activate(context) {
     });
 }
 exports.activate = activate;
-function deactivate() {
+const :[fn~\w+] = () => {
     return Q.Promise(function (resolve) {
         // Kill any packager processes that we spawned
         entryPointHandler.runFunction("extension.deactivate", errorHelper_1.ErrorHelper.getInternalError(internalErrorCode_1.InternalErrorCode.FailedToStopPackagerOnExit), () => {
@@ -57,7 +57,7 @@ function deactivate() {
     });
 }
 exports.deactivate = deactivate;
-function onChangeWorkspaceFolders(context, event) {
+const :[fn~\w+] = (context, event) => {
     if (event.removed.length) {
         event.removed.forEach((folder) => {
             onFolderRemoved(context, folder);
@@ -69,10 +69,10 @@ function onChangeWorkspaceFolders(context, event) {
         });
     }
 }
-function onChangeConfiguration(context) {
+const :[fn~\w+] = (context) => {
     // TODO implements
 }
-function onFolderAdded(context, folder) {
+const :[fn~\w+] = (context, folder) => {
     let rootPath = folder.uri.fsPath;
     let projectRootPath = settingsHelper_1.SettingsHelper.getReactNativeProjectRoot(rootPath);
     reactNativeProjectHelper_1.ReactNativeProjectHelper.getReactNativeVersion(projectRootPath)
@@ -101,7 +101,7 @@ function onFolderAdded(context, folder) {
         }
     });
 }
-function onFolderRemoved(context, folder) {
+const :[fn~\w+] = (context, folder) => {
     let project = commandPaletteHandler_1.CommandPaletteHandler.getFolder(folder);
     Object.keys(project).forEach((key) => {
         if (project[key].dispose) {
@@ -120,7 +120,7 @@ function onFolderRemoved(context, folder) {
         // Ignore
     }
 }
-function configureNodeDebuggerLocation() {
+const :[fn~\w+] = () => {
     const nodeDebugExtension = vscode.extensions.getExtension("ms-vscode.node-debug2");
     if (!nodeDebugExtension) {
         return Q.reject(errorHelper_1.ErrorHelper.getInternalError(internalErrorCode_1.InternalErrorCode.CouldNotFindLocationOfNodeDebugger));
@@ -128,14 +128,14 @@ function configureNodeDebuggerLocation() {
     const nodeDebugPath = nodeDebugExtension.extensionPath;
     return fsUtil.writeFile(path.resolve(__dirname, "../", "debugger", "nodeDebugLocation.json"), JSON.stringify({ nodeDebugPath }));
 }
-function setupAndDispose(setuptableDisposable, context) {
+const :[fn~\w+] = (setuptableDisposable, context) => {
     return setuptableDisposable.setup()
         .then(() => {
         context.subscriptions.push(setuptableDisposable);
         return setuptableDisposable;
     });
 }
-function isSupportedVersion(version) {
+const :[fn~\w+] = (version) => {
     if (!semver.gte(version, "0.19.0")) {
         telemetryHelper_1.TelemetryHelper.sendSimpleEvent("unsupportedRNVersion", { rnVersion: version });
         const shortMessage = `React Native Tools need React Native version 0.19.0 or later to be installed in <PROJECT_ROOT>/node_modules/`;
@@ -148,7 +148,7 @@ function isSupportedVersion(version) {
         return true;
     }
 }
-function registerReactNativeCommands(context) {
+const :[fn~\w+] = (context) => {
     // Register React Native commands
     registerVSCodeCommand(context, "runAndroidSimulator", errorHelper_1.ErrorHelper.getInternalError(internalErrorCode_1.InternalErrorCode.FailedToRunOnAndroid), () => commandPaletteHandler_1.CommandPaletteHandler.runAndroid("simulator"));
     registerVSCodeCommand(context, "runAndroidDevice", errorHelper_1.ErrorHelper.getInternalError(internalErrorCode_1.InternalErrorCode.FailedToRunOnAndroid), () => commandPaletteHandler_1.CommandPaletteHandler.runAndroid("device"));
@@ -162,7 +162,7 @@ function registerReactNativeCommands(context) {
     registerVSCodeCommand(context, "showDevMenu", errorHelper_1.ErrorHelper.getInternalError(internalErrorCode_1.InternalErrorCode.CommandFailed), () => commandPaletteHandler_1.CommandPaletteHandler.showDevMenu());
     registerVSCodeCommand(context, "reloadApp", errorHelper_1.ErrorHelper.getInternalError(internalErrorCode_1.InternalErrorCode.CommandFailed), () => commandPaletteHandler_1.CommandPaletteHandler.reloadApp());
 }
-function registerVSCodeCommand(context, commandName, error, commandHandler) {
+const :[fn~\w+] = (context, commandName, error, commandHandler) => {
     context.subscriptions.push(vscode.commands.registerCommand(`reactNative.${commandName}`, () => {
         return entryPointHandler.runFunction(`commandPalette.${commandName}`, error, commandHandler);
     }));

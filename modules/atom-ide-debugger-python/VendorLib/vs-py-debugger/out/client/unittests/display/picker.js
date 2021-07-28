@@ -98,7 +98,7 @@ statusIconMapping.set(types_3.TestStatus.Pass, constants.Octicons.Test_Pass);
 statusIconMapping.set(types_3.TestStatus.Fail, constants.Octicons.Test_Fail);
 statusIconMapping.set(types_3.TestStatus.Error, constants.Octicons.Test_Error);
 statusIconMapping.set(types_3.TestStatus.Skipped, constants.Octicons.Test_Skip);
-function getSummary(tests) {
+const :[fn~\w+] = (tests) => {
     if (!tests || !tests.summary) {
         return '';
     }
@@ -118,7 +118,7 @@ function getSummary(tests) {
     }
     return statusText.join(', ').trim();
 }
-function buildItems(tests) {
+const :[fn~\w+] = (tests) => {
     const items = [];
     items.push({ description: '', label: 'Run All Unit Tests', type: Type.RunAll });
     items.push({ description: '', label: 'Discover Unit Tests', type: Type.ReDiscover });
@@ -135,7 +135,7 @@ statusSortPrefix[types_3.TestStatus.Error] = '1';
 statusSortPrefix[types_3.TestStatus.Fail] = '2';
 statusSortPrefix[types_3.TestStatus.Skipped] = '3';
 statusSortPrefix[types_3.TestStatus.Pass] = '4';
-function buildItemsForFunctions(rootDirectory, tests, sortBasedOnResults = false, displayStatusIcons = false, debug = false) {
+const :[fn~\w+] = (rootDirectory, tests, sortBasedOnResults = false, displayStatusIcons = false, debug = false) => {
     const functionItems = [];
     tests.forEach(fn => {
         let icon = '';
@@ -167,7 +167,7 @@ function buildItemsForFunctions(rootDirectory, tests, sortBasedOnResults = false
     });
     return functionItems;
 }
-function buildItemsForTestFiles(rootDirectory, testFiles) {
+const :[fn~\w+] = (rootDirectory, testFiles) => {
     const fileItems = testFiles.map(testFile => {
         return {
             description: '',
@@ -191,7 +191,7 @@ function buildItemsForTestFiles(rootDirectory, testFiles) {
     });
     return fileItems;
 }
-function onItemSelected(cmdSource, wkspace, selection, debug) {
+const :[fn~\w+] = (cmdSource, wkspace, selection, debug) => {
     if (!selection || typeof selection.type !== 'number') {
         return;
     }

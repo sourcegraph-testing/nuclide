@@ -22,12 +22,12 @@ import createStore from '../lib/redux/createStore';
 import * as Selectors from '../lib/redux/Selectors';
 import * as Actions from '../lib/redux/Actions';
 
-function renderEntryComponentIntoDocument(
+const :[fn~\w+] = (
   Component: Object,
   store,
   props: Object = {},
   conf: Object = {},
-): React.Component<any, any> {
+) =>: React.Component<any, any> {
   const nodeProps = {
     isExpanded: false,
     isLoading: false,

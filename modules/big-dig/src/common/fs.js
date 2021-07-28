@@ -23,11 +23,11 @@ import rimraf from 'rimraf';
  * @param stopDir (optional) Directory where we stop the search
  * @return path to the nearest file, or null if none exists
  */
-function findNearestFile(
+const :[fn~\w+] = (
   fileName: string,
   startDir: string,
   stopDir: ?string = null,
-): Promise<?string> {
+) =>: Promise<?string> {
   const matcher = async path => {
     const candidate = nuclideUri.join(path, fileName);
     const result = await isFile(candidate);
@@ -44,11 +44,11 @@ function findNearestFile(
  * @param stopDir (optional) Directory where we stop the search
  * @return path to the nearest directory, or null if none exists
  */
-function findNearestDir(
+const :[fn~\w+] = (
   dirName: string,
   startDir: string,
   stopDir: ?string = null,
-): Promise<?string> {
+) =>: Promise<?string> {
   const matcher = async path => {
     const candidate = nuclideUri.join(path, dirName);
     const stats = await stat(candidate);
@@ -66,11 +66,11 @@ function findNearestDir(
  * @param stopDir: Where to stop the search (e.g., repository root), or null for filesystem root
  * @return the nearest matched path to startDir if a match is found; otherwise null
  */
-async function findNearest(
+const :[fn~\w+] = async (
   matcher: (candidate: string) => Promise<?string>,
   startDir: string,
   stopDir: ?string,
-): Promise<?string> {
+) =>: Promise<?string> {
   const candidates = [];
   let candidateDir = startDir;
   while (candidateDir !== stopDir) {
@@ -95,7 +95,7 @@ async function findNearest(
 /**
  * @return whether path corresponds to an ordinary file.
  */
-async function isFile(path: string): Promise<boolean> {
+const :[fn~\w+] = async (path: string) =>: Promise<boolean> {
   const stats = await stat(path);
   return stats != null && stats.isFile();
 }
@@ -104,7 +104,7 @@ async function isFile(path: string): Promise<boolean> {
  * async version of https://nodejs.org/api/fs.html#fs_fs_stat_path_callback.
  * @return null if there is no such file or directory for path; otherwise, fs.Stats for path.
  */
-async function stat(path: string): Promise<?fs.Stats> {
+const :[fn~\w+] = async (path: string) =>: Promise<?fs.Stats> {
   try {
     const [stats] = await toPromise(fs.stat)(path);
     return stats;
@@ -119,35 +119,35 @@ async function stat(path: string): Promise<?fs.Stats> {
 /**
  * async version of https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback.
  */
-function writeFile(
+const :[fn~\w+] = (
   file: string,
   data: string | Buffer,
   options?: Object | string,
-): Promise<void> {
+) =>: Promise<void> {
   return toPromise(fs.writeFile)(file, data, options);
 }
 
 /**
  * async version of https://nodejs.org/api/fs.html#fs_fs_readfile_file_options_callback.
  */
-async function readFile(
+const :[fn~\w+] = async (
   file: string,
   options: Object = {},
-): Promise<string | Buffer> {
+) =>: Promise<string | Buffer> {
   const [data] = await toPromise(fs.readFile)(file, options);
   return data;
 }
 
-async function readFileAsString(
+const :[fn~\w+] = async (
   file: string,
   encoding: string = 'utf8',
-): Promise<string> {
+) =>: Promise<string> {
   const out = await readFile(file, {encoding});
   invariant(typeof out === 'string');
   return out;
 }
 
-async function readFileAsBuffer(file: string): Promise<Buffer> {
+const :[fn~\w+] = async (file: string) =>: Promise<Buffer> {
   const out = await readFile(file);
   invariant(out instanceof Buffer);
   return out;
@@ -158,7 +158,7 @@ async function readFileAsBuffer(file: string): Promise<Buffer> {
  * @param path directory to create.
  * @param mode defaults to 0o777.
  */
-function mkdir(path: string, mode?: number): Promise<void> {
+const :[fn~\w+] = (path: string, mode?: number) =>: Promise<void> {
   return toPromise(fs.mkdir)(path, mode);
 }
 
@@ -166,7 +166,7 @@ function mkdir(path: string, mode?: number): Promise<void> {
  * @param prefix six random characters will be added to the end of this prefix.
  * @param options can be a string specifying an encoding or an object with an `encoding` property.
  */
-function mkdtemp(prefix: string, options?: string | Object): Promise<string> {
+const :[fn~\w+] = (prefix: string, options?: string | Object) =>: Promise<string> {
   return toPromise(fs.mkdtemp)(prefix, options).then(([tempDir]) => tempDir);
 }
 
@@ -174,7 +174,7 @@ function mkdtemp(prefix: string, options?: string | Object): Promise<string> {
  * async version of https://nodejs.org/api/fs.html#fs_fs_mkdir_path_mode_callback.
  * @param path directory to remove.
  */
-function rmdir(path: string): Promise<void> {
+const :[fn~\w+] = (path: string) =>: Promise<void> {
   return toPromise(fs.rmdir)(path);
 }
 
@@ -182,7 +182,7 @@ function rmdir(path: string): Promise<void> {
  * async version of https://nodejs.org/api/fs.html#fs_fs_mkdir_path_mode_callback.
  * @param path file to remove.
  */
-function unlink(path: string): Promise<void> {
+const :[fn~\w+] = (path: string) =>: Promise<void> {
   return toPromise(fs.unlink)(path);
 }
 
@@ -198,10 +198,10 @@ type RemoveOptions = {
  * @param path directory or file to delete
  * @param options
  */
-async function remove(
+const :[fn~\w+] = async (
   path: string,
   options: RemoveOptions = {},
-): Promise<void> {
+) =>: Promise<void> {
   await toPromise(rimraf)(path, options);
 }
 
@@ -219,7 +219,7 @@ async function remove(
  * but I think the code readability and brevity is more important for now. We can always
  * optimize idividual functions when we see a bottleneck.
  */
-function toPromise(func: any) {
+const :[fn~\w+] = (func: any) => {
   return (...args: any) => {
     return new Promise((resolve, reject) => {
       args.push((err, ...results) => {

@@ -72,12 +72,12 @@ const STEP_OUT_ICON = (
   </svg>
 );
 
-function SVGButton(props: {
+const :[fn~\w+] = (props: {
   onClick: () => mixed,
   tooltip: atom$TooltipsAddOptions,
   icon: React.Element<any>,
   disabled: boolean,
-}): React.Element<any> {
+}) =>: React.Element<any> {
   return (
     <Button
       className="debugger-stepping-svg-button"

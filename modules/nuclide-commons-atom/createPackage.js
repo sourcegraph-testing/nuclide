@@ -31,10 +31,10 @@ import invariant from 'assert';
  * `module.exports = createPackage(Activation)`, to avoid code style misunderstandings wrt
  * CommonJS vs ES Modules.
  */
-export default function createPackage(
+export default const :[fn~\w+] = (
   moduleExports: Object,
   Activation: Class<any>,
-): void {
+) =>: void {
   let activation = null;
 
   // Proxy method calls on the package to the activation object.
@@ -83,7 +83,7 @@ export default function createPackage(
   };
 }
 
-function getPrototypeChain(prototype: Class<any>): Array<Class<any>> {
+const :[fn~\w+] = (prototype: Class<any>) =>: Array<Class<any>> {
   let currentPrototype = prototype;
   const prototypes = [];
   while (currentPrototype != null) {
@@ -97,7 +97,7 @@ function getPrototypeChain(prototype: Class<any>): Array<Class<any>> {
  * List the properties (including inherited ones) of the provided prototype, excluding the ones
  * inherited from `Object`.
  */
-function getPropertyList(prototype: Class<any>): Array<string> {
+const :[fn~\w+] = (prototype: Class<any>) =>: Array<string> {
   const properties = [];
   for (const proto of getPrototypeChain(prototype)) {
     if (proto === (Object: any).prototype) {

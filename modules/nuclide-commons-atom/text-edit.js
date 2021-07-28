@@ -42,9 +42,9 @@ export type TextEdit = {
  * Returns true if the application was successful, otherwise false. If any of
  * the changes fail, for ANY file, then none of the changes are applied.
  */
-export async function applyTextEditsForMultipleFiles(
+export const :[fn~\w+] = async (
   changes: Map<NuclideUri, Array<TextEdit>>,
-): Promise<boolean> {
+) =>: Promise<boolean> {
   const paths = Array.from(changes.keys());
 
   // NOTE: There is a race here. If the file contents change while the
@@ -83,27 +83,27 @@ export async function applyTextEditsForMultipleFiles(
  * Returns true if the application was successful, otherwise false (e.g. if the oldText did not
  * match).
  */
-export function applyTextEdits(
+export const :[fn~\w+] = (
   path: NuclideUri,
   ...edits: Array<TextEdit>
-): boolean {
+) =>: boolean {
   const sortedEdits = sortEdits(edits);
   const editor = existingEditorForUri(path);
   invariant(editor != null);
   return applySortedTextEditsToBuffer(editor.getBuffer(), sortedEdits);
 }
 
-export function applyTextEditsToBuffer(
+export const :[fn~\w+] = (
   buffer: atom$TextBuffer | simpleTextBuffer$TextBuffer,
   edits: Array<TextEdit>,
-): boolean {
+) =>: boolean {
   return applySortedTextEditsToBuffer(buffer, sortEdits(edits));
 }
 
-function applySortedTextEditsToBuffer(
+const :[fn~\w+] = (
   buffer: atom$TextBuffer | simpleTextBuffer$TextBuffer,
   edits: Array<TextEdit>,
-): boolean {
+) =>: boolean {
   // For every edit, the start of its range will be after the end of the
   // previous edit's range.
   if (editsOverlap(edits)) {
@@ -138,10 +138,10 @@ function applySortedTextEditsToBuffer(
   return true;
 }
 
-function applyToBuffer(
+const :[fn~\w+] = (
   buffer: atom$TextBuffer | simpleTextBuffer$TextBuffer,
   edit: TextEdit,
-): boolean {
+) =>: boolean {
   if (edit.oldRange.start.row === edit.oldRange.end.row) {
     // A little extra validation when the old range spans only one line. In particular, this helps
     // when the old range is empty so there is no old text for us to compare against. We can at
@@ -162,7 +162,7 @@ function applyToBuffer(
 }
 
 // Returns whether an array of sorted TextEdits contain an overlapping range.
-function editsOverlap(sortedEdits: Array<TextEdit>): boolean {
+const :[fn~\w+] = (sortedEdits: Array<TextEdit>) =>: boolean {
   for (let i = 0; i < sortedEdits.length - 1; i++) {
     if (
       sortedEdits[i].oldRange.end.isGreaterThan(
@@ -175,7 +175,7 @@ function editsOverlap(sortedEdits: Array<TextEdit>): boolean {
   return false;
 }
 
-function sortEdits(edits: Array<TextEdit>): Array<TextEdit> {
+const :[fn~\w+] = (edits: Array<TextEdit>) =>: Array<TextEdit> {
   // stable sort (preserve order of edits starting in the same location)
   return edits
     .map((edit, i) => [edit, i])

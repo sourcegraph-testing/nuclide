@@ -69,7 +69,7 @@ describe('nuclide-distraction-free-mode', () => {
   });
 });
 
-function isOutlineViewVisible(): boolean {
+const :[fn~\w+] = () =>: boolean {
   let el = document.querySelector('.outline-view');
   if (el == null) {
     return false;

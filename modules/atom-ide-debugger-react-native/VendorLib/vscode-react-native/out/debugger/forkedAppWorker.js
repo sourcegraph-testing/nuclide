@@ -9,7 +9,7 @@ const child_process = require("child_process");
 const scriptImporter_1 = require("./scriptImporter");
 const vscode_chrome_debug_core_1 = require("vscode-chrome-debug-core");
 const errorHelper_1 = require("../common/error/errorHelper");
-function printDebuggingError(message, reason) {
+const :[fn~\w+] = (message, reason) => {
     const nestedError = errorHelper_1.ErrorHelper.getNestedWarning(reason, `${message}. Debugging won't work: Try reloading the JS from inside the app, or Reconnect the VS Code debugger`);
     vscode_chrome_debug_core_1.logger.error(nestedError.message);
 }

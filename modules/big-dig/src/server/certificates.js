@@ -32,12 +32,12 @@ type CertificatePaths = {
 /**
  * If successful, this will return a set of paths where all of the certificate info was written.
  */
-export async function generateCertificates(
+export const :[fn~\w+] = async (
   clientCommonName: string,
   serverCommonName: string,
   openSSLConfigPath: string,
   expirationDays: number,
-): Promise<CertificatePaths> {
+) =>: Promise<CertificatePaths> {
   // Set the process umask to 0077 to ensure that certificates have 0700 permissions.
   // The spawned OpenSSL processes will inherit the umask.
   const oldUmask = process.umask();
@@ -78,12 +78,12 @@ export async function generateCertificates(
   }
 }
 
-async function generateCA(
+const :[fn~\w+] = async (
   caKeyPath: string,
   caCertPath: string,
   expirationDays: number,
   env: Object,
-): Promise<void> {
+) =>: Promise<void> {
   const command = 'openssl';
   const options = {env};
   await execFile(command, ['genrsa', '-out', caKeyPath, '1024'], options);
@@ -105,7 +105,7 @@ async function generateCA(
   );
 }
 
-async function generateKeyAndCertificate(
+const :[fn~\w+] = async (
   caKeyPath: string,
   caCertPath: string,
   expirationDays: number,
@@ -116,7 +116,7 @@ async function generateKeyAndCertificate(
   commonName: string,
   serial: number,
   env: Object,
-): Promise<void> {
+) =>: Promise<void> {
   const command = 'openssl';
   const options = {env};
   await execFile(command, ['genrsa', '-out', keyFilePath, '1024'], options);
@@ -166,7 +166,7 @@ async function generateKeyAndCertificate(
  * Creates a new temporary directory where all of the certificate data for one instance
  * of the server should be written.
  */
-async function generateKeyPairPaths(): Promise<CertificatePaths> {
+const :[fn~\w+] = async () =>: Promise<CertificatePaths> {
   const certsDir = await fs.mkdtemp(
     nuclideUri.join(os.tmpdir(), '.big-dig-certs'),
   );
@@ -184,7 +184,7 @@ async function generateKeyPairPaths(): Promise<CertificatePaths> {
   };
 }
 
-function generateEnvironmentForOpenSSLCalls(serverCommonName: string): Object {
+const :[fn~\w+] = (serverCommonName: string) =>: Object {
   const env = {...process.env};
   if (process.platform === 'darwin') {
     // High Sierra comes with LibreSSL by default, which is not supported.

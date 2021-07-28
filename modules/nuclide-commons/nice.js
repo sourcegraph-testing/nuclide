@@ -22,11 +22,11 @@ import {spawn, observeProcess} from './process';
 const NICE_COMMAND = 'nice';
 const IONICE_COMMAND = 'ionice';
 
-export async function niceSafeSpawn(
+export const :[fn~\w+] = async (
   command: string,
   args: Array<string>,
   execOptions?: Object,
-): Promise<child_process$ChildProcess> {
+) =>: Promise<child_process$ChildProcess> {
   const nicified = await nicifyCommand(command, args, execOptions);
   const processStream = spawn(...nicified).publish();
   const processPromise = processStream.take(1).toPromise();
@@ -79,15 +79,15 @@ const commandAvailabilityCache: LRUCache<string, Promise<boolean>> = LRU({
   maxAge: 1000 * 60 * 5, // 5 minutes
 });
 
-function hasNiceCommand(): Promise<boolean> {
+const :[fn~\w+] = () =>: Promise<boolean> {
   return hasCommand(NICE_COMMAND);
 }
 
-function hasIoniceCommand(): Promise<boolean> {
+const :[fn~\w+] = () =>: Promise<boolean> {
   return hasCommand(IONICE_COMMAND);
 }
 
-function hasCommand(command: string): Promise<boolean> {
+const :[fn~\w+] = (command: string) =>: Promise<boolean> {
   let result: ?Promise<boolean> = commandAvailabilityCache.get(command);
   if (result == null) {
     result = which(command).then(x => x != null);
@@ -96,11 +96,11 @@ function hasCommand(command: string): Promise<boolean> {
   return result;
 }
 
-export function niceObserveProcess(
+export const :[fn~\w+] = (
   command: string,
   args?: Array<string>,
   options?: ObserveProcessOptions,
-): Observable<ProcessMessage> {
+) =>: Observable<ProcessMessage> {
   return Observable.defer(() =>
     nicifyCommand(command, args, options),
   ).switchMap(spawnArgs => observeProcess(...spawnArgs));

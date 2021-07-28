@@ -38,7 +38,7 @@ class Activation {
   }
 }
 
-function getNodeConfig(): AutoGenConfig {
+const :[fn~\w+] = () =>: AutoGenConfig {
   const program = {
     name: 'program',
     type: 'string',

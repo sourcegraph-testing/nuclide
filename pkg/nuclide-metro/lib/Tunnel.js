@@ -18,11 +18,11 @@ import nuclideUri from 'nuclide-commons/nuclideUri';
 import consumeFirstProvider from 'nuclide-commons-atom/consumeFirstProvider';
 import {Observable} from 'rxjs';
 
-export function openTunnel(
+export const :[fn~\w+] = (
   serviceUri: NuclideUri,
   behavior: TunnelBehavior,
   port: number,
-): Observable<'ready'> {
+) =>: Observable<'ready'> {
   if (!nuclideUri.isRemote(serviceUri) || behavior === 'do_not_open_tunnel') {
     return Observable.of('ready').concat(Observable.never());
   }
@@ -58,10 +58,10 @@ export function openTunnel(
     .share();
 }
 
-function _askToRequestTunnel(
+const :[fn~\w+] = (
   service: SshTunnelService,
   tunnel: Tunnel,
-): Observable<'ready'> {
+) =>: Observable<'ready'> {
   return Observable.create(observer => {
     let subscription;
     const notification = atom.notifications.addSuccess('Open tunnel?', {
@@ -94,7 +94,7 @@ function _askToRequestTunnel(
   }).mapTo('ready');
 }
 
-function _desiredTunnelTo(uri: NuclideUri, port: number): Tunnel {
+const :[fn~\w+] = (uri: NuclideUri, port: number) =>: Tunnel {
   return {
     description: 'Metro',
     from: {

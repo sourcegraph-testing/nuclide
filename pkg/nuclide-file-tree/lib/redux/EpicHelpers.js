@@ -42,10 +42,10 @@ const logger = getLogger('nuclide-file-tree');
  * node's children out of the fetched children URIs and a change subscription is created
  * for the node to monitor future changes.
  */
-export function fetchChildKeys(
+export const :[fn~\w+] = (
   store: MiddlewareStore,
   nodeKey: NuclideUri,
-): Promise<void> {
+) =>: Promise<void> {
   const existingPromise = Selectors.getLoading(store.getState(), nodeKey);
   if (existingPromise != null) {
     return existingPromise;
@@ -93,10 +93,10 @@ export function fetchChildKeys(
   return promise;
 }
 
-async function setGeneratedChildren(
+const :[fn~\w+] = async (
   store: MiddlewareStore,
   nodeKey: NuclideUri,
-): Promise<void> {
+) =>: Promise<void> {
   let generatedFileService;
   try {
     generatedFileService = await awaitGeneratedFileServiceByNuclideUri(nodeKey);
@@ -132,11 +132,11 @@ async function setGeneratedChildren(
   );
 }
 
-function setFetchedKeys(
+const :[fn~\w+] = (
   store: MiddlewareStore,
   nodeKey: NuclideUri,
   childrenKeys: Array<string> = [],
-): void {
+) =>: void {
   const directory = FileTreeHelpers.getDirectoryByKey(nodeKey);
 
   const nodesToAutoExpand: Array<FileTreeNode> = [];
@@ -207,11 +207,11 @@ function setFetchedKeys(
   });
 }
 
-export function expandNode(
+export const :[fn~\w+] = (
   store: MiddlewareStore,
   rootKey: NuclideUri,
   nodeKey: NuclideUri,
-): void {
+) =>: void {
   const recursivelyExpandNode = (node: FileTreeNode) => {
     return node.setIsExpanded(true).setRecursive(
       n => {
@@ -255,11 +255,11 @@ export function expandNode(
   );
 }
 
-function makeSubscription(
+const :[fn~\w+] = (
   store: MiddlewareStore,
   nodeKey: NuclideUri,
   directory: ?Directory,
-): ?IDisposable {
+) =>: ?IDisposable {
   if (directory == null) {
     return null;
   }
@@ -308,11 +308,11 @@ function makeSubscription(
  * Performes a deep BFS scanning expand of contained nodes.
  * returns - a promise fulfilled when the expand operation is finished
  */
-export function expandNodeDeep(
+export const :[fn~\w+] = (
   store: MiddlewareStore,
   rootKey: NuclideUri,
   nodeKey: NuclideUri,
-): Promise<void> {
+) =>: Promise<void> {
   // Stop the traversal after 100 nodes were added to the tree
   const itNodes = new FileTreeStoreBfsIterator(
     store,
@@ -418,11 +418,11 @@ class FileTreeStoreBfsIterator {
  * return as promise, to make the caller oblivious to the way children were
  * fetched.
  */
-async function promiseNodeChildKeys(
+const :[fn~\w+] = async (
   store: MiddlewareStore,
   rootKey: string,
   nodeKey: string,
-): Promise<Array<NuclideUri>> {
+) =>: Promise<Array<NuclideUri>> {
   const shownChildrenUris = node => {
     return node.children
       .valueSeq()
@@ -448,10 +448,10 @@ async function promiseNodeChildKeys(
  * Makes sure a certain child node is present in the file tree, creating all its ancestors, if
  * needed and scheduling a child key fetch. Used by the reveal active file functionality.
  */
-export function ensureChildNode(
+export const :[fn~\w+] = (
   store: MiddlewareStore,
   nodeKey: NuclideUri,
-): void {
+) =>: void {
   let firstRootUri;
 
   const expandNode_ = node => {
@@ -537,10 +537,10 @@ export function ensureChildNode(
   }
 }
 
-export function setRootKeys(
+export const :[fn~\w+] = (
   store: MiddlewareStore,
   rootKeys: Array<NuclideUri>,
-): void {
+) =>: void {
   const rootNodes = rootKeys.map(rootUri => {
     const root = Selectors.getRoots(store.getState()).get(rootUri);
     if (root != null) {

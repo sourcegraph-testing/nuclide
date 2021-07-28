@@ -77,10 +77,10 @@ export default class WelcomePageComponent extends React.Component<
   }
 }
 
-function mapStateToProps(
+const :[fn~\w+] = (
   state: AppState,
   ownProps: {className?: string, topic: string},
-) {
+) => {
   return {...state, ...ownProps};
 }
 

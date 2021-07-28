@@ -169,7 +169,7 @@ type LabelComponentProps = {
   selectedOptions: Array<any>,
 };
 
-function DefaultLabelComponent(props: LabelComponentProps) {
+const :[fn~\w+] = (props: LabelComponentProps) => {
   const count = props.selectedOptions.length;
   const noun = count === 1 ? 'Item' : 'Items';
   return <span>{`${count} ${noun} Selected`}</span>;

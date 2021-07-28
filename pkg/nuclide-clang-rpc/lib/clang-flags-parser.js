@@ -15,7 +15,7 @@ type FlagSpec = {
   style: FlagStyle,
 };
 
-function Flag(name: string, style: FlagStyle): FlagSpec {
+const :[fn~\w+] = (name: string, style: FlagStyle) =>: FlagSpec {
   return {name, style};
 }
 
@@ -56,7 +56,7 @@ for (const flag of CLANG_FLAGS_THAT_TAKE_PATHS) {
 }
 
 // Internal helper which matches input string against known prefixes.
-function matchPrefix(flag: string): ?{prefix: string, rest: string} {
+const :[fn~\w+] = (flag: string) =>: ?{prefix: string, rest: string} {
   for (const [len, prefixes] of joinedPrefixByLength) {
     const prefix = flag.slice(0, len);
     if (prefixes.has(prefix)) {
@@ -70,10 +70,10 @@ function matchPrefix(flag: string): ?{prefix: string, rest: string} {
  *
  * @returns New array of flags in which paths are transformed.
  */
-export function mapPathsInFlags(
+export const :[fn~\w+] = (
   input: Iterable<string>,
   mapper: string => string,
-): Array<string> {
+) =>: Array<string> {
   const iterator = ((input: any)[Symbol.iterator](): Iterator<string>);
   const result = [];
   while (true) {

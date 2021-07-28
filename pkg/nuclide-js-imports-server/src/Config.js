@@ -39,7 +39,7 @@ export type HasteSettings = $ReadOnly<{|
   nameReducerBlacklist: Array<RegExp>,
 |}>;
 
-export function serializeConfig(config: ConfigFromFlow): string {
+export const :[fn~\w+] = (config: ConfigFromFlow) =>: string {
   const {moduleDirs, hasteSettings: settings} = config;
   // RegExps aren't normally stringifyable.
   return JSON.stringify({
@@ -57,7 +57,7 @@ export function serializeConfig(config: ConfigFromFlow): string {
   });
 }
 
-export function getEslintGlobals(root: NuclideUri): Array<string> {
+export const :[fn~\w+] = (root: NuclideUri) =>: Array<string> {
   return (
     parseEslintrc(nuclideUri.join(root, '.eslintrc')) ||
     parseEslintrcJs(nuclideUri.join(root, '.eslintrc.js')) ||
@@ -66,7 +66,7 @@ export function getEslintGlobals(root: NuclideUri): Array<string> {
   );
 }
 
-export function getConfigFromFlow(root: NuclideUri): ConfigFromFlow {
+export const :[fn~\w+] = (root: NuclideUri) =>: ConfigFromFlow {
   let moduleDirs = [];
   let hasteSettings = {
     isHaste: false,
@@ -90,10 +90,10 @@ export function getConfigFromFlow(root: NuclideUri): ConfigFromFlow {
   };
 }
 
-function flowConfigToResolveDirnames(
+const :[fn~\w+] = (
   flowFile: string,
   flowFileContents: string,
-): Array<string> {
+) =>: Array<string> {
   const resolveDirs = flowFileContents.match(
     /module.system.node.resolve_dirname=([^\s]+)/g,
   );
@@ -104,15 +104,15 @@ function flowConfigToResolveDirnames(
     : [nuclideUri.join(nuclideUri.dirname(flowFile), 'node_modules')];
 }
 
-function flowConfigToHasteSettings(
+const :[fn~\w+] = (
   root: NuclideUri,
   flowFileContents: string,
-): HasteSettings {
+) =>: HasteSettings {
   const isHaste = Boolean(flowFileContents.match(/module.system=haste/));
   const useNameReducers = Boolean(
     flowFileContents.match(/module.system.haste.use_name_reducers=true/),
   );
-  function getPatterns(dirs: Array<string>) {
+  const :[fn~\w+] = (dirs: Array<string>) => {
     return dirs
       .map(dirString => dirString.split('=')[1])
       .map(line => new RegExp(line.replace('<PROJECT_ROOT>', root)));
@@ -160,7 +160,7 @@ function flowConfigToHasteSettings(
   };
 }
 
-function parseEslintrc(eslintFile: string): ?Array<string> {
+const :[fn~\w+] = (eslintFile: string) =>: ?Array<string> {
   try {
     const json = JSON.parse(fs.readFileSync(eslintFile, 'utf8'));
     return parseEslintConfig(json);
@@ -168,7 +168,7 @@ function parseEslintrc(eslintFile: string): ?Array<string> {
   return null;
 }
 
-function parseEslintrcJs(eslintFile: string): ?Array<string> {
+const :[fn~\w+] = (eslintFile: string) =>: ?Array<string> {
   try {
     const js = fs.readFileSync(eslintFile, 'utf8');
     // Hopefully .eslintrc.js doesn't require very much.
@@ -184,7 +184,7 @@ function parseEslintrcJs(eslintFile: string): ?Array<string> {
   return null;
 }
 
-function packageJsonEslintConfig(packageJsonFile: string): ?Array<string> {
+const :[fn~\w+] = (packageJsonFile: string) =>: ?Array<string> {
   try {
     const json = JSON.parse(fs.readFileSync(packageJsonFile, 'utf8'));
     if (json.eslintConfig) {
@@ -194,7 +194,7 @@ function packageJsonEslintConfig(packageJsonFile: string): ?Array<string> {
   return null;
 }
 
-function parseEslintConfig(config: Object): Array<string> {
+const :[fn~\w+] = (config: Object) =>: Array<string> {
   let globals = new Set();
   if (config.globals && typeof config.globals === 'object') {
     globals = new Set(Object.keys(config.globals));
@@ -207,7 +207,7 @@ function parseEslintConfig(config: Object): Array<string> {
   return Array.from(globals);
 }
 
-function getGlobalsForEnvs(envs: Array<string>): Set<string> {
+const :[fn~\w+] = (envs: Array<string>) =>: Set<string> {
   const globals = new Set();
   envs.forEach(env => {
     if (globalsModule[env]) {
@@ -217,7 +217,7 @@ function getGlobalsForEnvs(envs: Array<string>): Set<string> {
   return globals;
 }
 
-function getYarnWorkspaces(root: string): Array<string> {
+const :[fn~\w+] = (root: string) =>: Array<string> {
   try {
     const packageJsonFile = nuclideUri.join(root, 'package.json');
     const json = JSON.parse(fs.readFileSync(packageJsonFile, 'utf8'));

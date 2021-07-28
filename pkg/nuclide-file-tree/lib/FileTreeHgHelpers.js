@@ -25,16 +25,16 @@ import {getFileSystemServiceByNuclideUri} from '../../nuclide-remote-connection'
 
 const MOVE_TIMEOUT = 10000;
 
-function getHgRepositoryForAtomRepo(
+const :[fn~\w+] = (
   repository: ?atom$Repository,
-): ?HgRepositoryClient {
+) =>: ?HgRepositoryClient {
   if (repository != null && repository.getType() === 'hg') {
     return ((repository: any): HgRepositoryClient);
   }
   return null;
 }
 
-export function getHgRepositoryForPath(filePath: string): ?HgRepositoryClient {
+export const :[fn~\w+] = (filePath: string) =>: ?HgRepositoryClient {
   const repository = repositoryForPath(filePath);
   return getHgRepositoryForAtomRepo(repository);
 }
@@ -43,7 +43,7 @@ export function getHgRepositoryForPath(filePath: string): ?HgRepositoryClient {
  * Determines whether renaming the given node to the specified destPath is an
  * acceptable rename.
  */
-export function isValidRename(uri: NuclideUri, destPath_: NuclideUri): boolean {
+export const :[fn~\w+] = (uri: NuclideUri, destPath_: NuclideUri) =>: boolean {
   let destPath = destPath_;
   const path = FileTreeHelpers.keyToPath(uri);
   const [rootPath] = atom.project.relativizePath(uri);
@@ -69,10 +69,10 @@ export function isValidRename(uri: NuclideUri, destPath_: NuclideUri): boolean {
 /**
  * Renames a single node to the new path.
  */
-export async function renameNode(
+export const :[fn~\w+] = async (
   node: FileTreeNode,
   destPath: NuclideUri,
-): Promise<void> {
+) =>: Promise<void> {
   if (!isValidRename(node.uri, destPath)) {
     return;
   }
@@ -103,7 +103,7 @@ export async function renameNode(
  */
 let isMoving = false;
 
-function resetIsMoving() {
+const :[fn~\w+] = () => {
   isMoving = false;
 }
 
@@ -111,10 +111,10 @@ function resetIsMoving() {
  * Moves an array of nodes into the destPath, ignoring nodes that cannot be moved.
  * This wrapper prevents concurrent move operations.
  */
-export async function moveNodes(
+export const :[fn~\w+] = async (
   nodes: Array<FileTreeNode>,
   destPath: NuclideUri,
-): Promise<void> {
+) =>: Promise<void> {
   return movePaths(
     nodes.map(node => FileTreeHelpers.keyToPath(node.uri)),
     destPath,
@@ -125,10 +125,10 @@ export async function moveNodes(
  * Moves an array of paths into the destPath, ignoring paths that cannot be moved.
  * This wrapper prevents concurrent move operations.
  */
-export async function movePaths(
+export const :[fn~\w+] = async (
   paths: Array<NuclideUri>,
   destPath: NuclideUri,
-): Promise<void> {
+) =>: Promise<void> {
   if (isMoving) {
     return;
   }
@@ -143,10 +143,10 @@ export async function movePaths(
   );
 }
 
-async function _movePathsUnprotected(
+const :[fn~\w+] = async (
   sourcePaths: Array<NuclideUri>,
   destPath: NuclideUri,
-): Promise<void> {
+) =>: Promise<void> {
   let paths = [];
 
   try {
@@ -190,7 +190,7 @@ async function _movePathsUnprotected(
 /**
  * Deletes an array of nodes.
  */
-export async function deleteNodes(nodes: Array<FileTreeNode>): Promise<void> {
+export const :[fn~\w+] = async (nodes: Array<FileTreeNode>) =>: Promise<void> {
   // Filter out children nodes to avoid ENOENTs that happen when parents are
   // deleted before its children. Convert to List so we can use groupBy.
   const paths = Immutable.List(

@@ -8,7 +8,7 @@ const constants_1 = require("../constants");
  * @param {number} [wait] Wait time.
  * @returns void
  */
-function debounce(wait) {
+const :[fn~\w+] = (wait) => {
     // tslint:disable-next-line:no-any no-function-expression
     return function (_target, _propertyName, descriptor) {
         const originalMethod = descriptor.value;
@@ -25,7 +25,7 @@ exports.debounce = debounce;
  * @param {string} [scopeName] Scope for the error message to be logged along with the error.
  * @returns void
  */
-function swallowExceptions(scopeName) {
+const :[fn~\w+] = (scopeName) => {
     // tslint:disable-next-line:no-any no-function-expression
     return function (_target, propertyName, descriptor) {
         const originalMethod = descriptor.value;

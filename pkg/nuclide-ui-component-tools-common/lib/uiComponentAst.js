@@ -20,10 +20,10 @@ import type {ComponentProp} from './types';
 
 const babelParserOptions = babylonOptions;
 
-function matchesExtension(
+const :[fn~\w+] = (
   parts: Array<string>,
   extension: Array<string>,
-): boolean {
+) =>: boolean {
   if (parts.length !== extension.length + 1) {
     return false;
   }
@@ -38,7 +38,7 @@ function matchesExtension(
   return true;
 }
 
-export function getComponentNameFromUri(uri: NuclideUri): ?string {
+export const :[fn~\w+] = (uri: NuclideUri) =>: ?string {
   const basename = nuclideUri.basename(uri);
   const parts = basename.split('.');
   if (
@@ -59,7 +59,7 @@ export function getComponentNameFromUri(uri: NuclideUri): ?string {
   return componentName;
 }
 
-export function parseCode(code: string): ?File {
+export const :[fn~\w+] = (code: string) =>: ?File {
   try {
     return parse(code, babelParserOptions);
   } catch (_error) {
@@ -69,20 +69,20 @@ export function parseCode(code: string): ?File {
   }
 }
 
-function isComponent(node: Node): boolean {
+const :[fn~\w+] = (node: Node) =>: boolean {
   return node.type === 'ClassDeclaration' && node.superClass;
 }
 
-function getComponentNode(componentName: string, ast: File): ?Node {
+const :[fn~\w+] = (componentName: string, ast: File) =>: ?Node {
   return ast.program.body.find(
     n => isComponent(n) && n.id && n.id.name === componentName,
   );
 }
 
-function getTypeParameterNames(
+const :[fn~\w+] = (
   componentName: string,
   ast: File,
-): Array<string> {
+) =>: Array<string> {
   const componentNode = getComponentNode(componentName, ast);
   if (!componentNode) {
     return [];
@@ -98,7 +98,7 @@ function getTypeParameterNames(
   );
 }
 
-function getTypeAnnotation(node: Node): string {
+const :[fn~\w+] = (node: Node) =>: string {
   // Get the actual name of the type instead of something like
   // 'GenericTypeAnnotation'.
   if (node.value.id) {
@@ -109,7 +109,7 @@ function getTypeAnnotation(node: Node): string {
   return node.value.type;
 }
 
-export function formatLeadingComment(comment: string): string {
+export const :[fn~\w+] = (comment: string) =>: string {
   return (
     comment
       .split('\n')
@@ -142,7 +142,7 @@ export function formatLeadingComment(comment: string): string {
   );
 }
 
-function getLeadingComment(node: Node): ?string {
+const :[fn~\w+] = (node: Node) =>: ?string {
   if (!node.leadingComments) {
     return null;
   }
@@ -153,10 +153,10 @@ function getLeadingComment(node: Node): ?string {
   );
 }
 
-function getDefaultPropsFromIdentifier(
+const :[fn~\w+] = (
   identifier: string,
   ast: File,
-): Array<string> {
+) =>: Array<string> {
   for (let i = 0; i < ast.program.body.length; i++) {
     const node = ast.program.body[i];
     if (node.type !== 'VariableDeclaration') {
@@ -181,16 +181,16 @@ function getDefaultPropsFromIdentifier(
   return [];
 }
 
-function getDefaultPropsFromObjectExpression(expr: Node): Array<string> {
+const :[fn~\w+] = (expr: Node) =>: Array<string> {
   return expr.properties
     .filter(n => n.type === 'ObjectProperty' && n.key.type === 'Identifier')
     .map(n => n.key.name);
 }
 
-export function getDefaultPropNames(
+export const :[fn~\w+] = (
   componentName: string,
   ast: File,
-): Array<string> {
+) =>: Array<string> {
   const componentNode = getComponentNode(componentName, ast);
   if (
     !componentNode ||
@@ -219,7 +219,7 @@ export function getDefaultPropNames(
   return [];
 }
 
-function getObjectTypeProperties(node: Node): ?Array<Node> {
+const :[fn~\w+] = (node: Node) =>: ?Array<Node> {
   if (!node.declaration.right) {
     return null;
   }
@@ -246,10 +246,10 @@ function getObjectTypeProperties(node: Node): ?Array<Node> {
   }
 }
 
-export function getRequiredPropsFromAst(
+export const :[fn~\w+] = (
   componentName: string,
   ast: File,
-): ?Array<ComponentProp> {
+) =>: ?Array<ComponentProp> {
   const typeParameterNames = getTypeParameterNames(componentName, ast);
   if (typeParameterNames.length === 0) {
     return null;
@@ -293,10 +293,10 @@ export function getRequiredPropsFromAst(
 
 // This is used for testing purposes. ASTs are expensive to compute and thus
 // should be re-used by passing instances to `getRequiredPropsFromAst`.
-export function getRequiredProps(
+export const :[fn~\w+] = (
   componentName: string,
   code: string,
-): ?Array<ComponentProp> {
+) =>: ?Array<ComponentProp> {
   const ast = parseCode(code);
   if (ast == null) {
     return [];
@@ -305,10 +305,10 @@ export function getRequiredProps(
   return getRequiredPropsFromAst(componentName, ast);
 }
 
-export function getLeadingCommentForComponent(
+export const :[fn~\w+] = (
   componentName: string,
   ast: File,
-): ?string {
+) =>: ?string {
   const componentNode = getComponentNode(componentName, ast);
   if (!componentNode) {
     return null;

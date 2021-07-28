@@ -13,7 +13,7 @@
 import invariant from 'assert';
 import featureConfig from 'nuclide-commons-atom/feature-config';
 
-export default function showTriggerConflictWarning(): atom$Notification {
+export default const :[fn~\w+] = () =>: atom$Notification {
   const triggerKeys = featureConfig.get(
     `hyperclick.${process.platform}TriggerKeys`,
   );
@@ -38,7 +38,7 @@ export default function showTriggerConflictWarning(): atom$Notification {
   );
 }
 
-function getTriggerDescription(trigger: string): string {
+const :[fn~\w+] = (trigger: string) =>: string {
   const schema = featureConfig.getSchema(
     `hyperclick.${process.platform}TriggerKeys`,
   );

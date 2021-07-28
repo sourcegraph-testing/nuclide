@@ -401,11 +401,11 @@ export class Console {
   };
 }
 
-function getSources(options: {
+const :[fn~\w+] = (options: {
   records: List<Record>,
   providers: Map<string, SourceInfo>,
   providerStatuses: Map<string, ConsoleSourceStatus>,
-}): Array<Source> {
+}) =>: Array<Source> {
   const {providers, providerStatuses, records} = options;
 
   // Convert the providers to a map of sources.
@@ -440,13 +440,13 @@ function getSources(options: {
   return Array.from(mapOfSources.values());
 }
 
-function filterRecords(
+const :[fn~\w+] = (
   records: Array<Record>,
   selectedSourceIds: Array<string>,
   selectedSeverities: Set<Severity>,
   filterPattern: ?RegExp,
   filterSources: boolean,
-): Array<Record> {
+) =>: Array<Record> {
   if (
     !filterSources &&
     filterPattern == null &&
@@ -473,12 +473,12 @@ function filterRecords(
   });
 }
 
-async function serializeRecordObject(
+const :[fn~\w+] = async (
   visited: Set<string>,
   expression: IExpression,
   text: string,
   level: number,
-): Promise<string> {
+) =>: Promise<string> {
   const getText = exp => {
     let indent = '';
     for (let i = 0; i < level; i++) {
@@ -509,10 +509,10 @@ async function serializeRecordObject(
   );
 }
 
-async function createPaste(
+const :[fn~\w+] = async (
   createPasteImpl: CreatePasteFunction,
   records: Array<Record>,
-): Promise<void> {
+) =>: Promise<void> {
   const linePromises = records
     .filter(
       record =>
@@ -584,7 +584,7 @@ async function createPaste(
   }
 }
 
-function levelToSeverity(level: Level): Severity {
+const :[fn~\w+] = (level: Level) =>: Severity {
   switch (level) {
     case 'error':
       return 'error';

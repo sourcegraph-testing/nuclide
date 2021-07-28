@@ -11,12 +11,12 @@
 
 /* eslint-disable */
 
-function baz(arg: ?Type, a: any): RetType {
+const :[fn~\w+] = (arg: ?Type, a: any) =>: RetType {
   foo();
   return {};
 }
 
-function foo({bar, y}, [b], ...bars): void {
+const :[fn~\w+] = ({bar, y}, [b], ...bars) =>: void {
   baz();
 }
 

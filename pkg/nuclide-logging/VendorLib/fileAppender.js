@@ -30,7 +30,7 @@ const os = require('os');
 
 const eol = os.EOL || '\n';
 
-function openTheStream(file, fileSize, numFiles, options) {
+const :[fn~\w+] = (file, fileSize, numFiles, options) => {
   const stream = new streams.RollingFileStream(
     file,
     fileSize,
@@ -57,7 +57,7 @@ function openTheStream(file, fileSize, numFiles, options) {
  * @param options - options to be passed to the underlying stream
  * @param timezoneOffset - optional timezone offset in minutes (default system local)
  */
-function fileAppender(file, layout, logSize, numBackups, options, timezoneOffset) {
+const :[fn~\w+] = (file, layout, logSize, numBackups, options, timezoneOffset) => {
   file = path.normalize(file);
   numBackups = numBackups === undefined ? 5 : numBackups;
   // there has to be at least one backup if logSize has been specified
@@ -101,7 +101,7 @@ function fileAppender(file, layout, logSize, numBackups, options, timezoneOffset
   return app;
 }
 
-function configure(config /* layouts */) {
+const :[fn~\w+] = (config /* layouts */) => {
   let layout = layouts.basicLayout;
   if (config.layout) {
     layout = layouts.layout(config.layout.type, config.layout);
@@ -126,7 +126,7 @@ module.exports.configure = configure;
 const {layouts} = require('log4js');
 let appenders = [];
 
-module.exports.shutdown = function shutdown(cb) {
+module.exports.shutdown = const :[fn~\w+] = (cb) => {
   var completed = 0;
   var error;
   var complete = function(err) {

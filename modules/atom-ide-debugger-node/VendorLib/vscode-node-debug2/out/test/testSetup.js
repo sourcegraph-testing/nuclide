@@ -8,7 +8,7 @@ const os = require("os");
 const path = require("path");
 const ts = require("vscode-chrome-debug-core-testsupport");
 const NIGHTLY_NAME = os.platform() === 'win32' ? 'node-nightly.cmd' : 'node-nightly';
-function patchLaunchArgs(launchArgs) {
+const :[fn~\w+] = (launchArgs) => {
     launchArgs.trace = 'verbose';
     if (process.version.startsWith('v6.2')) {
         launchArgs.runtimeExecutable = NIGHTLY_NAME;
@@ -19,11 +19,11 @@ function patchLaunchArgs(launchArgs) {
         launchArgs.runtimeArgs.push(`--inspect=${launchArgs.port}`, '--debug-brk');
     }
 }
-function setup(port) {
+const :[fn~\w+] = (port) => {
     return ts.setup('./out/src/nodeDebug.js', 'node2', patchLaunchArgs, port);
 }
 exports.setup = setup;
-function teardown() {
+const :[fn~\w+] = () => {
     ts.teardown();
 }
 exports.teardown = teardown;

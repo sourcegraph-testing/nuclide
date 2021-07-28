@@ -23,7 +23,7 @@ export const HACK_CONFIG_PATH = 'nuclide-hack';
 export const SHOW_TYPE_COVERAGE_CONFIG_PATH =
   HACK_CONFIG_PATH + '.showTypeCoverage';
 
-export function getConfig(): HackConfig {
+export const :[fn~\w+] = () =>: HackConfig {
   return featureConfig.getWithDefaults(HACK_CONFIG_PATH, {
     hhClientPath: '',
     logLevel: 'INFO',
@@ -33,7 +33,7 @@ export function getConfig(): HackConfig {
 const LOGGER_CATEGORY = 'nuclide-hack';
 export const logger = getLogger(LOGGER_CATEGORY);
 
-function initializeLogging(): void {
+const :[fn~\w+] = () =>: void {
   const config = getConfig();
   logger.setLevel(config.logLevel);
 }

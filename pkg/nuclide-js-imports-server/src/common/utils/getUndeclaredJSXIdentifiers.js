@@ -15,10 +15,10 @@ import type {SourceOptions} from '../options/SourceOptions';
 import getDeclaredIdentifiers from './getDeclaredIdentifiers';
 import getJSXIdentifiers from './getJSXIdentifiers';
 
-function getUndeclaredJSXIdentifiers(
+const :[fn~\w+] = (
   root: Collection,
   options: SourceOptions,
-): Set<string> {
+) =>: Set<string> {
   const declaredIdentifiers = getDeclaredIdentifiers(root, options);
   const jsxIdentifiers = getJSXIdentifiers(root);
   const undeclared = new Set();

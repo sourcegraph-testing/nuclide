@@ -24,10 +24,10 @@ const GREP_PARSE_PATTERN = /^([^:]*):(.*)$/;
 
 export type GeneratedFileType = 'manual' | 'partial' | 'generated';
 
-export async function getGeneratedFileType(
+export const :[fn~\w+] = async (
   filePath: NuclideUri,
   forceUpdate: boolean = false,
-): Promise<GeneratedFileType> {
+) =>: Promise<GeneratedFileType> {
   if (!forceUpdate) {
     const cachedType = cache.get(filePath);
 
@@ -54,15 +54,15 @@ export async function getGeneratedFileType(
   return tag;
 }
 
-export async function invalidateFileTypeCache(
+export const :[fn~\w+] = async (
   filePath: NuclideUri,
-): Promise<void> {
+) =>: Promise<void> {
   cache.del(filePath);
 }
 
-export async function getGeneratedFileTypes(
+export const :[fn~\w+] = async (
   dirPath: NuclideUri,
-): Promise<Map<NuclideUri, GeneratedFileType>> {
+) =>: Promise<Map<NuclideUri, GeneratedFileType>> {
   const fileTypes: Map<NuclideUri, GeneratedFileType> = new Map();
   const uncheckedFiles = [];
   if (
@@ -111,7 +111,7 @@ export async function getGeneratedFileTypes(
 // 1000 entries should allow for a good number of open directories
 const cache: LRUCache<NuclideUri, GeneratedFileType> = new LRU({max: 1000});
 
-function getTagPattern(forWindows: boolean): ?string {
+const :[fn~\w+] = (forWindows: boolean) =>: ?string {
   if (config.generatedTag == null) {
     return config.partialGeneratedTag;
   }
@@ -126,10 +126,10 @@ function getTagPattern(forWindows: boolean): ?string {
 // again, so we use this variable to keep track.
 let trySpawningToFindTaggedFiles = true;
 
-async function findTaggedFiles(
+const :[fn~\w+] = async (
   dirPath: NuclideUri,
   filenames: Array<string>,
-): Promise<Map<string, GeneratedFileType>> {
+) =>: Promise<Map<string, GeneratedFileType>> {
   if (!trySpawningToFindTaggedFiles) {
     return new Map();
   }
@@ -191,6 +191,6 @@ async function findTaggedFiles(
   return fileTags;
 }
 
-function matchesGeneratedPaths(filePath: NuclideUri): boolean {
+const :[fn~\w+] = (filePath: NuclideUri) =>: boolean {
   return config.generatedPathRegexes.some(regexp => regexp.test(filePath));
 }

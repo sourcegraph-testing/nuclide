@@ -126,7 +126,7 @@ export default ({
 // Returns the directory of the active text editor which will be used to unbreak
 // ties when sorting the suggestions.
 // TODO(T26559382) Extract to util function
-function getQueryRoot(directoryPath: string): string | void {
+const :[fn~\w+] = (directoryPath: string) =>: string | void {
   if (!isGkEnabled('nuclide_fuzzy_file_search_with_root_path')) {
     return undefined;
   }

@@ -9,7 +9,7 @@ const helper_1 = require("./codeExecution/helper");
 const repl_1 = require("./codeExecution/repl");
 const terminalCodeExecution_1 = require("./codeExecution/terminalCodeExecution");
 const types_1 = require("./types");
-function registerTypes(serviceManager) {
+const :[fn~\w+] = (serviceManager) => {
     serviceManager.addSingleton(types_1.ICodeExecutionHelper, helper_1.CodeExecutionHelper);
     serviceManager.addSingleton(types_1.ICodeExecutionManager, codeExecutionManager_1.CodeExecutionManager);
     serviceManager.addSingleton(types_1.ICodeExecutionService, djangoShellCodeExecution_1.DjangoShellCodeExecutionProvider, 'djangoShell');

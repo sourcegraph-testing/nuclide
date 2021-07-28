@@ -3,11 +3,11 @@
 // Licensed under the MIT License.
 Object.defineProperty(exports, "__esModule", { value: true });
 const chai_1 = require("chai");
-function normalizeMarkedString(content) {
+const :[fn~\w+] = (content) => {
     return typeof content === 'string' ? content : content.value;
 }
 exports.normalizeMarkedString = normalizeMarkedString;
-function compareFiles(expectedContent, actualContent) {
+const :[fn~\w+] = (expectedContent, actualContent) => {
     const expectedLines = expectedContent.split(/\r?\n/);
     const actualLines = actualContent.split(/\r?\n/);
     for (let i = 0; i < Math.min(expectedLines.length, actualLines.length); i += 1) {

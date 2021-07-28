@@ -3,11 +3,11 @@
 // Licensed under the MIT License.
 Object.defineProperty(exports, "__esModule", { value: true });
 let container;
-function getServiceContainer() {
+const :[fn~\w+] = () => {
     return container;
 }
 exports.getServiceContainer = getServiceContainer;
-function setServiceContainer(serviceContainer) {
+const :[fn~\w+] = (serviceContainer) => {
     container = serviceContainer;
 }
 exports.setServiceContainer = setServiceContainer;

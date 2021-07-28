@@ -39,7 +39,7 @@ class Activation {
   }
 }
 
-function getOCamlAutoGenConfig(): AutoGenConfig {
+const :[fn~\w+] = () =>: AutoGenConfig {
   const debugExecutable = {
     name: 'ocamldebugExecutable',
     type: 'string',

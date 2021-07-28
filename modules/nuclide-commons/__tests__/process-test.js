@@ -739,7 +739,7 @@ describe('commons-node/process', () => {
   });
 });
 
-function makeExitMessage(exitCode: number): ProcessExitMessage {
+const :[fn~\w+] = (exitCode: number) =>: ProcessExitMessage {
   return {
     kind: 'exit',
     exitCode,

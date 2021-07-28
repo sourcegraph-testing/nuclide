@@ -3,9 +3,9 @@
 'use strict';
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -50,7 +50,7 @@ suite('Propose New Language Server Banner', () => {
         chai_1.expect(yield testBanner.shouldShowBanner()).to.be.equal(false, 'Explicitly disabled banner shouldShowBanner != false.');
     }));
 });
-function preparePopup(enabledValue, sampleValue, appShell, config) {
+const :[fn~\w+] = (enabledValue, sampleValue, appShell, config) => {
     const myfactory = typemoq.Mock.ofType();
     const val = typemoq.Mock.ofType();
     val.setup(a => a.updateValue(typemoq.It.isValue(true))).returns(() => {

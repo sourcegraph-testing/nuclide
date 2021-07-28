@@ -337,9 +337,9 @@ class NonApplicableDefinitionLine extends React.Component<
 
 // Since the selection is based on index, we need to make sure these are ordered correctly (i.e.
 // with the project definitions first).
-function sortApplicableDefinitions(
+const :[fn~\w+] = (
   definitions: Array<WorkingSetDefinition>,
-): Array<WorkingSetDefinition> {
+) =>: Array<WorkingSetDefinition> {
   return definitions.slice().sort((a, b) => {
     if (a.sourceType === b.sourceType) {
       return a.name.localeCompare(b.name);

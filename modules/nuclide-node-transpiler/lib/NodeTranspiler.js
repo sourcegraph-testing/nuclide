@@ -135,7 +135,7 @@ switch (NUCLIDE_TRANSPILE_ENV) {
  * To avoid having to publish all the modules every time, we can instead
  * use the module resolver transform to rewrite them (except when publishing modules.)
  */
-function addYarnWorkspacesCompat() {
+const :[fn~\w+] = () => {
   try {
     const rootPkgJson = JSON.parse(
       fs.readFileSync(path.join(NUCLIDE_ROOT, 'package.json')),
@@ -161,7 +161,7 @@ function addYarnWorkspacesCompat() {
   }
 }
 
-function getVersion(start) {
+const :[fn~\w+] = (start) => {
   let current = start;
   do {
     try {

@@ -23,7 +23,7 @@ const DOCSTRING_PARAM_PATTERNS = [
  * @param {string} docString The docstring for the function
  * @returns {string} Docstring for the parameter
  */
-function extractParamDocString(paramName, docString) {
+const :[fn~\w+] = (paramName, docString) => {
     let paramDocString = '';
     // In docstring the '*' is escaped with a backslash
     paramName = paramName.replace(new RegExp('\\*', 'g'), '\\\\\\*');

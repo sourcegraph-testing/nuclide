@@ -289,9 +289,9 @@ export class WorkingSetsStore {
   }
 }
 
-function groupByApplicability(
+const :[fn~\w+] = (
   definitions: Array<WorkingSetDefinition>,
-): ApplicabilitySortedDefinitions {
+) =>: ApplicabilitySortedDefinitions {
   const applicable = [];
   const notApplicable = [];
 
@@ -306,7 +306,7 @@ function groupByApplicability(
   return {applicable, notApplicable};
 }
 
-function isApplicable(definition: WorkingSetDefinition): boolean {
+const :[fn~\w+] = (definition: WorkingSetDefinition) =>: boolean {
   const originURLs = definition.originURLs;
   if (originURLs != null) {
     const mountedOriginURLs = atom.project
@@ -344,7 +344,7 @@ function isApplicable(definition: WorkingSetDefinition): boolean {
   return dirs.some(dir => workingSet.containsDir(dir.getPath()));
 }
 
-function repositoryForDirectorySync(dir: atom$Directory): ?atom$Repository {
+const :[fn~\w+] = (dir: atom$Directory) =>: ?atom$Repository {
   // $FlowIgnore: This is an internal API. We really shouldn't use it.
   for (const provider of atom.project.repositoryProviders) {
     const repo = provider.repositoryForDirectorySync(dir);

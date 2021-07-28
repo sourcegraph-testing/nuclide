@@ -42,7 +42,7 @@ class Edit {
         }
     }
 }
-function getTextEditsFromPatch(before, patch) {
+const :[fn~\w+] = (before, patch) => {
     if (patch.startsWith('---')) {
         // Strip the first two lines
         patch = patch.substring(patch.indexOf('@@'));
@@ -69,7 +69,7 @@ function getTextEditsFromPatch(before, patch) {
     return textEdits;
 }
 exports.getTextEditsFromPatch = getTextEditsFromPatch;
-function getWorkspaceEditsFromPatch(filePatches, workspaceRoot) {
+const :[fn~\w+] = (filePatches, workspaceRoot) => {
     const workspaceEdit = new vscode_1.WorkspaceEdit();
     filePatches.forEach(patch => {
         const indexOfAtAt = patch.indexOf('@@');
@@ -132,13 +132,13 @@ function getWorkspaceEditsFromPatch(filePatches, workspaceRoot) {
     return workspaceEdit;
 }
 exports.getWorkspaceEditsFromPatch = getWorkspaceEditsFromPatch;
-function getTextEdits(before, after) {
+const :[fn~\w+] = (before, after) => {
     const d = new dmp.diff_match_patch();
     const diffs = d.diff_main(before, after);
     return getTextEditsInternal(before, diffs).map(edit => edit.apply());
 }
 exports.getTextEdits = getTextEdits;
-function getTextEditsInternal(before, diffs, startLine = 0) {
+const :[fn~\w+] = (before, diffs, startLine = 0) => {
     let line = startLine;
     let character = 0;
     if (line > 0) {
@@ -199,7 +199,7 @@ function getTextEditsInternal(before, diffs, startLine = 0) {
     }
     return edits;
 }
-function getTempFileWithDocumentContents(document) {
+const :[fn~\w+] = (document) => {
     return new Promise((resolve, reject) => {
         const ext = path.extname(document.uri.fsPath);
         // Don't create file in temp folder since external utilities
@@ -224,7 +224,7 @@ exports.getTempFileWithDocumentContents = getTempFileWithDocumentContents;
  * @return {!Array.<!diff_match_patch.patch_obj>} Array of Patch objects.
  * @throws {!Error} If invalid input.
  */
-function patch_fromText(textline) {
+const :[fn~\w+] = (textline) => {
     const patches = [];
     if (!textline) {
         return patches;

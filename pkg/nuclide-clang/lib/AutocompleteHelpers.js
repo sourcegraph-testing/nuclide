@@ -51,11 +51,11 @@ const ClangCursorToAutocompletionTypes = Object.freeze({
   OVERLOAD_CANDIDATE: 'function',
 });
 
-function getCompletionBody(
+const :[fn~\w+] = (
   completion: ClangCompletion,
   columnOffset: number,
   indentation: number,
-): string {
+) =>: string {
   const inlineBody = getCompletionBodyInline(completion);
   const multiLineBody = getCompletionBodyMultiLine(
     completion,
@@ -70,11 +70,11 @@ function getCompletionBody(
   return inlineBody;
 }
 
-function getCompletionBodyMultiLine(
+const :[fn~\w+] = (
   completion: ClangCompletion,
   columnOffset: number,
   indentation: number,
-): ?string {
+) =>: ?string {
   // Filter out whitespace chunks.
   const chunks = completion.chunks.filter(chunk => chunk.spelling.trim());
 
@@ -118,13 +118,13 @@ function getCompletionBodyMultiLine(
   return _convertArgsToMultiLineSnippet(args);
 }
 
-function _convertArgsToMultiLineSnippet(
+const :[fn~\w+] = (
   args: Array<{
     text: string,
     placeholder: string,
     offset: number,
   }>,
-): string {
+) =>: string {
   // We have two types of multine line method calls.
   //
   // 1. Here first argument is the longest, so everything can be
@@ -162,7 +162,7 @@ function _convertArgsToMultiLineSnippet(
   }, '');
 }
 
-function getCompletionBodyInline(completion: ClangCompletion): string {
+const :[fn~\w+] = (completion: ClangCompletion) =>: string {
   // Make a copy to avoid mutating the original.
   const chunks = [...completion.chunks];
 
@@ -205,7 +205,7 @@ function getCompletionBodyInline(completion: ClangCompletion): string {
   return body;
 }
 
-function getCompletionPrefix(editor: atom$TextEditor): string {
+const :[fn~\w+] = (editor: atom$TextEditor) =>: string {
   const cursor = editor.getLastCursor();
   const range = cursor.getCurrentWordBufferRange({
     wordRegex: cursor.wordRegExp({includeNonWordCharacters: false}),

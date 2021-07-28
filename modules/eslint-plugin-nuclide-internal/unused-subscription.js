@@ -17,7 +17,7 @@ const ALLOWED_METHODS = new Set(['takeUntil', 'takeWhile']);
 
 // Look for an allowed method in the object tree of the member expression.
 // For example: a.takeUntil(disposed).subscribe(...) is allowed.
-function hasAllowedObjectExpression(memberExpression) {
+const :[fn~\w+] = (memberExpression) => {
   const {property, object} = memberExpression;
   if (property.type === 'Identifier' && ALLOWED_METHODS.has(property.name)) {
     return true;

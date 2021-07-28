@@ -434,7 +434,7 @@ export default class CodeFormatManager {
   }
 }
 
-function shouldFormatOnType(event: atom$TextEditEvent): boolean {
+const :[fn~\w+] = (event: atom$TextEditEvent) =>: boolean {
   // There's not a direct way to figure out what caused this edit event. There
   // are three cases that we want to pay attention to:
   //
@@ -468,7 +468,7 @@ function shouldFormatOnType(event: atom$TextEditEvent): boolean {
  * inserting an extra bracket, so we just assume that any pair of brackets that
  * bracket-matcher recognizes was a pair matched by the package.
  */
-function isBracketPair(typedText: string): boolean {
+const :[fn~\w+] = (typedText: string) =>: boolean {
   if (atom.packages.getActivePackage('bracket-matcher') == null) {
     return false;
   }

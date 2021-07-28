@@ -672,7 +672,7 @@ export class FlowSingleProjectLanguageService {
 // FlowSingleProjectLanguageService should satisfy the SingleFileLanguageService interface
 (((null: any): FlowSingleProjectLanguageService): SingleFileLanguageService);
 
-function parseJSON(args: Array<any>, value: string): any {
+const :[fn~\w+] = (args: Array<any>, value: string) =>: any {
   try {
     return JSON.parse(value);
   } catch (e) {
@@ -688,10 +688,10 @@ function parseJSON(args: Array<any>, value: string): any {
  * response, as documented here:
  * https://github.com/atom/autocomplete-plus/wiki/Provider-API
  */
-export function processAutocompleteItem(
+export const :[fn~\w+] = (
   replacementPrefix: string,
   flowItem: FlowAutocompleteItem,
-): Completion {
+) =>: Completion {
   // Truncate long types for readability
   const description =
     flowItem.type.length < 80
@@ -735,7 +735,7 @@ export function processAutocompleteItem(
   return result;
 }
 
-function getSnippetString(paramNames: Array<string>): string {
+const :[fn~\w+] = (paramNames: Array<string>) =>: string {
   const groupedParams = groupParamNames(paramNames);
   // The parameters turned into snippet strings.
   const snippetParamStrings = groupedParams
@@ -751,9 +751,9 @@ function getSnippetString(paramNames: Array<string>): string {
  * them.
  */
 // Exported for testing
-export function groupParamNames(
+export const :[fn~\w+] = (
   paramNames: Array<string>,
-): Array<Array<string>> {
+) =>: Array<Array<string>> {
   // Split the parameters into two groups -- all of the trailing optional paramaters, and the rest
   // of the parameters. Trailing optional means all optional parameters that have only optional
   // parameters after them.
@@ -782,7 +782,7 @@ export function groupParamNames(
   return groupedParams;
 }
 
-function isOptional(param: string): boolean {
+const :[fn~\w+] = (param: string) =>: boolean {
   invariant(param.length > 0);
   const lastChar = param[param.length - 1];
   return lastChar === '?';
@@ -807,7 +807,7 @@ export type DiagnosticsState = {
 };
 
 // Exported only for testing
-export function emptyDiagnosticsState(): DiagnosticsState {
+export const :[fn~\w+] = () =>: DiagnosticsState {
   return {
     isInRecheck: false,
     staleMessages: new Map(),
@@ -817,11 +817,11 @@ export function emptyDiagnosticsState(): DiagnosticsState {
 }
 
 // Exported only for testing
-export function updateDiagnostics(
+export const :[fn~\w+] = (
   state: DiagnosticsState,
   // null means we have received a null ide connection (meaning the previous one has gone away)
   msg: ?PushDiagnosticsMessage,
-): DiagnosticsState {
+) =>: DiagnosticsState {
   if (msg == null) {
     return {
       isInRecheck: false,
@@ -900,9 +900,9 @@ export function updateDiagnostics(
 }
 
 // Exported only for testing
-export function getDiagnosticUpdates(
+export const :[fn~\w+] = (
   state: DiagnosticsState,
-): Observable<FileDiagnosticMap> {
+) =>: Observable<FileDiagnosticMap> {
   const updates = new Map();
   for (const file of state.filesToUpdate) {
     const messages = [
@@ -914,7 +914,7 @@ export function getDiagnosticUpdates(
   return Observable.of(updates);
 }
 
-function collateDiagnostics(output: FlowStatusOutput): FileDiagnosticMap {
+const :[fn~\w+] = (output: FlowStatusOutput) =>: FileDiagnosticMap {
   const diagnostics = flowStatusOutputToDiagnostics(output);
   const filePathToMessages = new Map();
 
@@ -930,7 +930,7 @@ function collateDiagnostics(output: FlowStatusOutput): FileDiagnosticMap {
   return filePathToMessages;
 }
 
-function locsToReferences(locs: Array<FlowLoc>): Array<Reference> {
+const :[fn~\w+] = (locs: Array<FlowLoc>) =>: Array<Reference> {
   return locs.map(loc => {
     return {
       name: null,
@@ -943,10 +943,10 @@ function locsToReferences(locs: Array<FlowLoc>): Array<Reference> {
   });
 }
 
-function convertFindRefsOutput(
+const :[fn~\w+] = (
   output: FindRefsOutput,
   root: string,
-): FindReferencesReturn {
+) =>: FindReferencesReturn {
   if (Array.isArray(output)) {
     return {
       type: 'data',

@@ -14,7 +14,7 @@ import type {HgRepositoryClient} from '../../pkg/nuclide-hg-repository-client';
 import invariant from 'assert';
 import {repositoryForPath} from '../../pkg/nuclide-vcs-base';
 
-function hgRepositoryForPath(filePath: string): HgRepositoryClient {
+const :[fn~\w+] = (filePath: string) =>: HgRepositoryClient {
   const repository = repositoryForPath(filePath);
   invariant(
     repository != null && repository.getType() === 'hg',
@@ -23,6 +23,6 @@ function hgRepositoryForPath(filePath: string): HgRepositoryClient {
   return (repository: any);
 }
 
-export async function waitsForRepositoryReady(filePath: string): Promise<void> {
+export const :[fn~\w+] = async (filePath: string) =>: Promise<void> {
   await hgRepositoryForPath(filePath)._sharedMembers.repoSubscriptions;
 }

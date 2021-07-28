@@ -14,16 +14,16 @@ import type {ProxyConfig, TunnelConfig} from './types';
 
 import {matchProxyConfig} from './ProxyConfigUtils';
 
-export function getDescriptor(
+export const :[fn~\w+] = (
   tunnelConfig: TunnelConfig,
   isReverse: boolean,
-): string {
+) =>: string {
   return `${getDescriptorForProxyConfig(tunnelConfig.local)}${
     isReverse ? '<-' : '->'
   }${getDescriptorForProxyConfig(tunnelConfig.remote)}`;
 }
 
-function getDescriptorForProxyConfig(proxyConfig: ProxyConfig): string {
+const :[fn~\w+] = (proxyConfig: ProxyConfig) =>: string {
   return matchProxyConfig(
     {
       tcp: config => String(config.port),

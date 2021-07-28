@@ -43,11 +43,11 @@ type ResolveInfo = {
   lenses: Array<ResolvableLens>,
 };
 
-function makeResolvableLens(
+const :[fn~\w+] = (
   editor: atom$TextEditor,
   markerLayer: atom$DisplayMarkerLayer,
   lens: CodeLensData,
-): ResolvableLens {
+) =>: ResolvableLens {
   const marker = markerLayer.markBufferPosition(lens.range.start);
   const element = document.createElement('span');
   const lensInfo = {
@@ -102,11 +102,11 @@ function makeResolvableLens(
   return lensInfo;
 }
 
-function getCodeLensPositions(
+const :[fn~\w+] = (
   atomLanguageService: AtomLanguageService<LanguageService>,
   logger: log4js$Logger,
   editor: atom$TextEditor,
-): Observable<?{
+) =>: Observable<?{
   languageService: LanguageService,
   fileVersion: FileVersion,
   codeLens: Array<CodeLensData>,
@@ -141,13 +141,13 @@ function getCodeLensPositions(
   });
 }
 
-function markCodeLensPositions(
+const :[fn~\w+] = (
   languageService: LanguageService,
   editor: atom$TextEditor,
   markerLayer: atom$DisplayMarkerLayer,
   fileVersion: FileVersion,
   codeLens: Array<CodeLensData>,
-): ResolveInfo {
+) =>: ResolveInfo {
   // Sort code lenses based on their row numbers from top to bottom, so
   // later their resolution can start in the same order.
   return {
@@ -160,7 +160,7 @@ function markCodeLensPositions(
   };
 }
 
-function resolveVisible(resolveInfo: ResolveInfo): Observable<?CodeLensData> {
+const :[fn~\w+] = (resolveInfo: ResolveInfo) =>: Observable<?CodeLensData> {
   const editor = resolveInfo.editor;
 
   // Currently undocumented, but there's an open PR to add these to the public
@@ -228,10 +228,10 @@ function resolveVisible(resolveInfo: ResolveInfo): Observable<?CodeLensData> {
   });
 }
 
-export function observeForCodeLens(
+export const :[fn~\w+] = (
   atomLanguageService: AtomLanguageService<LanguageService>,
   logger: log4js$Logger,
-): IDisposable {
+) =>: IDisposable {
   return new UniversalDisposable(
     observableFromSubscribeFunction(
       atom.workspace.observeTextEditors.bind(atom.workspace),

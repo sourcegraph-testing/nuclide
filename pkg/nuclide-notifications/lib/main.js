@@ -20,14 +20,14 @@ invariant(remote != null);
 
 let subscriptions: UniversalDisposable = (null: any);
 
-export function activate(state: ?Object): void {
+export const :[fn~\w+] = (state: ?Object) =>: void {
   subscriptions = new UniversalDisposable(
     // Listen for Atom notifications:
     atom.notifications.onDidAddNotification(proxyToNativeNotification),
   );
 }
 
-function proxyToNativeNotification(notification: atom$Notification): void {
+const :[fn~\w+] = (notification: atom$Notification) =>: void {
   const options = notification.getOptions();
 
   // Don't proceed if user only wants 'nativeFriendly' proxied notifications and this isn't one.
@@ -56,12 +56,12 @@ function proxyToNativeNotification(notification: atom$Notification): void {
   );
 }
 
-function raiseNativeNotification(
+const :[fn~\w+] = (
   title: string,
   body: string,
   timeout: number,
   raiseIfAtomHasFocus: boolean = false,
-): ?IDisposable {
+) =>: ?IDisposable {
   const sendNotification = () => {
     if (
       raiseIfAtomHasFocus === false &&
@@ -102,15 +102,15 @@ function raiseNativeNotification(
   return null;
 }
 
-export function provideRaiseNativeNotification(): typeof raiseNativeNotification {
+export const :[fn~\w+] = () =>: typeof raiseNativeNotification {
   return raiseNativeNotification;
 }
 
-export function deactivate(): void {
+export const :[fn~\w+] = () =>: void {
   subscriptions.dispose();
   subscriptions = (null: any);
 }
 
-function upperCaseFirst(str: string): string {
+const :[fn~\w+] = (str: string) =>: string {
   return `${str[0].toUpperCase()}${str.slice(1)}`;
 }

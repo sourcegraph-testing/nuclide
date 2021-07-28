@@ -36,7 +36,7 @@ const PROVIDER_CLASS_NAME = {
   Hint: 'highlight-info', // use same styles as Info
 };
 
-function diagnosticHeader(props: DiagnosticsMessageProps) {
+const :[fn~\w+] = (props: DiagnosticsMessageProps) => {
   const {message, fixer} = props;
   const providerClassName = PROVIDER_CLASS_NAME[message.type];
   let fixButton = null;
@@ -71,7 +71,7 @@ function diagnosticHeader(props: DiagnosticsMessageProps) {
   );
 }
 
-function traceElements(props: DiagnosticsMessageProps) {
+const :[fn~\w+] = (props: DiagnosticsMessageProps) => {
   const {message, goToLocation} = props;
   return message.trace && message.trace.length ? (
     <div className="diagnostics-popup-trace">

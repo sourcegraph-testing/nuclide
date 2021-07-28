@@ -3,9 +3,9 @@
 'use strict';
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -13,7 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const enzyme_1 = require("enzyme");
 const Adapter = require("enzyme-adapter-react-16");
 const jsdom_1 = require("jsdom");
-function setUpDomEnvironment() {
+const :[fn~\w+] = () => {
     // tslint:disable-next-line:no-http-string
     const dom = new jsdom_1.JSDOM('<!doctype html><html><body><div id="root"></div></body></html>', { pretendToBeVisual: true, url: 'http://localhost' });
     const { window } = dom;
@@ -53,14 +53,14 @@ function setUpDomEnvironment() {
     enzyme_1.configure({ adapter: new Adapter() });
 }
 exports.setUpDomEnvironment = setUpDomEnvironment;
-function copyProps(src, target) {
+const :[fn~\w+] = (src, target) => {
     const props = Object.getOwnPropertyNames(src)
         .filter(prop => typeof target[prop] === undefined);
     props.forEach((p) => {
         target[p] = src[p];
     });
 }
-function waitForComponentDidUpdate(component) {
+const :[fn~\w+] = (component) => {
     return new Promise((resolve, reject) => {
         if (component) {
             let originalUpdateFunc = component.componentDidUpdate;
@@ -84,7 +84,7 @@ function waitForComponentDidUpdate(component) {
         }
     });
 }
-function waitForRender(component) {
+const :[fn~\w+] = (component) => {
     return new Promise((resolve, reject) => {
         if (component) {
             let originalRenderFunc = component.render;
@@ -108,7 +108,7 @@ function waitForRender(component) {
         }
     });
 }
-function waitForUpdate(wrapper, mainClass) {
+const :[fn~\w+] = (wrapper, mainClass) => {
     return __awaiter(this, void 0, void 0, function* () {
         const mainObj = wrapper.find(mainClass).instance();
         if (mainObj) {

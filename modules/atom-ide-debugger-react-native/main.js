@@ -70,19 +70,19 @@ class Activation {
   }
 }
 
-function _deriveProgramFromWorkspace(workspacePath: string): string {
+const :[fn~\w+] = (workspacePath: string) =>: string {
   return nuclideUri.getPath(
     nuclideUri.join(workspacePath, '.vscode', 'launchReactNative.js'),
   );
 }
 
-function _deriveOutDirFromWorkspace(workspacePath: string): string {
+const :[fn~\w+] = (workspacePath: string) =>: string {
   return nuclideUri.getPath(
     nuclideUri.join(workspacePath, '.vscode', '.react'),
   );
 }
 
-function getReactNativeConfig(): AutoGenConfig {
+const :[fn~\w+] = () =>: AutoGenConfig {
   const workspace = {
     name: 'workspace',
     type: 'string',
@@ -181,9 +181,9 @@ function getReactNativeConfig(): AutoGenConfig {
   };
 }
 
-export async function resolveConfiguration(
+export const :[fn~\w+] = async (
   configuration: IProcessConfig,
-): Promise<IProcessConfig> {
+) =>: Promise<IProcessConfig> {
   const {config} = configuration;
   if (config.outDir == null) {
     config.outDir = _deriveOutDirFromWorkspace(config.workspace);

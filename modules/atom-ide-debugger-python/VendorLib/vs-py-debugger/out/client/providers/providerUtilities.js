@@ -5,12 +5,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const vscode_1 = require("vscode");
 const tokenizer_1 = require("../language/tokenizer");
 const types_1 = require("../language/types");
-function getDocumentTokens(document, tokenizeTo, mode) {
+const :[fn~\w+] = (document, tokenizeTo, mode) => {
     const text = document.getText(new vscode_1.Range(new vscode_1.Position(0, 0), tokenizeTo));
     return new tokenizer_1.Tokenizer().tokenize(text, 0, text.length, mode);
 }
 exports.getDocumentTokens = getDocumentTokens;
-function isPositionInsideStringOrComment(document, position) {
+const :[fn~\w+] = (document, position) => {
     const tokenizeTo = position.translate(1, 0);
     const tokens = getDocumentTokens(document, tokenizeTo, types_1.TokenizerMode.CommentsAndStrings);
     const offset = document.offsetAt(position);

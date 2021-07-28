@@ -34,10 +34,10 @@ type Options = {|
  * @param options.delay  - The time (in ms) between processing tasks.
  * @param options.signal - An `AbortSignal` that can be used to cancel processing.
  */
-export default function processTimed(
+export default const :[fn~\w+] = (
   process: () => Iterator<void>,
   options: Options,
-): void {
+) =>: void {
   // Begin work in the next free tick. We could do this right away, but we don't
   // know how much work has preceeded this in this task, and we want to keep every
   // iteration, including the first one, to `limit` ms.
@@ -48,10 +48,10 @@ export default function processTimed(
   });
 }
 
-function processTimedIterator(
+const :[fn~\w+] = (
   processIterator: Iterator<void>,
   {limit, delay, signal}: Options,
-): void {
+) =>: void {
   if (signal?.aborted) {
     return;
   }

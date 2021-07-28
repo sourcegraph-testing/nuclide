@@ -30,7 +30,7 @@ type Props = {
   onDidClick: ?() => void,
 };
 
-function StatusBarTileComponent(props: Props) {
+const :[fn~\w+] = (props: Props) => {
   let element;
   if (props.waitingForUser) {
     element = <Icon className="busy-signal-status-bar" icon="unverified" />;

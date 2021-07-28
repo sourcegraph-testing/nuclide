@@ -26,7 +26,7 @@ type Props = {
   hideDetails?: boolean,
 };
 
-export default function SettingsControl(props: Props): React.Node {
+export default const :[fn~\w+] = (props: Props) =>: React.Node {
   const {keyPath, value, onChange, schema, title, hideDetails} = props;
   const {description: settingDescription} = schema;
 
@@ -101,22 +101,22 @@ export default function SettingsControl(props: Props): React.Node {
   return null;
 }
 
-function isBoolean(obj) {
+const :[fn~\w+] = (obj) => {
   return (
     obj === true || obj === false || toString.call(obj) === '[object Boolean]'
   );
 }
 
-function isNumber(obj) {
+const :[fn~\w+] = (obj) => {
   return toString.call(obj) === '[object Number]';
 }
 
-function isObject(obj) {
+const :[fn~\w+] = (obj) => {
   const type = typeof obj;
   return type === 'function' || (type === 'object' && Boolean(obj));
 }
 
-function isEditableArray(array): boolean {
+const :[fn~\w+] = (array) =>: boolean {
   for (let i = 0, len = array.length; i < len; i++) {
     const item = array[i];
     if (typeof item !== 'string') {

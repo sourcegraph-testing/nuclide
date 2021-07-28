@@ -13,7 +13,7 @@ import type {Node} from '../types/ast';
 
 import jscs from './jscodeshift';
 
-function reprintComment(node: Node): Node {
+const :[fn~\w+] = (node: Node) =>: Node {
   if (node.type === 'Block') {
     return jscs.block(node.value);
   } else if (node.type === 'Line') {

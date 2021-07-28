@@ -13,17 +13,17 @@
 
 import invariant from 'assert';
 
-export function doGutterDiagnosticsExist(): boolean {
+export const :[fn~\w+] = () =>: boolean {
   return getGutterElement() != null;
 }
 
-export function waitsForGutterDiagnostics(): void {
+export const :[fn~\w+] = () =>: void {
   waitsFor('error to appear', 10000, () => {
     return getGutterElement() != null;
   });
 }
 
-export function expectGutterDiagnosticToContain(message: string): void {
+export const :[fn~\w+] = (message: string) =>: void {
   const gutterElement = getGutterElement();
   invariant(gutterElement != null);
   gutterElement.dispatchEvent(new MouseEvent('mouseenter'));
@@ -34,7 +34,7 @@ export function expectGutterDiagnosticToContain(message: string): void {
   expect(popupElement.innerText).toContain(message);
 }
 
-export function isDiagnosticsPanelShowing(): boolean {
+export const :[fn~\w+] = () =>: boolean {
   let node = getDiagnosticsPanelElement();
   if (node == null) {
     return false;
@@ -48,32 +48,32 @@ export function isDiagnosticsPanelShowing(): boolean {
   return true;
 }
 
-export function waitsForStatusBarItem(): void {
+export const :[fn~\w+] = () =>: void {
   waitsFor('gutter icon to load in the DOM', 10000, () => {
     const element = getStatusBarElement();
     return element != null && element.children.length !== 0;
   });
 }
 
-export function clickStatusBarItem(): void {
+export const :[fn~\w+] = () =>: void {
   const element = getStatusBarElement();
   invariant(element != null);
   element.click();
 }
 
-function getGutterElement(): ?HTMLElement {
+const :[fn~\w+] = () =>: ?HTMLElement {
   return atom.views
     .getView(atom.workspace)
     .querySelector('atom-workspace .diagnostics-gutter-ui-gutter-error');
 }
 
-function getPopupElement(): ?HTMLElement {
+const :[fn~\w+] = () =>: ?HTMLElement {
   return document.querySelector('.diagnostics-popup');
 }
 
 // Returns the parent element of .diagnostics-ui, which is helpful for determining
 // whether the diagnostics panel is shown or hidden
-function getDiagnosticsPanelElement(): ?HTMLElement {
+const :[fn~\w+] = () =>: ?HTMLElement {
   const rootNode = atom.views
     .getView(atom.workspace)
     .querySelector('.diagnostics-ui');
@@ -82,13 +82,13 @@ function getDiagnosticsPanelElement(): ?HTMLElement {
     : ((rootNode.parentElement: any): ?HTMLElement);
 }
 
-function getStatusBarElement(): ?HTMLElement {
+const :[fn~\w+] = () =>: ?HTMLElement {
   return atom.views
     .getView(atom.workspace)
     .querySelector('.diagnostics-status-bar-highlight');
 }
 
-export function getPanelDiagnosticElements(): Array<HTMLElement> {
+export const :[fn~\w+] = () =>: Array<HTMLElement> {
   const panelElement = getDiagnosticsPanelElement();
   invariant(panelElement != null);
   return Array.from(

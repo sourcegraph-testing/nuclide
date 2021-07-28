@@ -23,16 +23,16 @@ import openSettingsView from './openSettingsView';
 
 let subscriptions: UniversalDisposable = (null: any);
 
-export function activate(state: ?Object): void {
+export const :[fn~\w+] = (state: ?Object) =>: void {
   subscriptions = new UniversalDisposable(registerCommandAndOpener());
 }
 
-export function deactivate(): void {
+export const :[fn~\w+] = () =>: void {
   subscriptions.dispose();
   subscriptions = (null: any);
 }
 
-function registerCommandAndOpener(): UniversalDisposable {
+const :[fn~\w+] = () =>: UniversalDisposable {
   return new UniversalDisposable(
     atom.workspace.addOpener(openSettingsView),
     () => destroyItemWhere(item => item instanceof SettingsPaneItem),
@@ -42,7 +42,7 @@ function registerCommandAndOpener(): UniversalDisposable {
   );
 }
 
-export function consumeToolBar(getToolBar: toolbar$GetToolbar): IDisposable {
+export const :[fn~\w+] = (getToolBar: toolbar$GetToolbar) =>: IDisposable {
   const toolBar = getToolBar('nuclide-home');
   toolBar.addSpacer({
     priority: -501,
@@ -60,7 +60,7 @@ export function consumeToolBar(getToolBar: toolbar$GetToolbar): IDisposable {
   return disposable;
 }
 
-export function consumeDeepLinkService(service: DeepLinkService): IDisposable {
+export const :[fn~\w+] = (service: DeepLinkService) =>: IDisposable {
   const disposable = service.subscribeToPath(
     'settings',
     (params: DeepLinkParams): void => {

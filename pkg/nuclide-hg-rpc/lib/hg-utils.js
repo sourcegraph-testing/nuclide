@@ -51,10 +51,10 @@ const EXCLUDE_FROM_HG_BLACKBOX_COMMANDS = new Set([
  *   - NO_HGPLAIN set if the $HGPLAIN environment variable should not be used.
  *   - TTY_OUTPUT set if the command should be run as if it were attached to a tty.
  */
-export async function hgAsyncExecute(
+export const :[fn~\w+] = async (
   args_: Array<string>,
   options_: HgExecOptions,
-): Promise<any> {
+) =>: Promise<any> {
   const {command, args, options} = await getHgExecParams(args_, options_);
   try {
     return await runCommandDetailed(command, args, options).toPromise();
@@ -66,10 +66,10 @@ export async function hgAsyncExecute(
 /**
  * Calls hg commands, returning an Observable to allow aborting and streaming progress output.
  */
-export function hgObserveExecution(
+export const :[fn~\w+] = (
   args_: Array<string>,
   options_: HgExecOptions,
-): Observable<LegacyProcessMessage> {
+) =>: Observable<LegacyProcessMessage> {
   // TODO(T17463635)
   return Observable.fromPromise(
     getHgExecParams(args_, {
@@ -89,21 +89,21 @@ export function hgObserveExecution(
  * Calls hg commands, returning an Observable to allow aborting.
  * Resolves to stdout.
  */
-export function hgRunCommand(
+export const :[fn~\w+] = (
   args_: Array<string>,
   options_: HgExecOptions,
-): Observable<string> {
+) =>: Observable<string> {
   return Observable.fromPromise(getHgExecParams(args_, options_)).switchMap(
     ({command, args, options}) =>
       runCommand(command, args, {...options, killTreeWhenDone: true}),
   );
 }
 
-function logAndThrowHgError(
+const :[fn~\w+] = (
   args: Array<string>,
   options: Object,
   err: Error,
-): void {
+) =>: void {
   if (err instanceof ProcessExitError) {
     getLogger('nuclide-hg-rpc').error(
       `Error executing hg command: ${JSON.stringify(args)}\n` +
@@ -131,10 +131,10 @@ function logAndThrowHgError(
   }
 }
 
-async function getHgExecParams(
+const :[fn~\w+] = async (
   args_: Array<string>,
   options_: HgExecOptions,
-): Promise<{command: string, args: Array<string>, options: Object}> {
+) =>: Promise<{command: string, args: Array<string>, options: Object}> {
   let args = [
     ...args_,
     '--noninteractive',
@@ -206,11 +206,11 @@ async function getHgExecParams(
   return {command, args, options};
 }
 
-export function formatCommitMessage(commitMessage: string): string {
+export const :[fn~\w+] = (commitMessage: string) =>: string {
   return commitMessage.replace(COMMIT_MESSAGE_STRIP_LINE, '');
 }
 
-export async function getInteractiveCommitEditorConfig(): Promise<?{
+export const :[fn~\w+] = async () =>: Promise<?{
   args: Array<string>,
   hgEditor: string,
 }> {
@@ -236,7 +236,7 @@ export async function getInteractiveCommitEditorConfig(): Promise<?{
 
 let atomRpcEditorPath;
 
-function getAtomRpcScriptPath(): string {
+const :[fn~\w+] = () =>: string {
   if (atomRpcEditorPath == null) {
     try {
       atomRpcEditorPath = require.resolve(

@@ -54,7 +54,7 @@ type DatatipResult = {
   provider: AnyDatatipProvider,
 };
 
-function getProviderName(provider: AnyDatatipProvider): string {
+const :[fn~\w+] = (provider: AnyDatatipProvider) =>: string {
   if (provider.providerName == null) {
     getLogger('datatip').error('Datatip provider has no name', provider);
     return 'unknown';
@@ -62,11 +62,11 @@ function getProviderName(provider: AnyDatatipProvider): string {
   return provider.providerName;
 }
 
-function getBufferPosition(
+const :[fn~\w+] = (
   editor: TextEditor,
   editorView: atom$TextEditorElement,
   event: ?MouseEvent,
-): null | atom$Point {
+) =>: null | atom$Point {
   if (!event) {
     return null;
   }
@@ -148,11 +148,11 @@ type PinnableDatatipProps = {
   onPinClick: PinClickHandler,
 };
 
-function PinnableDatatip({
+const :[fn~\w+] = ({
   datatip,
   editor,
   onPinClick,
-}: PinnableDatatipProps): React.Element<any> {
+}: PinnableDatatipProps) =>: React.Element<any> {
   let action;
   let actionTitle;
   // Datatips are pinnable by default, unless explicitly specified
@@ -173,13 +173,13 @@ function PinnableDatatip({
   );
 }
 
-function mountDatatipWithMarker(
+const :[fn~\w+] = (
   editor: atom$TextEditor,
   element: HTMLElement,
   range: atom$Range,
   renderedProviders: React.Element<any>,
   position: atom$Point,
-): IDisposable {
+) =>: IDisposable {
   // Highlight the text indicated by the datatip's range.
   const highlightMarker = editor.markBufferRange(range, {
     invalidate: 'never',
@@ -222,7 +222,7 @@ const DatatipState = Object.freeze({
 });
 type State = $Keys<typeof DatatipState>;
 
-function ensurePositiveNumber(value: any, defaultValue: number): number {
+const :[fn~\w+] = (value: any, defaultValue: number) =>: number {
   if (typeof value !== 'number' || value < 0) {
     return defaultValue;
   }

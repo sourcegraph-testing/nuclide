@@ -359,10 +359,10 @@ export default class FeatureLoader {
   }
 }
 
-function safeDeactivate(
+const :[fn~\w+] = (
   feature: Feature,
   suppressSerialization: boolean = false,
-) {
+) => {
   const name = packageNameFromPath(feature.path);
   try {
     const pack = atom.packages.getLoadedPackage(name);
@@ -375,14 +375,14 @@ function safeDeactivate(
   }
 }
 
-function getFeatureDefaultValue(feature: Feature): string {
+const :[fn~\w+] = (feature: Feature) =>: string {
   const name = packageNameFromPath(feature.path);
   return name.startsWith('sample-') || name.startsWith('fb-sample-')
     ? NEVER_ENABLED
     : DEFAULT;
 }
 
-function safeSerialize(feature: Feature) {
+const :[fn~\w+] = (feature: Feature) => {
   const name = packageNameFromPath(feature.path);
   try {
     const pack = atom.packages.getActivePackage(name);
@@ -398,15 +398,15 @@ function safeSerialize(feature: Feature) {
 
 // this could be inlined into its use above, but this makes the intent more
 // explicit, and unifies it in the case this ever needs to change.
-function packageNameFromPath(pkgPath: string): string {
+const :[fn~\w+] = (pkgPath: string) =>: string {
   return path.basename(pkgPath);
 }
 
-function packageIsRepositoryProvider(pkg: FeaturePkg): boolean {
+const :[fn~\w+] = (pkg: FeaturePkg) =>: boolean {
   return Boolean(idx(pkg, _ => _.providedServices['atom.repository-provider']));
 }
 
-function buildConfig(features: Array<Feature>): Object {
+const :[fn~\w+] = (features: Array<Feature>) =>: Object {
   const config = {
     use: {
       title: 'Enabled Features',
@@ -483,7 +483,7 @@ function buildConfig(features: Array<Feature>): Object {
  * codepaths that make that difficult. As a temporary (I hope) workaround, we prioritize
  * activation of the features that provide this service.
  */
-function reorderFeatures(features_: Array<Feature>): Array<Feature> {
+const :[fn~\w+] = (features_: Array<Feature>) =>: Array<Feature> {
   const features = features_.slice();
   const originalOrder = new Map(features.map((feature, i) => [feature, i]));
   features.sort((a, b) => {
@@ -503,12 +503,12 @@ function reorderFeatures(features_: Array<Feature>): Array<Feature> {
  * Construct a map whose keys are feature group names and values are sets of features belonging to
  * the group.
  */
-function groupFeatures(
+const :[fn~\w+] = (
   features: Array<Feature>,
   rawFeatureGroups: {
     [string]: Array<string>,
   },
-): MultiMap<string, Feature> {
+) =>: MultiMap<string, Feature> {
   const namesToFeatures = new Map();
   features.forEach(feature => {
     namesToFeatures.set(path.basename(feature.path), feature);
@@ -534,7 +534,7 @@ function groupFeatures(
  * schema is ready when its deserializers are called). This should be removed once these changes
  * are upstreamed.
  */
-function patchPackageManager(): void {
+const :[fn~\w+] = () =>: void {
   if (
     (atom.packages: any).onWillInitializePackage == null &&
     !(atom.packages: any).__onWillInitializePackagePatched
@@ -569,7 +569,7 @@ function patchPackageManager(): void {
   }
 }
 
-function patchPackage(pack): void {
+const :[fn~\w+] = (pack) =>: void {
   if ((pack: any).__initializeIfNeededPatched) {
     return;
   }

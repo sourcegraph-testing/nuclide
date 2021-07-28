@@ -21,7 +21,7 @@ const openHealthPane = () => {
   atom.workspace.open(WORKSPACE_VIEW_URI, {searchAllPanes: true});
 };
 
-function findHealthPaneAndItem(): {pane: ?atom$Pane, item: ?Object} {
+const :[fn~\w+] = () =>: {pane: ?atom$Pane, item: ?Object} {
   for (const pane of atom.workspace.getPanes()) {
     for (const item of pane.getItems()) {
       if (item.getTitle() === 'Health') {

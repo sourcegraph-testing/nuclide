@@ -36,10 +36,10 @@ import invariant from 'assert';
 import nullthrows from 'nullthrows';
 import {Observable, Scheduler} from 'rxjs';
 
-export function setProjectRootForNewTaskRunnerEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.REGISTER_TASK_RUNNER).mergeMap(action => {
     invariant(action.type === Actions.REGISTER_TASK_RUNNER);
     const {taskRunner} = action.payload;
@@ -63,10 +63,10 @@ export function setProjectRootForNewTaskRunnerEpic(
   });
 }
 
-export function setConsolesForTaskRunnersEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.SET_CONSOLE_SERVICE).switchMap(() => {
     const {consoleService} = store.getState();
     if (consoleService == null) {
@@ -85,10 +85,10 @@ export function setConsolesForTaskRunnersEpic(
   });
 }
 
-export function addConsoleForTaskRunnerEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.REGISTER_TASK_RUNNER).switchMap(action => {
     const {consoleService} = store.getState();
     if (consoleService == null) {
@@ -104,10 +104,10 @@ export function addConsoleForTaskRunnerEpic(
   });
 }
 
-export function removeConsoleForTaskRunnerEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.UNREGISTER_TASK_RUNNER).switchMap(action => {
     const {consoleService} = store.getState();
     if (consoleService == null) {
@@ -121,11 +121,11 @@ export function removeConsoleForTaskRunnerEpic(
   });
 }
 
-export function setActiveTaskRunnerEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
   options: EpicOptions,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .filter(
       action =>
@@ -202,11 +202,11 @@ export function setActiveTaskRunnerEpic(
     });
 }
 
-export function combineTaskRunnerStatesEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
   options: EpicOptions,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .ofType(Actions.SET_PROJECT_ROOT, Actions.DID_ACTIVATE_INITIAL_PACKAGES)
     .switchMap(() => {
@@ -247,10 +247,10 @@ export function combineTaskRunnerStatesEpic(
     });
 }
 
-export function toggleToolbarVisibilityEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .ofType(Actions.REQUEST_TOGGLE_TOOLBAR_VISIBILITY)
     .flatMap(action => {
@@ -286,11 +286,11 @@ export function toggleToolbarVisibilityEpic(
     });
 }
 
-export function updatePreferredVisibilityEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
   options: EpicOptions,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .ofType(Actions.SET_TOOLBAR_VISIBILITY)
     .do(action => {
@@ -315,11 +315,11 @@ export function updatePreferredVisibilityEpic(
     .ignoreElements();
 }
 
-export function updatePreferredTaskRunnerEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
   options: EpicOptions,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .ofType(Actions.SELECT_TASK_RUNNER)
     .do(action => {
@@ -343,10 +343,10 @@ export function updatePreferredTaskRunnerEpic(
 /**
  * Verifies that all the files are saved prior to running a task.
  */
-export function verifySavedBeforeRunningTaskEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .filter(
       action =>
@@ -398,10 +398,10 @@ export function verifySavedBeforeRunningTaskEpic(
     });
 }
 
-export function runTaskEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .filter(
       action =>
@@ -447,10 +447,10 @@ export function runTaskEpic(
     });
 }
 
-export function stopTaskEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.STOP_TASK).switchMap(action => {
     const {activeTaskRunner, runningTask} = store.getState();
     if (!runningTask) {
@@ -464,10 +464,10 @@ export function stopTaskEpic(
   });
 }
 
-export function setToolbarVisibilityEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.TOGGLE_TOOLBAR_VISIBILITY).switchMap(action => {
     invariant(action.type === Actions.TOGGLE_TOOLBAR_VISIBILITY);
     const state = store.getState();
@@ -499,10 +499,10 @@ export function setToolbarVisibilityEpic(
   });
 }
 
-export function trackEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<empty> {
+) =>: Observable<empty> {
   const trackingEvents = actions
     .map(action => {
       switch (action.type) {
@@ -541,7 +541,7 @@ export function trackEpic(
   return trackingEvents.do(trackEvent).ignoreElements();
 }
 
-function getTaskTrackEventData(action: Action, state: AppState): Object {
+const :[fn~\w+] = (action: Action, state: AppState) =>: Object {
   invariant(
     action.type === Actions.TASK_STARTED ||
       action.type === Actions.TASK_STOPPED ||
@@ -574,10 +574,10 @@ function getTaskTrackEventData(action: Action, state: AppState): Object {
   };
 }
 
-export function printTaskCanceledEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.TASK_STOPPED).map(action => {
     invariant(action.type === Actions.TASK_STOPPED);
     const {taskRunner} = action.payload;
@@ -591,10 +591,10 @@ export function printTaskCanceledEpic(
   });
 }
 
-export function printTaskSucceededEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.TASK_COMPLETED).map(action => {
     invariant(action.type === Actions.TASK_COMPLETED);
     const {taskRunner} = action.payload;
@@ -608,10 +608,10 @@ export function printTaskSucceededEpic(
   });
 }
 
-export function printTaskErroredEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.TASK_ERRORED).switchMap(action => {
     invariant(action.type === Actions.TASK_ERRORED);
     const {
@@ -663,11 +663,11 @@ export function printTaskErroredEpic(
 
 let taskFailedNotification;
 
-function addAtomErrorNotification(
+const :[fn~\w+] = (
   label: string,
   buttons: $PropertyType<atom$NotificationOptions, 'buttons'>,
   description: string,
-): void {
+) =>: void {
   taskFailedNotification = atom.notifications.addError(
     `The task "${label}" failed`,
     {
@@ -682,10 +682,10 @@ function addAtomErrorNotification(
   });
 }
 
-export function appendMessageToConsoleEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .ofType(Actions.TASK_MESSAGE)
     .do(action => {
@@ -704,12 +704,12 @@ export function appendMessageToConsoleEpic(
 /**
  * Run a task and transform its output into domain-specific actions.
  */
-function createTaskObservable(
+const :[fn~\w+] = (
   taskRunner: TaskRunner,
   taskMeta: TaskMetadata,
   options: ?TaskOptions,
   getState: () => AppState,
-): Observable<Action> {
+) =>: Observable<Action> {
   return Observable.defer(() => {
     // dismiss any non-dismissed notification
     if (taskFailedNotification != null) {
@@ -791,10 +791,10 @@ function createTaskObservable(
     .share();
 }
 
-function getBestEffortTaskRunner(
+const :[fn~\w+] = (
   taskRunners: Immutable.List<TaskRunner>,
   statesForTaskRunners: Immutable.Map<TaskRunner, TaskRunnerState>,
-): ?TaskRunner {
+) =>: ?TaskRunner {
   return taskRunners.reduce((memo, runner) => {
     const state = statesForTaskRunners.get(runner);
     // Disabled task runners aren't selectable
@@ -825,7 +825,7 @@ function getBestEffortTaskRunner(
  *       - nothing if the user decides to cancel
  *   - dismisses the notification when unsubscribed
  */
-function promptForShouldSave(taskMeta: TaskMetadata): Observable<boolean> {
+const :[fn~\w+] = (taskMeta: TaskMetadata) =>: Observable<boolean> {
   return Observable.create(observer => {
     let notification = atom.notifications.addInfo(
       'You have files with unsaved changes.',
@@ -867,10 +867,10 @@ function promptForShouldSave(taskMeta: TaskMetadata): Observable<boolean> {
   });
 }
 
-function getTaskRunnerState(
+const :[fn~\w+] = (
   taskRunner: TaskRunner,
   projectRoot: ?NuclideUri,
-): Observable<{taskRunner: TaskRunner, taskRunnerState: TaskRunnerState}> {
+) =>: Observable<{taskRunner: TaskRunner, taskRunnerState: TaskRunnerState}> {
   return (
     Observable.create(
       observer =>
@@ -909,7 +909,7 @@ function getTaskRunnerState(
   );
 }
 
-function formatProcessExitError(error: ProcessExitError): string {
+const :[fn~\w+] = (error: ProcessExitError) =>: string {
   let message = '```\n';
   message += error.command + ' ' + error.args.join(' ');
   message += '\n```\n<br />';

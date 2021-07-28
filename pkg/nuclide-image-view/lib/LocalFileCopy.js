@@ -130,7 +130,7 @@ export default class LocalFileCopy {
   }
 }
 
-function copyToLocalTempFile(remotePath: string): Observable<File> {
+const :[fn~\w+] = (remotePath: string) =>: Observable<File> {
   return Observable.defer(async () => {
     const fsService = getFileSystemServiceByNuclideUri(remotePath);
     const {mtime} = await fsService.stat(remotePath);
@@ -184,7 +184,7 @@ const writeToTempFile = (targetPath: string) => (
 };
 
 // We have to wait for so much.
-function getRemoteFile(path: string): Observable<?File> {
+const :[fn~\w+] = (path: string) =>: Observable<?File> {
   return observableFromSubscribeFunction(cb =>
     atom.packages.serviceHub.consume('nuclide-remote-projects', '0.0.0', cb),
   )

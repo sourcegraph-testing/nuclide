@@ -943,10 +943,10 @@ export class RpcConnection<TransportType: Transport> {
   }
 }
 
-function trackingIdOfMessage(
+const :[fn~\w+] = (
   registry: ObjectRegistry,
   message: RequestMessage,
-): string {
+) =>: string {
   switch (message.type) {
     case 'call':
       return `service-framework:${message.method}`;
@@ -963,24 +963,24 @@ function trackingIdOfMessage(
   }
 }
 
-function trackingIdOfMessageAndNetwork(
+const :[fn~\w+] = (
   registry: ObjectRegistry,
   message: RequestMessage,
-): string {
+) =>: string {
   return trackingIdOfMessage(registry, message) + ':plus-network';
 }
 
 /**
  * A helper function that checks if an object is thenable (Promise-like).
  */
-function isThenable(object: any): boolean {
+const :[fn~\w+] = (object: any) =>: boolean {
   return Boolean(object && object.then);
 }
 
 /**
  * A helper function that checks if an object is an Observable.
  */
-function isConnectableObservable(object: any): boolean {
+const :[fn~\w+] = (object: any) =>: boolean {
   return Boolean(
     object && object.concatMap && object.subscribe && object.connect,
   );

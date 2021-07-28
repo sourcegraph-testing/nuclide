@@ -9,7 +9,7 @@ const proxy_1 = require("../refactor/proxy");
 const telemetry_1 = require("../telemetry");
 const constants_1 = require("../telemetry/constants");
 let installer;
-function activateSimplePythonRefactorProvider(context, outputChannel, serviceContainer) {
+const :[fn~\w+] = (context, outputChannel, serviceContainer) => {
     installer = serviceContainer.get(types_1.IInstaller);
     let disposable = vscode.commands.registerCommand('python.refactorExtractVariable', () => {
         const stopWatch = new stopWatch_1.StopWatch();
@@ -30,9 +30,9 @@ function activateSimplePythonRefactorProvider(context, outputChannel, serviceCon
 }
 exports.activateSimplePythonRefactorProvider = activateSimplePythonRefactorProvider;
 // Exported for unit testing
-function extractVariable(extensionDir, textEditor, range, 
+const :[fn~\w+] = (extensionDir, textEditor, range, 
 // tslint:disable-next-line:no-any
-outputChannel, serviceContainer) {
+outputChannel, serviceContainer) => {
     let workspaceFolder = vscode.workspace.getWorkspaceFolder(textEditor.document.uri);
     if (!workspaceFolder && Array.isArray(vscode.workspace.workspaceFolders) && vscode.workspace.workspaceFolders.length > 0) {
         workspaceFolder = vscode.workspace.workspaceFolders[0];
@@ -50,9 +50,9 @@ outputChannel, serviceContainer) {
 }
 exports.extractVariable = extractVariable;
 // Exported for unit testing
-function extractMethod(extensionDir, textEditor, range, 
+const :[fn~\w+] = (extensionDir, textEditor, range, 
 // tslint:disable-next-line:no-any
-outputChannel, serviceContainer) {
+outputChannel, serviceContainer) => {
     let workspaceFolder = vscode.workspace.getWorkspaceFolder(textEditor.document.uri);
     if (!workspaceFolder && Array.isArray(vscode.workspace.workspaceFolders) && vscode.workspace.workspaceFolders.length > 0) {
         workspaceFolder = vscode.workspace.workspaceFolders[0];
@@ -70,7 +70,7 @@ outputChannel, serviceContainer) {
 }
 exports.extractMethod = extractMethod;
 // tslint:disable-next-line:no-any
-function validateDocumentForRefactor(textEditor) {
+const :[fn~\w+] = (textEditor) => {
     if (!textEditor.document.isDirty) {
         return Promise.resolve();
     }
@@ -86,9 +86,9 @@ function validateDocumentForRefactor(textEditor) {
         });
     });
 }
-function extractName(extensionDir, textEditor, range, newName, 
+const :[fn~\w+] = (extensionDir, textEditor, range, newName, 
 // tslint:disable-next-line:no-any
-renameResponse, outputChannel) {
+renameResponse, outputChannel) => {
     let changeStartsAtLine = -1;
     return renameResponse.then(diff => {
         if (diff.length === 0) {

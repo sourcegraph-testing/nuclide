@@ -109,7 +109,7 @@ export class Section extends React.Component<Props, State> {
   }
 }
 
-function getHeadlineComponent(size?: string): 'h6' | 'h5' | 'h3' {
+const :[fn~\w+] = (size?: string) =>: 'h6' | 'h5' | 'h3' {
   switch (size) {
     case 'small':
       return 'h6';

@@ -58,10 +58,10 @@ type CopyPath = {
 
 const logger = getLogger('nuclide-file-tree');
 
-export function confirmNodeEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<empty> {
+) =>: Observable<empty> {
   return actions
     .ofType(Actions.CONFIRM_NODE)
     .do(action => {
@@ -103,9 +103,9 @@ export function confirmNodeEpic(
     .ignoreElements();
 }
 
-export function keepPreviewTabEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
-): Observable<empty> {
+) =>: Observable<empty> {
   return actions
     .ofType(Actions.KEEP_PREVIEW_TAB)
     .do(() => {
@@ -117,9 +117,9 @@ export function keepPreviewTabEpic(
     .ignoreElements();
 }
 
-export function openEntrySplitEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
-): Observable<empty> {
+) =>: Observable<empty> {
   return actions
     .ofType(Actions.OPEN_ENTRY_SPLIT)
     .do(action => {
@@ -137,10 +137,10 @@ export function openEntrySplitEpic(
 /**
  * Updates the root repositories to match the provided directories.
  */
-export function updateRepositoriesEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<empty> {
+) =>: Observable<empty> {
   // TODO: This isn't really the best way to manage these. Instead we should use something like
   // `reconcileSetDiffs()`. It's only done this way because this was refactored from a giant class
   // that did this. :P
@@ -299,10 +299,10 @@ export function updateRepositoriesEpic(
     .ignoreElements();
 }
 
-export function revealNodeKeyEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .ofType(Actions.REVEAL_NODE_KEY)
     .do(action => {
@@ -316,10 +316,10 @@ export function revealNodeKeyEpic(
     .ignoreElements();
 }
 
-export function revealFilePathEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.REVEAL_FILE_PATH).switchMap(action => {
     invariant(action.type === Actions.REVEAL_FILE_PATH);
     const {filePath, showIfHidden} = action;
@@ -342,9 +342,9 @@ export function revealFilePathEpic(
   });
 }
 
-export function openAndRevealFilePathEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .map(
       action =>
@@ -359,9 +359,9 @@ export function openAndRevealFilePathEpic(
     .map(({filePath}) => Actions.revealNodeKey(filePath));
 }
 
-export function openAndRevealFilePathsEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .map(
       action =>
@@ -382,9 +382,9 @@ export function openAndRevealFilePathsEpic(
     .filter(Boolean);
 }
 
-export function openAndRevealDirectoryPathEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .ofType(Actions.OPEN_AND_REVEAL_DIRECTORY_PATH)
     .map(action => {
@@ -396,10 +396,10 @@ export function openAndRevealDirectoryPathEpic(
     .filter(Boolean);
 }
 
-export function updateRootDirectoriesEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .ofType(Actions.UPDATE_ROOT_DIRECTORIES)
     .do(() => {
@@ -417,10 +417,10 @@ export function updateRootDirectoriesEpic(
     .ignoreElements();
 }
 
-export function setCwdToSelectionEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<empty> {
+) =>: Observable<empty> {
   return actions
     .ofType(Actions.SET_CWD_TO_SELECTION)
     .do(() => {
@@ -437,9 +437,9 @@ export function setCwdToSelectionEpic(
     .ignoreElements();
 }
 
-export function setCwdApiEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .ofType(Actions.SET_CWD_API)
     .switchMap(action => {
@@ -456,9 +456,9 @@ export function setCwdApiEpic(
     });
 }
 
-export function setRemoteProjectsServiceEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .ofType(Actions.SET_REMOTE_PROJECTS_SERVICE)
     .switchMap(action => {
@@ -488,10 +488,10 @@ export function setRemoteProjectsServiceEpic(
  * Collapses all selected directory nodes. If the selection is a single file or a single collapsed
  * directory, the selection is set to the directory's parent.
  */
-export function collapseSelectionEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.COLLAPSE_SELECTION).switchMap(action => {
     invariant(action.type === Actions.COLLAPSE_SELECTION);
     const {deep} = action;
@@ -533,10 +533,10 @@ export function collapseSelectionEpic(
   });
 }
 
-export function collapseAllEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.COLLAPSE_ALL).switchMap(() => {
     const roots = store.getState()._roots;
     return Observable.from(
@@ -547,10 +547,10 @@ export function collapseAllEpic(
   });
 }
 
-export function deleteSelectionEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<empty> {
+) =>: Observable<empty> {
   return actions
     .ofType(Actions.DELETE_SELECTION)
     .do(() => {
@@ -610,10 +610,10 @@ export function deleteSelectionEpic(
 /**
  * Expands all selected directory nodes.
  */
-export function expandSelectionEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.EXPAND_SELECTION).switchMap(action => {
     invariant(action.type === Actions.EXPAND_SELECTION);
     const {deep} = action;
@@ -658,10 +658,10 @@ export function expandSelectionEpic(
   });
 }
 
-export function openSelectedEntryEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.OPEN_SELECTED_ENTRY).switchMap(() => {
     const resultActions = [Actions.clearFilter()];
     const singleSelectedNode = Selectors.getSingleSelectedNode(
@@ -677,10 +677,10 @@ export function openSelectedEntryEpic(
   });
 }
 
-export function openSelectedEntrySplitEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .ofType(Actions.OPEN_SELECTED_ENTRY_SPLIT)
     .map(action => {
@@ -709,10 +709,10 @@ export function openSelectedEntrySplitEpic(
     .filter(Boolean);
 }
 
-export function removeRootFolderSelection(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<empty> {
+) =>: Observable<empty> {
   return actions
     .ofType(Actions.REMOVE_ROOT_FOLDER_SELECTION)
     .do(() => {
@@ -725,10 +725,10 @@ export function removeRootFolderSelection(
     .ignoreElements();
 }
 
-export function copyFilenamesWithDir(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<empty> {
+) =>: Observable<empty> {
   return actions
     .ofType(Actions.COPY_FILENAMES_WITH_DIR)
     .do(() => {
@@ -770,10 +770,10 @@ export function copyFilenamesWithDir(
     .ignoreElements();
 }
 
-export function openAddFolderDialogEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<empty> {
+) =>: Observable<empty> {
   return actions
     .ofType(Actions.OPEN_ADD_FOLDER_DIALOG)
     .do(action => {
@@ -823,10 +823,10 @@ export function openAddFolderDialogEpic(
     .ignoreElements();
 }
 
-export function openAddFileDialogEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<empty> {
+) =>: Observable<empty> {
   return actions
     .ofType(Actions.OPEN_ADD_FILE_DIALOG)
     .do(action => {
@@ -841,10 +841,10 @@ export function openAddFileDialogEpic(
     .ignoreElements();
 }
 
-export function openAddFileDialogRelativeEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<empty> {
+) =>: Observable<empty> {
   return actions
     .ofType(Actions.OPEN_ADD_FILE_DIALOG_RELATIVE)
     .do(action => {
@@ -876,10 +876,10 @@ export function openAddFileDialogRelativeEpic(
     .ignoreElements();
 }
 
-export function openRenameDialogEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<empty> {
+) =>: Observable<empty> {
   return actions
     .ofType(Actions.OPEN_RENAME_DIALOG)
     .do(() => {
@@ -914,10 +914,10 @@ export function openRenameDialogEpic(
     .ignoreElements();
 }
 
-export function openDuplicateDialogEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.OPEN_DUPLICATE_DIALOG).map(action => {
     invariant(action.type === Actions.OPEN_DUPLICATE_DIALOG);
     const {onDidConfirm} = action;
@@ -926,10 +926,10 @@ export function openDuplicateDialogEpic(
   });
 }
 
-export function openNextDuplicateDialogEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<empty> {
+) =>: Observable<empty> {
   return actions
     .ofType(Actions.OPEN_NEXT_DUPLICATE_DIALOG)
     .do(action => {
@@ -989,10 +989,10 @@ export function openNextDuplicateDialogEpic(
     .ignoreElements();
 }
 
-export function openPasteDialogEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<empty> {
+) =>: Observable<empty> {
   return actions
     .ofType(Actions.OPEN_PASTE_DIALOG)
     .do(() => {
@@ -1035,10 +1035,10 @@ export function openPasteDialogEpic(
     .ignoreElements();
 }
 
-export function updateWorkingSetEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<empty> {
+) =>: Observable<empty> {
   return actions
     .ofType(Actions.WORKING_SET_CHANGE_REQUESTED)
     .do(action => {
@@ -1073,10 +1073,10 @@ export function updateWorkingSetEpic(
     .ignoreElements();
 }
 
-export function deleteSelectedNodesEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .ofType(Actions.DELETE_SELECTED_NODES)
     .mergeMap(async action => {
@@ -1093,10 +1093,10 @@ export function deleteSelectedNodesEpic(
     .filter(Boolean);
 }
 
-export function moveToNodeEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.MOVE_TO_NODE).mergeMap(action => {
     invariant(action.type === Actions.MOVE_TO_NODE);
     const {rootKey, nodeKey} = action;
@@ -1115,10 +1115,10 @@ export function moveToNodeEpic(
   });
 }
 
-export function movePathToNodeEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.MOVE_PATH_TO_NODE).mergeMap(action => {
     invariant(action.type === Actions.MOVE_PATH_TO_NODE);
     const {uri, destination} = action;
@@ -1156,10 +1156,10 @@ export function movePathToNodeEpic(
   });
 }
 
-export function expandNodeEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .ofType(Actions.EXPAND_NODE)
     .do(action => {
@@ -1170,10 +1170,10 @@ export function expandNodeEpic(
     .ignoreElements();
 }
 
-export function expandNodeDeepEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .ofType(Actions.EXPAND_NODE_DEEP)
     .do(action => {
@@ -1184,10 +1184,10 @@ export function expandNodeDeepEpic(
     .ignoreElements();
 }
 
-export function reorderRootsEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .ofType(Actions.REORDER_ROOTS)
     .do(action => {
@@ -1213,10 +1213,10 @@ export function reorderRootsEpic(
 // FIXME: Most of this is just synchronous stuff that should be moved into the initial store state.
 // The only sticking point is the async call to `fetchChildKeys`, but that can probably be done in
 // a second pass after loading?
-export function loadDataEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .ofType(Actions.LOAD_DATA)
     .map(action => {
@@ -1271,10 +1271,10 @@ export function loadDataEpic(
     .filter(Boolean);
 }
 
-export function updateGeneratedStatusEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<Action> {
+) =>: Observable<Action> {
   return Observable.merge(
     actions.ofType(Actions.SET_OPEN_FILES_WORKING_SET).map(action => {
       invariant(action.type === Actions.SET_OPEN_FILES_WORKING_SET);
@@ -1304,10 +1304,10 @@ export function updateGeneratedStatusEpic(
   });
 }
 
-export function uploadDroppedFilesEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: MiddlewareStore,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.UPLOAD_DROPPED_FILES).mergeMap(action => {
     invariant(action.type === 'UPLOAD_DROPPED_FILES');
     const {destination} = action;
@@ -1351,9 +1351,9 @@ function omitNullKeys<T, U>(
  * Fetches a consistent object map from absolute file paths to
  * their corresponding `StatusCodeNumber` for easy representation with the file tree.
  */
-function getCachedPathStatusesForGitRepo(
+const :[fn~\w+] = (
   repo: atom$GitRepository,
-): Map<NuclideUri, StatusCodeNumberValue> {
+) =>: Map<NuclideUri, StatusCodeNumberValue> {
   const gitRepo: atom$GitRepository = (repo: any);
   const {statuses} = gitRepo;
   const internalGitRepo = gitRepo.getRepo();
@@ -1386,7 +1386,7 @@ function getCachedPathStatusesForGitRepo(
   return codePathStatuses;
 }
 
-function getSelectedContainerNode(state: AppState): ?FileTreeNode {
+const :[fn~\w+] = (state: AppState) =>: ?FileTreeNode {
   /*
    * TODO: Choosing the last selected key is inexact when there is more than 1 root. The Set of
    * selected keys should be maintained as a flat list across all roots to maintain insertion
@@ -1400,12 +1400,12 @@ function getSelectedContainerNode(state: AppState): ?FileTreeNode {
   return null;
 }
 
-function openAddDialog(
+const :[fn~\w+] = (
   entryType: string,
   path: string,
   onConfirm: (filePath: string, options: Object) => mixed,
   additionalOptions?: Object = {},
-) {
+) => {
   openDialog({
     iconClassName: 'icon-file-add',
     message: (
@@ -1420,12 +1420,12 @@ function openAddDialog(
   });
 }
 
-function openAddFileDialogImpl(
+const :[fn~\w+] = (
   rootNode: FileTreeNode,
   localPath: NuclideUri,
   filePath: NuclideUri,
   onDidConfirm: (filePath: ?string) => mixed,
-): void {
+) =>: void {
   const hgRepository = FileTreeHgHelpers.getHgRepositoryForPath(rootNode.uri);
   const additionalOptions = {};
   if (hgRepository != null) {
@@ -1480,11 +1480,11 @@ function openAddFileDialogImpl(
   );
 }
 
-async function renameNode(
+const :[fn~\w+] = async (
   node: FileTreeNode,
   nodePath: string,
   destPath: string,
-): Promise<void> {
+) =>: Promise<void> {
   /*
    * Use `resolve` to strip trailing slashes because renaming a file to a name with a
    * trailing slash is an error.
@@ -1502,12 +1502,12 @@ async function renameNode(
   await FileTreeHgHelpers.renameNode(node, newPath);
 }
 
-async function duplicate(
+const :[fn~\w+] = async (
   file: File | RemoteFile,
   newBasename: string,
   addToVCS: boolean,
   onDidConfirm: (filePaths: Array<string>) => mixed,
-): Promise<void> {
+) =>: Promise<void> {
   const directory = file.getParent();
   const newFile = directory.getFile(newBasename);
   return copy(
@@ -1517,11 +1517,11 @@ async function duplicate(
   );
 }
 
-async function copy(
+const :[fn~\w+] = async (
   copyPaths: Array<CopyPath>,
   addToVCS: boolean,
   onDidConfirm: (filePaths: Array<string>) => mixed,
-): Promise<void> {
+) =>: Promise<void> {
   const copiedPaths = await Promise.all(
     copyPaths
       .filter(
@@ -1567,11 +1567,11 @@ async function copy(
     }
   }
 }
-async function paste(
+const :[fn~\w+] = async (
   newPath: string,
   addToVCS: boolean,
   onDidConfirm: (filePath: Array<string>) => mixed = () => {},
-): Promise<void> {
+) =>: Promise<void> {
   const copyPaths = [];
   const cb = atom.clipboard.readWithMetadata();
   const oldDir = getDirectoryFromMetadata(cb.metadata);
@@ -1619,7 +1619,7 @@ async function paste(
   await copy(copyPaths, addToVCS, onDidConfirm);
 }
 
-function getDirectoryFromMetadata(cbMeta: ?mixed): ?Directory {
+const :[fn~\w+] = (cbMeta: ?mixed) =>: ?Directory {
   if (
     cbMeta == null ||
     typeof cbMeta !== 'object' ||
@@ -1633,9 +1633,9 @@ function getDirectoryFromMetadata(cbMeta: ?mixed): ?Directory {
 
 // provide appropriate UI feedback depending on whether user
 // has single or multiple files in the clipboard
-function getPasteDialogProps(
+const :[fn~\w+] = (
   path: Directory,
-): {initialValue: string, message: React.Element<string>} {
+) =>: {initialValue: string, message: React.Element<string>} {
   const cb = atom.clipboard.readWithMetadata();
   const filenames = cb.text.split(',');
   if (filenames.length === 1) {

@@ -43,7 +43,7 @@ export class ExampleGadgetA {
   }
 }
 
-function View(): React.Element<any> {
+const :[fn~\w+] = () =>: React.Element<any> {
   return (
     <div className="pane-item padded nuclide-example-gadget">
       This gadget was defined with a separate model and React component.

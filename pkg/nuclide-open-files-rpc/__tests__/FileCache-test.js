@@ -13,10 +13,10 @@ import {Subject} from 'rxjs';
 import {FileCache} from '../lib/FileCache';
 import {Point as ServerPoint, Range as ServerRange} from 'simple-text-buffer';
 
-function fileInfoToObject(fileInfo: {
+const :[fn~\w+] = (fileInfo: {
   buffer: simpleTextBuffer$TextBuffer,
   languageId: string,
-}): Object {
+}) =>: Object {
   return {
     buffer: {
       text: fileInfo.buffer.getText(),
@@ -26,7 +26,7 @@ function fileInfoToObject(fileInfo: {
   };
 }
 
-function cacheToObject(cache: FileCache): Object {
+const :[fn~\w+] = (cache: FileCache) =>: Object {
   const result = {};
   cache._buffers.forEach((fileInfo, filePath) => {
     result[filePath] = fileInfoToObject(fileInfo);
@@ -40,10 +40,10 @@ describe('FileCache', () => {
   let finishEvents: () => Promise<Array<Object>> = async () => [];
   let finishDirEvents: () => Promise<Array<Array<string>>> = async () => [];
 
-  async function getFileContentsByVersion(
+  const :[fn~\w+] = async (
     filePath,
     changeCount,
-  ): Promise<?string> {
+  ) =>: Promise<?string> {
     const buffer = await cache.getBufferAtVersion(
       cache.createFileVersion(filePath, changeCount),
     );

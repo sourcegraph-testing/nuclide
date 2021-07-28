@@ -94,11 +94,11 @@ const CONFIG: Array<ConfigEntry> = [
 /**
  * This will get a list of all identifiers that are declared within root's AST
  */
-function getDeclaredIdentifiers(
+const :[fn~\w+] = (
   root: Collection,
   options: SourceOptions,
   filters?: ?Array<(path: NodePath) => boolean>,
-): Set<string> {
+) =>: Set<string> {
   // Start with the globals since they are always "declared" and safe to use.
   const {moduleMap} = options;
   const ids = new Set(moduleMap.getBuiltIns());

@@ -17,7 +17,7 @@ const TIMEOUT = 30 * 1000;
 const ITERATIONS = 32; // From 0 bytes to 10^6 bytes exponentially, as per sizeForIteration.
 const REPETITIONS = 3;
 
-function sizeForIteration(iteration: number): number {
+const :[fn~\w+] = (iteration: number) =>: number {
   if (iteration > 0) {
     return Math.round(Math.pow(10, (iteration - 1) * 0.2));
   }

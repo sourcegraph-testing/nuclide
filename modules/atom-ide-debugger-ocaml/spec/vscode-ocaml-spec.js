@@ -26,7 +26,7 @@ const adapterInfo = {
 };
 const OCAML_FIXTURES = nuclideUri.join(__dirname, 'fixtures');
 
-function makeSource(name: string): DebugProtocol.Source {
+const :[fn~\w+] = (name: string) =>: DebugProtocol.Source {
   return {
     name,
     path: nuclideUri.join(OCAML_FIXTURES, name),
@@ -49,11 +49,11 @@ async function checkResponse<T: DebugProtocol.base$Response>(
   return response;
 }
 
-async function withSession(
+const :[fn~\w+] = async (
   executableName: string,
   breakpoints?: DebugProtocol.SetBreakpointsArguments,
   sessionContinuation: VsDebugSession => Promise<void>,
-): Promise<void> {
+) =>: Promise<void> {
   const session = new VsDebugSession(
     process.pid.toString(),
     logger,
@@ -107,10 +107,10 @@ async function waitForEvent<T: DebugProtocol.DebugEvent>(
 const waitForBreak = (debugSession: VsDebugSession) =>
   waitForEvent(debugSession.observeStopEvents());
 
-async function checkLine(
+const :[fn~\w+] = async (
   debugSession: VsDebugSession,
   expectedLine: number,
-): Promise<void> {
+) =>: Promise<void> {
   await checkResponse(
     debugSession.stackTrace({threadId: THREAD_ID}),
     response => {

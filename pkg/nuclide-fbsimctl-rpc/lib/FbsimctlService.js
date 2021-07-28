@@ -20,7 +20,7 @@ import AdmZip from 'adm-zip';
 import bplist from 'bplist-parser';
 import {parseFbsimctlJsonOutput} from './Parsing';
 
-export async function getDevices(): Promise<Array<FbsimctlDevice>> {
+export const :[fn~\w+] = async () =>: Promise<Array<FbsimctlDevice>> {
   const output = await runCommand('fbsimctl', [
     '--json',
     '--format=%n%u%s%o%a',
@@ -37,7 +37,7 @@ export async function getDevices(): Promise<Array<FbsimctlDevice>> {
   return parseFbsimctlJsonOutput(output);
 }
 
-export async function install(port: string, ipaUri: NuclideUri): Promise<void> {
+export const :[fn~\w+] = async (port: string, ipaUri: NuclideUri) =>: Promise<void> {
   const file = await fsPromise.readFile(nuclideUri.getPath(ipaUri));
   await fetch(`${_getHostname(port)}/install?codesign=1`, {
     method: 'POST',
@@ -45,7 +45,7 @@ export async function install(port: string, ipaUri: NuclideUri): Promise<void> {
   });
 }
 
-export async function relaunch(port: string, bundleId: string): Promise<void> {
+export const :[fn~\w+] = async (port: string, bundleId: string) =>: Promise<void> {
   await fetch(`${_getHostname(port)}/relaunch`, {
     method: 'POST',
     headers: {
@@ -57,9 +57,9 @@ export async function relaunch(port: string, bundleId: string): Promise<void> {
   });
 }
 
-export async function getBundleIdOfBundleAtPath(
+export const :[fn~\w+] = async (
   bundlePath: NuclideUri,
-): Promise<string> {
+) =>: Promise<string> {
   let plistData = null;
 
   const stat = await fsPromise.stat(nuclideUri.getPath(bundlePath));
@@ -92,6 +92,6 @@ export async function getBundleIdOfBundleAtPath(
   return CFBundleIdentifier;
 }
 
-function _getHostname(port: string): string {
+const :[fn~\w+] = (port: string) =>: string {
   return `http://localhost:${port}`;
 }

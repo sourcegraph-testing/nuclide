@@ -31,7 +31,7 @@ export type LauncherScriptParams = {|
   serverParams: mixed,
 |};
 
-function main() {
+const :[fn~\w+] = () => {
   // launchServer should only be spawned from ./main.js.
   if (process.send == null) {
     // eslint-disable-next-line no-console
@@ -49,7 +49,7 @@ function main() {
   });
 }
 
-async function handleLaunchParams(params: LauncherScriptParams) {
+const :[fn~\w+] = async (params: LauncherScriptParams) => {
   if (params.exclusive != null) {
     await enforceExclusive(params.exclusive);
   }
@@ -93,7 +93,7 @@ async function handleLaunchParams(params: LauncherScriptParams) {
 // with a given "exclusive" tag is alive at any given time (per user).
 // We do this by storing a .bigdig.exclusive.pid file in sharedCertsDir:
 // if the file already exists, we'll try to kill the PID in that file.
-async function enforceExclusive(exclusive: string): Promise<void> {
+const :[fn~\w+] = async (exclusive: string) =>: Promise<void> {
   const bigDigPath = nuclideUri.join(os.homedir(), '.big-dig');
   try {
     await fsPromise.mkdir(bigDigPath);

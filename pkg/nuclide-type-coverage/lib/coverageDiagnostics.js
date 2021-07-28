@@ -22,10 +22,10 @@ import {Observable} from 'rxjs';
 
 import {toggle, compact} from 'nuclide-commons/observable';
 
-export function diagnosticProviderForResultStream(
+export const :[fn~\w+] = (
   results: Observable<Result<CoverageProvider, ?CoverageResult>>,
   isEnabledStream: Observable<boolean>,
-): ObservableDiagnosticProvider {
+) =>: ObservableDiagnosticProvider {
   const toggledResults = results.let(toggle(isEnabledStream));
 
   return {
@@ -57,9 +57,9 @@ export function diagnosticProviderForResultStream(
  * This is reasonable because we only query providers when there is a path available for the current
  * text editor.
  */
-function diagnosticsForResult(
+const :[fn~\w+] = (
   result: Result<CoverageProvider, ?CoverageResult>,
-): ?DiagnosticProviderUpdate {
+) =>: ?DiagnosticProviderUpdate {
   if (result.kind !== 'result') {
     return null;
   }
@@ -80,11 +80,11 @@ function diagnosticsForResult(
   return new Map([[editorPath, diagnostics]]);
 }
 
-function uncoveredRangeToDiagnostic(
+const :[fn~\w+] = (
   region: UncoveredRegion,
   path: NuclideUri,
   providerName: string,
-): DiagnosticMessage {
+) =>: DiagnosticMessage {
   const text =
     region.message != null ? region.message : `Not covered by ${providerName}`;
   return {

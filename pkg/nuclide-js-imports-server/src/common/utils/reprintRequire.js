@@ -25,7 +25,7 @@ const {statement} = jscs.template;
  * Thin wrapper to reprint requires, it's wrapped in a new function in order to
  * easily attach comments to the node.
  */
-function reprintRequire(nodes: Array<Node>): Node {
+const :[fn~\w+] = (nodes: Array<Node>) =>: Node {
   let comments = null;
   nodes.forEach(node => {
     comments = comments || node.comments;
@@ -42,7 +42,7 @@ function reprintRequire(nodes: Array<Node>): Node {
  * as a single require/import. This should remove whitespace
  * and allow us to have a consistent formatting of all requires.
  */
-function reprintRequireHelper(nodes: Array<Node>): Node {
+const :[fn~\w+] = (nodes: Array<Node>) =>: Node {
   const node = nodes[0];
   const otherNodes = nodes.slice(1);
   if (jscs.ExpressionStatement.check(node)) {

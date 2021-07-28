@@ -30,7 +30,7 @@ const ciConstants_1 = require("./ciConstants");
 const reactHelpers_1 = require("./datascience/reactHelpers");
 const vscodeMoscks = require("./vscode-mock");
 process.env.VSC_PYTHON_CI_TEST = '1';
-function runTests(testOptions) {
+const :[fn~\w+] = (testOptions) => {
     // nteract/transforms-full expects to run in the browser so we have to fake
     // parts of the browser here.
     reactHelpers_1.setUpDomEnvironment();
@@ -85,7 +85,7 @@ function runTests(testOptions) {
     });
 }
 exports.runTests = runTests;
-function reportErrors(error, failures) {
+const :[fn~\w+] = (error, failures) => {
     let failed = false;
     if (error) {
         console.error(error);
@@ -99,7 +99,7 @@ function reportErrors(error, failures) {
         process.exit(1);
     }
 }
-function extractParams(defaultTimeout) {
+const :[fn~\w+] = (defaultTimeout) => {
     // When running from debugger, allow custom args.
     const args = process.argv0.length > 2 ? process.argv.slice(2) : [];
     const timeoutArgIndex = args.findIndex(arg => arg.startsWith('timeout='));

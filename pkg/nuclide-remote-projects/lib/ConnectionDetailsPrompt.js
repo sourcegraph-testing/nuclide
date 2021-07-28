@@ -358,7 +358,7 @@ export default class ConnectionDetailsPrompt extends React.Component<
   }
 }
 
-function ErrorMessage(props: {error: ?HumanizedErrorMessage}) {
+const :[fn~\w+] = (props: {error: ?HumanizedErrorMessage}) => {
   const {error} = props;
   if (error == null) {
     return null;

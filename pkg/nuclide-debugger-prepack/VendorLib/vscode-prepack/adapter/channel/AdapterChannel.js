@@ -27,7 +27,7 @@ var _child_process = require("child_process");
 
 var _child_process2 = _interopRequireDefault(_child_process);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const :[fn~\w+] = (obj) => { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //Channel used by the debug adapter to communicate with Prepack
 class AdapterChannel {

@@ -81,9 +81,9 @@ export class ConnectionCache<T: IDisposable> extends Cache<
 // Returns null if there's no valid connection for the given filePath
 // Returns {connection: null} for a valid local filePath.
 // Returns {connection: non-null} for a valid remote filePath.
-function connectionOfUri(
+const :[fn~\w+] = (
   filePath: ?NuclideUri,
-): ?{connection: ?ServerConnection} {
+) =>: ?{connection: ?ServerConnection} {
   if (filePath == null) {
     return null;
   }

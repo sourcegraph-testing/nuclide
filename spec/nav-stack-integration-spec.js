@@ -26,7 +26,7 @@ import nuclideUri from 'nuclide-commons/nuclideUri';
 
 const NAV_SLEEP_MS = 1000;
 
-function navBack() {
+const :[fn~\w+] = () => {
   runs(() => {
     dispatchKeyboardEvent(',', document.activeElement, {ctrl: true});
   });
@@ -34,7 +34,7 @@ function navBack() {
   waitsForPromise(() => sleep(NAV_SLEEP_MS));
 }
 
-function navForward() {
+const :[fn~\w+] = () => {
   runs(() => {
     dispatchKeyboardEvent('.', document.activeElement, {ctrl: true});
   });
@@ -42,7 +42,7 @@ function navForward() {
   waitsForPromise(() => sleep(NAV_SLEEP_MS));
 }
 
-function waitForStopChanging() {
+const :[fn~\w+] = () => {
   waitsForPromise(() => {
     return new Promise(resolve => {
       atom.workspace.onDidStopChangingActivePaneItem(resolve);
@@ -50,7 +50,7 @@ function waitForStopChanging() {
   });
 }
 
-function goTo(fullFile, shortFile, line, column, waitForActivate) {
+const :[fn~\w+] = (fullFile, shortFile, line, column, waitForActivate) => {
   runs(() => {
     goToLocation(fullFile(), {line, column});
   });
@@ -66,11 +66,11 @@ describe('Nav Stack Integration', () => {
     let mainPath: string = (null: any);
     let fooPath: string = (null: any);
 
-    function getMainPath() {
+    const :[fn~\w+] = () => {
       return mainPath;
     }
 
-    function getFooPath() {
+    const :[fn~\w+] = () => {
       return fooPath;
     }
 

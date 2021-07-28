@@ -199,11 +199,11 @@ async function getNewFirstResult<T>(
 
 const IDENTIFIER_REGEX = /^[a-zA-Z_]+$/;
 
-function defaultShouldFilter(
+const :[fn~\w+] = (
   lastRequest: atom$AutocompleteRequest,
   currentRequest: atom$AutocompleteRequest,
   charsSinceLastRequest: number,
-) {
+) => {
   // This function's goal is to check whether the currentRequest represents
   // additional typing to do further filtering, or whether it represents an
   // entirely new autocomplete request.

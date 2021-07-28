@@ -69,7 +69,7 @@ const ALLOWED_NAMES_BY_MODULE = {
   ws: ['WS'],
 };
 
-function prettyNames(namesList) {
+const :[fn~\w+] = (namesList) => {
   const out = [];
   out.push(`"${namesList[0]}"`);
   for (let i = 1; i < namesList.length - 1; i++) {
@@ -82,7 +82,7 @@ function prettyNames(namesList) {
 }
 
 module.exports = function(context) {
-  function checkNameForId(node, name, id) {
+  const :[fn~\w+] = (node, name, id) => {
     const allowedNames = ALLOWED_NAMES_BY_MODULE[id];
     if (allowedNames.indexOf(name) === -1) {
       context.report({

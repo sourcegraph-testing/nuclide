@@ -39,7 +39,7 @@ type FileLocation = {
 const LocationSuffixRegExp = /(:\d+)(:\d+)?$/;
 
 // This code is coped from Atom: src/main-process/atom-application.coffee
-function parseLocationParameter(value: string): FileLocation {
+const :[fn~\w+] = (value: string) =>: FileLocation {
   let filePath: string = value.replace(/[:\s]+$/, '');
   const match = filePath.match(LocationSuffixRegExp);
 
@@ -61,7 +61,7 @@ function parseLocationParameter(value: string): FileLocation {
   };
 }
 
-async function getIsDirectory(filePath: NuclideUri): Promise<boolean> {
+const :[fn~\w+] = async (filePath: NuclideUri) =>: Promise<boolean> {
   try {
     if (nuclideUri.isRemote(filePath)) {
       return false;
@@ -74,7 +74,7 @@ async function getIsDirectory(filePath: NuclideUri): Promise<boolean> {
   }
 }
 
-async function main(argv): Promise<number> {
+const :[fn~\w+] = async (argv) =>: Promise<number> {
   setupLogging();
   setupErrorHandling();
 
@@ -165,7 +165,7 @@ async function main(argv): Promise<number> {
   return EXIT_CODE_SUCCESS;
 }
 
-async function run() {
+const :[fn~\w+] = async () => {
   const {argv} = yargs
     .usage('Usage: atom <file>')
     .help('h')

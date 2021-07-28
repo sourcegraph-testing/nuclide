@@ -17,7 +17,7 @@ import {Observable} from 'rxjs';
 
 const LINTER_PACKAGE = 'linter';
 
-function observePackageIsEnabled(): Observable<boolean> {
+const :[fn~\w+] = () =>: Observable<boolean> {
   return Observable.merge(
     Observable.of(atom.packages.isPackageActive(LINTER_PACKAGE)),
     observableFromSubscribeFunction(
@@ -33,15 +33,15 @@ function observePackageIsEnabled(): Observable<boolean> {
   );
 }
 
-function disableLinter(): void {
+const :[fn~\w+] = () =>: void {
   atom.packages.disablePackage(LINTER_PACKAGE);
 }
 
-function disableDiagnostics(): void {
+const :[fn~\w+] = () =>: void {
   featureConfig.set('use.atom-ide-diagnostics-ui', 'never');
 }
 
-export default function showAtomLinterWarning(): IDisposable {
+export default const :[fn~\w+] = () =>: IDisposable {
   const packageName = featureConfig.getPackageName();
   return new UniversalDisposable(
     observePackageIsEnabled()

@@ -32,7 +32,7 @@ export type HighlightedTokens = Array<Array<HighlightedToken>>;
 
 const scopeToClassNameCache = new Map();
 
-function scopeToClassName(scope: string): string {
+const :[fn~\w+] = (scope: string) =>: string {
   let className = scopeToClassNameCache.get(scope);
   if (className == null) {
     className = 'syntax--' + scope.replace(/\./g, ' syntax--');
@@ -45,16 +45,16 @@ function scopeToClassName(scope: string): string {
  * Re-uses an Atom grammar's tokenization functions to produce syntax-higlighted text
  * without the overhead of creating a new TextEditor / TextBuffer.
  */
-export function highlightCode(
+export const :[fn~\w+] = (
   grammar: atom$Grammar,
   code: string,
-): HighlightedTokens {
+) =>: HighlightedTokens {
   return grammar.tokenizeLines(code).map(highlightTokens);
 }
 
-function highlightTokens(
+const :[fn~\w+] = (
   line: Array<atom$GrammarToken>,
-): Array<HighlightedToken> {
+) =>: Array<HighlightedToken> {
   const resultLine = [];
   const scopeStack = [];
   for (const token of line) {
@@ -87,12 +87,12 @@ function highlightTokens(
 /**
  * Converts the grammar/code directly to HTML (using highlightCode above).
  */
-export function highlightCodeHtml(grammar: atom$Grammar, code: string): string {
+export const :[fn~\w+] = (grammar: atom$Grammar, code: string) =>: string {
   const tokens = highlightCode(grammar, code);
   return tokens.map(tokensToHtml).join('\n');
 }
 
-function tokensToHtml(tokens: Array<HighlightedToken>): string {
+const :[fn~\w+] = (tokens: Array<HighlightedToken>) =>: string {
   let html = '';
   for (const token of tokens) {
     switch (token.type) {
@@ -115,7 +115,7 @@ function tokensToHtml(tokens: Array<HighlightedToken>): string {
  * Can be used with React's experimental AsyncMode component for
  * asynchronous highlighting.
  */
-export function HighlightedCode({
+export const :[fn~\w+] = ({
   grammar,
   code,
   className,
@@ -124,7 +124,7 @@ export function HighlightedCode({
   grammar: atom$Grammar,
   code: string,
   className?: string,
-}): React.Node {
+}) =>: React.Node {
   return (
     <pre
       className={classnames(
@@ -145,13 +145,13 @@ export function HighlightedCode({
  * Renders only the raw highlighted tokens used in HighlightedCode.
  * (you'll need to provide the styling yourself.)
  */
-export function HighlightedLines({
+export const :[fn~\w+] = ({
   grammar,
   code,
 }: {
   grammar: atom$Grammar,
   code: string,
-}): React.Node {
+}) =>: React.Node {
   const lines = code.split('\n');
   // This is really hacky but we need a way to pass the parsed rule stack from one line to the next.
   // We'll give each component a shared array of rule stacks that can be written / read from.
@@ -170,7 +170,7 @@ export function HighlightedLines({
   });
 }
 
-function HighlightedLine({grammar, line, lineNumber, ruleStacks}): React.Node {
+const :[fn~\w+] = ({grammar, line, lineNumber, ruleStacks}) =>: React.Node {
   // $FlowIgnore
   const {tokens, ruleStack} = grammar.tokenizeLine(
     line,

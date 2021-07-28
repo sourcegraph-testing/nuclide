@@ -19,10 +19,10 @@ export const DisabledReason = Object.freeze({
 });
 type DisabledReasonType = $Values<typeof DisabledReason>;
 
-function deactivateAndUnloadPackage(
+const :[fn~\w+] = (
   name: string,
   options: {|warn: boolean, reason: DisabledReasonType|},
-): void {
+) =>: void {
   if (atom.packages.initialPackagesActivated === true) {
     if (options.warn) {
       const packageName = featureConfig.getPackageName();
@@ -46,10 +46,10 @@ function deactivateAndUnloadPackage(
   delete atom.packages.preloadedPackages[name];
 }
 
-export default function disablePackage(
+export default const :[fn~\w+] = (
   name: string,
   options?: {|reason?: DisabledReasonType|},
-): IDisposable {
+) =>: IDisposable {
   const initiallyDisabled = atom.packages.isPackageDisabled(name);
   const reason = idx(options, _ => _.reason) || DisabledReason.INCOMPATIBLE;
   if (!initiallyDisabled) {
@@ -78,11 +78,11 @@ export default function disablePackage(
   return new UniversalDisposable(activationMonitor, stateRestorer);
 }
 
-function getWarningMessage(
+const :[fn~\w+] = (
   disabledFeature: string,
   packageName: string,
   reason: DisabledReasonType,
-): string {
+) =>: string {
   switch (reason) {
     case 'incompatible':
       return (

@@ -19,23 +19,23 @@ type Hunk = {
   newLines: Array<string>,
 };
 
-export function toUnifiedDiff(
+export const :[fn~\w+] = (
   filename: string,
   buffer: atom$TextBuffer,
   edits: Array<TextEdit>,
   contextRows: number = 1,
-): string {
+) =>: string {
   const hunks: Array<Hunk> = getHunks(buffer, edits, contextRows);
   return [`--- ${filename}`, `+++ ${filename}`]
     .concat(mapHunkToString(buffer, hunks, contextRows))
     .join('\n');
 }
 
-function getHunks(
+const :[fn~\w+] = (
   buffer: atom$TextBuffer,
   edits: Array<TextEdit>,
   contextRows: number,
-): Array<Hunk> {
+) =>: Array<Hunk> {
   return edits
     .sort((e1, e2) => e1.oldRange.compare(e2.oldRange))
     .reduce((mergedEdits: Array<TextEdit>, nextEdit: TextEdit) => {
@@ -62,11 +62,11 @@ function getHunks(
     });
 }
 
-function mergeEdit(
+const :[fn~\w+] = (
   buffer: atom$TextBuffer,
   e1: TextEdit,
   e2: TextEdit,
-): TextEdit {
+) =>: TextEdit {
   invariant(e1.oldRange.end.isLessThanOrEqual(e2.oldRange.start));
   const mergedEdit = {};
   mergedEdit.newText =
@@ -77,11 +77,11 @@ function mergeEdit(
   return mergedEdit;
 }
 
-function mapHunkToString(
+const :[fn~\w+] = (
   buffer: atom$TextBuffer,
   hunks: Array<Hunk>,
   contextRows: number,
-): Array<string> {
+) =>: Array<string> {
   // This requires storing some state across the map() to compute the row
   // numbers correctly.
   let newRowOffset = 0;

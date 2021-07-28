@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const assert = require("assert");
 const path_1 = require("path");
 const constants_1 = require("../../client/common/platform/constants");
-function lookForTestFile(tests, testFile) {
+const :[fn~\w+] = (tests, testFile) => {
     let found;
     // Perform case insensitive search on windows.
     if (constants_1.IS_WINDOWS) {

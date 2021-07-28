@@ -10,7 +10,7 @@ const childProcessAttachHandler_1 = require("./hooks/childProcessAttachHandler")
 const childProcessAttachService_1 = require("./hooks/childProcessAttachService");
 const types_2 = require("./hooks/types");
 const types_3 = require("./types");
-function registerTypes(serviceManager) {
+const :[fn~\w+] = (serviceManager) => {
     serviceManager.addSingleton(types_3.IDebugConfigurationProvider, pythonV2Provider_1.PythonV2DebugConfigurationProvider);
     serviceManager.addSingleton(types_1.IConfigurationProviderUtils, configurationProviderUtils_1.ConfigurationProviderUtils);
     serviceManager.addSingleton(types_3.IDebuggerBanner, banner_1.DebuggerBanner);

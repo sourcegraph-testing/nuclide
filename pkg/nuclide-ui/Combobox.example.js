@@ -14,15 +14,15 @@ import {Block} from 'nuclide-commons-ui/Block';
 import {Combobox} from './Combobox';
 import {Observable} from 'rxjs';
 
-function requestOptions(): Observable<Array<string>> {
+const :[fn~\w+] = () =>: Observable<Array<string>> {
   return Observable.of(['Nuclide', 'Atom', 'Facebook']);
 }
 
-function onSelect(option: string) {
+const :[fn~\w+] = (option: string) => {
   // Handle select
 }
 
-function filterOptions(options: Array<string>, value: string): Array<string> {
+const :[fn~\w+] = (options: Array<string>, value: string) =>: Array<string> {
   // Custom filter to filter, sort, etc. how you want
   return options.filter(option => {
     const lowerCaseValue = value.toLowerCase();

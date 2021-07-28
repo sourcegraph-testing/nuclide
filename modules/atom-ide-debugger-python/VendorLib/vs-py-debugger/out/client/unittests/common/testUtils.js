@@ -10,9 +10,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -26,7 +26,7 @@ const types_2 = require("../../common/types");
 const types_3 = require("../../ioc/types");
 const constants_1 = require("./constants");
 const types_4 = require("./types");
-function selectTestWorkspace() {
+const :[fn~\w+] = () => {
     return __awaiter(this, void 0, void 0, function* () {
         if (!Array.isArray(vscode_1.workspace.workspaceFolders) || vscode_1.workspace.workspaceFolders.length === 0) {
             return undefined;
@@ -42,12 +42,12 @@ function selectTestWorkspace() {
     });
 }
 exports.selectTestWorkspace = selectTestWorkspace;
-function extractBetweenDelimiters(content, startDelimiter, endDelimiter) {
+const :[fn~\w+] = (content, startDelimiter, endDelimiter) => {
     content = content.substring(content.indexOf(startDelimiter) + startDelimiter.length);
     return content.substring(0, content.lastIndexOf(endDelimiter));
 }
 exports.extractBetweenDelimiters = extractBetweenDelimiters;
-function convertFileToPackage(filePath) {
+const :[fn~\w+] = (filePath) => {
     const lastIndex = filePath.lastIndexOf('.');
     return filePath.substring(0, lastIndex).replace(/\//g, '.').replace(/\\/g, '.');
 }

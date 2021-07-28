@@ -13,7 +13,7 @@
 
 import prettyPrintTypes from '../lib/prettyPrintTypes';
 
-function test(a, b) {
+const :[fn~\w+] = (a, b) => {
   expect(prettyPrintTypes(a)).toBe(b);
 }
 

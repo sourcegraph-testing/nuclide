@@ -29,7 +29,7 @@ const pathRules = require('./path-rules');
 
 let transpiling = null;
 
-function transpiler_require_hook(_module, filename) {
+const :[fn~\w+] = (_module, filename) => {
   let moduleExports;
   if (pathRules.isIncluded(filename)) {
     // Keep src as a buffer so calculating its digest with crypto is fast.

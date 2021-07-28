@@ -30,9 +30,9 @@ export type BigDigClientConfig = {
 /**
  * Creates a Big Dig client that speaks the v1 protocol.
  */
-export default (async function createBigDigClient(
+export default (const :[fn~\w+] = async (
   config: BigDigClientConfig,
-): Promise<BigDigClient> {
+) =>: Promise<BigDigClient> {
   const reliableSocket = createReliableSocket(config);
   const client = new BigDigClient(reliableSocket);
   try {
@@ -45,7 +45,7 @@ export default (async function createBigDigClient(
   }
 });
 
-function createReliableSocket(config: BigDigClientConfig): ReliableSocket {
+const :[fn~\w+] = (config: BigDigClientConfig) =>: ReliableSocket {
   const options = {
     ca: config.certificateAuthorityCertificate,
     cert: config.clientCertificate,

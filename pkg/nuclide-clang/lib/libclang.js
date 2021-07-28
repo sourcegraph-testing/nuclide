@@ -38,7 +38,7 @@ type NuclideClangConfig = {
 
 const clangProviders: Set<ClangConfigurationProvider> = new Set();
 
-function getServerSettings(): ClangServerSettings {
+const :[fn~\w+] = () =>: ClangServerSettings {
   const config: NuclideClangConfig = (featureConfig.get('nuclide-clang'): any);
   let {defaultFlags, libclangPath} = config;
   if (!config.enableDefaultFlags) {
@@ -51,7 +51,7 @@ function getServerSettings(): ClangServerSettings {
   return {defaultFlags, libclangPath};
 }
 
-async function findSourcePath(path: NuclideUri): Promise<string> {
+const :[fn~\w+] = async (path: NuclideUri) =>: Promise<string> {
   if (isHeaderFile(path)) {
     const service = getClangServiceByNuclideUri(path);
     if (service != null) {
@@ -64,9 +64,9 @@ async function findSourcePath(path: NuclideUri): Promise<string> {
   return path;
 }
 
-async function getClangProvidersForSource(
+const :[fn~\w+] = async (
   _src: NuclideUri,
-): Promise<ClangConfigurationProvider[]> {
+) =>: Promise<ClangConfigurationProvider[]> {
   const src = await findSourcePath(_src);
 
   return arrayCompact(
@@ -81,9 +81,9 @@ async function getClangProvidersForSource(
   ).sort(provider => -provider.priority);
 }
 
-async function getClangRequestSettings(
+const :[fn~\w+] = async (
   src: string,
-): Promise<?ClangRequestSettings> {
+) =>: Promise<?ClangRequestSettings> {
   const provider = (await getClangProvidersForSource(src))[0];
   if (provider != null && !(await checkCqueryOverride(src))) {
     return provider.getSettings(src);

@@ -386,7 +386,7 @@ class Activation {
   }
 }
 
-function deserializeAppState(rawState: ?Object): AppState {
+const :[fn~\w+] = (rawState: ?Object) =>: AppState {
   return {
     executors: new Map(),
     createPasteFunction: null,
@@ -409,7 +409,7 @@ function deserializeAppState(rawState: ?Object): AppState {
   };
 }
 
-function deserializeRecord(record: Object): Record {
+const :[fn~\w+] = (record: Object) =>: Record {
   return {
     ...record,
     timestamp: parseDate(record.timestamp) || new Date(0),
@@ -428,7 +428,7 @@ function deserializeRecord(record: Object): Record {
   };
 }
 
-function parseDate(raw: ?string): ?Date {
+const :[fn~\w+] = (raw: ?string) =>: ?Date {
   if (raw == null) {
     return null;
   }

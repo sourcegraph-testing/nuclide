@@ -35,9 +35,9 @@ let _timeoutHandle: ?TimeoutID;
  *   _myDiv = c;
  * }} />
  */
-export default function addTooltip(
+export default const :[fn~\w+] = (
   options: atom$TooltipsAddOptions,
-): (elementRef: React.ElementRef<any>) => void {
+) =>: (elementRef: React.ElementRef<any>) => void {
   let node: ?Element;
 
   return elementRef => {
@@ -61,10 +61,10 @@ export default function addTooltip(
   };
 }
 
-function _registrationUndoesDisposal(
+const :[fn~\w+] = (
   node: Element,
   options: atom$TooltipsAddOptions,
-) {
+) => {
   const created = _createdTooltips.get(node);
   if (created == null) {
     return false;
@@ -73,7 +73,7 @@ function _registrationUndoesDisposal(
   return shallowEqual(options, created.options);
 }
 
-function _scheduleTooltipMaintenance(): void {
+const :[fn~\w+] = () =>: void {
   if (_timeoutHandle != null) {
     return;
   }
@@ -81,7 +81,7 @@ function _scheduleTooltipMaintenance(): void {
   _timeoutHandle = setTimeout(() => _performMaintenance(), REREGISTER_DELAY);
 }
 
-function _performMaintenance(): void {
+const :[fn~\w+] = () =>: void {
   _timeoutHandle = null;
 
   for (const [node, options] of _tooltipRequests.entries()) {

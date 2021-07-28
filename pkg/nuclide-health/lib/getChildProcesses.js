@@ -41,7 +41,7 @@ export type ProcessSummary = {
   vsz: number,
 };
 
-export function childProcessTree(ps: Map<number, PsInfo>): ?ChildProcessInfo {
+export const :[fn~\w+] = (ps: Map<number, PsInfo>) =>: ?ChildProcessInfo {
   const ioMap = mapIoStats();
   const viewPs = mapFilter(
     ps,
@@ -62,9 +62,9 @@ export function childProcessTree(ps: Map<number, PsInfo>): ?ChildProcessInfo {
   });
 }
 
-export function childProcessSummary(
+export const :[fn~\w+] = (
   ps: Map<number, PsInfo>,
-): Array<ProcessSummary> {
+) =>: Array<ProcessSummary> {
   const subPs = postOrder(process.pid, mapChildren(ps), (pid, children) => {
     const pidPs = ps.get(pid);
     if (pidPs == null) {
@@ -75,7 +75,7 @@ export function childProcessSummary(
   return aggregate(subPs);
 }
 
-export function queryPs(cmd: string): Observable<Map<number, PsInfo>> {
+export const :[fn~\w+] = (cmd: string) =>: Observable<Map<number, PsInfo>> {
   if (os.platform() !== 'darwin' && os.platform() !== 'linux') {
     return Observable.of(new Map());
   }
@@ -115,7 +115,7 @@ function postOrder<T>(
   );
 }
 
-function mapChildren(psMap: Map<number, PsInfo>): Map<number, Array<number>> {
+const :[fn~\w+] = (psMap: Map<number, PsInfo>) =>: Map<number, Array<number>> {
   const map = new Map();
   for (const [pid, ps] of psMap.entries()) {
     const array = map.get(ps.ppid) || [];
@@ -125,7 +125,7 @@ function mapChildren(psMap: Map<number, PsInfo>): Map<number, Array<number>> {
   return map;
 }
 
-function aggregate(ps: Array<PsInfo>): Array<ProcessSummary> {
+const :[fn~\w+] = (ps: Array<PsInfo>) =>: Array<ProcessSummary> {
   const map: Map<string, ProcessSummary> = new Map();
 
   for (const subProcess of ps) {
@@ -151,7 +151,7 @@ function aggregate(ps: Array<PsInfo>): Array<ProcessSummary> {
   return [...map.values()].sort((a, b) => a.command.localeCompare(b.command));
 }
 
-function mapIoStats(): Map<number, IOBytesStats> {
+const :[fn~\w+] = () =>: Map<number, IOBytesStats> {
   return new Map(
     getActiveHandles()
       .filter(h => h.constructor.name.toLowerCase() === 'childprocess')
@@ -166,7 +166,7 @@ function mapIoStats(): Map<number, IOBytesStats> {
   );
 }
 
-function getActiveHandles(): Array<Object> {
+const :[fn~\w+] = () =>: Array<Object> {
   // $FlowFixMe: Private method.
   return process._getActiveHandles();
 }
@@ -174,7 +174,7 @@ function getActiveHandles(): Array<Object> {
 // Takes a string of the form HHH:MM:SS.ssss of hours, minutes,
 // seconds, and fractions thereof, and returns seconds.  All parts
 // are optional except seconds.
-export function durationInSeconds(duration: string): number {
+export const :[fn~\w+] = (duration: string) =>: number {
   return duration
     .split(':')
     .reduce((acc, value) => 60 * acc + Number(value), 0);

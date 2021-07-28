@@ -27,10 +27,10 @@ const eventToPoint = (e: MouseEvent): Point => ({
 });
 
 // Combine mouseenter and mouseleave to create an observable of hovering state.
-function areHovering(
+const :[fn~\w+] = (
   element: HTMLElement,
   editorElement: atom$TextEditorElement,
-): Observable<boolean> {
+) =>: Observable<boolean> {
   return Observable.merge(
     Observable.fromEvent(element, 'mouseenter').mapTo(true),
     Observable.fromEvent(element, 'mouseleave').mapTo(false),
@@ -38,7 +38,7 @@ function areHovering(
   );
 }
 
-function findCorners(node: HTMLElement): [Point, Point, Point, Point] {
+const :[fn~\w+] = (node: HTMLElement) =>: [Point, Point, Point, Point] {
   const {left, width, top, height} = node.getBoundingClientRect();
   return [
     {x: left, y: top}, // Top left
@@ -48,7 +48,7 @@ function findCorners(node: HTMLElement): [Point, Point, Point, Point] {
   ];
 }
 
-function areAiming(from: HTMLElement, to: HTMLElement): Observable<boolean> {
+const :[fn~\w+] = (from: HTMLElement, to: HTMLElement) =>: Observable<boolean> {
   const [topLeft, topRight, bottomLeft, bottomRight] = findCorners(to);
 
   const toBelowFrom =
@@ -71,19 +71,19 @@ function areAiming(from: HTMLElement, to: HTMLElement): Observable<boolean> {
     .distinctUntilChanged();
 }
 
-function editorScrolled(
+const :[fn~\w+] = (
   editorElement: atom$TextEditorElement,
-): Observable<number> {
+) =>: Observable<number> {
   return observableFromSubscribeFunction(cb =>
     editorElement.onDidChangeScrollTop(cb),
   );
 }
 
-export function hoveringOrAiming(
+export const :[fn~\w+] = (
   from: HTMLElement,
   to: HTMLElement,
   editorElement: atom$TextEditorElement,
-): Observable<boolean> {
+) =>: Observable<boolean> {
   return Observable.concat(
     areHovering(from, editorElement)
       .startWith(true)

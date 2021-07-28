@@ -40,13 +40,13 @@ import analytics from 'nuclide-commons/analytics';
 
 import * as Actions from './refactorActions';
 
-export function getEpics(
+export const :[fn~\w+] = (
   providers: ProviderRegistry<RefactorProvider>,
-): Array<Epic<RefactorAction, RefactorState, void>> {
+) =>: Array<Epic<RefactorAction, RefactorState, void>> {
   return [
-    function getRefactoringsEpic(
+    const :[fn~\w+] = (
       actions: ActionsObservable<RefactorAction>,
-    ): Observable<RefactorAction> {
+    ) =>: Observable<RefactorAction> {
       return actions.ofType('open').switchMap(() => {
         return Observable.fromPromise(getRefactorings(providers)).takeUntil(
           actions,
@@ -54,9 +54,9 @@ export function getEpics(
       });
     },
 
-    function executeRefactoringEpic(
+    const :[fn~\w+] = (
       actions: ActionsObservable<RefactorAction>,
-    ): Observable<RefactorAction> {
+    ) =>: Observable<RefactorAction> {
       return actions.ofType('execute').switchMap(action => {
         // Flow doesn't understand the implications of ofType :(
         invariant(action.type === 'execute');
@@ -71,18 +71,18 @@ export function getEpics(
       });
     },
 
-    function applyRefactoringEpic(
+    const :[fn~\w+] = (
       actions: ActionsObservable<RefactorAction>,
-    ): Observable<RefactorAction> {
+    ) =>: Observable<RefactorAction> {
       return actions.ofType('apply').switchMap(action => {
         invariant(action.type === 'apply');
         return applyRefactoring(action).takeUntil(actions.ofType('close'));
       });
     },
 
-    function loadDiffPreviewEpic(
+    const :[fn~\w+] = (
       actions: ActionsObservable<RefactorAction>,
-    ): Observable<RefactorAction> {
+    ) =>: Observable<RefactorAction> {
       return actions.ofType('load-diff-preview').switchMap(action => {
         invariant(action.type === 'load-diff-preview');
         return Observable.fromPromise(
@@ -91,9 +91,9 @@ export function getEpics(
       });
     },
 
-    function handleErrors(
+    const :[fn~\w+] = (
       actions: ActionsObservable<RefactorAction>,
-    ): Observable<RefactorAction> {
+    ) =>: Observable<RefactorAction> {
       return actions.ofType('error').map(action => {
         invariant(action.type === 'error');
         const {source, error} = action.payload;
@@ -112,9 +112,9 @@ export function getEpics(
   ];
 }
 
-async function getRefactorings(
+const :[fn~\w+] = async (
   registry: ProviderRegistry<RefactorProvider>,
-): Promise<RefactorAction> {
+) =>: Promise<RefactorAction> {
   analytics.track('nuclide-refactorizer:get-refactorings');
   const editor = atom.workspace.getActiveTextEditor();
   if (editor == null || editor.getPath() == null) {
@@ -153,7 +153,7 @@ async function getRefactorings(
   }
 }
 
-function executeRefactoring(action: ExecuteAction): Observable<RefactorAction> {
+const :[fn~\w+] = (action: ExecuteAction) =>: Observable<RefactorAction> {
   const {refactoring, providers} = action.payload;
   const refactorProviders = providers.filter(p => p.refactor != null);
   const renameProviders = providers.filter(p => p.rename != null);
@@ -236,9 +236,9 @@ function executeRefactoring(action: ExecuteAction): Observable<RefactorAction> {
 // In both cases, the format of the edits are the same (TextEdits)
 const FILE_IO_CONCURRENCY = 4;
 
-export function applyRefactoring(
+export const :[fn~\w+] = (
   action: ApplyAction,
-): Observable<RefactorAction> {
+) =>: Observable<RefactorAction> {
   return Observable.defer(() => {
     const {response} = action.payload;
     let editStream = Observable.empty();
@@ -348,10 +348,10 @@ export function applyRefactoring(
   });
 }
 
-async function loadDiffPreview(
+const :[fn~\w+] = async (
   uri: NuclideUri,
   response: RefactorEditResponse,
-): Promise<RefactorAction> {
+) =>: Promise<RefactorAction> {
   const file = getFileForPath(uri);
   if (file == null) {
     throw new Error(`Could not read file ${uri}`);
@@ -363,11 +363,11 @@ async function loadDiffPreview(
   return Actions.displayDiffPreview(parse(diffString));
 }
 
-function getEdits(
+const :[fn~\w+] = (
   uri: NuclideUri,
   buffer: atom$TextBuffer,
   response: RefactorEditResponse,
-): Array<TextEdit> {
+) =>: Array<TextEdit> {
   switch (response.type) {
     case 'edit':
     case 'rename-external-edit':
@@ -379,7 +379,7 @@ function getEdits(
   }
 }
 
-function toTextEdit(buffer: atom$TextBuffer, edit: ExternalTextEdit): TextEdit {
+const :[fn~\w+] = (buffer: atom$TextBuffer, edit: ExternalTextEdit) =>: TextEdit {
   return {
     oldRange: new Range(
       buffer.positionForCharacterIndex(edit.startOffset),
@@ -390,10 +390,10 @@ function toTextEdit(buffer: atom$TextBuffer, edit: ExternalTextEdit): TextEdit {
   };
 }
 
-function toAbsoluteCharacterOffsets(
+const :[fn~\w+] = (
   buffer: atom$TextBuffer,
   edit: TextEdit,
-): ExternalTextEdit {
+) =>: ExternalTextEdit {
   const startingPoint = edit.oldRange.start;
   const endingPoint = edit.oldRange.end;
 
