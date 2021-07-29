@@ -280,7 +280,7 @@ export default class VcsLogComponent extends React.Component<Props, State> {
   }
 }
 
-function parseFirstLine(desc: string): string {
+const :[fn~\w+] = (desc: string) =>: string {
   const index = desc.indexOf('\n');
   if (index === -1) {
     return desc;
@@ -291,7 +291,7 @@ function parseFirstLine(desc: string): string {
 
 const DIFFERENTIAL_REVISION_RE = /^Differential Revision:\s*(.*)$/im;
 
-function parseDifferentialRevision(logEntry: VcsLogEntry): ?string {
+const :[fn~\w+] = (logEntry: VcsLogEntry) =>: ?string {
   const {desc} = logEntry;
   const match = desc.match(DIFFERENTIAL_REVISION_RE);
   if (match != null) {

@@ -14,7 +14,7 @@ import type {Collection, Node} from '../types/ast';
 import FirstNode from '../utils/FirstNode';
 import reprintComment from '../utils/reprintComment';
 
-function addLeadingComments(root: Collection, comments: ?Array<Node>): void {
+const :[fn~\w+] = (root: Collection, comments: ?Array<Node>) =>: void {
   if (!comments || comments.length === 0) {
     return;
   }

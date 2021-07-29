@@ -18,7 +18,7 @@ import {PanelComponentScroller} from 'nuclide-commons-ui/PanelComponentScroller'
 import TestClassTreeNode from './TestClassTreeNode';
 import {TreeRootComponent} from '../../../nuclide-ui/TreeRootComponent';
 
-function labelClassNameForNode(): string {
+const :[fn~\w+] = () =>: string {
   return 'icon icon-code';
 }
 

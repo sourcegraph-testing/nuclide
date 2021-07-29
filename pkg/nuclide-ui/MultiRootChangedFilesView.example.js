@@ -14,7 +14,7 @@ import {Block} from 'nuclide-commons-ui/Block';
 import {MultiRootChangedFilesView} from './MultiRootChangedFilesView';
 import {FileChangeStatus} from '../nuclide-vcs-base';
 
-function BasicExample(): React.Element<any> {
+const :[fn~\w+] = () =>: React.Element<any> {
   const fileChanges = new Map([
     [
       'nuclide://remote.host/someRemoteDir',

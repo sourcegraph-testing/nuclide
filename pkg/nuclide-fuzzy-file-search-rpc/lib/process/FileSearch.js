@@ -27,11 +27,11 @@ const logger = getLogger('nuclide-fuzzy-file-search-rpc');
 
 const fileSearchCache = {};
 
-export async function fileSearchForDirectory(
+export const :[fn~\w+] = async (
   directory: string,
   pathSetUpdater: ?PathSetUpdater,
   ignoredNames?: Array<string> = [],
-): Promise<PathSet> {
+) =>: Promise<PathSet> {
   // Note: races are not an issue here since initialization is managed in
   // FileSearchProcess (which protects against simultaneous inits).
   const cached = fileSearchCache[directory];
@@ -60,7 +60,7 @@ export async function fileSearchForDirectory(
 
 let pathSetUpdater;
 
-function getPathSetUpdater() {
+const :[fn~\w+] = () => {
   if (!pathSetUpdater) {
     pathSetUpdater = new PathSetUpdater();
   }
@@ -70,18 +70,18 @@ function getPathSetUpdater() {
 // The return values of the following functions must be JSON-serializable so they
 // can be sent across a process boundary.
 
-export async function initFileSearchForDirectory(
+export const :[fn~\w+] = async (
   directory: string,
   ignoredNames: Array<string>,
-): Promise<void> {
+) =>: Promise<void> {
   await fileSearchForDirectory(directory, null, ignoredNames);
 }
 
-export async function doSearch(
+export const :[fn~\w+] = async (
   directory: string,
   query: string,
   options?: FileSearchOptions = Object.freeze({}),
-): Promise<Array<FileSearchResult>> {
+) =>: Promise<Array<FileSearchResult>> {
   const pathSet = await fileSearchForDirectory(directory);
   return pathSet.query(query, options);
 }

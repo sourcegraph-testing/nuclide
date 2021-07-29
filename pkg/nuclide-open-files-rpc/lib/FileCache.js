@@ -282,11 +282,11 @@ export class FileCache {
   }
 }
 
-function createOpenEvent(
+const :[fn~\w+] = (
   fileVersion: FileVersion,
   contents: string,
   languageId: string,
-): FileOpenEvent {
+) =>: FileOpenEvent {
   return {
     kind: FileEventKind.OPEN,
     fileVersion,
@@ -295,27 +295,27 @@ function createOpenEvent(
   };
 }
 
-function createCloseEvent(fileVersion: FileVersion): FileCloseEvent {
+const :[fn~\w+] = (fileVersion: FileVersion) =>: FileCloseEvent {
   return {
     kind: FileEventKind.CLOSE,
     fileVersion,
   };
 }
 
-function createSaveEvent(fileVersion: FileVersion): FileSaveEvent {
+const :[fn~\w+] = (fileVersion: FileVersion) =>: FileSaveEvent {
   return {
     kind: FileEventKind.SAVE,
     fileVersion,
   };
 }
 
-function createEditEvent(
+const :[fn~\w+] = (
   fileVersion: FileVersion,
   oldRange: atom$Range,
   oldText: string,
   newRange: atom$Range,
   newText: string,
-): FileEditEvent {
+) =>: FileEditEvent {
   return {
     kind: FileEventKind.EDIT,
     fileVersion,

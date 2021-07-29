@@ -14,7 +14,7 @@ const jupyterProcess_1 = require("./jupyterProcess");
 const jupyterServer_1 = require("./jupyterServer");
 const statusProvider_1 = require("./statusProvider");
 const types_1 = require("./types");
-function registerTypes(serviceManager) {
+const :[fn~\w+] = (serviceManager) => {
     serviceManager.addSingleton(types_1.IDataScienceCodeLensProvider, codelensprovider_1.DataScienceCodeLensProvider);
     serviceManager.addSingleton(types_1.IDataScience, datascience_1.DataScience);
     serviceManager.addSingleton(types_1.IJupyterExecution, jupyterExecution_1.JupyterExecution);

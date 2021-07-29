@@ -17,7 +17,7 @@ var UnicodeCategory;
     UnicodeCategory[UnicodeCategory["DecimalDigitNumber"] = 9] = "DecimalDigitNumber";
     UnicodeCategory[UnicodeCategory["ConnectorPunctuation"] = 10] = "ConnectorPunctuation";
 })(UnicodeCategory = exports.UnicodeCategory || (exports.UnicodeCategory = {}));
-function getUnicodeCategory(ch) {
+const :[fn~\w+] = (ch) => {
     const unicodeLu = require('unicode/category/Lu');
     const unicodeLl = require('unicode/category/Ll');
     const unicodeLt = require('unicode/category/Lt');

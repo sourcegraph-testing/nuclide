@@ -157,10 +157,10 @@ export class FlowExecInfoContainer {
   }
 }
 
-async function getFlowVersionInformation(
+const :[fn~\w+] = async (
   flowPath: string,
   root: string | null,
-): Promise<?{flowVersion: string, pathToFlow: string}> {
+) =>: Promise<?{flowVersion: string, pathToFlow: string}> {
   try {
     const result = await runCommand(
       flowPath,
@@ -177,7 +177,7 @@ async function getFlowVersionInformation(
   }
 }
 
-async function canFindFlow(flowPath: string): Promise<boolean> {
+const :[fn~\w+] = async (flowPath: string) =>: Promise<boolean> {
   if (process.platform === 'win32') {
     // On Windows, if the flow path is configured as a full path rather than just "flow" or
     // "flow.exe", format the path correctly to pass to `where <flow>`
@@ -192,7 +192,7 @@ async function canFindFlow(flowPath: string): Promise<boolean> {
 
 // `string | null` forces the presence of an explicit argument (`?string` allows undefined which
 // means the argument can be left off altogether.
-function getFlowExecOptions(root: string | null): Object {
+const :[fn~\w+] = (root: string | null) =>: Object {
   return {
     cwd: root,
     env: {

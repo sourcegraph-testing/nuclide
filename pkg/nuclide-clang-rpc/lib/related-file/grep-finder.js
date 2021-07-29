@@ -33,10 +33,10 @@ const logger = getLogger('nuclide-clang-rpc');
 
 const INCLUDE_SEARCH_TIMEOUT = 15000;
 
-export function findIncludingSourceFile(
+export const :[fn~\w+] = (
   headerFile: string,
   projectRoot: string,
-): Observable<?string> {
+) =>: Observable<?string> {
   return _findIncludingSourceFile(headerFile, projectRoot)
     .timeout(INCLUDE_SEARCH_TIMEOUT)
     .take(1)
@@ -50,7 +50,7 @@ export function findIncludingSourceFile(
     });
 }
 
-function getFBProjectRoots(): string[] {
+const :[fn~\w+] = () =>: string[] {
   try {
     // $FlowFB
     return require('./fb/project-roots').getFBProjectRoots();
@@ -58,7 +58,7 @@ function getFBProjectRoots(): string[] {
   return [];
 }
 
-export function getSearchFolder(projectRoot: string, header: string): string {
+export const :[fn~\w+] = (projectRoot: string, header: string) =>: string {
   const roots = getFBProjectRoots();
   // if the projectRoot is a fb root, then search in the first subdirectory,
   // using the whole root is too expensive and might timeout
@@ -77,10 +77,10 @@ export function getSearchFolder(projectRoot: string, header: string): string {
   return projectRoot;
 }
 
-function _findIncludingSourceFile(
+const :[fn~\w+] = (
   header: string,
   projectRoot: string,
-): Observable<string> {
+) =>: Observable<string> {
   const basename = escapeStringRegExp(nuclideUri.basename(header));
   const relativePath = escapeStringRegExp(
     nuclideUri.relative(projectRoot, header),

@@ -98,7 +98,7 @@ export default class TabbableContainer extends React.Component<Props> {
   }
 }
 
-function focusNext(): void {
+const :[fn~\w+] = () =>: void {
   const currentElement = getFocusedElement();
   if (!(currentElement instanceof HTMLElement)) {
     return;
@@ -150,7 +150,7 @@ function focusNext(): void {
   }
 }
 
-function focusPrevious(): void {
+const :[fn~\w+] = () =>: void {
   const currentElement = getFocusedElement();
   if (!(currentElement instanceof HTMLElement)) {
     return;
@@ -213,12 +213,12 @@ function focusPrevious(): void {
  * container is where all of the focusable elements are searched.
  *           Default value is document.
  */
-function eachTabIndexedElement(
+const :[fn~\w+] = (
   currentElement: Element,
   reverse: boolean,
   updateNextCandidate: (element: Element, tabIndex: number) => boolean,
   container: ?Element,
-): void {
+) =>: void {
   const elements = (container || document).querySelectorAll(
     'a, input, button, [tabindex]',
   );
@@ -241,17 +241,17 @@ function eachTabIndexedElement(
   }
 }
 
-function getFocusedElement(): ?Element {
+const :[fn~\w+] = () =>: ?Element {
   return document.activeElement;
 }
 
 /**
  * Finds a parent of currentElement that satisfies the condition.
  */
-function findParentElement(
+const :[fn~\w+] = (
   currentElement: ?Element,
   condition: (element: Element) => boolean,
-): ?Element {
+) =>: ?Element {
   let element = currentElement;
   while (element && !condition(element)) {
     element = element.parentElement;

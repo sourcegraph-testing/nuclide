@@ -14,7 +14,7 @@ import type {Completion} from '../../nuclide-language-service/lib/LanguageServic
 import {default as TextBuffer, Point} from 'simple-text-buffer';
 import {compareHackCompletions, findHackPrefix} from '../lib/autocomplete';
 
-function createCompletion(text: string, prefix: string = ''): Completion {
+const :[fn~\w+] = (text: string, prefix: string = '') =>: Completion {
   return {
     snippet: text + '()',
     displayText: text,

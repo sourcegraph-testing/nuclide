@@ -217,6 +217,6 @@ export class SnapshotLogger {
  * Formats a UNIX timestamp in 24-hour US format.
  * e.g. 16:01:19
  */
-function formatTime(time: number): string {
+const :[fn~\w+] = (time: number) =>: string {
   return new Date(time).toLocaleTimeString('en-US', {hour12: false});
 }

@@ -27,7 +27,7 @@ const VALID_FILTER_CHARS =
   '!#./0123456789-:;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
   '_abcdefghijklmnopqrstuvwxyz~';
 
-export default function registerCommands(store: Store): IDisposable {
+export default const :[fn~\w+] = (store: Store) =>: IDisposable {
   const disposables = new UniversalDisposable();
 
   // Subsequent root directories updated on change
@@ -180,7 +180,7 @@ export default function registerCommands(store: Store): IDisposable {
   return disposables;
 }
 
-function copyFullPath(event: Event): void {
+const :[fn~\w+] = (event: Event) =>: void {
   const path = getElementFilePath(((event.target: any): HTMLElement), true);
   if (path == null) {
     return;
@@ -189,7 +189,7 @@ function copyFullPath(event: Event): void {
   atom.clipboard.write(parsed.path);
 }
 
-function revealActiveFile(event: Event, store: Store): void {
+const :[fn~\w+] = (event: Event, store: Store) =>: void {
   let path = getElementFilePath(((event.target: any): HTMLElement), true);
 
   if (path == null) {
@@ -208,7 +208,7 @@ function revealActiveFile(event: Event, store: Store): void {
   store.dispatch(Actions.revealFilePath(path));
 }
 
-function searchInDirectory(event: Event, store: Store): void {
+const :[fn~\w+] = (event: Event, store: Store) =>: void {
   const targetElement = ((event.target: any): HTMLElement);
   // If the event was sent to the entire tree, rather then a single element - attempt to derive
   // the path to work on from the current selection.
@@ -256,7 +256,7 @@ function searchInDirectory(event: Event, store: Store): void {
   }
 }
 
-function showInFileManager(event: Event): void {
+const :[fn~\w+] = (event: Event) =>: void {
   const path = getElementFilePath(((event.target: any): HTMLElement), true);
   if (path == null || nuclideUri.isRemote(path)) {
     return;

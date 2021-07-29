@@ -40,10 +40,10 @@ type HgContenxtMenuAction = 'Revert' | 'Add';
 // A file is revertable if it's changed or added.
 // A file is addable if it's untracked.
 // A directory is revertable if it contains changed files.
-function shouldDisplayActionTreeItem(
+const :[fn~\w+] = (
   contextMenu: FileTreeContextMenu,
   action: HgContenxtMenuAction,
-): boolean {
+) =>: boolean {
   if (action === 'Revert') {
     const node = contextMenu.getSingleSelectedNode();
     if (node == null || node.repo == null || node.repo.getType() !== 'hg') {
@@ -73,7 +73,7 @@ function shouldDisplayActionTreeItem(
   }
 }
 
-function getActivePathAndHgRepository(): ?{
+const :[fn~\w+] = () =>: ?{
   activePath: string,
   repository: HgRepositoryClient,
 } {
@@ -93,7 +93,7 @@ function getActivePathAndHgRepository(): ?{
   };
 }
 
-function isActivePathRevertable(): boolean {
+const :[fn~\w+] = () =>: boolean {
   const activeRepositoryInfo = getActivePathAndHgRepository();
   if (activeRepositoryInfo == null) {
     return false;
@@ -102,7 +102,7 @@ function isActivePathRevertable(): boolean {
   return repository.isPathModified(activePath);
 }
 
-function isActivePathAddable(): boolean {
+const :[fn~\w+] = () =>: boolean {
   const activeRepositoryInfo = getActivePathAndHgRepository();
   if (activeRepositoryInfo == null) {
     return false;
@@ -111,7 +111,7 @@ function isActivePathAddable(): boolean {
   return repository.isPathUntracked(activePath);
 }
 
-export function activate(state: any): void {
+export const :[fn~\w+] = (state: any) =>: void {
   subscriptions = new UniversalDisposable();
 
   subscriptions.add(
@@ -175,9 +175,9 @@ export function activate(state: any): void {
   registerGrammar('source.ini', ['.hgrc']);
 }
 
-export function addItemsToFileTreeContextMenu(
+export const :[fn~\w+] = (
   contextMenu: FileTreeContextMenu,
-): IDisposable {
+) =>: IDisposable {
   invariant(subscriptions);
 
   const revertContextDisposable = contextMenu.addItemToSourceControlMenu(
@@ -225,20 +225,20 @@ export function addItemsToFileTreeContextMenu(
   });
 }
 
-export function deactivate(state: any): void {
+export const :[fn~\w+] = (state: any) =>: void {
   if (subscriptions != null) {
     subscriptions.dispose();
     subscriptions = null;
   }
 }
 
-export function createHgRepositoryProvider() {
+export const :[fn~\w+] = () => {
   return new HgRepositoryProvider();
 }
 
-async function getAllHgAdditionalLogFiles(
+const :[fn~\w+] = async (
   deadline: DeadlineRequest,
-): Promise<Array<AdditionalLogFile>> {
+) =>: Promise<Array<AdditionalLogFile>> {
   // Atom provides one repository object per project.
   const repositories: Array<?atom$Repository> = atom.project.getRepositories();
   // We want to avoid duplication in the case where two different projects both
@@ -267,7 +267,7 @@ async function getAllHgAdditionalLogFiles(
   return arrayFlatten(results);
 }
 
-export function createHgAdditionalLogFilesProvider(): AdditionalLogFilesProvider {
+export const :[fn~\w+] = () =>: AdditionalLogFilesProvider {
   return {
     id: 'hg',
     getAdditionalLogFiles: getAllHgAdditionalLogFiles,

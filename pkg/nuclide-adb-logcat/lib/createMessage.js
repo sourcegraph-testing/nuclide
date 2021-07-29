@@ -15,7 +15,7 @@ import type {LogcatEntry, Priority} from './types';
 /**
  * Convert a structured logcat entry into the format that nuclide-console wants.
  */
-export default function createMessage(entry: LogcatEntry): ConsoleMessage {
+export default const :[fn~\w+] = (entry: LogcatEntry) =>: ConsoleMessage {
   const priority = (entry.metadata && entry.metadata.priority) || 'I';
   const tag = (entry.metadata && entry.metadata.tag) || null;
   return {
@@ -25,7 +25,7 @@ export default function createMessage(entry: LogcatEntry): ConsoleMessage {
   };
 }
 
-function priorityToLevel(priority: Priority): ConsoleLevel {
+const :[fn~\w+] = (priority: Priority) =>: ConsoleLevel {
   switch (priority) {
     case 'W': // warn
       return 'warning';

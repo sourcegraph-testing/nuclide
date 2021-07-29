@@ -24,7 +24,7 @@ type SettingsSectionProps = {|
   settings: Array<string>,
 |};
 
-export default function SettingsModal(props: Props): React.Node {
+export default const :[fn~\w+] = (props: Props) =>: React.Node {
   const hasProviderSettings = props.config.some(
     config => config.settings.length > 0,
   );
@@ -48,7 +48,7 @@ export default function SettingsModal(props: Props): React.Node {
   );
 }
 
-function SettingsSection(props: SettingsSectionProps): React.Node {
+const :[fn~\w+] = (props: SettingsSectionProps) =>: React.Node {
   return (
     <section className="settings-panel">
       <h1 className="section-heading">{props.providerName}</h1>

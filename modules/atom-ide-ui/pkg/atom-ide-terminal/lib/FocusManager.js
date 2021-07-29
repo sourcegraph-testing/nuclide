@@ -131,7 +131,7 @@ export class FocusManager {
 }
 
 /** Focus the specified Terminal. */
-function focus(item: Object) {
+const :[fn~\w+] = (item: Object) => {
   const pane = atom.workspace.paneForItem(item);
   if (pane == null) {
     return;
@@ -147,7 +147,7 @@ function focus(item: Object) {
  * Traverses the panes and pane items and returns the first TerminalView it
  * finds, if any.
  */
-function findTerminal(): ?TerminalView {
+const :[fn~\w+] = () =>: ?TerminalView {
   for (const pane of atom.workspace.getPanes()) {
     for (const item of pane.getItems()) {
       if (item instanceof TerminalView) {

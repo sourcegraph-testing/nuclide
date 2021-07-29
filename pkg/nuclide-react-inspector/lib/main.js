@@ -18,17 +18,17 @@ import {destroyItemWhere} from 'nuclide-commons-atom/destroyItemWhere';
 
 let disposables: ?UniversalDisposable = null;
 
-export function activate(): void {
+export const :[fn~\w+] = () =>: void {
   disposables = new UniversalDisposable(registerCommandAndOpener());
 }
 
-export function deactivate(): void {
+export const :[fn~\w+] = () =>: void {
   invariant(disposables != null);
   disposables.dispose();
   disposables = null;
 }
 
-function registerCommandAndOpener(): UniversalDisposable {
+const :[fn~\w+] = () =>: UniversalDisposable {
   return new UniversalDisposable(
     atom.workspace.addOpener(uri => {
       if (uri === WORKSPACE_VIEW_URI) {

@@ -87,11 +87,11 @@ export default class FileFamilyAggregator {
   }
 }
 
-function addRelatedFiletoFileMap(
+const :[fn~\w+] = (
   filePath: NuclideUri,
   fileData: RelatedFile,
   fileMap: FileMap,
-): void {
+) =>: void {
   const existingFileData = fileMap.get(filePath);
   if (existingFileData == null) {
     fileMap.set(filePath, fileData);
@@ -117,10 +117,10 @@ function addRelatedFiletoFileMap(
   fileMap.set(filePath, newFileData);
 }
 
-function addRelationToAdjacencyMatrix(
+const :[fn~\w+] = (
   relation: Relation,
   adjacencyMatrix: Map<NuclideUri, Map<NuclideUri, Relation>>,
-): void {
+) =>: void {
   const existingRelationFrom = adjacencyMatrix.get(relation.from);
   if (existingRelationFrom == null) {
     adjacencyMatrix.set(relation.from, new Map([[relation.to, relation]]));

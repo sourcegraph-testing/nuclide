@@ -15,10 +15,10 @@ import {LinterAdapter} from './LinterAdapter';
 
 type BusyReporter = (title: string) => IDisposable;
 
-export function createAdapter(
+export const :[fn~\w+] = (
   provider: LinterProvider,
   busyReporter: BusyReporter,
-): ?LinterAdapter {
+) =>: ?LinterAdapter {
   const validationErrors = validateLinter(provider);
   if (validationErrors.length === 0) {
     return new LinterAdapter(provider, busyReporter);
@@ -33,7 +33,7 @@ export function createAdapter(
   }
 }
 
-export function validateLinter(provider: LinterProvider): Array<string> {
+export const :[fn~\w+] = (provider: LinterProvider) =>: Array<string> {
   const errors = [];
   validate(provider, 'Must not be undefined', errors);
 
@@ -82,7 +82,7 @@ export function validateLinter(provider: LinterProvider): Array<string> {
   return errors;
 }
 
-function validate(condition: mixed, msg: string, errors: Array<string>): void {
+const :[fn~\w+] = (condition: mixed, msg: string, errors: Array<string>) =>: void {
   // flowlint-next-line sketchy-null-mixed:off
   if (!condition) {
     errors.push(msg);

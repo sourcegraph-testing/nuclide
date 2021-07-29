@@ -216,7 +216,7 @@ export class LspTester {
   };
 }
 
-function parseChunks(chunks: Array<string>): ?{header: string, body: mixed} {
+const :[fn~\w+] = (chunks: Array<string>) =>: ?{header: string, body: mixed} {
   const combined = chunks.join('');
   const [header, body] = splitOnce(combined, '\r\n\r\n');
   if (body == null) {
@@ -233,7 +233,7 @@ function parseChunks(chunks: Array<string>): ?{header: string, body: mixed} {
   return {header, body: parsed};
 }
 
-function parseResponses(raw: Observable<string>): Observable<string> {
+const :[fn~\w+] = (raw: Observable<string>) =>: Observable<string> {
   // TODO: We're parsing twice out of laziness here: once for validation, then for usage.
   return raw
     .let(bufferUntil((_, chunks) => parseChunks(chunks) != null))

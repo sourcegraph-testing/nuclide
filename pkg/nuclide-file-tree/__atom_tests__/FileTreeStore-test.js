@@ -64,21 +64,21 @@ let dir2 = '';
    * Trigger the fetch through the **internal-only** API. Enables the
    * tests to await loading children.
    */
-function loadChildKeys(rootKey: string, nodeKey: string): Promise<void> {
+const :[fn~\w+] = (rootKey: string, nodeKey: string) =>: Promise<void> {
   return Selectors.getLoading(store.getState(), nodeKey) || Promise.resolve();
 }
 
-function getNode(rootKey: string, nodeKey: string): FileTreeNode {
+const :[fn~\w+] = (rootKey: string, nodeKey: string) =>: FileTreeNode {
   const node = Selectors.getNode(store.getState(), rootKey, nodeKey);
   invariant(node);
   return node;
 }
 
-function shownChildren(
+const :[fn~\w+] = (
   state: AppState,
   rootKey: string,
   nodeKey: string,
-): Array<FileTreeNode> {
+) =>: Array<FileTreeNode> {
   const node = getNode(rootKey, nodeKey);
   return node.children
     .filter(n => Selectors.getNodeShouldBeShown(state)(n))
@@ -86,16 +86,16 @@ function shownChildren(
     .toArray();
 }
 
-function isExpanded(rootKey: string, nodeKey: string): boolean {
+const :[fn~\w+] = (rootKey: string, nodeKey: string) =>: boolean {
   return getNode(rootKey, nodeKey).isExpanded;
 }
 
-function isSelected(rootKey: string, nodeKey: string): boolean {
+const :[fn~\w+] = (rootKey: string, nodeKey: string) =>: boolean {
   return Selectors.getNodeIsSelected(store.getState())(
     getNode(rootKey, nodeKey),
   );
 }
-function numSelected(): number {
+const :[fn~\w+] = () =>: number {
   return Selectors.getSelectedNodes(store.getState()).size;
 }
 
@@ -312,13 +312,13 @@ describe('filter', () => {
     node = getNode(dir1, dir1);
   });
 
-  function checkNode(name, matches) {
+  const :[fn~\w+] = (name, matches) => {
     node = getNode(dir1, dir1);
     expect(node.highlightedText).toEqual(name);
     expect(node.matchesFilter).toEqual(matches);
   }
 
-  function updateFilter() {
+  const :[fn~\w+] = () => {
     expect(Selectors.getFilter(store.getState())).toEqual('');
     EpicHelpers.setRootKeys(store, [dir1]);
     checkNode('', true);
@@ -327,7 +327,7 @@ describe('filter', () => {
     checkNode(node.name, true);
   }
 
-  function doubleFilter() {
+  const :[fn~\w+] = () => {
     updateFilter();
     store.dispatch(Actions.addFilterLetter(node.name));
     expect(Selectors.getFilter(store.getState())).toEqual(
@@ -336,7 +336,7 @@ describe('filter', () => {
     checkNode('', false);
   }
 
-  function clearFilter() {
+  const :[fn~\w+] = () => {
     updateFilter();
     store.dispatch(Actions.addFilterLetter('t'));
     checkNode('', false);
@@ -1100,7 +1100,7 @@ describe('selection', () => {
   });
 
   describe('RangeUtil', () => {
-    async function prepareFileTree(): Promise<Map<string, string>> {
+    const :[fn~\w+] = async () =>: Promise<Map<string, string>> {
       const map: Map<string, string> = await buildTempDirTree(
         'dir/foo/foo1',
         'dir/foo/foo2',

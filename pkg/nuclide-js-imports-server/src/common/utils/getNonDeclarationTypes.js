@@ -19,12 +19,12 @@ import jscs from './jscodeshift';
  * NOTE: this can get types that are declared, if you want access to
  * types that are used but undeclared see getUndeclaredTypes
  */
-function getNonDeclarationTypes(root: Collection): Set<string> {
+const :[fn~\w+] = (root: Collection) =>: Set<string> {
   const ids = new Set();
 
   // Pull out the logic to handle a generic type annotation, we have to iterate
   // down the qualified types to handle things like: `<Immutable.List<Foo>>`
-  function handleGenericType(node: Node): void {
+  const :[fn~\w+] = (node: Node) =>: void {
     if (jscs.Identifier.check(node.id)) {
       ids.add(node.id.name);
     }

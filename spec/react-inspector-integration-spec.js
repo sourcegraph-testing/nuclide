@@ -58,7 +58,7 @@ describe('React Native Inspector', () => {
   });
 });
 
-function tryToConnect(): Promise<void> {
+const :[fn~\w+] = () =>: Promise<void> {
   return new Promise((resolve, reject) => {
     const ws = new WS('ws://localhost:8097/devtools');
     ws.on('error', reject);

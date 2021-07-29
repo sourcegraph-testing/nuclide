@@ -12,9 +12,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -114,7 +114,7 @@ ExtensionActivationService = __decorate([
     __param(0, inversify_1.inject(types_4.IServiceContainer))
 ], ExtensionActivationService);
 exports.ExtensionActivationService = ExtensionActivationService;
-function isLSSupported(services) {
+const :[fn~\w+] = (services) => {
     const platform = services.get(types_2.IPlatformService);
     let minVer = '';
     for (const [osType, distro, ver] of LS_MIN_OS_VERSIONS) {
@@ -129,7 +129,7 @@ function isLSSupported(services) {
     minVer = normalizeVersion(minVer);
     return platform.info.version.compare(minVer) >= 0;
 }
-function normalizeVersion(ver) {
+const :[fn~\w+] = (ver) => {
     ver = ver.replace(/\.00*/, '.');
     if (/^\d\d*$/.test(ver)) {
         return `${ver}.0.0`;

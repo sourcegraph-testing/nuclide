@@ -28,9 +28,9 @@ import {
   getInfoServiceByNuclideUri,
 } from '../../nuclide-remote-connection';
 
-export function observeIosDevices(
+export const :[fn~\w+] = (
   host: NuclideUri,
-): Observable<Expected<Array<FbsimctlDevice>>> {
+) =>: Observable<Expected<Array<FbsimctlDevice>>> {
   const serviceUri = nuclideUri.isRemote(host)
     ? nuclideUri.createRemoteUri(nuclideUri.getHostname(host), '/')
     : '';
@@ -79,9 +79,9 @@ export function observeIosDevices(
   });
 }
 
-function observeDevicesViaFbsimctl(
+const :[fn~\w+] = (
   serviceUri: NuclideUri,
-): Observable<Expected<Array<FbsimctlDevice>>> {
+) =>: Observable<Expected<Array<FbsimctlDevice>>> {
   if (nuclideUri.isRemote(serviceUri)) {
     return Observable.of(
       Expect.error(
@@ -103,9 +103,9 @@ function observeDevicesViaFbsimctl(
     });
 }
 
-function observeDevicesViaIdb(
+const :[fn~\w+] = (
   serviceUri: NuclideUri,
-): Observable<Expected<Array<FbsimctlDevice>>> {
+) =>: Observable<Expected<Array<FbsimctlDevice>>> {
   return Observable.interval(2000)
     .startWith(0)
     .exhaustMap(() => {
@@ -133,9 +133,9 @@ function observeDevicesViaIdb(
     });
 }
 
-function convertIdbErrorToValue(
+const :[fn~\w+] = (
   error: Error,
-): Observable<Expected<Array<FbsimctlDevice>>> {
+) =>: Observable<Expected<Array<FbsimctlDevice>>> {
   let message;
   // $FlowFixMe error.code
   if (error.code === 'ENOENT') {
@@ -158,9 +158,9 @@ function convertIdbErrorToValue(
   return Observable.of(Expect.error(newError));
 }
 
-function convertFbsimctlErrorToValue(
+const :[fn~\w+] = (
   error: Error,
-): Observable<Expected<Array<FbsimctlDevice>>> {
+) =>: Observable<Expected<Array<FbsimctlDevice>>> {
   let message;
   // $FlowFixMe error.code
   if (error.code === 'ENOENT') {

@@ -41,11 +41,11 @@ const TRIGGER_REGEX = /(\.|[a-zA-Z_][a-zA-Z0-9_]*)$/;
  *   instead of plain text.
  * @return string               Textual representation of the completion.
  */
-function getText(
+const :[fn~\w+] = (
   completion: PythonCompletion,
   includeOptionalArgs: boolean = true,
   createPlaceholders: boolean = false,
-): string {
+) =>: string {
   if (completion.params) {
     const params = includeOptionalArgs
       ? completion.params
@@ -62,7 +62,7 @@ function getText(
   return completion.text;
 }
 
-export async function getAutocompleteSuggestions(
+export const :[fn~\w+] = async (
   serverManager: JediServerManager,
   filePath: NuclideUri,
   buffer: simpleTextBuffer$TextBuffer,
@@ -70,7 +70,7 @@ export async function getAutocompleteSuggestions(
   activatedManually: boolean,
   autocompleteArguments: boolean,
   includeOptionalArguments: boolean,
-): Promise<AutocompleteResult> {
+) =>: Promise<AutocompleteResult> {
   if (
     !activatedManually &&
     matchRegexEndingAt(buffer, position, TRIGGER_REGEX) == null
@@ -113,13 +113,13 @@ export async function getAutocompleteSuggestions(
   };
 }
 
-export async function getCompletions(
+export const :[fn~\w+] = async (
   serverManager: JediServerManager,
   src: NuclideUri,
   contents: string,
   line: number,
   column: number,
-): Promise<?Array<PythonCompletion>> {
+) =>: Promise<?Array<PythonCompletion>> {
   const service = await serverManager.getJediService();
   return service.get_completions(
     src,

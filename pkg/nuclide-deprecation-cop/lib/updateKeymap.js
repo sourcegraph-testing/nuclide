@@ -13,15 +13,15 @@ import escapeRegExp from 'escape-string-regexp';
 import fsPromise from 'nuclide-commons/fsPromise';
 import {track} from 'nuclide-analytics';
 
-function quoteRegExp(str: string): string {
+const :[fn~\w+] = (str: string) =>: string {
   const boundary = '([\'"])';
   return `${boundary}(${str})${boundary}`;
 }
 
-export default (async function updateKeymap(
+export default (const :[fn~\w+] = async (
   keymapPath: string,
   deprecatedCommands: {[command: string]: string},
-): Promise<void> {
+) =>: Promise<void> {
   const keymapFile = await fsPromise.readFile(keymapPath, 'utf8');
   // Search for all deprecated commands (whole words, escaped).
   const mergedRegExp = Object.keys(deprecatedCommands)

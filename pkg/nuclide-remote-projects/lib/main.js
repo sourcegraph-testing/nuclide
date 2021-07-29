@@ -406,9 +406,9 @@ class Activation {
   }
 }
 
-function createSerializableRemoteConnectionConfiguration(
+const :[fn~\w+] = (
   config: RemoteConnectionConfiguration,
-): SerializableRemoteConnectionConfiguration {
+) =>: SerializableRemoteConnectionConfiguration {
   return {
     host: config.host,
     path: config.path,
@@ -417,7 +417,7 @@ function createSerializableRemoteConnectionConfiguration(
   };
 }
 
-function addRemoteFolderToProject(connection: RemoteConnection): IDisposable {
+const :[fn~\w+] = (connection: RemoteConnection) =>: IDisposable {
   const workingDirectoryUri = connection.getUri();
   // If restoring state, then the project already exists with local directory and wrong repo
   // instances. Hence, we remove it here, if existing, and add the new path for which we added a
@@ -449,7 +449,7 @@ function addRemoteFolderToProject(connection: RemoteConnection): IDisposable {
     setTimeout(closeRemoteConnection, CLOSE_PROJECT_DELAY_MS);
   });
 
-  function closeRemoteConnection() {
+  const :[fn~\w+] = () => {
     const closeConnection = (shutdownIfLast: boolean) => {
       logger.info('Closing remote connection.', {shutdownIfLast});
       connection.close(shutdownIfLast);
@@ -481,7 +481,7 @@ function addRemoteFolderToProject(connection: RemoteConnection): IDisposable {
   return subscription;
 }
 
-function closeOpenFilesForRemoteProject(connection: RemoteConnection): void {
+const :[fn~\w+] = (connection: RemoteConnection) =>: void {
   const openInstances = getOpenFileEditorForRemoteProject();
   for (const openInstance of openInstances) {
     const {uri, editor, pane} = openInstance;
@@ -497,7 +497,7 @@ function closeOpenFilesForRemoteProject(connection: RemoteConnection): void {
   }
 }
 
-function getRemoteRootDirectories(): Array<atom$Directory> {
+const :[fn~\w+] = () =>: Array<atom$Directory> {
   // TODO: Use nuclideUri instead.
   return atom.project
     .getDirectories()
@@ -508,7 +508,7 @@ function getRemoteRootDirectories(): Array<atom$Directory> {
  * Removes any Directory (not RemoteDirectory) objects that have Nuclide
  * remote URIs.
  */
-function deleteDummyRemoteRootDirectories() {
+const :[fn~\w+] = () => {
   for (const directory of atom.project.getDirectories()) {
     if (
       nuclideUri.isRemote(directory.getPath()) &&
@@ -523,7 +523,7 @@ function deleteDummyRemoteRootDirectories() {
  * The same TextEditor must be returned to prevent Atom from creating multiple tabs
  * for the same file, because Atom doesn't cache pending opener promises.
  */
-async function createEditorForNuclide(uri: NuclideUri): Promise<TextEditor> {
+const :[fn~\w+] = async (uri: NuclideUri) =>: Promise<TextEditor> {
   try {
     let buffer;
     try {
@@ -607,10 +607,10 @@ async function createEditorForNuclide(uri: NuclideUri): Promise<TextEditor> {
   }
 }
 
-async function reloadRemoteProjects(
+const :[fn~\w+] = async (
   remoteProjects: Array<SerializableRemoteConnectionConfiguration>,
   remoteProjectsService: RemoteProjectsServiceImpl,
-): Promise<void> {
+) =>: Promise<void> {
   // This is intentionally serial.
   // The 90% use case is to have multiple remote projects for a single connection;
   // after the first one succeeds the rest should require no user action.
@@ -657,7 +657,7 @@ async function reloadRemoteProjects(
   remoteProjectsService._reloadFinished(reloadedProjects);
 }
 
-function shutdownServersAndRestartNuclide(): void {
+const :[fn~\w+] = () =>: void {
   atom.confirm({
     message:
       'This will shutdown your Nuclide servers and restart Atom, ' +
@@ -678,7 +678,7 @@ function shutdownServersAndRestartNuclide(): void {
   });
 }
 
-function replaceRemoteEditorPlaceholders(): void {
+const :[fn~\w+] = () =>: void {
   // On Atom restart, it tries to open uri paths as local `TextEditor` pane items.
   // Here, Nuclide reloads the remote project files that have empty text editors open.
   const openInstances = getOpenFileEditorForRemoteProject();
@@ -764,10 +764,10 @@ function replaceRemoteEditorPlaceholders(): void {
  * allowed users to choose any of the valid available servers but for now don't
  * enter this dangerous zone.
  */
-function migrateRemoteEditorToCurrentInstance(
+const :[fn~\w+] = (
   openInstance: OpenFileEditorInstance,
   remoteConnections: Array<RemoteConnection>,
-): ?{uri: NuclideUri, connection: RemoteConnection} {
+) =>: ?{uri: NuclideUri, connection: RemoteConnection} {
   const {
     filePath,
     repositoryDescription: originalRepositoryDescription,
@@ -799,9 +799,9 @@ function migrateRemoteEditorToCurrentInstance(
   return null;
 }
 
-function validateRemoteProjectConfig(
+const :[fn~\w+] = (
   raw: ?mixed,
-): Array<SerializableRemoteConnectionConfiguration> {
+) =>: Array<SerializableRemoteConnectionConfiguration> {
   if (raw == null || !Array.isArray(raw)) {
     return [];
   }

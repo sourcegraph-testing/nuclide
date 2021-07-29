@@ -49,33 +49,33 @@ export type SelectionMode =
   | 'range-select'
   | 'invalid-select';
 
-export function dirPathToKey(path: string): string {
+export const :[fn~\w+] = (path: string) =>: string {
   return nuclideUri.ensureTrailingSeparator(
     nuclideUri.trimTrailingSeparator(path),
   );
 }
 
-export function isDirOrArchiveKey(key: string): boolean {
+export const :[fn~\w+] = (key: string) =>: boolean {
   return (
     nuclideUri.endsWithSeparator(key) ||
     nuclideUri.hasKnownArchiveExtension(key)
   );
 }
 
-export function keyToName(key: string): string {
+export const :[fn~\w+] = (key: string) =>: string {
   return nuclideUri.basename(key);
 }
 
-export function keyToPath(key: string): string {
+export const :[fn~\w+] = (key: string) =>: string {
   return nuclideUri.trimTrailingSeparator(key);
 }
 
-export function getParentKey(key: string): string {
+export const :[fn~\w+] = (key: string) =>: string {
   return nuclideUri.ensureTrailingSeparator(nuclideUri.dirname(key));
 }
 
 // The array this resolves to contains the `nodeKey` of each child
-export function fetchChildren(nodeKey: string): Promise<Array<string>> {
+export const :[fn~\w+] = (nodeKey: string) =>: Promise<Array<string>> {
   const directory = getDirectoryByKey(nodeKey);
 
   return new Promise((resolve, reject) => {
@@ -106,7 +106,7 @@ export function fetchChildren(nodeKey: string): Promise<Array<string>> {
   });
 }
 
-export function getDirectoryByKey(key: string): ?Directory {
+export const :[fn~\w+] = (key: string) =>: ?Directory {
   const path = keyToPath(key);
   if (!isDirOrArchiveKey(key)) {
     return null;
@@ -127,7 +127,7 @@ export function getDirectoryByKey(key: string): ?Directory {
   }
 }
 
-export function getFileByKey(key: string): ?File {
+export const :[fn~\w+] = (key: string) =>: ?File {
   const path = keyToPath(key);
   if (isDirOrArchiveKey(key)) {
     return null;
@@ -142,11 +142,11 @@ export function getFileByKey(key: string): ?File {
   }
 }
 
-export function getEntryByKey(key: string): ?Entry {
+export const :[fn~\w+] = (key: string) =>: ?Entry {
   return getFileByKey(key) || getDirectoryByKey(key);
 }
 
-export function getDisplayTitle(key: string): ?string {
+export const :[fn~\w+] = (key: string) =>: ?string {
   const path = keyToPath(key);
 
   if (nuclideUri.isRemote(path)) {
@@ -161,7 +161,7 @@ export function getDisplayTitle(key: string): ?string {
 // Sometimes remote directories are instantiated as local directories but with invalid paths.
 // Also, until https://github.com/atom/atom/issues/10297 is fixed in 1.12,
 // Atom sometimes creates phantom "atom:" directories when opening atom:// URIs.
-export function isValidDirectory(directory: Directory): boolean {
+export const :[fn~\w+] = (directory: Directory) =>: boolean {
   if (!isLocalEntry((directory: any))) {
     return true;
   }
@@ -170,12 +170,12 @@ export function isValidDirectory(directory: Directory): boolean {
   return nuclideUri.isAbsolute(dirPath);
 }
 
-function isLocalEntry(entry: Entry): boolean {
+const :[fn~\w+] = (entry: Entry) =>: boolean {
   // TODO: implement `RemoteDirectory.isRemoteDirectory()`
   return !('getLocalPath' in entry);
 }
 
-export function isContextClick(event: SyntheticMouseEvent<>): boolean {
+export const :[fn~\w+] = (event: SyntheticMouseEvent<>) =>: boolean {
   return (
     event.button === 2 ||
     (event.button === 0 &&
@@ -184,7 +184,7 @@ export function isContextClick(event: SyntheticMouseEvent<>): boolean {
   );
 }
 
-export function observeUncommittedChangesKindConfigKey(): Observable<
+export const :[fn~\w+] = () =>: Observable<
   ShowUncommittedChangesKindValue,
 > {
   return cacheWhileSubscribed(
@@ -206,10 +206,10 @@ export function observeUncommittedChangesKindConfigKey(): Observable<
   );
 }
 
-export function updatePathInOpenedEditors(
+export const :[fn~\w+] = (
   oldPath: NuclideUri,
   newPath: NuclideUri,
-): void {
+) =>: void {
   atom.workspace.getTextEditors().forEach(editor => {
     const buffer = editor.getBuffer();
     const bufferPath = buffer.getPath();
@@ -232,7 +232,7 @@ export function updatePathInOpenedEditors(
   });
 }
 
-export function getSelectionMode(event: SyntheticMouseEvent<>): SelectionMode {
+export const :[fn~\w+] = (event: SyntheticMouseEvent<>) =>: SelectionMode {
   if (
     (os.platform() === 'darwin' && event.metaKey && event.button === 0) ||
     (os.platform() !== 'darwin' && event.ctrlKey && event.button === 0)
@@ -258,11 +258,11 @@ export function getSelectionMode(event: SyntheticMouseEvent<>): SelectionMode {
  * An optional transformation can be provided which will be applied to all of the node's ancestors
  * (including the node itself).
  */
-export function replaceNode(
+export const :[fn~\w+] = (
   prevNode: FileTreeNode,
   newNode: FileTreeNode,
   transform: (node: FileTreeNode) => FileTreeNode = node => node,
-): FileTreeNode {
+) =>: FileTreeNode {
   const parent = prevNode.parent;
   if (parent == null) {
     return newNode;
@@ -275,12 +275,12 @@ export function replaceNode(
 /**
  * Use the predicate to update a node (or a branch) of the file-tree
  */
-export function updateNodeAtRoot(
+export const :[fn~\w+] = (
   roots: Roots,
   rootKey: NuclideUri,
   nodeKey: NuclideUri,
   transform: (node: FileTreeNode) => FileTreeNode,
-): Roots {
+) =>: Roots {
   const root = roots.get(rootKey);
   if (root == null) {
     return roots;
@@ -297,11 +297,11 @@ export function updateNodeAtRoot(
 /**
  * Update a node or a branch under any of the roots it was found at
  */
-export function updateNodeAtAllRoots(
+export const :[fn~\w+] = (
   roots: Roots,
   nodeKey: NuclideUri,
   transform: (node: FileTreeNode) => FileTreeNode,
-): Roots {
+) =>: Roots {
   return roots.map(root => {
     const node = root.find(nodeKey);
     if (node == null) {

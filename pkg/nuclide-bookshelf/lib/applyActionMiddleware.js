@@ -31,17 +31,17 @@ const HANDLED_ACTION_TYPES = [
   ActionType.RESTORE_PANE_ITEM_STATE,
 ];
 
-function getActionsOfType(
+const :[fn~\w+] = (
   actions: Observable<Action>,
   type: ActionTypeValue,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.filter(action => action.type === type);
 }
 
-export function applyActionMiddleware(
+export const :[fn~\w+] = (
   actions: Observable<Action>,
   getState: () => BookShelfState,
-): Observable<Action> {
+) =>: Observable<Action> {
   const output = Observable.merge(
     // Let the unhandled ActionTypes pass through.
     actions.filter(action => HANDLED_ACTION_TYPES.indexOf(action.type) === -1),
@@ -61,10 +61,10 @@ export function applyActionMiddleware(
   return output.share();
 }
 
-function watchProjectRepository(
+const :[fn~\w+] = (
   action: AddProjectRepositoryAction,
   getState: () => BookShelfState,
-): Observable<Action> {
+) =>: Observable<Action> {
   const {repository} = action.payload;
   const hgRepository: HgRepositoryClient = (repository: any);
   // Type was checked with `getType`. Downcast to safely access members with Flow.
@@ -101,10 +101,10 @@ function watchProjectRepository(
     );
 }
 
-function restorePaneItemState(
+const :[fn~\w+] = (
   action: RestorePaneItemStateAction,
   getState: () => BookShelfState,
-): Observable<Action> {
+) =>: Observable<Action> {
   const {repository, shortHead} = action.payload;
 
   const repositoryState = getState().repositoryPathToState.get(

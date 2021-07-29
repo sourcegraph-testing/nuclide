@@ -70,7 +70,7 @@ var LogOptions;
     LogOptions[LogOptions["ReturnValue"] = 2] = "ReturnValue";
 })(LogOptions || (LogOptions = {}));
 // tslint:disable-next-line:no-any
-function argsToLogString(args) {
+const :[fn~\w+] = (args) => {
     try {
         return (args || []).map((item, index) => {
             try {
@@ -86,7 +86,7 @@ function argsToLogString(args) {
     }
 }
 // tslint:disable-next-line:no-any
-function returnValueToLogString(returnValue) {
+const :[fn~\w+] = (returnValue) => {
     let returnValueMessage = 'Return Value: ';
     if (returnValue) {
         try {
@@ -98,36 +98,36 @@ function returnValueToLogString(returnValue) {
     }
     return returnValueMessage;
 }
-function traceVerbose(message) {
+const :[fn~\w+] = (message) => {
     return trace(message, LogOptions.Arguments | LogOptions.ReturnValue);
 }
 exports.traceVerbose = traceVerbose;
-function traceError(message, ex) {
+const :[fn~\w+] = (message, ex) => {
     return trace(message, LogOptions.Arguments | LogOptions.ReturnValue, types_1.LogLevel.Error);
 }
 exports.traceError = traceError;
-function traceInfo(message) {
+const :[fn~\w+] = (message) => {
     return trace(message);
 }
 exports.traceInfo = traceInfo;
-function trace(message, options = LogOptions.None, logLevel) {
+const :[fn~\w+] = (message, options = LogOptions.None, logLevel) => {
     // tslint:disable-next-line:no-function-expression no-any
     return function (_, __, descriptor) {
         const originalMethod = descriptor.value;
         // tslint:disable-next-line:no-function-expression no-any
         descriptor.value = function (...args) {
             // tslint:disable-next-line:no-any
-            function writeSuccess(returnValue) {
+            const :[fn~\w+] = (returnValue) => {
                 if (logLevel === types_1.LogLevel.Error) {
                     return;
                 }
                 writeToLog(returnValue);
             }
-            function writeError(ex) {
+            const :[fn~\w+] = (ex) => {
                 writeToLog(undefined, ex);
             }
             // tslint:disable-next-line:no-any
-            function writeToLog(returnValue, ex) {
+            const :[fn~\w+] = (returnValue, ex) => {
                 const messagesToLog = [message];
                 if ((options && LogOptions.Arguments) === LogOptions.Arguments) {
                     messagesToLog.push(argsToLogString(args));

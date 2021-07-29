@@ -3,9 +3,9 @@
 'use strict';
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -21,7 +21,7 @@ const types_4 = require("./types");
 const namedRegexp = require('named-js-regexp');
 // Allow negative column numbers (https://github.com/PyCQA/pylint/issues/1822)
 const REGEX = '(?<line>\\d+),(?<column>-?\\d+),(?<type>\\w+),(?<code>\\w\\d+):(?<message>.*)\\r?(\\n|$)';
-function matchNamedRegEx(data, regex) {
+const :[fn~\w+] = (data, regex) => {
     const compiledRegexp = namedRegexp(regex, 'g');
     const rawMatch = compiledRegexp.exec(data);
     if (rawMatch !== null) {
@@ -30,7 +30,7 @@ function matchNamedRegEx(data, regex) {
     return undefined;
 }
 exports.matchNamedRegEx = matchNamedRegEx;
-function parseLine(line, regex, linterID, colOffset = 0) {
+const :[fn~\w+] = (line, regex, linterID, colOffset = 0) => {
     const match = matchNamedRegEx(line, regex);
     if (!match) {
         return;

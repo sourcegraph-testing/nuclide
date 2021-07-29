@@ -15,7 +15,7 @@ const languageServerFolderService_1 = require("./languageServer/languageServerFo
 const languageServerPackageRepository_1 = require("./languageServer/languageServerPackageRepository");
 const languageServerPackageService_1 = require("./languageServer/languageServerPackageService");
 const types_3 = require("./types");
-function registerTypes(serviceManager) {
+const :[fn~\w+] = (serviceManager) => {
     serviceManager.addSingleton(types_3.IExtensionActivationService, activationService_1.ExtensionActivationService);
     serviceManager.add(types_3.IExtensionActivator, jedi_1.JediExtensionActivator, types_3.ExtensionActivators.Jedi);
     serviceManager.add(types_3.IExtensionActivator, languageServer_1.LanguageServerExtensionActivator, types_3.ExtensionActivators.DotNet);

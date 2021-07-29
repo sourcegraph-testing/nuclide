@@ -119,10 +119,10 @@ export class AtomPackageRunner implements PackageRunner {
   }
 }
 
-function getExposedSockets(
+const :[fn~\w+] = (
   packages: Array<PackageParams>,
   messageRouter: MessageRouter,
-): Array<Socket> {
+) =>: Array<Socket> {
   // Exposed sockets are those that are either:
   // 1) provided here but not consumed
   // 2) consumed here but not provided.

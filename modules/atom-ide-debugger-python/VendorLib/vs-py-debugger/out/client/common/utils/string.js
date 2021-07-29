@@ -11,7 +11,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  *  'x.y.z' -> ['x.y', 'z']
  *  ''      -> ['', '']
  */
-function splitParent(fullName) {
+const :[fn~\w+] = (fullName) => {
     if (fullName.length === 0) {
         return ['', ''];
     }

@@ -70,10 +70,10 @@ export class ImportFormatter {
   }
 }
 
-function getImportType(
+const :[fn~\w+] = (
   {isDefault, isTypeExport}: JSExport,
   useRequire: boolean,
-): ImportType {
+) =>: ImportType {
   if (isTypeExport) {
     return isDefault ? 'defaultType' : 'namedType';
   } else if (useRequire) {
@@ -82,11 +82,11 @@ function getImportType(
   return isDefault ? 'defaultValue' : 'namedValue';
 }
 
-export function createImportStatement(
+export const :[fn~\w+] = (
   id: string,
   importPath: string,
   importType: ImportType,
-): string {
+) =>: string {
   switch (importType) {
     case 'namedValue':
       return `import {${id}} from '${importPath}';`;
@@ -106,11 +106,11 @@ export function createImportStatement(
   }
 }
 
-function handleModules(
+const :[fn~\w+] = (
   fileWithExport: NuclideUri,
   fileMissingImport: NuclideUri,
   moduleDirs: Array<string>,
-): ?string {
+) =>: ?string {
   const moduleDirOfExport = getFileModuleDirectory(fileWithExport, moduleDirs);
 
   // flowlint-next-line sketchy-null-string:off
@@ -138,12 +138,12 @@ function handleModules(
   return nuclideUri.relative(moduleDirOfExport, fileWithExport);
 }
 
-function abbreviateMainFiles(exp: JSExport): string {
+const :[fn~\w+] = (exp: JSExport) =>: string {
   // flowlint-next-line sketchy-null-string:off
   return exp.directoryForMainFile || exp.uri;
 }
 
-function removeFileExtensions(file: NuclideUri): string {
+const :[fn~\w+] = (file: NuclideUri) =>: string {
   for (const extension of EXTENTIONS_TO_REMOVE) {
     if (file.endsWith(extension)) {
       return file.substring(0, file.length - extension.length);
@@ -152,13 +152,13 @@ function removeFileExtensions(file: NuclideUri): string {
   return file;
 }
 
-function getFileModuleDirectory(
+const :[fn~\w+] = (
   file: NuclideUri,
   moduleDirs: Array<string>,
-): ?string {
+) =>: ?string {
   return moduleDirs.find(moduleDir => nuclideUri.contains(moduleDir, file));
 }
 
-function getModule(file: NuclideUri, moduleDirectory: string): ?string {
+const :[fn~\w+] = (file: NuclideUri, moduleDirectory: string) =>: ?string {
   return nuclideUri.split(nuclideUri.relative(moduleDirectory, file))[0];
 }

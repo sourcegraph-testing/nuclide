@@ -150,7 +150,7 @@ const SpawnPopupEvents = handleSpawnPopupEvents
  *
  * Returns whether the last chunk was processed
  */
-function processChunk(editor: atom$TextEditor): boolean {
+const :[fn~\w+] = (editor: atom$TextEditor) =>: boolean {
   const state = nullthrows(editorToProcessState.get(editor));
   const {
     blockDecorationFragments,
@@ -286,7 +286,7 @@ function processChunk(editor: atom$TextEditor): boolean {
   return false;
 }
 
-function combineMarkers({
+const :[fn~\w+] = ({
   editor,
   gutter,
   rowToMessage,
@@ -300,7 +300,7 @@ function combineMarkers({
   diagnosticUpdater: DiagnosticUpdater,
   openedMessageIds: Set<string>,
   setOpenMessageIds: (openedMessageIds: Set<string>) => void,
-}): Array<atom$Marker> {
+}) =>: Array<atom$Marker> {
   const markers = [];
   // Find all of the gutter markers for the same row and combine them into one marker/popup.
   for (const [row, messages] of rowToMessage.entries()) {
@@ -325,11 +325,11 @@ function combineMarkers({
   return markers;
 }
 
-function addMessageForRow(
+const :[fn~\w+] = (
   rowToMessage: Map<number, Array<DiagnosticMessage>>,
   message: DiagnosticMessage,
   row: number,
-) {
+) => {
   let messages = rowToMessage.get(row);
   if (!messages) {
     messages = [];
@@ -338,11 +338,11 @@ function addMessageForRow(
   messages.push(message);
 }
 
-function highlightEditorRange(
+const :[fn~\w+] = (
   editor: atom$TextEditor,
   range: atom$Range,
   highlightCssClass: string,
-): Array<atom$Marker> {
+) =>: Array<atom$Marker> {
   // There is no API in Atom to say: I want to put an underline on all the
   // lines in this range. The closest is "highlight" which splits your range
   // into three boxes: the part of the first line, all the lines in between
@@ -395,14 +395,14 @@ export const applyUpdateToEditor = decorateTrackTimingSampled(
   APPLY_UPDATE_TO_EDITOR_SAMPLE_RATE,
 );
 
-function _applyUpdateToEditor(
+const :[fn~\w+] = (
   editor: TextEditor,
   update: Iterable<DiagnosticMessage>,
   diagnosticUpdater: DiagnosticUpdater,
   blockDecorationContainer: HTMLElement,
   openedMessageIds: Set<string>,
   setOpenMessageIds: (openedMessageIds: Set<string>) => void,
-): IDisposable {
+) =>: IDisposable {
   let gutter = editor.gutterWithName(GUTTER_ID);
   if (!gutter) {
     // TODO(jessicalin): Determine an appropriate priority so that the gutter:
@@ -501,7 +501,7 @@ function _applyUpdateToEditor(
   );
 }
 
-function editorHasMarkers(editor: atom$TextEditor): boolean {
+const :[fn~\w+] = (editor: atom$TextEditor) =>: boolean {
   const editorMarkers = editorToMarkers.get(editor);
   if (editorMarkers == null) {
     return false;
@@ -515,7 +515,7 @@ function editorHasMarkers(editor: atom$TextEditor): boolean {
   return false;
 }
 
-function createBlockDecorations({
+const :[fn~\w+] = ({
   editor,
   rowToMessage,
   openedMessageIds,
@@ -527,7 +527,7 @@ function createBlockDecorations({
   openedMessageIds: Set<string>,
   setOpenMessageIds: (openedMessageIds: Set<string>) => void,
   startingLine: number,
-|}): React.Node {
+|}) =>: React.Node {
   const blockRowToMessages: Map<number, Array<DiagnosticMessage>> = new Map();
   rowToMessage.forEach((messages, row) => {
     if (
@@ -575,7 +575,7 @@ function createBlockDecorations({
   );
 }
 
-function createGutterItem({
+const :[fn~\w+] = ({
   editor,
   messages,
   diagnosticUpdater,
@@ -591,7 +591,7 @@ function createGutterItem({
   openedMessageIds: Set<string>,
   setOpenMessageIds: (openedMessageIds: Set<string>) => void,
   gutterMarker: atom$Marker,
-}): {item: HTMLElement, dispose: () => void} {
+}) =>: {item: HTMLElement, dispose: () => void} {
   // Determine which group to display.
   const messageGroups = new Set();
   messages.forEach(msg => messageGroups.add(GroupUtils.getGroup(msg)));
@@ -665,11 +665,11 @@ function createGutterItem({
   };
 }
 
-function addOpenMessageId(
+const :[fn~\w+] = (
   messages: Array<DiagnosticMessage>,
   openedMessageIds: Set<string>,
   setOpenMessageIds: (openedMessageIds: Set<string>) => void,
-) {
+) => {
   const newOpenedMessageIds = new Set([...openedMessageIds]);
   messages.forEach(message => {
     if (message.id != null) {
@@ -683,11 +683,11 @@ function addOpenMessageId(
   }
 }
 
-function removeOpenMessageId(
+const :[fn~\w+] = (
   messages: Array<DiagnosticMessage>,
   openedMessageIds: Set<string>,
   setOpenMessageIds: (openedMessageIds: Set<string>) => void,
-) {
+) => {
   if (openedMessageIds.size === 0) {
     return;
   }
@@ -700,12 +700,12 @@ function removeOpenMessageId(
   setOpenMessageIds(newOpenedMessageIds);
 }
 
-function spawnPopup(
+const :[fn~\w+] = (
   messages: Array<DiagnosticMessage>,
   diagnosticUpdater: DiagnosticUpdater,
   gutter: atom$Gutter,
   item: HTMLElement,
-): Observable<HTMLElement> {
+) =>: Observable<HTMLElement> {
   return Observable.create(observer => {
     const goToLocation = (path: string, line: number) => {
       // Before we jump to the location, we want to close the popup.
@@ -734,13 +734,13 @@ function spawnPopup(
 /**
  * Shows a popup for the diagnostic just below the specified item.
  */
-function showPopupFor(
+const :[fn~\w+] = (
   messages: Array<DiagnosticMessage>,
   item: HTMLElement,
   goToLocation: (filePath: NuclideUri, line: number) => mixed,
   diagnosticUpdater: DiagnosticUpdater,
   gutter: atom$Gutter,
-): HTMLElement {
+) =>: HTMLElement {
   // The popup will be an absolutely positioned child element of <atom-workspace> so that it appears
   // on top of everything.
   const workspaceElement = atom.views.getView((atom.workspace: Object));

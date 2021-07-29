@@ -24,7 +24,7 @@ import {Observable} from 'rxjs';
 import logger from './logger';
 import {Expect} from 'nuclide-commons/expected';
 
-function getGutterLineNumber(target: HTMLElement): ?number {
+const :[fn~\w+] = (target: HTMLElement) =>: ?number {
   const eventLine = parseInt(target.dataset.line, 10);
   if (eventLine != null && eventLine >= 0 && !isNaN(Number(eventLine))) {
     return eventLine;
@@ -33,10 +33,10 @@ function getGutterLineNumber(target: HTMLElement): ?number {
 
 const SCREEN_ROW_ATTRIBUTE_NAME = 'data-screen-row';
 
-function getEditorLineNumber(
+const :[fn~\w+] = (
   editor: atom$TextEditor,
   target: HTMLElement,
-): ?number {
+) =>: ?number {
   let node = target;
   while (node != null) {
     if (node.hasAttribute(SCREEN_ROW_ATTRIBUTE_NAME)) {
@@ -51,7 +51,7 @@ function getEditorLineNumber(
   }
 }
 
-async function getEditorOrNull(path: string): Promise<?atom$TextEditor> {
+const :[fn~\w+] = async (path: string) =>: Promise<?atom$TextEditor> {
   try {
     // eslint-disable-next-line nuclide-internal/atom-apis
     return await atom.workspace.open(path, {
@@ -63,10 +63,10 @@ async function getEditorOrNull(path: string): Promise<?atom$TextEditor> {
   }
 }
 
-export async function openSourceLocation(
+export const :[fn~\w+] = async (
   path: string,
   line: number,
-): Promise<?atom$TextEditor> {
+) =>: Promise<?atom$TextEditor> {
   const editor = await getEditorOrNull(path);
   if (editor == null) {
     // Failed to open file.
@@ -84,11 +84,11 @@ export async function openSourceLocation(
   return editor;
 }
 
-function firstNonNull(...args) {
+const :[fn~\w+] = (...args) => {
   return nullthrows(args.find(arg => arg != null));
 }
 
-export function getLineForEvent(editor: atom$TextEditor, event: any): number {
+export const :[fn~\w+] = (editor: atom$TextEditor, event: any) =>: number {
   const cursorLine = editor.getLastCursor().getBufferRow();
   const target = event ? (event.target: HTMLElement) : null;
   if (target == null) {
@@ -105,16 +105,16 @@ export function getLineForEvent(editor: atom$TextEditor, event: any): number {
   );
 }
 
-export function isLocalScopeName(scopeName: string): boolean {
+export const :[fn~\w+] = (scopeName: string) =>: boolean {
   return ['Local', 'Locals'].indexOf(scopeName) !== -1;
 }
 
-export function evaluateExpressionAsStream(
+export const :[fn~\w+] = (
   expression: IEvaluatableExpression,
   focusedProcess: IProcess,
   focusedStackFrame: ?IStackFrame,
   context: ContextType,
-): Observable<Expected<IExpression>> {
+) =>: Observable<Expected<IExpression>> {
   return Observable.fromPromise(
     expression.evaluate(focusedProcess, focusedStackFrame, context),
   )
@@ -123,7 +123,7 @@ export function evaluateExpressionAsStream(
     .startWith(Expect.pending());
 }
 
-export function onUnexpectedError(error: any) {
+export const :[fn~\w+] = (error: any) => {
   const errorMessage = error.stack || error.message || String(error);
   logger.error('Unexpected error', error);
   atom.notifications.addError(
@@ -134,11 +134,11 @@ export function onUnexpectedError(error: any) {
   );
 }
 
-export function capitalize(str: string): string {
+export const :[fn~\w+] = (str: string) =>: string {
   return str[0].toUpperCase() + str.slice(1);
 }
 
-export function notifyOpenDebugSession(): void {
+export const :[fn~\w+] = () =>: void {
   atom.notifications.addInfo(
     "Received a debug request, but there's an open debug session already!",
     {

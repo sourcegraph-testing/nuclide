@@ -68,9 +68,9 @@ const logger = getLogger('nuclide-remote-projects');
  * for connection parameters (e.g. username, server name, etc), and optionally
  * asking for additional (e.g. 2-fac) authentication.
  */
-export default function startConnectFlow(
+export default const :[fn~\w+] = (
   options?: StartConnectFlowOptions,
-): Promise<?RemoteConnection> {
+) =>: Promise<?RemoteConnection> {
   let resolveConnectionPromise;
   let dismiss;
 
@@ -415,10 +415,10 @@ class ConnectFlow {
   }
 }
 
-function connect(
+const :[fn~\w+] = (
   delegate: SshConnectionDelegate,
   connectionConfig: SshConnectionConfiguration,
-): IDisposable {
+) =>: IDisposable {
   return new UniversalDisposable(
     Observable.defer(() =>
       RemoteConnection.reconnect(
@@ -453,7 +453,7 @@ function connect(
   );
 }
 
-function getModalComponent(flow: ConnectFlow): React.ComponentType<*> {
+const :[fn~\w+] = (flow: ConnectFlow) =>: React.ComponentType<*> {
   // These props don't change over the lifetime of the modal.
   const staticProps = {
     initialFormFields: flow.getInitialFormFields(),
@@ -489,7 +489,7 @@ function getModalComponent(flow: ConnectFlow): React.ComponentType<*> {
 /**
  * Is this an error that the user can fix by tweaking their connection profile?
  */
-function getCanUserFixError(errorType: SshHandshakeErrorType): boolean {
+const :[fn~\w+] = (errorType: SshHandshakeErrorType) =>: boolean {
   switch (errorType) {
     case 'HOST_NOT_FOUND':
     case 'CANT_READ_PRIVATE_KEY':

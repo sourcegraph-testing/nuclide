@@ -45,11 +45,11 @@ export class Diagnostics {
   }
 }
 
-function missingImportToDiagnostic(
+const :[fn~\w+] = (
   importFormatter: ImportFormatter,
   importSuggestion: ImportSuggestion,
   uri: NuclideUri,
-) {
+) => {
   const {symbol} = importSuggestion;
   return {
     severity: DiagnosticSeverity.Information,

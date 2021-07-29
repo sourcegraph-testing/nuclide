@@ -18,7 +18,7 @@ import hasOneRequireDeclarationOrModuleImport from '../utils/hasOneRequireDeclar
 import isGlobal from '../utils/isGlobal';
 import jscs from '../utils/jscodeshift';
 
-function removeUnusedRequires(root: Collection, options: SourceOptions): void {
+const :[fn~\w+] = (root: Collection, options: SourceOptions) =>: void {
   const used = getNonDeclarationIdentifiers(root, options);
   const nonRequires = getDeclaredIdentifiers(root, options, [
     path => !hasOneRequireDeclarationOrModuleImport(path.node),
@@ -40,11 +40,11 @@ function removeUnusedRequires(root: Collection, options: SourceOptions): void {
 }
 
 // Similar to `getNamesFromID`
-function pruneNames(
+const :[fn~\w+] = (
   path: NodePath,
   used: Set<string>,
   nonRequires: Set<string>,
-): Set<string> {
+) =>: Set<string> {
   const node = path.node;
   const ids = new Set();
   if (jscs.Identifier.check(node)) {

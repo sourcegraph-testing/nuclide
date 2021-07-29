@@ -40,9 +40,9 @@ import {
 import {providePythonPlatformGroup} from './pythonPlatform';
 import UniversalDisposable from 'nuclide-commons/UniversalDisposable';
 
-async function connectionToPythonService(
+const :[fn~\w+] = async (
   connection: ?ServerConnection,
-): Promise<LanguageService> {
+) =>: Promise<LanguageService> {
   const pythonService = getPythonServiceByConnection(connection);
   const fileNotifier = await getNotifierByConnection(connection);
   const languageService = await pythonService.initialize(fileNotifier, {
@@ -54,7 +54,7 @@ async function connectionToPythonService(
   return languageService;
 }
 
-function getAtomConfig(): AtomLanguageServiceConfig {
+const :[fn~\w+] = () =>: AtomLanguageServiceConfig {
   return {
     name: 'Python',
     grammars: GRAMMARS,
@@ -110,7 +110,7 @@ function getAtomConfig(): AtomLanguageServiceConfig {
   };
 }
 
-function resetServices(): void {
+const :[fn~\w+] = () =>: void {
   getPythonServiceByConnection(null).reset();
   ServerConnection.getAllConnections().forEach(conn => {
     getPythonServiceByConnection(conn).reset();

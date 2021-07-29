@@ -22,7 +22,7 @@ let _disposables: ?UniversalDisposable = null;
 let _taskRunner: ?SwiftPMTaskRunnerType = null;
 let _initialState: ?Object = null;
 
-export function activate(rawState: ?Object): void {
+export const :[fn~\w+] = (rawState: ?Object) =>: void {
   invariant(_disposables == null);
   _initialState = rawState;
   _disposables = new UniversalDisposable(
@@ -35,26 +35,26 @@ export function activate(rawState: ?Object): void {
   );
 }
 
-export function deactivate(): void {
+export const :[fn~\w+] = () =>: void {
   invariant(_disposables != null);
   _disposables.dispose();
   _disposables = null;
 }
 
-export function consumeTaskRunnerServiceApi(
+export const :[fn~\w+] = (
   serviceApi: TaskRunnerServiceApi,
-): void {
+) =>: void {
   invariant(_disposables != null);
   _disposables.add(serviceApi.register(_getTaskRunner()));
 }
 
-export function serialize(): ?SwiftPMTaskRunnerStoreState {
+export const :[fn~\w+] = () =>: ?SwiftPMTaskRunnerStoreState {
   if (_taskRunner != null) {
     return _taskRunner.serialize();
   }
 }
 
-export function createAutocompleteProvider(): AtomAutocompleteProvider {
+export const :[fn~\w+] = () =>: AtomAutocompleteProvider {
   return {
     analytics: {
       eventName: 'nuclide-swift',
@@ -73,7 +73,7 @@ export function createAutocompleteProvider(): AtomAutocompleteProvider {
   };
 }
 
-function _getTaskRunner(): SwiftPMTaskRunner {
+const :[fn~\w+] = () =>: SwiftPMTaskRunner {
   if (_taskRunner == null) {
     invariant(_disposables != null);
     _taskRunner = new SwiftPMTaskRunner(_initialState);

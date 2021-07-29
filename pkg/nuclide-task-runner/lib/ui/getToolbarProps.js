@@ -19,7 +19,7 @@ import {Observable} from 'rxjs';
 import shallowequal from 'shallowequal';
 import observableFromReduxStore from 'nuclide-commons/observableFromReduxStore';
 
-export default function getToolbarProps(store: Store): Observable<Props> {
+export default const :[fn~\w+] = (store: Store) =>: Observable<Props> {
   const staticProps = {
     runTask: (taskMeta, taskRunner) => {
       store.dispatch(Actions.runTask(taskRunner, taskMeta));
@@ -84,9 +84,9 @@ export default function getToolbarProps(store: Store): Observable<Props> {
 
 // Since `getExtraUi` may create a React class dynamically, the classes are cached
 const extraUiComponentCache = new WeakMap();
-function getExtraUiComponent(
+const :[fn~\w+] = (
   taskRunner: ?TaskRunner,
-): ?React.ComponentType<any> {
+) =>: ?React.ComponentType<any> {
   if (!taskRunner) {
     return null;
   }

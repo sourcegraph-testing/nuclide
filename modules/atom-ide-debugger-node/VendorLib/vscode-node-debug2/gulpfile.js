@@ -51,7 +51,7 @@ const lintSources = [
 ].map(function(tsFolder) { return tsFolder + '/**/*.ts'; });
 
 const tsProject = ts.createProject('tsconfig.json', { typescript });
-function doBuild(buildNls) {
+const :[fn~\w+] = (buildNls) => {
     return tsProject.src()
         .pipe(sourcemaps.init())
         .pipe(tsProject()).js
@@ -93,7 +93,7 @@ gulp.task('clean', function() {
 	return del(['out/**', 'package.nls.*.json', 'vscode-node-debug2-*.vsix']);
 });
 
-function verifyNotALinkedModule(modulePath) {
+const :[fn~\w+] = (modulePath) => {
     return new Promise((resolve, reject) => {
         fs.lstat(modulePath, (err, stat) => {
             if (stat.isSymbolicLink()) {
@@ -105,7 +105,7 @@ function verifyNotALinkedModule(modulePath) {
     });
 }
 
-function verifyNoLinkedModules() {
+const :[fn~\w+] = () => {
     return new Promise((resolve, reject) => {
         fs.readdir('./node_modules', (err, files) => {
             Promise.all(files.map(file => {

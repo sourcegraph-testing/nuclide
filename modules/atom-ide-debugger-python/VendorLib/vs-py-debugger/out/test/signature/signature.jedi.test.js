@@ -3,9 +3,9 @@
 // Licensed under the MIT License.
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -48,7 +48,7 @@ suite('Signatures (Jedi)', () => {
         yield initialize_1.closeActiveWindows();
         ioc.dispose();
     }));
-    function initializeDI() {
+    const :[fn~\w+] = () => {
         ioc = new serviceRegistry_1.UnitTestIocContainer();
         ioc.registerCommonTypes();
         ioc.registerVariableTypes();
@@ -130,14 +130,14 @@ suite('Signatures (Jedi)', () => {
         yield checkSignature(expected, document.uri, 0);
     }));
 });
-function openDocument(documentPath) {
+const :[fn~\w+] = (documentPath) => {
     return __awaiter(this, void 0, void 0, function* () {
         const document = yield vscode.workspace.openTextDocument(documentPath);
         yield vscode.window.showTextDocument(document);
         return document;
     });
 }
-function checkSignature(expected, uri, caseIndex) {
+const :[fn~\w+] = (expected, uri, caseIndex) => {
     return __awaiter(this, void 0, void 0, function* () {
         const position = new vscode.Position(expected.line, expected.index);
         const actual = yield vscode.commands.executeCommand('vscode.executeSignatureHelpProvider', uri, position);

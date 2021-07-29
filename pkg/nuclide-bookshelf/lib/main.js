@@ -37,10 +37,10 @@ import {
 } from './utils';
 import {track} from 'nuclide-analytics';
 
-function createStateStream(
+const :[fn~\w+] = (
   actions: Observable<Action>,
   initialState: BookShelfState,
-): BehaviorSubject<BookShelfState> {
+) =>: BehaviorSubject<BookShelfState> {
   const states = new BehaviorSubject(initialState);
   // eslint-disable-next-line nuclide-internal/unused-subscription
   actions

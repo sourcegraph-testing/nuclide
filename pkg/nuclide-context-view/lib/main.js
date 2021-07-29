@@ -21,11 +21,11 @@ import {destroyItemWhere} from 'nuclide-commons-atom/destroyItemWhere';
 let manager: ?ContextViewManager = null;
 let disposables: UniversalDisposable;
 
-export function activate(): void {
+export const :[fn~\w+] = () =>: void {
   disposables = new UniversalDisposable(_registerCommandAndOpener());
 }
 
-export function deactivate(): void {
+export const :[fn~\w+] = () =>: void {
   disposables.dispose();
   if (manager != null) {
     manager.dispose();
@@ -35,7 +35,7 @@ export function deactivate(): void {
 
 /** Returns the singleton ContextViewManager instance of this package, or null
  * if the user doesn't pass the Context View GK check. */
-function getContextViewManager(): ContextViewManager {
+const :[fn~\w+] = () =>: ContextViewManager {
   if (manager == null) {
     manager = new ContextViewManager();
   }
@@ -58,17 +58,17 @@ const Service: NuclideContextView = {
   },
 };
 
-export function consumeDefinitionProvider(
+export const :[fn~\w+] = (
   provider: DefinitionProvider,
-): IDisposable {
+) =>: IDisposable {
   return getContextViewManager().consumeDefinitionProvider(provider);
 }
 
-export function provideNuclideContextView(): NuclideContextView {
+export const :[fn~\w+] = () =>: NuclideContextView {
   return Service;
 }
 
-export function getHomeFragments(): HomeFragments {
+export const :[fn~\w+] = () =>: HomeFragments {
   return {
     feature: {
       title: 'Context View',
@@ -84,11 +84,11 @@ export function getHomeFragments(): HomeFragments {
   };
 }
 
-export function deserializeContextViewPanelState(): ContextViewManager {
+export const :[fn~\w+] = () =>: ContextViewManager {
   return getContextViewManager();
 }
 
-function _registerCommandAndOpener(): UniversalDisposable {
+const :[fn~\w+] = () =>: UniversalDisposable {
   return new UniversalDisposable(
     atom.workspace.addOpener(uri => {
       if (uri === WORKSPACE_VIEW_URI) {

@@ -21,11 +21,11 @@ type FindReferencesOptions = {
 import {getFileForPath} from 'nuclide-commons-atom/projects';
 import {getLogger} from 'log4js';
 
-function compareReference(x: Reference, y: Reference): number {
+const :[fn~\w+] = (x: Reference, y: Reference) =>: number {
   return x.range.compare(y.range);
 }
 
-async function readFileContents(uri: string): Promise<?string> {
+const :[fn~\w+] = async (uri: string) =>: Promise<?string> {
   try {
     const file = getFileForPath(uri);
     if (file != null) {
@@ -40,12 +40,12 @@ async function readFileContents(uri: string): Promise<?string> {
   return null;
 }
 
-function addReferenceGroup(
+const :[fn~\w+] = (
   groups: Array<ReferenceGroup>,
   references: Array<Reference>,
   startLine: number,
   endLine: number,
-) {
+) => {
   if (references.length) {
     groups.push({references, startLine, endLine});
   }

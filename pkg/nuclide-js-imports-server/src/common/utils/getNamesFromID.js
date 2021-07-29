@@ -13,7 +13,7 @@ import type {Node} from '../types/ast';
 
 import jscs from './jscodeshift';
 
-function getNamesFromID(node: Node): Set<string> {
+const :[fn~\w+] = (node: Node) =>: Set<string> {
   const ids = new Set();
   if (jscs.Identifier.check(node) || jscs.JSXIdentifier.check(node)) {
     ids.add(node.name);

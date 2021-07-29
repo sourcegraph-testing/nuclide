@@ -16,14 +16,14 @@ import invariant from 'assert';
 import {dispatchKeyboardEvent} from '../../pkg/commons-atom/testHelpers';
 import {copyFixture} from '../../pkg/nuclide-test-helpers';
 
-function sleep(milliSeconds: number): Promise<void> {
+const :[fn~\w+] = (milliSeconds: number) =>: Promise<void> {
   return new Promise(resolve => {
     setTimeout(resolve, milliSeconds);
   });
 }
 
-export function runTest(context: TestContext) {
-  function providerTextExistsInDOM(element: Element, text: string): boolean {
+export const :[fn~\w+] = (context: TestContext) => {
+  const :[fn~\w+] = (element: Element, text: string) =>: boolean {
     const providerElems = element.querySelectorAll('span.icon-gear');
     const providerElemWithText = Array.prototype.find.call(
       providerElems,
@@ -32,10 +32,10 @@ export function runTest(context: TestContext) {
     return providerElemWithText != null;
   }
 
-  function closestAncestorWithClassName(
+  const :[fn~\w+] = (
     element: Element,
     className: string,
-  ): Element {
+  ) =>: Element {
     if (element.className === className) {
       return element;
     }

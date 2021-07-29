@@ -12,9 +12,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -99,7 +99,7 @@ exports.CondaEnvService = CondaEnvService;
 /**
  * Return the list of conda env interpreters.
  */
-function parseCondaInfo(info, condaService, fileSystem, helper) {
+const :[fn~\w+] = (info, condaService, fileSystem, helper) => {
     return __awaiter(this, void 0, void 0, function* () {
         // The root of the conda environment is itself a Python interpreter
         // envs reported as e.g.: /Users/bob/miniconda3/envs/someEnv.

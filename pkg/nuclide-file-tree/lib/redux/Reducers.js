@@ -87,7 +87,7 @@ const DEFAULT_STATE: AppState = {
   currentWorkingRevision: null,
 };
 
-function reduceState(state_: AppState, action: Action): AppState {
+const :[fn~\w+] = (state_: AppState, action: Action) =>: AppState {
   const state = state_ || DEFAULT_STATE;
   switch (action.type) {
     case Actions.SET_INITIAL_DATA:
@@ -280,7 +280,7 @@ export default function(state: AppState, action: Action): AppState {
   return nextState;
 }
 
-function setInitialData(state: AppState, data: InitialData): AppState {
+const :[fn~\w+] = (state: AppState, data: InitialData) =>: AppState {
   const nextState = {...state};
   if (data.openFilesExpanded != null) {
     nextState._openFilesExpanded = data.openFilesExpanded;
@@ -300,7 +300,7 @@ function setInitialData(state: AppState, data: InitialData): AppState {
 /**
  * Updates the roots, maintains their sibling relationships and fires the change event.
  */
-function setRoots(state: AppState, roots: Roots): AppState {
+const :[fn~\w+] = (state: AppState, roots: Roots) =>: AppState {
   // Explicitly test for the empty case, otherwise configuration changes with an empty
   // tree will not emit changes.
   const changed = !Immutable.is(roots, state._roots) || roots.isEmpty();
@@ -325,7 +325,7 @@ function setRoots(state: AppState, roots: Roots): AppState {
   return nextState;
 }
 
-function clearSelectionRange(state: AppState): AppState {
+const :[fn~\w+] = (state: AppState) =>: AppState {
   return {
     ...state,
     _selectionRange: null,
@@ -333,7 +333,7 @@ function clearSelectionRange(state: AppState): AppState {
   };
 }
 
-function clearDragHover(state: AppState): AppState {
+const :[fn~\w+] = (state: AppState) =>: AppState {
   const getNodeContainsDragHover = Selectors.getNodeContainsDragHover(state);
   return updateRoots(state, root => {
     return root.setRecursive(
@@ -346,34 +346,34 @@ function clearDragHover(state: AppState): AppState {
 /**
  * Use the update function to update one or more of the roots in the file tree
  */
-function updateRoots(
+const :[fn~\w+] = (
   state: AppState,
   update: (root: FileTreeNode) => FileTreeNode,
-): AppState {
+) =>: AppState {
   return setRoots(state, state._roots.map(update));
 }
 
 // Clear selections and focuses on all nodes except an optionally specified
 // current node.
-function clearSelection(state: AppState): AppState {
+const :[fn~\w+] = (state: AppState) =>: AppState {
   return clearSelected(clearFocused(clearSelectionRange(state)));
 }
 
-function clearSelected(state: AppState): AppState {
+const :[fn~\w+] = (state: AppState) =>: AppState {
   return {
     ...state,
     _selectedUris: Immutable.Map(),
   };
 }
 
-function clearFocused(state: AppState): AppState {
+const :[fn~\w+] = (state: AppState) =>: AppState {
   return {
     ...state,
     _focusedUris: Immutable.Map(),
   };
 }
 
-function setCwdKey(state: AppState, cwdKey: ?NuclideUri): AppState {
+const :[fn~\w+] = (state: AppState, cwdKey: ?NuclideUri) =>: AppState {
   let nextState = {...state};
   const currentCwdKey = state._cwdKey;
   if (currentCwdKey != null) {
@@ -396,18 +396,18 @@ function setCwdKey(state: AppState, cwdKey: ?NuclideUri): AppState {
   return nextState;
 }
 
-function setCwdApi(state: AppState, cwdApi: ?CwdApi): AppState {
+const :[fn~\w+] = (state: AppState, cwdApi: ?CwdApi) =>: AppState {
   return {
     ...state,
     _cwdApi: cwdApi,
   };
 }
 
-function setTrackedNode(
+const :[fn~\w+] = (
   state: AppState,
   rootKey: NuclideUri,
   nodeKey: NuclideUri,
-): AppState {
+) =>: AppState {
   if (state._trackedRootKey !== rootKey || state._trackedNodeKey !== nodeKey) {
     return {
       ...state,
@@ -418,7 +418,7 @@ function setTrackedNode(
   return state;
 }
 
-function clearTrackedNode(state: AppState): AppState {
+const :[fn~\w+] = (state: AppState) =>: AppState {
   if (state._trackedRootKey != null || state._trackedNodeKey != null) {
     return {
       ...state,
@@ -433,7 +433,7 @@ function clearTrackedNode(state: AppState): AppState {
  * Resets the node to be kept in view if no more data is being awaited. Safe to call many times
  * because it only changes state if a node is being tracked.
  */
-function clearTrackedNodeIfNotLoading(state: AppState): AppState {
+const :[fn~\w+] = (state: AppState) =>: AppState {
   if (
     /*
        * The loading map being empty is a heuristic for when loading has completed. It is inexact
@@ -449,10 +449,10 @@ function clearTrackedNodeIfNotLoading(state: AppState): AppState {
   return state;
 }
 
-function startReorderDrag(
+const :[fn~\w+] = (
   state: AppState,
   draggedRootKey: NuclideUri,
-): AppState {
+) =>: AppState {
   const rootIdx = Selectors.getRootKeys(state).indexOf(draggedRootKey);
   if (rootIdx === -1) {
     return state;
@@ -474,7 +474,7 @@ function startReorderDrag(
   };
 }
 
-function endReorderDrag(state: AppState): AppState {
+const :[fn~\w+] = (state: AppState) =>: AppState {
   if (state._reorderPreviewStatus == null) {
     return state;
   }
@@ -493,7 +493,7 @@ function endReorderDrag(state: AppState): AppState {
   };
 }
 
-function reorderDragInto(state: AppState, targetRootKey: NuclideUri): AppState {
+const :[fn~\w+] = (state: AppState, targetRootKey: NuclideUri) =>: AppState {
   const reorderPreviewStatus = state._reorderPreviewStatus;
   const targetIdx = Selectors.getRootKeys(state).indexOf(targetRootKey);
   const targetRootNode = Selectors.getNode(state, targetRootKey, targetRootKey);
@@ -522,11 +522,11 @@ function reorderDragInto(state: AppState, targetRootKey: NuclideUri): AppState {
   };
 }
 
-function collapseNode(
+const :[fn~\w+] = (
   state: AppState,
   rootKey: NuclideUri,
   nodeKey: NuclideUri,
-): AppState {
+) =>: AppState {
   const nodesToUnselect = new Set();
   const nextState = setRoots(
     state,
@@ -565,53 +565,53 @@ function collapseNode(
   };
 }
 
-function setExcludeVcsIgnoredPaths(
+const :[fn~\w+] = (
   state: AppState,
   excludeVcsIgnoredPaths: boolean,
-): AppState {
+) =>: AppState {
   return {...state, excludeVcsIgnoredPaths};
 }
 
-function setHideVcsIgnoredPaths(
+const :[fn~\w+] = (
   state: AppState,
   hideVcsIgnoredPaths: boolean,
-): AppState {
+) =>: AppState {
   return {...state, hideVcsIgnoredPaths};
 }
 
-function setUsePreviewTabs(state: AppState, usePreviewTabs: boolean): AppState {
+const :[fn~\w+] = (state: AppState, usePreviewTabs: boolean) =>: AppState {
   return {...state, usePreviewTabs};
 }
 
-function setFocusEditorOnFileSelection(
+const :[fn~\w+] = (
   state: AppState,
   focusEditorOnFileSelection: boolean,
-): AppState {
+) =>: AppState {
   return {...state, focusEditorOnFileSelection};
 }
 
-function setUsePrefixNav(state: AppState, usePrefixNav: boolean): AppState {
+const :[fn~\w+] = (state: AppState, usePrefixNav: boolean) =>: AppState {
   return {
     ...state,
     _usePrefixNav: usePrefixNav,
   };
 }
 
-function setAutoExpandSingleChild(
+const :[fn~\w+] = (
   state: AppState,
   autoExpandSingleChild: boolean,
-): AppState {
+) =>: AppState {
   return {
     ...state,
     _autoExpandSingleChild: autoExpandSingleChild,
   };
 }
 
-function collapseNodeDeep(
+const :[fn~\w+] = (
   state: AppState,
   rootKey: NuclideUri,
   nodeKey: NuclideUri,
-): AppState {
+) =>: AppState {
   const nodesToUnselect = new Set();
   const nextState = setRoots(
     state,
@@ -639,17 +639,17 @@ function collapseNodeDeep(
   };
 }
 
-function setHideIgnoredNames(
+const :[fn~\w+] = (
   state: AppState,
   hideIgnoredNames: boolean,
-): AppState {
+) =>: AppState {
   return {...state, hideIgnoredNames};
 }
 
-function setIsCalculatingChanges(
+const :[fn~\w+] = (
   state: AppState,
   isCalculatingChanges: boolean,
-): AppState {
+) =>: AppState {
   return {
     ...state,
     _isCalculatingChanges: isCalculatingChanges,
@@ -660,10 +660,10 @@ function setIsCalculatingChanges(
  * Given a list of names to ignore, compile them into minimatch patterns and
  * update the store with them.
  */
-function setIgnoredNames(
+const :[fn~\w+] = (
   state: AppState,
   ignoredNames: Array<string>,
-): AppState {
+) =>: AppState {
   const ignoredPatterns = Immutable.Set(ignoredNames)
     .map(ignoredName => {
       if (ignoredName === '') {
@@ -683,55 +683,55 @@ function setIgnoredNames(
   return {...state, ignoredPatterns};
 }
 
-function setVcsStatuses(
+const :[fn~\w+] = (
   state: AppState,
   rootKey: NuclideUri,
   vcsStatuses: Map<NuclideUri, StatusCodeNumberValue>,
-): AppState {
+) =>: AppState {
   return {
     ...state,
     vcsStatuses: state.vcsStatuses.set(rootKey, vcsStatuses),
   };
 }
 
-function setRepositories(
+const :[fn~\w+] = (
   state: AppState,
   repositories: Immutable.Set<atom$Repository>,
-): AppState {
+) =>: AppState {
   return {
     ...state,
     _repositories: repositories,
   };
 }
 
-function setWorkingSet(state: AppState, workingSet: WorkingSet): AppState {
+const :[fn~\w+] = (state: AppState, workingSet: WorkingSet) =>: AppState {
   return {...state, workingSet};
 }
 
-function setOpenFilesWorkingSet(
+const :[fn~\w+] = (
   state: AppState,
   openFilesWorkingSet: WorkingSet,
-): AppState {
+) =>: AppState {
   return {
     ...state,
     openFilesWorkingSet,
   };
 }
 
-function setWorkingSetsStore(
+const :[fn~\w+] = (
   state: AppState,
   workingSetsStore: ?WorkingSetsStore,
-): AppState {
+) =>: AppState {
   return {
     ...state,
     _workingSetsStore: workingSetsStore,
   };
 }
 
-function startEditingWorkingSet(
+const :[fn~\w+] = (
   state: AppState,
   editedWorkingSet: WorkingSet,
-): AppState {
+) =>: AppState {
   return {
     ...state,
     editedWorkingSet,
@@ -739,7 +739,7 @@ function startEditingWorkingSet(
   };
 }
 
-function finishEditingWorkingSet(state: AppState): AppState {
+const :[fn~\w+] = (state: AppState) =>: AppState {
   return {
     ...state,
     isEditingWorkingSet: false,
@@ -747,11 +747,11 @@ function finishEditingWorkingSet(state: AppState): AppState {
   };
 }
 
-function checkNode(
+const :[fn~\w+] = (
   state: AppState,
   rootKey: NuclideUri,
   nodeKey: NuclideUri,
-): AppState {
+) =>: AppState {
   if (!Selectors.getIsEditingWorkingSet(state)) {
     return state;
   }
@@ -784,11 +784,11 @@ function checkNode(
   };
 }
 
-function uncheckNode(
+const :[fn~\w+] = (
   state: AppState,
   rootKey: NuclideUri,
   nodeKey: NuclideUri,
-): AppState {
+) =>: AppState {
   if (!Selectors.getIsEditingWorkingSet(state)) {
     return state;
   }
@@ -825,11 +825,11 @@ function uncheckNode(
   };
 }
 
-function setDragHoveredNode(
+const :[fn~\w+] = (
   state: AppState,
   rootKey: NuclideUri,
   nodeKey: NuclideUri,
-): AppState {
+) =>: AppState {
   const nextState = clearDragHover(state);
   return setRoots(
     nextState,
@@ -839,11 +839,11 @@ function setDragHoveredNode(
   );
 }
 
-function unhoverNode(
+const :[fn~\w+] = (
   state: AppState,
   rootKey: NuclideUri,
   nodeKey: NuclideUri,
-): AppState {
+) =>: AppState {
   return setRoots(
     state,
     updateNodeAtRoot(state._roots, rootKey, nodeKey, node =>
@@ -855,20 +855,20 @@ function unhoverNode(
 /**
  * Selects a single node and tracks it.
  */
-function setSelectedNode(
+const :[fn~\w+] = (
   state: AppState,
   rootKey: NuclideUri,
   nodeKey: NuclideUri,
-): AppState {
+) =>: AppState {
   let nextState = clearSelection(state);
   nextState = setTrackedNode(nextState, rootKey, nodeKey);
   return addSelectedNode(nextState, rootKey, nodeKey);
 }
 
-function setSelectionRange(
+const :[fn~\w+] = (
   state: AppState,
   selectionRange: SelectionRange,
-): AppState {
+) =>: AppState {
   return {
     ...state,
     _selectionRange: selectionRange,
@@ -879,11 +879,11 @@ function setSelectionRange(
 /**
  * Mark a node that has been focused, similar to selected, but only true after mouseup.
  */
-function setFocusedNode(
+const :[fn~\w+] = (
   state: AppState,
   rootKey: NuclideUri,
   nodeKey: NuclideUri,
-): AppState {
+) =>: AppState {
   const node = Selectors.getNode(state, rootKey, nodeKey);
   if (node == null) {
     return state;
@@ -894,11 +894,11 @@ function setFocusedNode(
   };
 }
 
-function addSelectedNode(
+const :[fn~\w+] = (
   state: AppState,
   rootKey: NuclideUri,
   nodeKey: NuclideUri,
-): AppState {
+) =>: AppState {
   const node = Selectors.getNode(state, rootKey, nodeKey);
   if (node == null) {
     return state;
@@ -913,11 +913,11 @@ function addSelectedNode(
   );
 }
 
-function unselectNode(
+const :[fn~\w+] = (
   state: AppState,
   rootKey: NuclideUri,
   nodeKey: NuclideUri,
-): AppState {
+) =>: AppState {
   const node = Selectors.getNode(state, rootKey, nodeKey);
   if (node == null) {
     return state;
@@ -933,7 +933,7 @@ function unselectNode(
  * Moves the selection one node up. In case several nodes were selected, the topmost (first in
  * the natural visual order) is considered to be the reference point for the move.
  */
-function moveSelectionUp(state: AppState): AppState {
+const :[fn~\w+] = (state: AppState) =>: AppState {
   if (state._roots.isEmpty()) {
     return state;
   }
@@ -968,11 +968,11 @@ function moveSelectionUp(state: AppState): AppState {
 /**
  * Selects and focuses a node in one pass.
  */
-function setSelectedAndFocusedNode(
+const :[fn~\w+] = (
   state: AppState,
   rootKey: NuclideUri,
   nodeKey: NuclideUri,
-): AppState {
+) =>: AppState {
   const node = Selectors.getNode(state, rootKey, nodeKey);
   let nextState = clearSelection(state);
   if (node != null) {
@@ -992,11 +992,11 @@ function setSelectedAndFocusedNode(
 /**
  * Bulk selection based on the range.
  */
-function rangeSelectToNode(
+const :[fn~\w+] = (
   state: AppState,
   rootKey: NuclideUri,
   nodeKey: NuclideUri,
-): AppState {
+) =>: AppState {
   const getShownChildrenCount = Selectors.getShownChildrenCount(state);
   const {updatedState, data} = refreshSelectionRange(state);
   let nextState = updatedState;
@@ -1118,7 +1118,7 @@ type RefreshSelectionRangeResult = {
  * - if these two nodes are not selected, and there is no nearby node to fall back to.
  * When this function returns, the selection range always contains valid data.
  */
-function refreshSelectionRange(state: AppState): RefreshSelectionRangeResult {
+const :[fn~\w+] = (state: AppState) =>: RefreshSelectionRangeResult {
   const invalidate = () => ({
     updatedState: clearSelectionRange(state),
     data: null,
@@ -1170,7 +1170,7 @@ function refreshSelectionRange(state: AppState): RefreshSelectionRangeResult {
 /**
  * Move the range of selections by one step.
  */
-function rangeSelectMove(state: AppState, move: 'up' | 'down'): AppState {
+const :[fn~\w+] = (state: AppState, move: 'up' | 'down') =>: AppState {
   const refreshSelectionRangeResult = refreshSelectionRange(state);
   const {data} = refreshSelectionRangeResult;
   let nextState = refreshSelectionRangeResult.updatedState;
@@ -1246,7 +1246,7 @@ function rangeSelectMove(state: AppState, move: 'up' | 'down'): AppState {
  * Moves the selection one node down. In case several nodes were selected, the topmost (first in
  * the natural visual order) is considered to be the reference point for the move.
  */
-function moveSelectionDown(state: AppState): AppState {
+const :[fn~\w+] = (state: AppState) =>: AppState {
   if (state._roots.isEmpty()) {
     return state;
   }
@@ -1276,7 +1276,7 @@ function moveSelectionDown(state: AppState): AppState {
   );
 }
 
-function moveSelectionToTop(state: AppState): AppState {
+const :[fn~\w+] = (state: AppState) =>: AppState {
   if (state._roots.isEmpty()) {
     return state;
   }
@@ -1296,7 +1296,7 @@ function moveSelectionToTop(state: AppState): AppState {
   return setSelectedAndFocusedNode(state, nodeToSelect.uri, nodeToSelect.uri);
 }
 
-function moveSelectionToBottom(state: AppState): AppState {
+const :[fn~\w+] = (state: AppState) =>: AppState {
   if (state._roots.isEmpty()) {
     return state;
   }
@@ -1308,7 +1308,7 @@ function moveSelectionToBottom(state: AppState): AppState {
   return setSelectedAndFocusedNode(state, lastChild.rootUri, lastChild.uri);
 }
 
-function clearFilter(state: AppState): AppState {
+const :[fn~\w+] = (state: AppState) =>: AppState {
   const nextState = {...state, _filter: ''};
   return updateRoots(nextState, root => {
     return root.setRecursive(
@@ -1318,10 +1318,10 @@ function clearFilter(state: AppState): AppState {
   });
 }
 
-function addExtraProjectSelectionContent(
+const :[fn~\w+] = (
   state: AppState,
   content: React.Element<any>,
-): AppState {
+) =>: AppState {
   return {
     ...state,
     _extraProjectSelectionContent: state._extraProjectSelectionContent.push(
@@ -1330,10 +1330,10 @@ function addExtraProjectSelectionContent(
   };
 }
 
-function removeExtraProjectSelectionContent(
+const :[fn~\w+] = (
   state: AppState,
   content: React.Element<any>,
-): AppState {
+) =>: AppState {
   const index = state._extraProjectSelectionContent.indexOf(content);
   if (index === -1) {
     return state;
@@ -1346,30 +1346,30 @@ function removeExtraProjectSelectionContent(
   };
 }
 
-function setOpenFilesExpanded(
+const :[fn~\w+] = (
   state: AppState,
   openFilesExpanded: boolean,
-): AppState {
+) =>: AppState {
   return {
     ...state,
     _openFilesExpanded: openFilesExpanded,
   };
 }
 
-function setUncommittedChangesExpanded(
+const :[fn~\w+] = (
   state: AppState,
   uncommittedChangesExpanded: boolean,
-): AppState {
+) =>: AppState {
   return {
     ...state,
     _uncommittedChangesExpanded: uncommittedChangesExpanded,
   };
 }
 
-function setFoldersExpanded(
+const :[fn~\w+] = (
   state: AppState,
   foldersExpanded: boolean,
-): AppState {
+) =>: AppState {
   return {
     ...state,
     _foldersExpanded: foldersExpanded,
@@ -1383,18 +1383,18 @@ function setFoldersExpanded(
  * nodes otherwise.
  * This value gets cleared everytime a selection is set
  */
-function setTargetNode(
+const :[fn~\w+] = (
   state: AppState,
   rootKey: NuclideUri,
   nodeKey: NuclideUri,
-): AppState {
+) =>: AppState {
   return {
     ...state,
     _targetNodeKeys: {rootKey, nodeKey},
   };
 }
 
-function addFilterLetter(state: AppState, letter: string): AppState {
+const :[fn~\w+] = (state: AppState, letter: string) =>: AppState {
   const getNodeContainsFilterMatches = Selectors.getNodeContainsFilterMatches(
     state,
   );
@@ -1417,7 +1417,7 @@ function addFilterLetter(state: AppState, letter: string): AppState {
   return nextState;
 }
 
-function selectFirstFilter(state: AppState): AppState {
+const :[fn~\w+] = (state: AppState) =>: AppState {
   let node = Selectors.getSingleSelectedNode(state);
   // if the current node matches the filter do nothing
   if (node != null && node.matchesFilter) {
@@ -1433,7 +1433,7 @@ function selectFirstFilter(state: AppState): AppState {
   return nextState;
 }
 
-function removeFilterLetter(state: AppState): AppState {
+const :[fn~\w+] = (state: AppState) =>: AppState {
   const oldLength = state._filter.length;
   let nextState = {...state};
   nextState._filter = nextState._filter.substr(0, nextState._filter.length - 1);
@@ -1457,10 +1457,10 @@ function removeFilterLetter(state: AppState): AppState {
   return nextState;
 }
 
-function addNodes(
+const :[fn~\w+] = (
   map_: Immutable.Map<NuclideUri, Immutable.Set<NuclideUri>>,
   nodes: Iterable<FileTreeNode>,
-): Immutable.Map<NuclideUri, Immutable.Set<NuclideUri>> {
+) =>: Immutable.Map<NuclideUri, Immutable.Set<NuclideUri>> {
   let map = map_;
   for (const node of nodes) {
     map = map.updateIn([node.rootUri], (set = Immutable.Set()) =>
@@ -1470,10 +1470,10 @@ function addNodes(
   return map;
 }
 
-function deleteNodes(
+const :[fn~\w+] = (
   map_: Immutable.Map<NuclideUri, Immutable.Set<NuclideUri>>,
   nodes: Iterable<FileTreeNode>,
-): Immutable.Map<NuclideUri, Immutable.Set<NuclideUri>> {
+) =>: Immutable.Map<NuclideUri, Immutable.Set<NuclideUri>> {
   let map = map_;
   for (const node of nodes) {
     map = map.updateIn([node.rootUri], (set = Immutable.Set()) =>
@@ -1487,11 +1487,11 @@ function deleteNodes(
   return map;
 }
 
-function setNodeIsBeingReordered(
+const :[fn~\w+] = (
   node: FileTreeNode,
   isBeingReordered: boolean,
   getNodeShouldBeShown: FileTreeNode => boolean,
-): FileTreeNode {
+) =>: FileTreeNode {
   return node.setRecursive(
     n => (getNodeShouldBeShown(n) ? null : n),
     n => (getNodeShouldBeShown(n) ? n.set({isBeingReordered}) : n),

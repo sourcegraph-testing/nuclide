@@ -39,7 +39,7 @@ import {
 
 export const NUCLIDE_DEBUGGER_DEV_GK = 'nuclide_debugger_dev';
 
-export function getJavaAndroidConfig(): AutoGenConfig {
+export const :[fn~\w+] = () =>: AutoGenConfig {
   const deviceAndPackage = {
     name: 'deviceAndPackage',
     type: 'deviceAndPackage',
@@ -109,9 +109,9 @@ export function getJavaAndroidConfig(): AutoGenConfig {
   };
 }
 
-export function getCustomControlButtonsForJavaSourcePaths(
+export const :[fn~\w+] = (
   clickEvents: rxjs$Subject<void>,
-): ControlButtonSpecification[] {
+) =>: ControlButtonSpecification[] {
   return [
     {
       icon: 'file-code',
@@ -121,13 +121,13 @@ export function getCustomControlButtonsForJavaSourcePaths(
   ];
 }
 
-function _getPackageName(debugMode: DebuggerConfigAction, config): string {
+const :[fn~\w+] = (debugMode: DebuggerConfigAction, config) =>: string {
   return debugMode === 'launch'
     ? config.deviceAndPackage.selectedPackage
     : config.deviceAndProcess.selectedProcess.name;
 }
 
-function _getDeviceSerial(debugMode: DebuggerConfigAction, config): string {
+const :[fn~\w+] = (debugMode: DebuggerConfigAction, config) =>: string {
   return nullthrows(
     debugMode === 'launch'
       ? config.deviceAndPackage.deviceSerial
@@ -135,13 +135,13 @@ function _getDeviceSerial(debugMode: DebuggerConfigAction, config): string {
   );
 }
 
-async function _getPid(
+const :[fn~\w+] = async (
   debugMode: DebuggerConfigAction,
   config,
   adbServiceUri: string,
   deviceSerial: string,
   packageName: string,
-): Promise<number> {
+) =>: Promise<number> {
   const selectedProcessPidString =
     config.deviceAndProcess?.selectedProcess?.pid;
   const pid =
@@ -157,10 +157,10 @@ async function _getPid(
   return pid;
 }
 
-async function _getAndroidSdkSourcePaths(
+const :[fn~\w+] = async (
   targetUri: NuclideUri,
   deviceSerial: string,
-): Promise<Array<string>> {
+) =>: Promise<Array<string>> {
   const sdkVersion = await getAdbServiceByNuclideUri(targetUri).getAPIVersion(
     deviceSerial,
   );
@@ -190,9 +190,9 @@ async function _getAndroidSdkSourcePaths(
   return sdkSourcePathResolved != null ? [sdkSourcePathResolved] : [];
 }
 
-export async function resolveConfiguration(
+export const :[fn~\w+] = async (
   configuration: IProcessConfig,
-): Promise<IProcessConfig> {
+) =>: Promise<IProcessConfig> {
   // adapterType === VsAdapterTypes.JAVA_ANDROID
   const {config, debugMode, targetUri} = configuration;
   const adbServiceUri = config.adbServiceUri ?? targetUri;

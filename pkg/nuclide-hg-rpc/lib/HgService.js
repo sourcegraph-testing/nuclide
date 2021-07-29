@@ -112,15 +112,15 @@ const IGNORABLE_ERROR_SUFFIXES = [
 
 const DEFAULT_HG_COMMIT_TITLE_REGEX = /^<Replace this line with a title. Use 1 line only, 67 chars or less>/;
 
-async function logWhenSubscriptionEstablished(
+const :[fn~\w+] = async (
   sub: Promise<mixed>,
   subName: string,
-): Promise<void> {
+) =>: Promise<void> {
   await sub;
   logger.debug(`Watchman subscription ${subName} established.`);
 }
 
-async function getForkBaseName(directoryPath: string): Promise<string> {
+const :[fn~\w+] = async (directoryPath: string) =>: Promise<string> {
   try {
     // $FlowFB
     const {readArcConfig} = require('../../fb-arcanist-rpc');
@@ -140,7 +140,7 @@ async function getForkBaseName(directoryPath: string): Promise<string> {
  * @return Array of additional watch expressions to apply to the primary
  *   watchman subscription.
  */
-function getPrimaryWatchmanSubscriptionRefinements(): Array<mixed> {
+const :[fn~\w+] = () =>: Array<mixed> {
   let refinements = [];
   try {
     // $FlowFB
@@ -151,7 +151,7 @@ function getPrimaryWatchmanSubscriptionRefinements(): Array<mixed> {
   return refinements;
 }
 
-function resolvePathForPlatform(path: string): string {
+const :[fn~\w+] = (path: string) =>: string {
   // hg resolve on win has a bug where it returns path with both unix
   // and win separators (T22157755). We normalize the path here.
   if (process.platform === 'win32') {
@@ -161,7 +161,7 @@ function resolvePathForPlatform(path: string): string {
 }
 
 /** @return .hg/store directory for the specified Hg working directory root. */
-async function findStoreDirectory(workingDirectory: string): Promise<string> {
+const :[fn~\w+] = async (workingDirectory: string) =>: Promise<string> {
   // If .hg/sharedpath is present, then this directory is using the Hg "share"
   // extension, in which case it is sharing the store with the .hg folder
   // specified by .hg/sharedpath.
@@ -577,9 +577,9 @@ export class HgRepositorySubscriptions {
   }
 }
 
-export function createRepositorySubscriptions(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
-): Promise<HgRepositorySubscriptions> {
+) =>: Promise<HgRepositorySubscriptions> {
   return HgRepositorySubscriptions.create(workingDirectory);
 }
 
@@ -590,10 +590,10 @@ export function createRepositorySubscriptions(
 /**
  * Shells out of the `hg status` to get the statuses of the paths.
  */
-export function fetchStatuses(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   toRevision?: string,
-): ConnectableObservable<Map<NuclideUri, StatusCodeIdValue>> {
+) =>: ConnectableObservable<Map<NuclideUri, StatusCodeIdValue>> {
   const execOptions = {
     cwd: workingDirectory,
   };
@@ -621,9 +621,9 @@ export function fetchStatuses(
  * Like fetchStatuses, but first calculates the root of the current
  * stack and fetches changes since that revision.
  */
-export function fetchStackStatuses(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
-): ConnectableObservable<Map<NuclideUri, StatusCodeIdValue>> {
+) =>: ConnectableObservable<Map<NuclideUri, StatusCodeIdValue>> {
   // Note: an alternative which doesn't depend upon reading .arcconfig in getForkBaseName is:
   //   return fetchStatuses(workingDirectory, ('ancestor(ancestor((not public()) and (:: .))^ or .)')
   // Both the code below and the alternative above have identical performance.
@@ -640,19 +640,19 @@ export function fetchStackStatuses(
  * Like fetchStatuses, but first checks whether the head is public. If so, returns
  * changes *since* the head. If not, returns changes *including* the head.
  */
-export function fetchHeadStatuses(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
-): ConnectableObservable<Map<NuclideUri, StatusCodeIdValue>> {
+) =>: ConnectableObservable<Map<NuclideUri, StatusCodeIdValue>> {
   return fetchStatuses(
     workingDirectory,
     'ancestor(. or (. and (not public()))^)',
   );
 }
 
-export async function getAdditionalLogFiles(
+export const :[fn~\w+] = async (
   workingDirectory: NuclideUri,
   deadline: DeadlineRequest,
-): Promise<Array<AdditionalLogFile>> {
+) =>: Promise<Array<AdditionalLogFile>> {
   const options = {cwd: workingDirectory};
   const base = await timeoutAfterDeadline(
     deadline,
@@ -734,10 +734,10 @@ export async function getAdditionalLogFiles(
  *   If the `hg diff` call fails, this method returns null.
  *   If a path has no changes, it will not appear in the returned Map.
  */
-export async function fetchDiffInfo(
+export const :[fn~\w+] = async (
   workingDirectory: NuclideUri,
   filePaths: Array<NuclideUri>,
-): Promise<?Map<NuclideUri, DiffInfo>> {
+) =>: Promise<?Map<NuclideUri, DiffInfo>> {
   // '--unified 0' gives us 0 lines of context around each change (we don't
   // care about the context).
   // '--noprefix' omits the a/ and b/ prefixes from filenames.
@@ -770,9 +770,9 @@ export async function fetchDiffInfo(
   return absolutePathToDiffInfo;
 }
 
-export function getLockFilesInstantaneousExistance(
+export const :[fn~\w+] = (
   workingDirectory: string,
-): Promise<Map<string, boolean>> {
+) =>: Promise<Map<string, boolean>> {
   return getFilesInstantaneousExistance(
     workingDirectory,
     LockFilesList,
@@ -783,11 +783,11 @@ export function getLockFilesInstantaneousExistance(
  * Section: Bookmarks
  */
 
-export function createBookmark(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   name: string,
   revision: ?string,
-): Promise<void> {
+) =>: Promise<void> {
   const args = [];
   // flowlint-next-line sketchy-null-string:off
   if (revision) {
@@ -798,21 +798,21 @@ export function createBookmark(
   return _runSimpleInWorkingDirectory(workingDirectory, 'bookmark', args);
 }
 
-export function deleteBookmark(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   name: string,
-): Promise<void> {
+) =>: Promise<void> {
   return _runSimpleInWorkingDirectory(workingDirectory, 'bookmarks', [
     '--delete',
     name,
   ]);
 }
 
-export function renameBookmark(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   name: string,
   nextName: string,
-): Promise<void> {
+) =>: Promise<void> {
   return _runSimpleInWorkingDirectory(workingDirectory, 'bookmarks', [
     '--rename',
     name,
@@ -823,9 +823,9 @@ export function renameBookmark(
 /**
  * @return The name of the current bookmark.
  */
-export function fetchActiveBookmark(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
-): Promise<string> {
+) =>: Promise<string> {
   return BookmarkHelpers.fetchActiveBookmark(
     nuclideUri.join(workingDirectory, '.hg'),
   );
@@ -834,9 +834,9 @@ export function fetchActiveBookmark(
 /**
  * @return An Array of bookmarks for this repository.
  */
-export function fetchBookmarks(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
-): Promise<Array<BookmarkInfo>> {
+) =>: Promise<Array<BookmarkInfo>> {
   return BookmarkHelpers.fetchBookmarks(
     nuclideUri.join(workingDirectory, '.hg'),
   );
@@ -851,11 +851,11 @@ export function fetchBookmarks(
  * @param revision: An expression that hg can understand, specifying the
  * revision at which we want to see the file content.
  */
-export function fetchFileContentAtRevision(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   filePath: NuclideUri,
   revision: string,
-): ConnectableObservable<string> {
+) =>: ConnectableObservable<string> {
   return StateHelpers.fetchFileContentAtRevision(
     filePath,
     revision,
@@ -863,11 +863,11 @@ export function fetchFileContentAtRevision(
   );
 }
 
-export function batchFetchFileContentsAtRevision(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   filePaths: Array<NuclideUri>,
   revision: string,
-): ConnectableObservable<Map<NuclideUri, string>> {
+) =>: ConnectableObservable<Map<NuclideUri, string>> {
   return StateHelpers.batchFetchFileContentsAtRevision(
     filePaths,
     revision,
@@ -875,10 +875,10 @@ export function batchFetchFileContentsAtRevision(
   );
 }
 
-export function fetchFilesChangedAtRevision(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   revision: string,
-): ConnectableObservable<RevisionFileChanges> {
+) =>: ConnectableObservable<RevisionFileChanges> {
   return StateHelpers.fetchFilesChangedAtRevision(revision, workingDirectory);
 }
 
@@ -888,9 +888,9 @@ export function fetchFilesChangedAtRevision(
  * @return an array with the revision info (`title`, `author`, `date` and `id`)
  * or `null` if no common ancestor was found.
  */
-export async function fetchRevisionInfoBetweenHeadAndBase(
+export const :[fn~\w+] = async (
   workingDirectory: NuclideUri,
-): Promise<Array<RevisionInfo>> {
+) =>: Promise<Array<RevisionInfo>> {
   const forkBaseName = await getForkBaseName(workingDirectory);
   const revisionsInfo = await fetchRevisionInfoBetweenRevisions(
     expressionForCommonAncestor(forkBaseName),
@@ -900,24 +900,24 @@ export async function fetchRevisionInfoBetweenHeadAndBase(
   return revisionsInfo;
 }
 
-export function fetchHeadRevisionInfo(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
-): ConnectableObservable<Array<RevisionInfo>> {
+) =>: ConnectableObservable<Array<RevisionInfo>> {
   return fetchHeadRevisionInfoImpl(workingDirectory);
 }
 
-export function fetchSmartlogRevisions(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
-): ConnectableObservable<Array<RevisionInfo>> {
+) =>: ConnectableObservable<Array<RevisionInfo>> {
   return fetchSmartlogRevisionsImpl(workingDirectory);
 }
 
 /**
  * Resolve the revision details of the base branch
  */
-export async function getBaseRevision(
+export const :[fn~\w+] = async (
   workingDirectory: NuclideUri,
-): Promise<RevisionInfo> {
+) =>: Promise<RevisionInfo> {
   const forkBaseName = await getForkBaseName(workingDirectory);
   return fetchRevisionInfo(
     expressionForCommonAncestor(forkBaseName),
@@ -931,10 +931,10 @@ export async function getBaseRevision(
  * @param filePath The file to get blame information for.
  * @return An Array that maps a line number (0-indexed) to the revision info.
  */
-export async function getBlameAtHead(
+export const :[fn~\w+] = async (
   workingDirectory: NuclideUri,
   filePath: NuclideUri,
-): Promise<Array<?RevisionInfo>> {
+) =>: Promise<Array<?RevisionInfo>> {
   let revisionsByLine;
   try {
     revisionsByLine = (await hgAsyncExecute(
@@ -988,10 +988,10 @@ export async function getBlameAtHead(
  * Returns the value of the config item at `key`.
  * @param key Name of config item
  */
-export async function getConfigValueAsync(
+export const :[fn~\w+] = async (
   workingDirectory: NuclideUri,
   key: string,
-): Promise<?string> {
+) =>: Promise<?string> {
   const args = ['config', key];
   const execOptions = {
     cwd: workingDirectory,
@@ -1012,10 +1012,10 @@ export async function getConfigValueAsync(
  * This implementation relies on the "phabdiff" template being available as defined in:
  * https://bitbucket.org/facebook/hg-experimental/src/fbf23b3f96bade5986121a7c57d7400585d75f54/phabdiff.py.
  */
-export async function getDifferentialRevisionForChangeSetId(
+export const :[fn~\w+] = async (
   workingDirectory: NuclideUri,
   changeSetId: string,
-): Promise<?string> {
+) =>: Promise<?string> {
   const args = [
     'log',
     '-T',
@@ -1048,11 +1048,11 @@ export async function getDifferentialRevisionForChangeSetId(
  * @param concise true to run `hg smartlog`; false to run `hg ssl`.
  * @return The output from running the command.
  */
-export async function getSmartlog(
+export const :[fn~\w+] = async (
   workingDirectory: NuclideUri,
   ttyOutput: boolean,
   concise: boolean,
-): Promise<AsyncExecuteRet> {
+) =>: Promise<AsyncExecuteRet> {
   // disable the pager extension so that 'hg ssl' terminates. We can't just use
   // HGPLAIN because we have not found a way to get colored output when we do.
   const args = ['--config', 'extensions.pager=!', concise ? 'ssl' : 'smartlog'];
@@ -1064,11 +1064,11 @@ export async function getSmartlog(
   return hgAsyncExecute(args, execOptions);
 }
 
-function _commitCode(
+const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   message: ?string,
   args: Array<string>,
-): Observable<LegacyProcessMessage> {
+) =>: Observable<LegacyProcessMessage> {
   // TODO(T17463635)
   return Observable.fromPromise(
     (async () => {
@@ -1092,11 +1092,11 @@ function _commitCode(
  * @param message Commit message.
  * @param filePaths List of changed files to commit. If empty, all will be committed
  */
-export function commit(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   message: string,
   filePaths: Array<NuclideUri> = [],
-): ConnectableObservable<LegacyProcessMessage> {
+) =>: ConnectableObservable<LegacyProcessMessage> {
   // TODO(T17463635)
   return _commitCode(workingDirectory, message, [
     'commit',
@@ -1110,11 +1110,11 @@ export function commit(
    * @param message New commit message
    * @return Process update message while running metaedit
    */
-export function editCommitMessage(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   revision: string,
   message: string,
-): ConnectableObservable<LegacyProcessMessage> {
+) =>: ConnectableObservable<LegacyProcessMessage> {
   const args = ['metaedit', '-r', revision, '-m', message];
   const execOptions = {
     cwd: workingDirectory,
@@ -1131,12 +1131,12 @@ export function editCommitMessage(
  *  Fixup to fix the stacked commits, rebasing them on top of this commit.
  * @param filePaths List of changed files to commit. If empty, all will be committed
  */
-export function amend(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   message: ?string,
   amendMode: AmendModeValue,
   filePaths: Array<NuclideUri> = [],
-): ConnectableObservable<LegacyProcessMessage> {
+) =>: ConnectableObservable<LegacyProcessMessage> {
   // TODO(T17463635)
   const args = ['amend', ...filePaths];
   switch (amendMode) {
@@ -1156,9 +1156,9 @@ export function amend(
   return _commitCode(workingDirectory, message, args).publish();
 }
 
-export function restack(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
-): ConnectableObservable<LegacyProcessMessage> {
+) =>: ConnectableObservable<LegacyProcessMessage> {
   const args = ['rebase', '--restack'];
   const execOptions = {
     cwd: workingDirectory,
@@ -1166,11 +1166,11 @@ export function restack(
   return hgObserveExecution(args, execOptions).publish();
 }
 
-export function revert(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   filePaths: Array<NuclideUri>,
   toRevision: ?string,
-): Promise<void> {
+) =>: Promise<void> {
   const args = [...filePaths];
   if (toRevision != null) {
     args.push('--rev', toRevision);
@@ -1178,11 +1178,11 @@ export function revert(
   return _runSimpleInWorkingDirectory(workingDirectory, 'revert', args);
 }
 
-async function _runSimpleInWorkingDirectory(
+const :[fn~\w+] = async (
   workingDirectory: NuclideUri,
   action: string,
   args: Array<string>,
-): Promise<void> {
+) =>: Promise<void> {
   const options = {
     cwd: workingDirectory,
   };
@@ -1206,12 +1206,12 @@ async function _runSimpleInWorkingDirectory(
  * @param create Currently, this parameter is ignored.
  * @param options.
  */
-export function checkout(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   revision: string,
   create: boolean,
   options?: CheckoutOptions,
-): ConnectableObservable<LegacyProcessMessage> {
+) =>: ConnectableObservable<LegacyProcessMessage> {
   // TODO(T17463635)
   const args = ['checkout', revision];
   if (options && options.clean) {
@@ -1223,10 +1223,10 @@ export function checkout(
   return hgObserveExecution(args, executionOptions).publish();
 }
 
-export function show(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   revision: number,
-): ConnectableObservable<RevisionShowInfo> {
+) =>: ConnectableObservable<RevisionShowInfo> {
   const args = ['show', `${revision}`, '--git', '-Tjson'];
   const execOptions = {
     cwd: workingDirectory,
@@ -1238,14 +1238,14 @@ export function show(
     .publish();
 }
 
-export function diff(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   revision: string,
   unified: ?number,
   diffCommitted: ?boolean,
   noPrefix: ?boolean,
   noDates: ?boolean,
-): ConnectableObservable<string> {
+) =>: ConnectableObservable<string> {
   const args = ['diff', diffCommitted ? '-c' : '-r', revision];
   if (unified != null) {
     args.push('--unified', `${unified}`);
@@ -1265,24 +1265,24 @@ export function diff(
 /**
  * Removes files not tracked by Mercurial.
  */
-export function purge(workingDirectory: NuclideUri): Promise<void> {
+export const :[fn~\w+] = (workingDirectory: NuclideUri) =>: Promise<void> {
   return _runSimpleInWorkingDirectory(workingDirectory, 'purge', ['--files']);
 }
 
 /**
  * Undoes the effect of a local commit, specifically the working directory parent.
  */
-export function uncommit(workingDirectory: NuclideUri): Promise<void> {
+export const :[fn~\w+] = (workingDirectory: NuclideUri) =>: Promise<void> {
   return _runSimpleInWorkingDirectory(workingDirectory, 'uncommit', []);
 }
 
 /**
  * @param revision This could be a changeset ID, name of a bookmark, revision number, etc.
  */
-export function strip(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   revision: string,
-): Promise<void> {
+) =>: Promise<void> {
   return _runSimpleInWorkingDirectory(workingDirectory, 'hide', [revision]);
 }
 
@@ -1290,9 +1290,9 @@ export function strip(
  * @param revision This could be a changeset ID, name of a bookmark, revision number, etc.
  * @param create Currently, this parameter is ignored.
  */
-export async function checkoutForkBase(
+export const :[fn~\w+] = async (
   workingDirectory: NuclideUri,
-): Promise<void> {
+) =>: Promise<void> {
   const forkBaseName = await getForkBaseName(workingDirectory);
   await _runSimpleInWorkingDirectory(workingDirectory, 'checkout', [
     forkBaseName,
@@ -1304,7 +1304,7 @@ export async function checkoutForkBase(
  * are generally harmless and should not create an error notification.
  * This checks the error string in order to avoid potentially slow hg pre-checks.
  */
-function _rethrowErrorIfHelpful(e: Error): void {
+const :[fn~\w+] = (e: Error) =>: void {
   if (!IGNORABLE_ERROR_SUFFIXES.some(s => e.message.endsWith(s + '\n'))) {
     throw e;
   }
@@ -1315,12 +1315,12 @@ function _rethrowErrorIfHelpful(e: Error): void {
  * @param filePaths Which files should be renamed/moved.
  * @param destPath What should the file be renamed/moved to.
  */
-export async function rename(
+export const :[fn~\w+] = async (
   workingDirectory: NuclideUri,
   filePaths: Array<NuclideUri>,
   destPath: NuclideUri,
   after?: boolean,
-): Promise<void> {
+) =>: Promise<void> {
   const args = [
     ...filePaths.map(p => nuclideUri.getPath(p)), // Sources
     nuclideUri.getPath(destPath), // Dest
@@ -1343,11 +1343,11 @@ export async function rename(
  * Remove a file versioned under Hg.
  * @param filePath Which file should be removed.
  */
-export async function remove(
+export const :[fn~\w+] = async (
   workingDirectory: NuclideUri,
   filePaths: Array<NuclideUri>,
   after?: boolean,
-): Promise<void> {
+) =>: Promise<void> {
   const args = ['-f', ...filePaths.map(p => nuclideUri.getPath(p))];
   if (after) {
     args.unshift('--after');
@@ -1369,10 +1369,10 @@ export async function remove(
  * The file will remain in the working directory.
  * @param filePath Which file(s) should be forgotten.
  */
-export async function forget(
+export const :[fn~\w+] = async (
   workingDirectory: NuclideUri,
   filePaths: Array<NuclideUri>,
-): Promise<void> {
+) =>: Promise<void> {
   const args = [...filePaths.map(p => nuclideUri.getPath(p))];
   try {
     await _runSimpleInWorkingDirectory(workingDirectory, 'forget', args);
@@ -1385,16 +1385,16 @@ export async function forget(
  * Version a new file under Hg.
  * @param filePath Which file should be versioned.
  */
-export function add(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   filePaths: Array<NuclideUri>,
-): Promise<void> {
+) =>: Promise<void> {
   return _runSimpleInWorkingDirectory(workingDirectory, 'add', filePaths);
 }
 
-export async function getTemplateCommitMessage(
+export const :[fn~\w+] = async (
   workingDirectory: NuclideUri,
-): Promise<?string> {
+) =>: Promise<?string> {
   const args = ['debugcommitmessage'];
   const execOptions = {
     cwd: workingDirectory,
@@ -1411,9 +1411,9 @@ export async function getTemplateCommitMessage(
   }
 }
 
-export async function getHeadCommitMessage(
+export const :[fn~\w+] = async (
   workingDirectory: NuclideUri,
-): Promise<?string> {
+) =>: Promise<?string> {
   const args = [
     'log',
     '-T',
@@ -1439,11 +1439,11 @@ export async function getHeadCommitMessage(
   }
 }
 
-export async function log(
+export const :[fn~\w+] = async (
   workingDirectory: NuclideUri,
   filePaths: Array<NuclideUri>,
   limit?: ?number,
-): Promise<VcsLogResponse> {
+) =>: Promise<VcsLogResponse> {
   const args = ['log', '-T', '{dict(node|short, desc, date, author)|json}\n'];
   if (limit != null && limit > 0) {
     args.push('--limit', String(limit));
@@ -1463,9 +1463,9 @@ export async function log(
   return {entries};
 }
 
-export function fetchMergeConflicts(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
-): ConnectableObservable<?MergeConflicts> {
+) =>: ConnectableObservable<?MergeConflicts> {
   const args = [
     'resolve',
     '--tool=internal:dumpjson',
@@ -1511,11 +1511,11 @@ export function fetchMergeConflicts(
   );
 }
 
-export function markConflictedFile(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   filePath: NuclideUri,
   resolved: boolean,
-): ConnectableObservable<LegacyProcessMessage> {
+) =>: ConnectableObservable<LegacyProcessMessage> {
   // TODO(T17463635)
   // -m marks file as resolved, -u marks file as unresolved
   const fileStatus = resolved ? '-m' : '-u';
@@ -1526,10 +1526,10 @@ export function markConflictedFile(
   return hgObserveExecution(args, execOptions).publish();
 }
 
-export function continueOperation(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   args: Array<string>,
-): ConnectableObservable<LegacyProcessMessage> {
+) =>: ConnectableObservable<LegacyProcessMessage> {
   // TODO(T17463635)
 
   const execOptions = {
@@ -1538,19 +1538,19 @@ export function continueOperation(
   return hgObserveExecution(args, execOptions).publish();
 }
 
-export function abortOperation(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   commandWithOptions: Array<string>,
-): ConnectableObservable<string> {
+) =>: ConnectableObservable<string> {
   const execOptions = {
     cwd: workingDirectory,
   };
   return hgRunCommand(commandWithOptions, execOptions).publish();
 }
 
-export function resolveAllFiles(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
-): ConnectableObservable<LegacyProcessMessage> {
+) =>: ConnectableObservable<LegacyProcessMessage> {
   const args = ['resolve', '--all'];
   const execOptions = {
     cwd: workingDirectory,
@@ -1558,11 +1558,11 @@ export function resolveAllFiles(
   return hgObserveExecution(args, execOptions).publish();
 }
 
-export function rebase(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   destination: string,
   source?: string,
-): ConnectableObservable<LegacyProcessMessage> {
+) =>: ConnectableObservable<LegacyProcessMessage> {
   // TODO(T17463635)
 
   const args = ['rebase', '-d', destination];
@@ -1581,10 +1581,10 @@ export function rebase(
  *  stack above where any reordering takes place, and there can be no
  *  branches off of any revision in the stack except the top one.
  */
-export function reorderWithinStack(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   orderedRevisions: Array<string>,
-): ConnectableObservable<string> {
+) =>: ConnectableObservable<string> {
   const args = [
     'histedit',
     '--commands',
@@ -1606,10 +1606,10 @@ export function reorderWithinStack(
   return hgRunCommand(args, execOptions).publish();
 }
 
-export function pull(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   options: Array<string>,
-): ConnectableObservable<LegacyProcessMessage> {
+) =>: ConnectableObservable<LegacyProcessMessage> {
   // TODO(T17463635)
   const args = ['pull', ...options];
   const execOptions = {
@@ -1624,12 +1624,12 @@ export function pull(
  * @param filePaths Which files should be copied.
  * @param destPath What should the new file be named to.
  */
-export async function copy(
+export const :[fn~\w+] = async (
   workingDirectory: NuclideUri,
   filePaths: Array<NuclideUri>,
   destPath: NuclideUri,
   after?: boolean,
-): Promise<void> {
+) =>: Promise<void> {
   const args = [
     ...filePaths.map(p => nuclideUri.getPath(p)), // Sources
     nuclideUri.getPath(destPath), // Dest
@@ -1651,10 +1651,10 @@ export async function copy(
 /**
  * Gets the current head revision hash
  */
-export function getHeadId(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   useShortHash: boolean = false,
-): ConnectableObservable<string> {
+) =>: ConnectableObservable<string> {
   const template = useShortHash ? '{node|short}' : '{node}';
   const args = ['log', '--template', template, '--limit', '1'];
   const execOptions = {
@@ -1666,10 +1666,10 @@ export function getHeadId(
 /**
  * Given a short hash or revset, returns the full 40-char hash.
  */
-export async function getFullHashForRevision(
+export const :[fn~\w+] = async (
   workingDirectory: NuclideUri,
   rev: string,
-): Promise<?string> {
+) =>: Promise<?string> {
   const args = ['log', '--template', '{node}', '--limit', '1', '-r', rev];
   const options = {
     cwd: workingDirectory,
@@ -1683,12 +1683,12 @@ export async function getFullHashForRevision(
  * @param to This could be a changeset ID, name of a bookmark, revision number, etc.
  * @param message New message for the resulting folded commit.
  */
-export function fold(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   from: string,
   to: string,
   message: string,
-): ConnectableObservable<string> {
+) =>: ConnectableObservable<string> {
   const args = ['fold', '--exact', `${from}::${to}`, '--message', message];
 
   const execOptions = {
@@ -1702,11 +1702,11 @@ export function fold(
  * @param patch This will be the patch passed through std/in to hg import
  * @param noCommit True will leave the imported changes uncommitted
  */
-export function importPatch(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   patch: string,
   noCommit: boolean = false,
-): ConnectableObservable<string> {
+) =>: ConnectableObservable<string> {
   const args = ['import', '-'];
   if (noCommit) {
     args.push('--no-commit');
@@ -1719,21 +1719,21 @@ export function importPatch(
   return hgRunCommand(args, execOptions).publish();
 }
 
-export function runCommand(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   args: Array<string>,
-): ConnectableObservable<string> {
+) =>: ConnectableObservable<string> {
   const execOptions = {
     cwd: workingDirectory,
   };
   return hgRunCommand(args, execOptions).publish();
 }
 
-export function observeExecution(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
   args: Array<string>,
   options?: {useMerge3?: boolean},
-): ConnectableObservable<LegacyProcessMessage> {
+) =>: ConnectableObservable<LegacyProcessMessage> {
   const execOptions = {
     cwd: workingDirectory,
     ...options,
@@ -1741,9 +1741,9 @@ export function observeExecution(
   return hgObserveExecution(args, execOptions).publish();
 }
 
-export function addRemove(
+export const :[fn~\w+] = (
   workingDirectory: NuclideUri,
-): ConnectableObservable<string> {
+) =>: ConnectableObservable<string> {
   const execOptions = {
     cwd: workingDirectory,
   };
@@ -1752,9 +1752,9 @@ export function addRemove(
 
 // not really Hg functionality, but this was chosen to be the best current home
 // for this method as it spawns processes and should live in an remote service
-export function gitDiffStrings(
+export const :[fn~\w+] = (
   oldContents: string,
   newContents: string,
-): ConnectableObservable<string> {
+) =>: ConnectableObservable<string> {
   return gitDiffStringsImpl(oldContents, newContents).publish();
 }

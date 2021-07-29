@@ -15,7 +15,7 @@ import {logger} from 'vscode-debugadapter';
 
 export const PROMPT = '(ocd) ';
 
-function stripPrompt(s: string): string {
+const :[fn~\w+] = (s: string) =>: string {
   return s.substr(0, s.length - PROMPT.length);
 }
 

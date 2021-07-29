@@ -71,7 +71,7 @@ describe('clicking on a tab', () => {
   });
 });
 
-function ancestorHasPathAttribute(element: HTMLElement): boolean {
+const :[fn~\w+] = (element: HTMLElement) =>: boolean {
   let el = element;
   while (el != null) {
     if ((el: any).dataset.path != null) {

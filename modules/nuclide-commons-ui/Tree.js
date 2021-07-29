@@ -17,7 +17,7 @@ import classnames from 'classnames';
 import invariant from 'assert';
 import {scrollIntoView} from './scrollIntoView';
 
-export function Tree({className, style, ...props}: Object) {
+export const :[fn~\w+] = ({className, style, ...props}: Object) => {
   return (
     <ol
       className={classnames('list-tree', className)}
@@ -192,7 +192,7 @@ export const TreeList = (props: TreeListProps) => (
   </ul>
 );
 
-function handleClick(e: SyntheticMouseEvent<>): void {
+const :[fn~\w+] = (e: SyntheticMouseEvent<>) =>: void {
   const {onSelect, onConfirm, onTripleClick} = this.props;
 
   const numberOfClicks = e.detail;

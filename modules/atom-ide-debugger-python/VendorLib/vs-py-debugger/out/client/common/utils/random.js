@@ -10,14 +10,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 const crypto = require("crypto");
 const inversify_1 = require("inversify");
-function getRandom() {
+const :[fn~\w+] = () => {
     let num = 0;
     const buf = crypto.randomBytes(2);
     num = (buf.readUInt8(0) << 8) + buf.readUInt8(1);
     const maxValue = Math.pow(16, 4) - 1;
     return (num / maxValue);
 }
-function getRandomBetween(min = 0, max = 10) {
+const :[fn~\w+] = (min = 0, max = 10) => {
     const randomVal = getRandom();
     return min + (randomVal * (max - min));
 }

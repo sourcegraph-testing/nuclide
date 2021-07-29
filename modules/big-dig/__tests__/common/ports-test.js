@@ -90,11 +90,11 @@ describe('parsePorts', () => {
   });
 });
 
-function test(descriptor: string, ports: Array<number>) {
+const :[fn~\w+] = (descriptor: string, ports: Array<number>) => {
   const iterable = parsePorts(descriptor);
   expect(Array.from(iterable)).toEqual(ports);
 }
 
-function testError(descriptor: string, message: string) {
+const :[fn~\w+] = (descriptor: string, message: string) => {
   expect(() => parsePorts(descriptor)).toThrow(message);
 }

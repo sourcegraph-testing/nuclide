@@ -17,7 +17,7 @@ import {getLogger} from 'log4js';
 import UniversalDisposable from 'nuclide-commons/UniversalDisposable';
 import {Icon} from './Icon';
 
-function WarningIconWithShadow(): React.Node {
+const :[fn~\w+] = () =>: React.Node {
   return (
     <div>
       <svg
@@ -33,7 +33,7 @@ function WarningIconWithShadow(): React.Node {
   );
 }
 
-function ErrorIconWithShadow(): React.Node {
+const :[fn~\w+] = () =>: React.Node {
   return (
     <div>
       <svg

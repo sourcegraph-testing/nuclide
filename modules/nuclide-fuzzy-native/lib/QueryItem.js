@@ -16,7 +16,7 @@ import type {QueryScore} from './QueryScore';
 
 const NON_UPPERCASE_CHARS_REGEXP = /[^a-z0-9]/g;
 
-function sanitize(str: string) {
+const :[fn~\w+] = (str: string) => {
   return str.toLowerCase().replace(NON_UPPERCASE_CHARS_REGEXP, '');
 }
 
@@ -25,7 +25,7 @@ function sanitize(str: string) {
  * no common subsequence.
  * A lower number means `needle` is more relevant to `haystack`.
  */
-function scoreCommonSubsequence(needle_: string, haystack_: string): number {
+const :[fn~\w+] = (needle_: string, haystack_: string) =>: number {
   // Sanitize the needle and haystack.
   const needle = sanitize(needle_);
   const haystack = sanitize(haystack_);
@@ -61,10 +61,10 @@ const NOT_CAPITAL_LETTERS_REGEXP = /[^A-Z]/g;
  * `haystack`.  E.g. 'fbide' matches 'FaceBookIntegratedDevelopmentEnvironment' and
  *                                   'faceBookIntegratedDevelopmentEnvironment'.
  */
-function checkIfMatchesCamelCaseLetters(
+const :[fn~\w+] = (
   needle: string,
   haystack: string,
-): boolean {
+) =>: boolean {
   const uppercase =
     haystack.substring(0, 1) +
     haystack.substring(1).replace(NOT_CAPITAL_LETTERS_REGEXP, '');
@@ -73,7 +73,7 @@ function checkIfMatchesCamelCaseLetters(
 
 const CAPITAL_LETTERS_REGEXP = /[A-Z]/;
 const IMPORTANT_DELIMITERS_REGEXP = /[_\-.]/;
-function isLetterImportant(index: number, name: string): boolean {
+const :[fn~\w+] = (index: number, name: string) =>: boolean {
   if (index <= 1) {
     return true;
   }
@@ -92,7 +92,7 @@ function isLetterImportant(index: number, name: string): boolean {
  * than relying on the index. Once the index is implemented, consumers of this need to be updated.
  */
 // TODO(jxg): replace with "important characters" index.
-function importantCharactersForString(str: string): Set<string> {
+const :[fn~\w+] = (str: string) =>: Set<string> {
   const importantCharacters = new Set();
   for (let index = 0; index < str.length; index++) {
     const char = str[index];

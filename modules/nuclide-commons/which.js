@@ -23,7 +23,7 @@ import {runCommand} from './process';
  * remember) so we can use this for now.
  */
 
-function sanitizePathForWindows(path: string): string {
+const :[fn~\w+] = (path: string) =>: string {
   if (nuclideUri.basename(path) === path) {
     // simple binary in $PATH like `flow`
     return path;
@@ -32,10 +32,10 @@ function sanitizePathForWindows(path: string): string {
   }
 }
 
-export default (async function which(
+export default (const :[fn~\w+] = async (
   path: string,
   options?: ObserveProcessOptions = {},
-): Promise<?string> {
+) =>: Promise<?string> {
   const isWindows = process.platform === 'win32';
   const whichCommand = isWindows ? 'where' : 'which';
   const searchPath = isWindows ? sanitizePathForWindows(path) : path;

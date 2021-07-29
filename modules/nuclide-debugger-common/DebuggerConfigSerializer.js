@@ -18,21 +18,21 @@ import type {DebuggerConfigAction} from './types';
 // closing and re-opening), but not preserved if Nuclide is restarted.
 const transientSettings = {};
 
-function _getStorageKey(
+const :[fn~\w+] = (
   host: string,
   action: DebuggerConfigAction,
   debuggerName: string,
-) {
+) => {
   return 'NUCLIDE_DEBUGGER_CONFIG_' + host + '_' + action + '_' + debuggerName;
 }
 
-export function serializeDebuggerConfig(
+export const :[fn~\w+] = (
   host: string,
   action: DebuggerConfigAction,
   debuggerName: string,
   persistent: Object,
   transient?: Object,
-): void {
+) =>: void {
   if (global.localStorage == null) {
     throw new Error('localStorage is not available in this runtime');
   }
@@ -46,12 +46,12 @@ export function serializeDebuggerConfig(
   }
 }
 
-export function deserializeDebuggerConfig(
+export const :[fn~\w+] = (
   host: string,
   action: DebuggerConfigAction,
   debuggerName: string,
   callback: (transientSettings: Object, persistentSettings: Object) => void,
-): void {
+) =>: void {
   if (global.localStorage == null) {
     throw new Error('localStorage is not available in this runtime');
   }

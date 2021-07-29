@@ -32,9 +32,9 @@ type ExperimentalServiceTable = {
   },
 };
 
-export default function activateExperimentalPackages(
+export default const :[fn~\w+] = (
   features: Array<Feature>,
-): IDisposable {
+) =>: IDisposable {
   const messageRouter = new MessageRouter();
   const experimentalFeatures = getExperimentalFeatures(features);
   const availableServices = aggregateExperimentalServices(experimentalFeatures);
@@ -135,16 +135,16 @@ export default function activateExperimentalPackages(
   return disposables;
 }
 
-function getExperimentalFeatures(features: Array<Feature>): Array<Feature> {
+const :[fn~\w+] = (features: Array<Feature>) =>: Array<Feature> {
   return features.filter(
     // $FlowIgnore
     feature => idx(feature.pkg, _ => _.experimental.main) != null,
   );
 }
 
-function aggregateExperimentalServices(
+const :[fn~\w+] = (
   features: Array<Feature>,
-): ExperimentalServiceTable {
+) =>: ExperimentalServiceTable {
   // Build a table of provided services.
   const table: ExperimentalServiceTable = createObject();
   features.forEach(feature => {
@@ -164,6 +164,6 @@ function aggregateExperimentalServices(
 }
 
 // An object that may safely be used as a map.
-function createObject(): Object {
+const :[fn~\w+] = () =>: Object {
   return Object.create(null);
 }

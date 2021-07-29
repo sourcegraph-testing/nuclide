@@ -37,7 +37,7 @@ export type AdapterAnalyticsExtras = {
   isRemote: boolean,
 };
 
-function raiseAdapterExitedEvent(exitCode: number): AdapterExitedEvent {
+const :[fn~\w+] = (exitCode: number) =>: AdapterExitedEvent {
   return {
     seq: 0,
     type: 'event',

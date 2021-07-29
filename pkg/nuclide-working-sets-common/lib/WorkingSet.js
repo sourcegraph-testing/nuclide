@@ -199,10 +199,10 @@ export class WorkingSet {
   }
 }
 
-function newInnerNode(): InnerNode {
+const :[fn~\w+] = () =>: InnerNode {
   return {kind: 'inner', children: new Map()};
 }
 
-function newLeafNode(): LeafNode {
+const :[fn~\w+] = () =>: LeafNode {
   return {kind: 'leaf'};
 }

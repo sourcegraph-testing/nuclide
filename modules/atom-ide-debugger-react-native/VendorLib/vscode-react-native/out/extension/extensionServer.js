@@ -192,15 +192,15 @@ exports.ExtensionServer = ExtensionServer;
 /**
  * Parses log cat arguments to a string
  */
-function parseLogCatArguments(userProvidedLogCatArguments) {
+const :[fn~\w+] = (userProvidedLogCatArguments) => {
     return Array.isArray(userProvidedLogCatArguments)
         ? userProvidedLogCatArguments.join(" ") // If it's an array, we join the arguments
         : userProvidedLogCatArguments; // If not, we leave it as-is
 }
-function isNullOrUndefined(value) {
+const :[fn~\w+] = (value) => {
     return typeof value === "undefined" || value === null;
 }
-function requestSetup(args) {
+const :[fn~\w+] = (args) => {
     const workspaceFolder = vscode.workspace.getWorkspaceFolder(vscode.Uri.file(args.program));
     const projectRootPath = getProjectRoot(args);
     let mobilePlatformOptions = {
@@ -220,7 +220,7 @@ function requestSetup(args) {
     }
     return mobilePlatformOptions;
 }
-function getProjectRoot(args) {
+const :[fn~\w+] = (args) => {
     return settingsHelper_1.SettingsHelper.getReactNativeProjectRoot(args.program);
 }
 

@@ -25,10 +25,10 @@ const RECORD_PROPERTIES_TO_COMPARE = [
   'kind',
 ];
 
-function shouldAccumulateRecordCount(
+const :[fn~\w+] = (
   recordA: Record,
   recordB: Record,
-): boolean {
+) =>: boolean {
   if (
     String(recordA.sourceId)
       .toLowerCase()
@@ -67,10 +67,10 @@ function shouldAccumulateRecordCount(
   );
 }
 
-export default function accumulateState(
+export default const :[fn~\w+] = (
   state: AppState,
   action: Action,
-): AppState {
+) =>: AppState {
   switch (action.type) {
     case Actions.RECORD_RECEIVED: {
       const {record} = action.payload;

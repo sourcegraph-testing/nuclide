@@ -15,7 +15,7 @@
 
 const SignedSource = require('signedsource');
 
-function getFBFormatGeneratedModule(buildCommand) {
+const :[fn~\w+] = (buildCommand) => {
   return ({
     documentType,
     docText,

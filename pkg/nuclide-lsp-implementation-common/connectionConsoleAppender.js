@@ -16,7 +16,7 @@ import {
   MessageType,
 } from '../nuclide-vscode-language-service-rpc/lib/protocol';
 
-function getMessageType(levelStr: string) {
+const :[fn~\w+] = (levelStr: string) => {
   switch (levelStr) {
     case 'ERROR':
       return MessageType.Error;
@@ -29,7 +29,7 @@ function getMessageType(levelStr: string) {
   }
 }
 
-function appender(config: {connection: IConnection}) {
+const :[fn~\w+] = (config: {connection: IConnection}) => {
   const {connection} = config;
 
   // eslint-disable-next-line flowtype/no-weak-types

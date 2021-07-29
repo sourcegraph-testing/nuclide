@@ -61,7 +61,7 @@ describe('FileTreeContextMenu', () => {
   });
 
   it('includes Source Control submenu on demand', async () => {
-    function includesSourceControl(): boolean {
+    const :[fn~\w+] = () =>: boolean {
       return fileTreeItems().some(x => x.label === 'Source Control');
     }
     expect(includesSourceControl()).toBeFalsy();
@@ -82,7 +82,7 @@ describe('FileTreeContextMenu', () => {
   });
 });
 
-function testItem(): FileTreeContextMenuItem {
+const :[fn~\w+] = () =>: FileTreeContextMenuItem {
   return {
     label: 'Test Label',
     command: 'command-for-test',
@@ -92,13 +92,13 @@ function testItem(): FileTreeContextMenuItem {
   };
 }
 
-function fileTreeItems(): Array<atom$ContextMenuItem> {
+const :[fn~\w+] = () =>: Array<atom$ContextMenuItem> {
   const items = fileTreeItemsOrNull();
   invariant(items != null);
   return items;
 }
 
-function fileTreeItemsOrNull(): ?Array<atom$ContextMenuItem> {
+const :[fn~\w+] = () =>: ?Array<atom$ContextMenuItem> {
   const itemSets = atom.contextMenu.itemSets.filter(
     x => x.selector === EVENT_HANDLER_SELECTOR,
   );
@@ -106,9 +106,9 @@ function fileTreeItemsOrNull(): ?Array<atom$ContextMenuItem> {
   return itemSets.length === 0 ? null : itemSets[0].items;
 }
 
-function itemGroups(
+const :[fn~\w+] = (
   items: Array<atom$ContextMenuItem>,
-): Map<string, Array<atom$ContextMenuItem>> {
+) =>: Map<string, Array<atom$ContextMenuItem>> {
   const map = new Map();
   let array = [];
   for (const item of items) {

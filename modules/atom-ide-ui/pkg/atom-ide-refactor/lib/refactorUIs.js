@@ -33,12 +33,12 @@ const refactorUIFactories: Array<RefactorUIFactory> = [
   renameShortcut,
 ];
 
-export function initRefactorUIs(store: Store): IDisposable {
+export const :[fn~\w+] = (store: Store) =>: IDisposable {
   const disposables = refactorUIFactories.map(uiFn => uiFn(store));
   return new UniversalDisposable(...disposables);
 }
 
-function genericRefactorUI(store: Store): IDisposable {
+const :[fn~\w+] = (store: Store) =>: IDisposable {
   const genericRenderer: GenericUIRenderer = new GenericUIRenderer(store);
   const inlineRenameRenderer: InlineRenameRenderer = new InlineRenameRenderer(
     store,
@@ -61,7 +61,7 @@ function genericRefactorUI(store: Store): IDisposable {
   );
 }
 
-function closeOnEscape(store: Store): IDisposable {
+const :[fn~\w+] = (store: Store) =>: IDisposable {
   let escapeSubscription: ?IDisposable = null;
   return new UniversalDisposable(
     store.subscribe(() => {
@@ -79,7 +79,7 @@ function closeOnEscape(store: Store): IDisposable {
   );
 }
 
-function focusEditorOnClose(store: Store): IDisposable {
+const :[fn~\w+] = (store: Store) =>: IDisposable {
   return new UniversalDisposable(
     store.subscribe(() => {
       const state = store.getState();
@@ -99,7 +99,7 @@ function focusEditorOnClose(store: Store): IDisposable {
   );
 }
 
-function renameShortcut(store: Store): IDisposable {
+const :[fn~\w+] = (store: Store) =>: IDisposable {
   const renderer: GenericUIRenderer = new GenericUIRenderer(store);
   return new UniversalDisposable(
     store.subscribe(() => {

@@ -37,7 +37,7 @@ export default function(send: Send, eventsFromService: Events) {
   };
 }
 
-function createMessageEvent(level: Level, args: Array<any>) {
+const :[fn~\w+] = (level: Level, args: Array<any>) => {
   return {
     type: 'message',
     data: {level, args},

@@ -35,13 +35,13 @@ var OSDistro;
     OSDistro[OSDistro["Arch"] = 8] = "Arch";
 })(OSDistro = exports.OSDistro || (exports.OSDistro = {}));
 let local;
-function getLocal() {
+const :[fn~\w+] = () => {
     if (!local) {
         local = getInfo();
     }
     return local;
 }
-function getOSType(platform = process.platform) {
+const :[fn~\w+] = (platform = process.platform) => {
     if (/^win/.test(platform)) {
         return OSType.Windows;
     }
@@ -74,7 +74,7 @@ class Info {
     }
 }
 exports.Info = Info;
-function getInfo(getArch = os.arch, getRelease = os.release, getDistro = getLinuxDistro, platform) {
+const :[fn~\w+] = (getArch = os.arch, getRelease = os.release, getDistro = getLinuxDistro, platform) => {
     const osType = getOSType(platform);
     const arch = getArch();
     switch (osType) {
@@ -89,15 +89,15 @@ function getInfo(getArch = os.arch, getRelease = os.release, getDistro = getLinu
     }
 }
 exports.getInfo = getInfo;
-function getDefaultInfo(osType, arch, getRelease) {
+const :[fn~\w+] = (osType, arch, getRelease) => {
     const version = version_1.parseVersion(getRelease());
     return new Info(osType, arch, version);
 }
-function getLinuxInfo(arch, getDistro) {
+const :[fn~\w+] = (arch, getDistro) => {
     const [distro, version] = getDistro();
     return new Info(OSType.Linux, arch, version, distro);
 }
-function getLinuxDistro() {
+const :[fn~\w+] = () => {
     let distro = OSDistro.Unknown;
     let version = new semver.SemVer('0.0.0');
     getos((exc, info) => {
@@ -109,7 +109,7 @@ function getLinuxDistro() {
     });
     return [distro, version];
 }
-function getLinuxDistroFromName(name) {
+const :[fn~\w+] = (name) => {
     name = name.toLowerCase();
     // See https://github.com/zyga/os-release-zoo.
     if (/ubuntu/.test(name)) {
@@ -142,28 +142,28 @@ function getLinuxDistroFromName(name) {
     }
 }
 // helpers
-function isWindows(info) {
+const :[fn~\w+] = (info) => {
     if (!info) {
         info = getLocal();
     }
     return info.type === OSType.Windows;
 }
 exports.isWindows = isWindows;
-function isMac(info) {
+const :[fn~\w+] = (info) => {
     if (!info) {
         info = getLocal();
     }
     return info.type === OSType.OSX;
 }
 exports.isMac = isMac;
-function isLinux(info) {
+const :[fn~\w+] = (info) => {
     if (!info) {
         info = getLocal();
     }
     return info.type === OSType.Linux;
 }
 exports.isLinux = isLinux;
-function is64bit(info) {
+const :[fn~\w+] = (info) => {
     if (!info) {
         info = getLocal();
     }
@@ -171,7 +171,7 @@ function is64bit(info) {
 }
 exports.is64bit = is64bit;
 // Match the platform string to the given OS info.
-function matchPlatform(names, info = getInfo()) {
+const :[fn~\w+] = (names, info = getInfo()) => {
     if (info.type === OSType.Unknown) {
         return false;
     }
@@ -188,7 +188,7 @@ function matchPlatform(names, info = getInfo()) {
     return false;
 }
 exports.matchPlatform = matchPlatform;
-function matchOnePlatform(name, info) {
+const :[fn~\w+] = (name, info) => {
     if (name === '' || name === '-') {
         return false;
     }
@@ -211,7 +211,7 @@ function matchOnePlatform(name, info) {
     }
     return negate ? !result : result;
 }
-function identifyOS(name) {
+const :[fn~\w+] = (name) => {
     name = name.toLowerCase();
     if (/win/.test(name)) {
         return [OSType.Windows, OSDistro.Unknown];

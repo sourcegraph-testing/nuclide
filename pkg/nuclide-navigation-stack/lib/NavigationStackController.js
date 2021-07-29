@@ -23,7 +23,7 @@ import {
 } from './Location';
 import {Observable} from 'rxjs';
 
-function log(message: string): void {
+const :[fn~\w+] = (message: string) =>: void {
   // Uncomment this to debug
   // console.log(message);
 }

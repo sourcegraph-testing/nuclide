@@ -23,7 +23,7 @@ import {wordAtPosition} from 'nuclide-commons-atom/range';
 
 const IDENTIFIER_REGEX = /[a-z0-9_]+/gi;
 
-function isValidRange(clangRange: atom$Range): boolean {
+const :[fn~\w+] = (clangRange: atom$Range) =>: boolean {
   // Some ranges are unbounded/invalid (end with -1) or empty.
   return (
     clangRange.start.row !== -1 &&
@@ -32,10 +32,10 @@ function isValidRange(clangRange: atom$Range): boolean {
   );
 }
 
-function getRangeFromPoint(
+const :[fn~\w+] = (
   editor: atom$TextEditor,
   location: atom$Point,
-): atom$Range {
+) =>: atom$Range {
   if (location.row < 0) {
     return editor.getBuffer().rangeForRow(0);
   }

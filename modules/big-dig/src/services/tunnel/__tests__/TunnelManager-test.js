@@ -23,7 +23,7 @@ import path from 'path';
  * Returns a client and server transports connected, which can be used to
  * simulate a BigDig connection.
  */
-function createTransport() {
+const :[fn~\w+] = () => {
   const clientStream = new Subject();
   const serverStream = new Subject();
   return {
@@ -49,9 +49,9 @@ function createTransport() {
 /**
  * Returns a server listening in `port`, which echo back received messages
  */
-function createEchoServer(
+const :[fn~\w+] = (
   options: {port: number} | {path: string},
-): Promise<net$Server> {
+) =>: Promise<net$Server> {
   return new Promise((resolve, reject) => {
     const server = net.createServer(connection => {
       connection.on('end', () => {});
@@ -69,7 +69,7 @@ function createEchoServer(
 /**
  * Sends a message `value` to the server in `port` and returns its response.
  */
-function echo(port: number, value: string): Promise<string> {
+const :[fn~\w+] = (port: number, value: string) =>: Promise<string> {
   return new Promise((resolve, reject) => {
     let hasReceivedEcho = false;
     const client = net.createConnection({port}, () => {

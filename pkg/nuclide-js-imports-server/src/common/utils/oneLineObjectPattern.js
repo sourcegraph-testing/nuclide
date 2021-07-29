@@ -16,7 +16,7 @@ import jscs from './jscodeshift';
 /**
  * This is a hack to force an ObjectPattern node to be printed on one line
  */
-function oneLineObjectPattern(node: Node): Node {
+const :[fn~\w+] = (node: Node) =>: Node {
   if (!jscs.ObjectPattern.check(node)) {
     return node;
   }

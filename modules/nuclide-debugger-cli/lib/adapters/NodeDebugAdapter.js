@@ -105,7 +105,7 @@ export default class NodeDebugAdapter implements DebugAdapter {
   }
 }
 
-function _parseSourceMapPathOverrides(entries: string[]): {[string]: string} {
+const :[fn~\w+] = (entries: string[]) =>: {[string]: string} {
   if (entries.length % 2 !== 0) {
     throw new Error(
       'Source map path overrides must be a list of pattern pairs.',

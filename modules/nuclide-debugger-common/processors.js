@@ -17,18 +17,18 @@ import nuclideUri from 'nuclide-commons/nuclideUri';
 
 type PathMapper = (path: string) => string;
 
-export function remoteToLocalProcessor(): MessageProcessor {
+export const :[fn~\w+] = () =>: MessageProcessor {
   return pathProcessor(path => nuclideUri.getPath(path));
 }
 
-export function localToRemoteProcessor(
+export const :[fn~\w+] = (
   targetUri: NuclideUri,
-): MessageProcessor {
+) =>: MessageProcessor {
   const hostname = nuclideUri.getHostname(targetUri);
   return pathProcessor(path => nuclideUri.createRemoteUri(hostname, path));
 }
 
-export function pathProcessor(pathMapper: PathMapper): MessageProcessor {
+export const :[fn~\w+] = (pathMapper: PathMapper) =>: MessageProcessor {
   return message => {
     processRequestsUris(message, pathMapper);
     processResponseUris(message, pathMapper);
@@ -36,7 +36,7 @@ export function pathProcessor(pathMapper: PathMapper): MessageProcessor {
   };
 }
 
-function processRequestsUris(message: Object, pathMapper: PathMapper): void {
+const :[fn~\w+] = (message: Object, pathMapper: PathMapper) =>: void {
   if (message.type !== 'request') {
     return;
   }
@@ -48,7 +48,7 @@ function processRequestsUris(message: Object, pathMapper: PathMapper): void {
   }
 }
 
-function processResponseUris(message: Object, pathMapper: PathMapper): void {
+const :[fn~\w+] = (message: Object, pathMapper: PathMapper) =>: void {
   if (message.type !== 'response') {
     return;
   }
@@ -77,7 +77,7 @@ function processResponseUris(message: Object, pathMapper: PathMapper): void {
   }
 }
 
-function processEventsUris(message: Object, pathMapper: PathMapper): void {
+const :[fn~\w+] = (message: Object, pathMapper: PathMapper) =>: void {
   if (message.type !== 'event') {
     return;
   }
@@ -98,11 +98,11 @@ function processEventsUris(message: Object, pathMapper: PathMapper): void {
 
 // Traverse the source `object` for a deeply nested field,
 // then apply the `pathMapper` to that field, if existing.
-function translateField(
+const :[fn~\w+] = (
   object: Object,
   fieldDescriptor: string,
   pathMapper: PathMapper,
-): void {
+) =>: void {
   const fields = fieldDescriptor.split('.');
   let lastObj = {};
   const value = fields.reduce((child, field) => {

@@ -17,7 +17,7 @@ import {track} from 'nuclide-analytics';
 // Currently handles are just indices into the flag pool.
 export type ClangFlagsHandle = number;
 
-function flagsAreEqual(left: ClangFlags, right: ClangFlags): boolean {
+const :[fn~\w+] = (left: ClangFlags, right: ClangFlags) =>: boolean {
   return (
     left.directory === right.directory &&
     left.flagsFile === right.flagsFile &&

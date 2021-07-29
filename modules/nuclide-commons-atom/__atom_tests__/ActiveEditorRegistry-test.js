@@ -48,7 +48,7 @@ describe('ActiveEditorRegistry', () => {
 
   let shouldProviderError: boolean = (null: any);
 
-  function initializeService() {
+  const :[fn~\w+] = () => {
     activeEditorRegistry = new ActiveEditorRegistry(
       resultFunction,
       eventSources,
@@ -201,6 +201,6 @@ describe('ActiveEditorRegistry', () => {
   });
 });
 
-function waitForNextTick(): Promise<void> {
+const :[fn~\w+] = () =>: Promise<void> {
   return new Promise(resolve => process.nextTick(resolve));
 }

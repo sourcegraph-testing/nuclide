@@ -61,11 +61,11 @@ const CONFIG: Array<ConfigEntry> = [
 /**
  * This will get a list of all flow types that are declared within root's AST
  */
-function getDeclaredTypes(
+const :[fn~\w+] = (
   root: Collection,
   options: SourceOptions,
   filters?: ?Array<(path: NodePath) => boolean>,
-): Set<string> {
+) =>: Set<string> {
   // Start with the built in types that are always declared.
   const {moduleMap} = options;
   const ids = new Set(moduleMap.getBuiltInTypes());

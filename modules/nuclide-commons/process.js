@@ -124,12 +124,12 @@ const logger = getLogger(LOG_CATEGORY);
  * [1]: https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options
  * [2]: https://nodejs.org/api/errors.html#errors_class_system_error
  */
-export function runCommand(
+export const :[fn~\w+] = (
   command: string,
   args?: Array<string> = [],
   options?: ObserveProcessOptions = {},
   rest: void,
-): Observable<string> {
+) =>: Observable<string> {
   return runCommandDetailed(command, args, options).map(event => event.stdout);
 }
 
@@ -159,11 +159,11 @@ export function runCommand(
  *   });
  * ```
  */
-export function observeProcess(
+export const :[fn~\w+] = (
   command: string,
   args?: Array<string>,
   options?: ObserveProcessOptions,
-): Observable<ProcessMessage> {
+) =>: Observable<ProcessMessage> {
   return spawn(command, args, options).flatMap(proc =>
     getOutputStream(proc, options),
   );
@@ -183,12 +183,12 @@ export type DetailedProcessResult = {
  * In general, you should prefer `runCommand()`, however, this function is useful for when stderr is
  * needed even if the process exits successfully.
  */
-export function runCommandDetailed(
+export const :[fn~\w+] = (
   command: string,
   args?: Array<string> = [],
   options?: ObserveProcessOptions = {},
   rest: void,
-): Observable<DetailedProcessResult> {
+) =>: Observable<DetailedProcessResult> {
   const maxBuffer = idx(options, _ => _.maxBuffer) || DEFAULT_MAX_BUFFER;
   return observeProcess(command, args, {...options, maxBuffer})
     .catch(error => {
@@ -228,11 +228,11 @@ export function runCommandDetailed(
 /**
  * Identical to `observeProcess()`, but doesn't buffer by line.
  */
-export function observeProcessRaw(
+export const :[fn~\w+] = (
   command: string,
   args?: Array<string>,
   options?: ObserveProcessOptions,
-): Observable<ProcessMessage> {
+) =>: Observable<ProcessMessage> {
   return spawn(command, args, options).flatMap(proc =>
     getOutputStream(proc, {...options, splitByLines: false}),
   );
@@ -271,22 +271,22 @@ export function observeProcessRaw(
  *   });
  * ```
  */
-export function spawn(
+export const :[fn~\w+] = (
   command: string,
   args?: Array<string>,
   options?: SpawnProcessOptions,
-): Observable<child_process$ChildProcess> {
+) =>: Observable<child_process$ChildProcess> {
   return createProcessStream('spawn', command, args, options);
 }
 
 /**
  * Identical to `spawn()` (above), but uses `child_process.fork()` to create the process.
  */
-export function fork(
+export const :[fn~\w+] = (
   modulePath: string,
   args?: Array<string>,
   options?: ForkProcessOptions,
-): Observable<child_process$ChildProcess> {
+) =>: Observable<child_process$ChildProcess> {
   return createProcessStream('fork', modulePath, args, options);
 }
 
@@ -301,11 +301,11 @@ export function fork(
  * This function intentionally does not close the process when you unsubscribe. It's usually used in
  * conjunction with `spawn()` which does that already.
  */
-export function getOutputStream(
+export const :[fn~\w+] = (
   proc: child_process$ChildProcess,
   options?: GetOutputStreamOptions,
   rest: void,
-): Observable<ProcessMessage> {
+) =>: Observable<ProcessMessage> {
   const chunk =
     idx(options, _ => _.splitByLines) === false ? x => x : splitStream;
   const maxBuffer = idx(options, _ => _.maxBuffer);
@@ -422,11 +422,11 @@ export function scriptifyCommand<T>(
 /**
  * Kills a process and, optionally, its descendants.
  */
-export function killProcess(
+export const :[fn~\w+] = (
   proc: child_process$ChildProcess,
   killTree: boolean,
   killTreeSignal: ?string,
-): void {
+) =>: void {
   _killProcess(proc, killTree, killTreeSignal).then(
     () => {},
     error => {
@@ -438,7 +438,7 @@ export function killProcess(
 /**
  * Kill the process with the provided pid.
  */
-export function killPid(pid: number): void {
+export const :[fn~\w+] = (pid: number) =>: void {
   try {
     process.kill(pid);
   } catch (err) {
@@ -455,7 +455,7 @@ export function killPid(pid: number): void {
 // You can use it with a child process to let the user set its environment variables. By doing so, you are creating
 // an even more complicated mess of inheritance and non-inheritance in the process tree.
 let cachedOriginalEnvironment = null;
-export async function getOriginalEnvironment(): Promise<Object> {
+export const :[fn~\w+] = async () =>: Promise<Object> {
   await new Promise(resolve => {
     whenShellEnvironmentLoaded(resolve);
   });
@@ -487,7 +487,7 @@ export async function getOriginalEnvironment(): Promise<Object> {
 }
 
 // See getOriginalEnvironment above.
-export async function getOriginalEnvironmentArray(): Promise<Array<string>> {
+export const :[fn~\w+] = async () =>: Promise<Array<string>> {
   await new Promise(resolve => {
     whenShellEnvironmentLoaded(resolve);
   });
@@ -499,7 +499,7 @@ export async function getOriginalEnvironmentArray(): Promise<Array<string>> {
   return [];
 }
 
-export async function getEnvironment(): Promise<Object> {
+export const :[fn~\w+] = async () =>: Promise<Object> {
   await new Promise(resolve => {
     whenShellEnvironmentLoaded(resolve);
   });
@@ -509,10 +509,10 @@ export async function getEnvironment(): Promise<Object> {
 /**
  * Returns a string suitable for including in displayed error messages.
  */
-export function exitEventToMessage(event: {
+export const :[fn~\w+] = (event: {
   exitCode: ?number,
   signal: ?string,
-}): string {
+}) =>: string {
   if (event.exitCode != null) {
     return `exit code ${event.exitCode}`;
   } else {
@@ -521,9 +521,9 @@ export function exitEventToMessage(event: {
   }
 }
 
-export async function getChildrenOfProcess(
+export const :[fn~\w+] = async (
   processId: number,
-): Promise<Array<ProcessInfo>> {
+) =>: Promise<Array<ProcessInfo>> {
   const processes = await psTree();
 
   return processes.filter(processInfo => processInfo.parentPid === processId);
@@ -532,9 +532,9 @@ export async function getChildrenOfProcess(
 /**
  * Get a list of descendants, sorted by increasing depth (including the one with the provided pid).
  */
-async function getDescendantsOfProcess(
+const :[fn~\w+] = async (
   pid: number,
-): Promise<Array<ProcessInfo>> {
+) =>: Promise<Array<ProcessInfo>> {
   const processes = await psTree();
   let rootProcessInfo;
   const pidToChildren = new MultiMap();
@@ -555,7 +555,7 @@ async function getDescendantsOfProcess(
   return descendants;
 }
 
-export async function psTree(): Promise<Array<ProcessInfo>> {
+export const :[fn~\w+] = async () =>: Promise<Array<ProcessInfo>> {
   if (isWindowsPlatform()) {
     return psTreeWindows();
   }
@@ -567,7 +567,7 @@ export async function psTree(): Promise<Array<ProcessInfo>> {
   return parsePsOutput(commands, withArgs);
 }
 
-async function psTreeWindows(): Promise<Array<ProcessInfo>> {
+const :[fn~\w+] = async () =>: Promise<Array<ProcessInfo>> {
   const stdout = await runCommand('wmic.exe', [
     'PROCESS',
     'GET',
@@ -576,10 +576,10 @@ async function psTreeWindows(): Promise<Array<ProcessInfo>> {
   return parsePsOutput(stdout);
 }
 
-export function parsePsOutput(
+export const :[fn~\w+] = (
   psOutput: string,
   argsOutput: ?string,
-): Array<ProcessInfo> {
+) =>: Array<ProcessInfo> {
   // Remove the first header line.
   const lines = psOutput
     .trim()
@@ -619,9 +619,9 @@ export function parsePsOutput(
 }
 
 // Use `ps` to get memory usage in kb for an array of process id's as a map.
-export async function memoryUsagePerPid(
+export const :[fn~\w+] = async (
   pids: Array<number>,
-): Promise<Map<number, number>> {
+) =>: Promise<Map<number, number>> {
   const usage = new Map();
   if (pids.length >= 1) {
     try {
@@ -650,9 +650,9 @@ export async function memoryUsagePerPid(
 /**
  * Add no-op error handlers to the process's streams so that Node doesn't throw them.
  */
-export function preventStreamsFromThrowing(
+export const :[fn~\w+] = (
   proc: child_process$ChildProcess,
-): IDisposable {
+) =>: IDisposable {
   return new UniversalDisposable(getStreamErrorEvents(proc).subscribe());
 }
 
@@ -660,12 +660,12 @@ export function preventStreamsFromThrowing(
  * Log errors from a process's streams. This function returns an `rxjs$ISubscription` so that it
  * can easily be used with `Observable.using()`.
  */
-export function logStreamErrors(
+export const :[fn~\w+] = (
   proc: child_process$ChildProcess,
   command: string,
   args: Array<string>,
   options?: Object,
-): IDisposable & rxjs$ISubscription {
+) =>: IDisposable & rxjs$ISubscription {
   return new UniversalDisposable(
     getStreamErrorEvents(proc)
       .do(([err, streamName]) => {
@@ -909,7 +909,7 @@ export class ProcessLoggingEvent {
 }
 
 export const loggedCalls = [];
-function logCall(duration: number, command: string, args: Array<string>) {
+const :[fn~\w+] = (duration: number, command: string, args: Array<string>) => {
   // Trim the history once in a while, to avoid doing expensive array
   // manipulation all the time after we reached the end of the history
   if (loggedCalls.length > MAX_LOGGED_CALLS) {
@@ -939,9 +939,9 @@ function logCall(duration: number, command: string, args: Array<string>) {
  * an open FD to the executable. This can fail for various reasons (mostly
  * not having permissions to execute lsof on the pid.)
  */
-export async function getAbsoluteBinaryPathForPid(
+export const :[fn~\w+] = async (
   pid: number,
-): Promise<?string> {
+) =>: Promise<?string> {
   if (process.platform === 'linux') {
     return _getLinuxBinaryPathForPid(pid);
   }
@@ -953,7 +953,7 @@ export async function getAbsoluteBinaryPathForPid(
   return null;
 }
 
-async function _getLinuxBinaryPathForPid(pid: number): Promise<?string> {
+const :[fn~\w+] = async (pid: number) =>: Promise<?string> {
   const exeLink = `/proc/${pid}/exe`;
   // /proc/xxx/exe is a symlink to the real binary in the file system.
   return runCommand('/bin/realpath', ['-q', '-e', exeLink])
@@ -971,7 +971,7 @@ async function _getLinuxBinaryPathForPid(pid: number): Promise<?string> {
     .toPromise();
 }
 
-async function _getDarwinBinaryPathForPid(pid: number): Promise<?string> {
+const :[fn~\w+] = async (pid: number) =>: Promise<?string> {
   return runCommand('/usr/sbin/lsof', ['-p', `${pid}`])
     .catch(_ => {
       return Observable.of(null);
@@ -1002,12 +1002,12 @@ async function _getDarwinBinaryPathForPid(pid: number): Promise<?string> {
  *
  * IMPORTANT: The exit event does NOT mean that all stdout and stderr events have been received.
  */
-function createProcessStream(
+const :[fn~\w+] = (
   type: 'spawn' | 'fork' = 'spawn',
   commandOrModulePath: string,
   args?: Array<string> = [],
   options?: CreateProcessStreamOptions = {},
-): Observable<child_process$ChildProcess> {
+) =>: Observable<child_process$ChildProcess> {
   const inputOption = options.input;
   let input;
   if (inputOption != null) {
@@ -1146,16 +1146,16 @@ function createProcessStream(
     });
 }
 
-function isRealExit(event: {exitCode: ?number, signal: ?string}): boolean {
+const :[fn~\w+] = (event: {exitCode: ?number, signal: ?string}) =>: boolean {
   // An exit signal from SIGUSR1 doesn't actually exit the process, so skip that.
   return event.signal !== 'SIGUSR1';
 }
 
-async function _killProcess(
+const :[fn~\w+] = async (
   proc: child_process$ChildProcess & {wasKilled?: boolean},
   killTree: boolean,
   killTreeSignal: ?string,
-): Promise<void> {
+) =>: Promise<void> {
   proc.wasKilled = true;
   if (!killTree) {
     if (killTreeSignal != null && killTreeSignal !== '') {
@@ -1172,7 +1172,7 @@ async function _killProcess(
   }
 }
 
-function killWindowsProcessTree(pid: number): Promise<void> {
+const :[fn~\w+] = (pid: number) =>: Promise<void> {
   return new Promise((resolve, reject) => {
     child_process.exec(`taskkill /pid ${pid} /T /F`, error => {
       if (error == null) {
@@ -1184,9 +1184,9 @@ function killWindowsProcessTree(pid: number): Promise<void> {
   });
 }
 
-export async function killUnixProcessTree(
+export const :[fn~\w+] = async (
   proc: child_process$ChildProcess,
-): Promise<void> {
+) =>: Promise<void> {
   const descendants = await getDescendantsOfProcess(proc.pid);
   // Kill the processes, starting with those of greatest depth.
   for (const info of descendants.reverse()) {
@@ -1194,19 +1194,19 @@ export async function killUnixProcessTree(
   }
 }
 
-function isExitErrorDefault(exit: ProcessExitMessage): boolean {
+const :[fn~\w+] = (exit: ProcessExitMessage) =>: boolean {
   return exit.exitCode !== 0;
 }
 
-function isWindowsPlatform(): boolean {
+const :[fn~\w+] = () =>: boolean {
   return /^win/.test(process.platform);
 }
 
-function limitBufferSize(
+const :[fn~\w+] = (
   stream: Observable<string>,
   maxBuffer: ?number,
   streamName: string,
-): Observable<string> {
+) =>: Observable<string> {
   if (maxBuffer == null) {
     return stream;
   }
@@ -1225,9 +1225,9 @@ function limitBufferSize(
  * Get an observable of error events for a process's streams. Note that these are represented as
  * normal elements, not observable errors.
  */
-function getStreamErrorEvents(
+const :[fn~\w+] = (
   proc: child_process$ChildProcess,
-): Observable<[Error, string]> {
+) =>: Observable<[Error, string]> {
   const streams = [
     ['stdin', proc.stdin],
     ['stdout', proc.stdout],

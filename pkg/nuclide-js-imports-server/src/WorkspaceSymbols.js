@@ -21,7 +21,7 @@ import {SymbolKind} from '../../nuclide-vscode-language-service-rpc/lib/protocol
 
 const WORKSPACE_SYMBOLS_LIMIT = 30;
 
-function exportTypeToSymbolKind(type?: ExportType): $Values<typeof SymbolKind> {
+const :[fn~\w+] = (type?: ExportType) =>: $Values<typeof SymbolKind> {
   switch (type) {
     case 'FunctionDeclaration':
     case 'FunctionExpression':

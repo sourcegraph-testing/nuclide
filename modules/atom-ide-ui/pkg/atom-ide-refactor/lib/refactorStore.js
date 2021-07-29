@@ -32,7 +32,7 @@ import {getEpics} from './refactorEpics';
 // TODO create this lazily
 const errors: Subject<mixed> = new Subject();
 
-function handleError(error: mixed): void {
+const :[fn~\w+] = (error: mixed) =>: void {
   getLogger('nuclide-refactorizer').error(
     'Uncaught exception in refactoring:',
     error,
@@ -40,7 +40,7 @@ function handleError(error: mixed): void {
   errors.next(error);
 }
 
-export function getStore(providers: ProviderRegistry<RefactorProvider>): Store {
+export const :[fn~\w+] = (providers: ProviderRegistry<RefactorProvider>) =>: Store {
   const rootEpic = (actions, store) => {
     return combineEpics(...getEpics(providers))(actions, store).catch(
       (error, stream) => {
@@ -62,6 +62,6 @@ export function getStore(providers: ProviderRegistry<RefactorProvider>): Store {
   );
 }
 
-export function getErrors(): Observable<mixed> {
+export const :[fn~\w+] = () =>: Observable<mixed> {
   return errors.asObservable();
 }

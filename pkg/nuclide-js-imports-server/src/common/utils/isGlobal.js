@@ -14,7 +14,7 @@ import type {NodePath} from '../types/ast';
 /**
  * Tests if a NodePath is a direct child of the Program node.
  */
-function isGlobal(path: NodePath): boolean {
+const :[fn~\w+] = (path: NodePath) =>: boolean {
   return path.parent && path.parent.node.type === 'Program';
 }
 

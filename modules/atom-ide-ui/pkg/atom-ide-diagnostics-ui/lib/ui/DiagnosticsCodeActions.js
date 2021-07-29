@@ -20,9 +20,9 @@ import {ButtonGroup} from 'nuclide-commons-ui/ButtonGroup';
 // Maximum number of CodeActions to show for a given Diagnostic.
 const MAX_CODE_ACTIONS = 4;
 
-export default function DiagnosticsCodeActions(props: {
+export default const :[fn~\w+] = (props: {
   codeActions: Map<string, CodeAction>,
-}): React.Element<any> {
+}) =>: React.Element<any> {
   return (
     <div className="diagnostics-code-actions">
       {Array.from(props.codeActions.entries())
@@ -56,7 +56,7 @@ export default function DiagnosticsCodeActions(props: {
   );
 }
 
-function handleCodeActionFailure(error: ?Error) {
+const :[fn~\w+] = (error: ?Error) => {
   atom.notifications.addWarning('Code action could not be applied', {
     description: error ? error.message : '',
     dismissable: true,

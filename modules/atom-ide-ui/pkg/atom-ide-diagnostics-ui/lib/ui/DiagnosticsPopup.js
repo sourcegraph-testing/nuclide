@@ -34,14 +34,14 @@ type DiagnosticsPopupProps = {
   style: ?Object,
 };
 
-function renderMessage(
+const :[fn~\w+] = (
   fixer: (message: DiagnosticMessage) => void,
   goToLocation: (filePath: NuclideUri, line: number) => mixed,
   codeActionsForMessage: ?CodeActionsState,
   descriptions: ?DescriptionsState,
   message: DiagnosticMessage,
   index: number,
-): React.Element<any> {
+) =>: React.Element<any> {
   const className = classnames(
     // native-key-bindings and tabIndex=-1 are both needed to allow copying the text in the popup.
     'native-key-bindings',
@@ -70,10 +70,10 @@ function renderMessage(
   );
 }
 
-function getCodeActions(
+const :[fn~\w+] = (
   message: DiagnosticMessage,
   codeActionsForMessage: ?CodeActionsState,
-): ?Map<string, CodeAction> {
+) =>: ?Map<string, CodeAction> {
   const codeActionMaps = [];
   if (message.actions != null && message.actions.length > 0) {
     codeActionMaps.push(
@@ -104,10 +104,10 @@ function getCodeActions(
   return codeActionMaps.length > 0 ? mapUnion(...codeActionMaps) : null;
 }
 
-function getDescription(
+const :[fn~\w+] = (
   message: DiagnosticMessage,
   descriptions: ?DescriptionsState,
-): string {
+) =>: string {
   if (descriptions) {
     return descriptions.get(message) || '';
   }

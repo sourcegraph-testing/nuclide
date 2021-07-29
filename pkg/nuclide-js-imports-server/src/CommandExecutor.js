@@ -202,22 +202,22 @@ export class CommandExecutor {
   }
 }
 
-function transformCodeOrShowError(
+const :[fn~\w+] = (
   inputSource: string,
   options: SourceOptions,
-): string {
+) =>: string {
   const {transform} = require('./common/transform');
   // TODO: Add a limit so the transform is not run on files over a certain size.
   const result = transform(inputSource, options);
   return result.output;
 }
 
-export function getEditsForImport(
+export const :[fn~\w+] = (
   importFormatter: ImportFormatter,
   fileMissingImport: NuclideUri,
   missingImport: JSExport,
   programBody: Array<Object>,
-): Array<TextEdit> {
+) =>: Array<TextEdit> {
   const importPath = importFormatter.formatImportFile(
     fileMissingImport,
     missingImport,
@@ -243,10 +243,10 @@ export function getEditsForImport(
   ];
 }
 
-function createEdit(
+const :[fn~\w+] = (
   insertText: string,
   {row, column, indent, newLinesAfter, newLinesBefore}: EditParams,
-): TextEdit {
+) =>: TextEdit {
   return {
     range: atomRangeToLSPRange(new Range([row, column], [row, column])),
     newText:
@@ -260,11 +260,11 @@ function createEdit(
 }
 
 // Find a position where we can just insert the missing ID.
-function insertIntoExistingImport(
+const :[fn~\w+] = (
   importPath: string,
   missingImport: JSExport,
   programBody: Array<Object>,
-): ?EditParams {
+) =>: ?EditParams {
   // For now, we won't allow mixed imports (e.g. import {type X, Y})
   if (missingImport.isDefault) {
     return null;
@@ -296,7 +296,7 @@ function insertIntoExistingImport(
 
 // Return the insert position that would be immediately after the given node.
 // e.g. after X in const {X|} = require('...')
-function positionAfterNode(importNode, afterNode) {
+const :[fn~\w+] = (importNode, afterNode) => {
   const hasNewline = importNode.loc.start.line !== importNode.loc.end.line;
   const {line, column} = afterNode.loc.end;
   return {
@@ -308,7 +308,7 @@ function positionAfterNode(importNode, afterNode) {
   };
 }
 
-function getJSImport(node: Object): ?JSImport {
+const :[fn~\w+] = (node: Object) =>: ?JSImport {
   switch (node.type) {
     // const {X} = require('..');
     case 'VariableDeclaration':
@@ -330,12 +330,12 @@ function getJSImport(node: Object): ?JSImport {
   }
 }
 
-function createNewImport(
+const :[fn~\w+] = (
   missingImport: JSExport,
   programBody: Array<Object>,
   importPath: string,
   useRequire: boolean,
-): EditParams {
+) =>: EditParams {
   const nodesByType = {
     require: [],
     import: [],
@@ -380,10 +380,10 @@ function createNewImport(
   return insertBefore(programBody[0], 1);
 }
 
-function insertInto(
+const :[fn~\w+] = (
   imports: Array<{node: Object, importPath: string}>,
   importPath: string,
-): EditParams {
+) =>: EditParams {
   for (const importNode of imports) {
     // Find the first import that we can be inserted before.
     if (compareForInsertion(importPath, importNode.importPath) < 0) {
@@ -397,7 +397,7 @@ function insertInto(
 // Insert at the start of the next line:
 // <node>
 // <text\n>
-function insertAfter(node: Object, spacing: number = 0): EditParams {
+const :[fn~\w+] = (node: Object, spacing: number = 0) =>: EditParams {
   return {
     row: node.loc.end.line, // 1-based
     column: 0,
@@ -408,7 +408,7 @@ function insertAfter(node: Object, spacing: number = 0): EditParams {
 
 // Insert at the start of the line:
 // <\ntext\n><node>
-function insertBefore(node: Object, spacing: number = 0): EditParams {
+const :[fn~\w+] = (node: Object, spacing: number = 0) =>: EditParams {
   return {
     row: node.loc.start.line - 1, // 1-based
     column: 0,
@@ -418,7 +418,7 @@ function insertBefore(node: Object, spacing: number = 0): EditParams {
 }
 
 // Signal across RPC that the import had no available exports, via empty newText
-function undecidableImportEdits(): Array<TextEdit> {
+const :[fn~\w+] = () =>: Array<TextEdit> {
   return [
     {
       range: atomRangeToLSPRange(new Range([0, 0], [0, 0])),
@@ -432,11 +432,11 @@ function undecidableImportEdits(): Array<TextEdit> {
 // needed to get from to the other) or most similar module identifier
 // to the missing symbol identifier.
 // Returns null if the closest import cannot be determined
-function findClosestImport(
+const :[fn~\w+] = (
   identifier: string,
   fileURI: NuclideUri,
   filesWithExport: Array<JSExport>,
-): ?JSExport {
+) =>: ?JSExport {
   const fileURIParts = nuclideUri.split(fileURI);
   const closestExports = findSmallestByMeasure(filesWithExport, ({uri}) => {
     const exportURIParts = nuclideUri.split(uri);
@@ -464,7 +464,7 @@ function findClosestImport(
   return closestExports[0];
 }
 
-function computeURIDistance(uriA: Array<string>, uriB: Array<string>): number {
+const :[fn~\w+] = (uriA: Array<string>, uriB: Array<string>) =>: number {
   let i = 0;
   while (uriA[i] === uriB[i] && uriA[i] != null) {
     i++;
@@ -481,7 +481,7 @@ function findSmallestByMeasure<T>(
   return list.filter((_, i) => smallestIndices.has(i));
 }
 
-function findIndicesOfSmallest(list: Array<number>): Array<number> {
+const :[fn~\w+] = (list: Array<number>) =>: Array<number> {
   let indecesOfSmallest = [0];
   let smallest = list[0];
   list.forEach((item, index) => {
@@ -495,7 +495,7 @@ function findIndicesOfSmallest(list: Array<number>): Array<number> {
   return indecesOfSmallest;
 }
 
-function moduleID(fileURI: string): string {
+const :[fn~\w+] = (fileURI: string) =>: string {
   const parts = nuclideUri.split(fileURI);
   return parts[parts.length - 1].replace(/\.\w+$/, '');
 }

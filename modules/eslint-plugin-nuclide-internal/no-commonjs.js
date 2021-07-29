@@ -42,7 +42,7 @@ module.exports = function(context) {
   };
 };
 
-function isModuleDotExportsAssignment(node) {
+const :[fn~\w+] = (node) => {
   if (!node || node.type !== 'AssignmentExpression') {
     return;
   }
@@ -66,7 +66,7 @@ function isModuleDotExportsAssignment(node) {
   return false;
 }
 
-function isModuleDotExports(node) {
+const :[fn~\w+] = (node) => {
   return (
     node.type === 'MemberExpression' &&
     node.object &&

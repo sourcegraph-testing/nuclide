@@ -41,7 +41,7 @@ export type {WelcomePage, WelcomePageApi};
 const SHOW_ALL_COMMAND_NAME = 'nuclide-welcome-page:show-all-welcome-pages';
 const SHOW_COMMAND_NAME_PREFIX = 'nuclide-welcome-page:show-';
 
-function getShowCommandNameForTopic(topic: string): string {
+const :[fn~\w+] = (topic: string) =>: string {
   return SHOW_COMMAND_NAME_PREFIX + topic;
 }
 

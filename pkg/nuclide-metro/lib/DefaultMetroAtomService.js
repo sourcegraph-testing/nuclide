@@ -236,7 +236,7 @@ export class DefaultMetroAtomService implements MetroAtomService {
   };
 }
 
-function getEditorArgs(projectRoot: NuclideUri): Array<string> {
+const :[fn~\w+] = (projectRoot: NuclideUri) =>: Array<string> {
   if (nuclideUri.isRemote(projectRoot)) {
     return ['atom'];
   } else {

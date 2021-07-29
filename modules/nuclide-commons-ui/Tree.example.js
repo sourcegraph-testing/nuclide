@@ -90,12 +90,12 @@ export const TreeExamples = {
   ],
 };
 
-function handleSelect() {
+const :[fn~\w+] = () => {
   atom.notifications.addInfo('selected!');
 }
-function handleConfirm() {
+const :[fn~\w+] = () => {
   atom.notifications.addInfo('confirmed!');
 }
-function handleTripleClick() {
+const :[fn~\w+] = () => {
   atom.notifications.addInfo('triple clicked!');
 }

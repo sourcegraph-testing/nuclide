@@ -48,7 +48,7 @@ type SerializableServerConnectionConfiguration = {
 };
 
 // Insecure configs are used for testing only.
-function isInsecure(config: ServerConnectionConfiguration): boolean {
+const :[fn~\w+] = (config: ServerConnectionConfiguration) =>: boolean {
   return (
     config.clientKey == null &&
     config.clientCertificate == null &&
@@ -56,13 +56,13 @@ function isInsecure(config: ServerConnectionConfiguration): boolean {
   );
 }
 
-function getStorageKey(host: string): string {
+const :[fn~\w+] = (host: string) =>: string {
   return `${CONFIG_DIR}:${host}`;
 }
 
-async function getConnectionConfigViaIPC(
+const :[fn~\w+] = async (
   host: string,
-): Promise<?ServerConnectionConfiguration> {
+) =>: Promise<?ServerConnectionConfiguration> {
   const thisWindowsId = remote.getCurrentWindow().id;
   const otherWindows = remote.BrowserWindow.getAllWindows().filter(
     win => win.isVisible() && win.id !== thisWindowsId,
@@ -112,9 +112,9 @@ async function getConnectionConfigViaIPC(
   });
 }
 
-export async function getConnectionConfig(
+export const :[fn~\w+] = async (
   host: string,
-): Promise<?ServerConnectionConfiguration> {
+) =>: Promise<?ServerConnectionConfiguration> {
   const storedConfig = localStorage.getItem(getStorageKey(host));
   if (storedConfig == null) {
     return null;
@@ -131,10 +131,10 @@ export async function getConnectionConfig(
   }
 }
 
-export async function setConnectionConfig(
+export const :[fn~\w+] = async (
   config: ServerConnectionConfiguration,
   ipAddress: string,
-): Promise<void> {
+) =>: Promise<void> {
   // Don't attempt to store insecure connections.
   // Insecure connections are used for testing and will fail the encryption call below.
   if (isInsecure(config)) {
@@ -152,7 +152,7 @@ export async function setConnectionConfig(
   }
 }
 
-export async function clearConnectionConfig(host: string): Promise<void> {
+export const :[fn~\w+] = async (host: string) =>: Promise<void> {
   try {
     localStorage.removeItem(getStorageKey(host));
   } catch (e) {
@@ -165,9 +165,9 @@ export async function clearConnectionConfig(host: string): Promise<void> {
  * @param remoteProjectConfig - The config with the clientKey we want encrypted.
  * @return returns the passed in config with the clientKey encrypted.
  */
-async function encryptConfig(
+const :[fn~\w+] = async (
   remoteProjectConfig: ServerConnectionConfiguration,
-): Promise<SerializableServerConnectionConfiguration> {
+) =>: Promise<SerializableServerConnectionConfiguration> {
   const sha1 = crypto.createHash('sha1');
   sha1.update(`${remoteProjectConfig.host}:${remoteProjectConfig.port}`);
   const sha1sum = sha1.digest('hex');
@@ -210,9 +210,9 @@ async function encryptConfig(
  * @param remoteProjectConfig - The config with the clientKey we want encrypted.
  * @return returns the passed in config with the clientKey encrypted.
  */
-async function decryptConfig(
+const :[fn~\w+] = async (
   remoteProjectConfig: SerializableServerConnectionConfiguration,
-): Promise<ServerConnectionConfiguration> {
+) =>: Promise<ServerConnectionConfiguration> {
   const sha1 = crypto.createHash('sha1');
   sha1.update(`${remoteProjectConfig.host}:${remoteProjectConfig.port}`);
   const sha1sum = sha1.digest('hex');
@@ -262,7 +262,7 @@ async function decryptConfig(
   };
 }
 
-function decryptString(text: string, password: string, salt: string): string {
+const :[fn~\w+] = (text: string, password: string, salt: string) =>: string {
   const decipher = crypto.createDecipheriv(
     'aes-128-cbc',
     new Buffer(password, 'base64'),
@@ -275,9 +275,9 @@ function decryptString(text: string, password: string, salt: string): string {
   return decryptedString;
 }
 
-function encryptString(
+const :[fn~\w+] = (
   text: string,
-): {password: string, salt: string, encryptedString: string} {
+) =>: {password: string, salt: string, encryptedString: string} {
   const password = crypto.randomBytes(16).toString('base64');
   const salt = crypto.randomBytes(16).toString('base64');
 

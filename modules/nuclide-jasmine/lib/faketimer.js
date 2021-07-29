@@ -23,7 +23,7 @@ let intervalCount = 0;
 let timeouts = [];
 let intervalTimeouts = {};
 
-function resetTimeouts(): void {
+const :[fn~\w+] = () =>: void {
   now = 0;
   timeoutCount = 0;
   intervalCount = 0;
@@ -31,7 +31,7 @@ function resetTimeouts(): void {
   intervalTimeouts = {};
 }
 
-function fakeSetTimeout(callback: () => ?any, ms: number): number {
+const :[fn~\w+] = (callback: () => ?any, ms: number) =>: number {
   const id = ++timeoutCount;
   timeouts.push([id, now + ms, callback]);
   timeouts.sort(
@@ -40,11 +40,11 @@ function fakeSetTimeout(callback: () => ?any, ms: number): number {
   return id;
 }
 
-function fakeClearTimeout(idToClear: number): void {
+const :[fn~\w+] = (idToClear: number) =>: void {
   timeouts = timeouts.filter(([id]) => id !== idToClear);
 }
 
-function fakeSetInterval(callback: () => ?any, ms: number): number {
+const :[fn~\w+] = (callback: () => ?any, ms: number) =>: number {
   const id = ++intervalCount;
   const action = () => {
     callback();
@@ -54,11 +54,11 @@ function fakeSetInterval(callback: () => ?any, ms: number): number {
   return id;
 }
 
-function fakeClearInterval(idToClear: number): void {
+const :[fn~\w+] = (idToClear: number) =>: void {
   fakeClearTimeout(intervalTimeouts[idToClear]);
 }
 
-function advanceClock(deltaMs: number): void {
+const :[fn~\w+] = (deltaMs: number) =>: void {
   const advanceTo = now + deltaMs;
 
   while (timeouts.length !== 0 && timeouts[0][1] <= advanceTo) {
@@ -73,7 +73,7 @@ function advanceClock(deltaMs: number): void {
 /**
  * Allows tests to use the non-fake setTimeout and clearTimeout functions.
  */
-function useRealClock(): void {
+const :[fn~\w+] = () =>: void {
   jasmine.unspy(global, 'setTimeout');
   jasmine.unspy(global, 'clearTimeout');
   jasmine.unspy(Date, 'now');
@@ -83,7 +83,7 @@ function useRealClock(): void {
  * Atom does this half-way mock.
  * https://github.com/atom/atom/blob/v1.12.7/spec/spec-helper.coffee#L169-L174
  */
-function useMockClock(): void {
+const :[fn~\w+] = () =>: void {
   spyOn(global, 'setInterval').andCallFake(fakeSetInterval);
   spyOn(global, 'clearInterval').andCallFake(fakeClearInterval);
 }

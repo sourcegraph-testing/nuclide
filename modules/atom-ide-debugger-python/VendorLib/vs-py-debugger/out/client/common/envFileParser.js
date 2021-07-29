@@ -4,7 +4,7 @@ const fs = require("fs-extra");
 const pathUtils_1 = require("./platform/pathUtils");
 const environment_1 = require("./variables/environment");
 exports.IS_WINDOWS = /^win/.test(process.platform);
-function parseEnvironmentVariables(contents) {
+const :[fn~\w+] = (contents) => {
     if (typeof contents !== 'string' || contents.length === 0) {
         return undefined;
     }

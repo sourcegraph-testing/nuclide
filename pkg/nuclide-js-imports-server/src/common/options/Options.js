@@ -21,7 +21,7 @@ import url from 'url';
 /**
  * Valides the options used to construct a module map.
  */
-function validateModuleMapOptions(options: ModuleMapOptions): void {
+const :[fn~\w+] = (options: ModuleMapOptions) =>: void {
   invariant(options, 'Invalid (undefined) ModuleMapOptions given.');
 
   // Validate presence of correct fields.
@@ -48,14 +48,14 @@ function validateModuleMapOptions(options: ModuleMapOptions): void {
 /**
  * Valides the options used to get requires out of a module map.
  */
-function validateRequireOptions(options: RequireOptions): void {
+const :[fn~\w+] = (options: RequireOptions) =>: void {
   invariant(options, 'Invalid (undefined) RequireOptions given.');
 }
 
 /**
  * Validates the options given as input to transform.
  */
-function validateSourceOptions(options: SourceOptions): void {
+const :[fn~\w+] = (options: SourceOptions) =>: void {
   invariant(options, 'Invalid (undefined) SourceOptions given.');
   if (options.sourcePath != null) {
     invariant(
@@ -73,7 +73,7 @@ function validateSourceOptions(options: SourceOptions): void {
  * Small helper function to validate that a path is absolute. We also need to
  * allow remote nuclide files.
  */
-function isAbsolute(sourcePath: string): boolean {
+const :[fn~\w+] = (sourcePath: string) =>: boolean {
   if (sourcePath.startsWith('nuclide:/')) {
     const parsedUri = url.parse(sourcePath);
     invariant(parsedUri.path != null, 'uri path missing');

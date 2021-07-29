@@ -18,7 +18,7 @@ import nuclideUri from 'nuclide-commons/nuclideUri';
 import {diffSets} from 'nuclide-commons/observable';
 import {Observable} from 'rxjs';
 
-export function getValidProjectPaths(): Array<string> {
+export const :[fn~\w+] = () =>: Array<string> {
   return atom.project
     .getDirectories()
     .filter(directory => {
@@ -35,7 +35,7 @@ export function getValidProjectPaths(): Array<string> {
     .map(directory => directory.getPath());
 }
 
-export function getAtomProjectRelativePath(path: NuclideUri): ?string {
+export const :[fn~\w+] = (path: NuclideUri) =>: ?string {
   const [projectPath, relativePath] = atom.project.relativizePath(path);
   if (!projectPath) {
     return null;
@@ -43,7 +43,7 @@ export function getAtomProjectRelativePath(path: NuclideUri): ?string {
   return relativePath;
 }
 
-export function getAtomProjectRootPath(path: NuclideUri): ?string {
+export const :[fn~\w+] = (path: NuclideUri) =>: ?string {
   const [projectPath] = atom.project.relativizePath(path);
   return projectPath;
 }
@@ -55,9 +55,9 @@ export function getAtomProjectRootPath(path: NuclideUri): ?string {
  * This is intended to be used as a way to get a File object for any path
  * without worrying about remote vs. local paths.
  */
-export function relativizePathWithDirectory(
+export const :[fn~\w+] = (
   path: NuclideUri,
-): [?Directory, NuclideUri] {
+) =>: [?Directory, NuclideUri] {
   for (const directory of atom.project.getDirectories()) {
     try {
       const relativePath = nuclideUri.relative(directory.getPath(), path);
@@ -69,7 +69,7 @@ export function relativizePathWithDirectory(
   return [null, path];
 }
 
-export function getDirectoryForPath(path: NuclideUri): ?Directory {
+export const :[fn~\w+] = (path: NuclideUri) =>: ?Directory {
   const [directory, relativePath] = relativizePathWithDirectory(path);
   if (directory == null) {
     return null;
@@ -77,7 +77,7 @@ export function getDirectoryForPath(path: NuclideUri): ?Directory {
   return directory.getSubdirectory(relativePath);
 }
 
-export function getFileForPath(path: NuclideUri): ?File {
+export const :[fn~\w+] = (path: NuclideUri) =>: ?File {
   const [directory, relativePath] = relativizePathWithDirectory(path);
   if (directory == null) {
     return null;
@@ -85,16 +85,16 @@ export function getFileForPath(path: NuclideUri): ?File {
   return directory.getFile(relativePath);
 }
 
-export function observeProjectPaths(
+export const :[fn~\w+] = (
   callback: (projectPath: string, added: boolean) => any,
-): IDisposable {
+) =>: IDisposable {
   getValidProjectPaths().forEach(existingPath => callback(existingPath, true));
   return onDidChangeProjectPath(callback);
 }
 
-export function observeProjectPathsAll(
+export const :[fn~\w+] = (
   callback: (projectPaths: Array<string>) => any,
-): IDisposable {
+) =>: IDisposable {
   let projectPaths = getValidProjectPaths();
   let changing = false;
   callback(projectPaths);
@@ -109,9 +109,9 @@ export function observeProjectPathsAll(
   });
 }
 
-export function onDidChangeProjectPath(
+export const :[fn~\w+] = (
   callback: (projectPath: string, added: boolean) => void,
-): IDisposable {
+) =>: IDisposable {
   let projectPaths = getValidProjectPaths();
   let changing = false;
   return observeProjectPathsAll(newProjectPaths => {
@@ -136,9 +136,9 @@ export function onDidChangeProjectPath(
   });
 }
 
-export function onDidAddProjectPath(
+export const :[fn~\w+] = (
   callback: (projectPath: string) => void,
-): IDisposable {
+) =>: IDisposable {
   return onDidChangeProjectPath((projectPath, added) => {
     if (added) {
       callback(projectPath);
@@ -146,9 +146,9 @@ export function onDidAddProjectPath(
   });
 }
 
-export function onDidRemoveProjectPath(
+export const :[fn~\w+] = (
   callback: (projectPath: string) => void,
-): IDisposable {
+) =>: IDisposable {
   return onDidChangeProjectPath((projectPath, added) => {
     if (!added) {
       callback(projectPath);
@@ -156,7 +156,7 @@ export function onDidRemoveProjectPath(
   });
 }
 
-function observeHostnames() {
+const :[fn~\w+] = () => {
   return (atom.packages.initialPackagesActivated
     ? Observable.of(null)
     : observableFromSubscribeFunction(
@@ -180,10 +180,10 @@ function observeHostnames() {
   );
 }
 
-export function observeRemovedHostnames(): Observable<string> {
+export const :[fn~\w+] = () =>: Observable<string> {
   return observeHostnames().flatMap(diff => Observable.from(diff.removed));
 }
 
-export function observeAddedHostnames(): Observable<string> {
+export const :[fn~\w+] = () =>: Observable<string> {
   return observeHostnames().flatMap(diff => Observable.from(diff.added));
 }

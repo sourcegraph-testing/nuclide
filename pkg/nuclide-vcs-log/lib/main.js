@@ -146,7 +146,7 @@ class Activation {
   }
 }
 
-function getRepositoryWithLogMethodForPath(path: ?string): ?HgRepositoryClient {
+const :[fn~\w+] = (path: ?string) =>: ?HgRepositoryClient {
   if (path == null) {
     return null;
   }
@@ -161,7 +161,7 @@ function getRepositoryWithLogMethodForPath(path: ?string): ?HgRepositoryClient {
   }
 }
 
-function getActiveTextEditorURI(): ?string {
+const :[fn~\w+] = () =>: ?string {
   const editor = atom.workspace.getActiveTextEditor();
   if (editor == null) {
     return null;
@@ -175,7 +175,7 @@ function getActiveTextEditorURI(): ?string {
   return filePath;
 }
 
-function openLogPaneForURI(uri: string) {
+const :[fn~\w+] = (uri: string) => {
   track('nuclide-vcs-log:open');
   const openerURI =
     VCS_LOG_URI_PREFIX +
@@ -188,7 +188,7 @@ function openLogPaneForURI(uri: string) {
   atom.workspace.open(openerURI);
 }
 
-function createLogPaneForPath(path: string): ?React.Element<any> {
+const :[fn~\w+] = (path: string) =>: ?React.Element<any> {
   if (path == null) {
     return null;
   }
@@ -274,22 +274,22 @@ function createLogPaneForPath(path: string): ?React.Element<any> {
 
 let activation: ?Activation;
 
-export function activate(state: ?Object): void {
+export const :[fn~\w+] = (state: ?Object) =>: void {
   if (activation == null) {
     activation = new Activation();
   }
 }
 
-export function deactivate() {
+export const :[fn~\w+] = () => {
   if (activation != null) {
     activation.dispose();
     activation = null;
   }
 }
 
-export function addItemsToFileTreeContextMenu(
+export const :[fn~\w+] = (
   contextMenu: FileTreeContextMenu,
-): IDisposable {
+) =>: IDisposable {
   invariant(activation);
   return activation.addItemsToFileTreeContextMenu(contextMenu);
 }

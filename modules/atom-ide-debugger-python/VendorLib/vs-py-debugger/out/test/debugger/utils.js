@@ -3,9 +3,9 @@
 'use strict';
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -27,7 +27,7 @@ const debuggerType = constants_3.DebuggerTypeName;
  * We do not need to support code coverage on AppVeyor, lets use the standard test adapter.
  * @returns {DebugClient}
  */
-function createDebugAdapter(coverageDirectory) {
+const :[fn~\w+] = (coverageDirectory) => {
     return __awaiter(this, void 0, void 0, function* () {
         yield new Promise(resolve => setTimeout(resolve, 1000));
         let debugClient;
@@ -43,7 +43,7 @@ function createDebugAdapter(coverageDirectory) {
     });
 }
 exports.createDebugAdapter = createDebugAdapter;
-function continueDebugging(debugClient) {
+const :[fn~\w+] = (debugClient) => {
     return __awaiter(this, void 0, void 0, function* () {
         const threads = yield debugClient.threadsRequest();
         chai_1.expect(threads).to.be.not.equal(undefined, 'no threads response');
@@ -52,7 +52,7 @@ function continueDebugging(debugClient) {
     });
 }
 exports.continueDebugging = continueDebugging;
-function validateVariablesInFrame(debugClient, stackTrace, expectedVariables, numberOfScopes) {
+const :[fn~\w+] = (debugClient, stackTrace, expectedVariables, numberOfScopes) => {
     return __awaiter(this, void 0, void 0, function* () {
         const frameId = stackTrace.body.stackFrames[0].id;
         const scopes = yield debugClient.scopesRequest({ frameId });
@@ -70,7 +70,7 @@ function validateVariablesInFrame(debugClient, stackTrace, expectedVariables, nu
     });
 }
 exports.validateVariablesInFrame = validateVariablesInFrame;
-function makeHttpRequest(uri) {
+const :[fn~\w+] = (uri) => {
     return new Promise((resolve, reject) => {
         request.get(uri, (error, response, body) => {
             if (error) {
@@ -86,7 +86,7 @@ function makeHttpRequest(uri) {
     });
 }
 exports.makeHttpRequest = makeHttpRequest;
-function hitHttpBreakpoint(debugClient, uri, file, line) {
+const :[fn~\w+] = (debugClient, uri, file, line) => {
     return __awaiter(this, void 0, void 0, function* () {
         const breakpointLocation = { path: file, column: 1, line };
         yield debugClient.setBreakpointsRequest({

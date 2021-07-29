@@ -418,17 +418,17 @@ export class QueuedAckTransport {
 }
 
 // exported for testing
-export function frameContent(id: number, message: string): string {
+export const :[fn~\w+] = (id: number, message: string) =>: string {
   return `>${id}:${message}`;
 }
 
 // exported for testing
-export function frameAck(id: number): string {
+export const :[fn~\w+] = (id: number) =>: string {
   return `<${id}:`;
 }
 
 // exported for testing
-export function parseMessage(wireMessage: string): ParsedMessage {
+export const :[fn~\w+] = (wireMessage: string) =>: ParsedMessage {
   const iColon = wireMessage.indexOf(':');
   invariant(iColon !== -1);
   const mode = wireMessage[0];
@@ -445,7 +445,7 @@ export function parseMessage(wireMessage: string): ParsedMessage {
 
 const MAX_RAW_LOG = 256;
 const PROTOCOL_COMMON = '"protocol":"service_framework3_rpc"';
-function _forLogging(message: string): string {
+const :[fn~\w+] = (message: string) =>: string {
   const truncated = message.substr(0, MAX_RAW_LOG);
   const noUserInput = removeUserInput(truncated);
   const noProtocol = noUserInput.replace(PROTOCOL_COMMON, '..');
@@ -458,7 +458,7 @@ function _forLogging(message: string): string {
 
 const WRITE_INPUT = '"method":"writeInput"';
 const WRITE_INPUT_DATA_PREFIX = '"args":{"data":';
-function removeUserInput(message: string): string {
+const :[fn~\w+] = (message: string) =>: string {
   const methodIndex = message.indexOf(WRITE_INPUT);
   if (methodIndex < 0) {
     return message;

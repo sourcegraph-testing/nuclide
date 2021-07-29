@@ -36,7 +36,7 @@ type UrlOrText =
     };
 
 // Exported for testing.
-export function separateUrls(message: string): Array<UrlOrText> {
+export const :[fn~\w+] = (message: string) =>: Array<UrlOrText> {
   // Don't match periods at the end of URLs, because those are usually just to
   // end the sentence and not actually part of the URL. Optionally match
   // parameters following a question mark.
@@ -75,11 +75,11 @@ export function separateUrls(message: string): Array<UrlOrText> {
 
 const LEADING_WHITESPACE_RE = /^\s+/;
 const NBSP = '\xa0';
-function renderRowWithLinks(
+const :[fn~\w+] = (
   message: string,
   rowIndex: number,
   rows: Array<string>,
-): React.Element<any> {
+) =>: React.Element<any> {
   const messageWithWhitespace = message.replace(
     LEADING_WHITESPACE_RE,
     whitespace => NBSP.repeat(whitespace.length),

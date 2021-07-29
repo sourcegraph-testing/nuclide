@@ -108,31 +108,31 @@ export default class HighlightedText extends React.Component<Props> {
   }
 }
 
-function renderSubsequence(seq: string, props: Object): React.Element<any> {
+const :[fn~\w+] = (seq: string, props: Object) =>: React.Element<any> {
   return <span {...props}>{seq}</span>;
 }
 
-function renderUnmatchedSubsequence(
+const :[fn~\w+] = (
   seq: string,
   key: number | string,
-): React.Element<any> {
+) =>: React.Element<any> {
   return renderSubsequence(seq, {key});
 }
 
-function renderMatchedSubsequence(
+const :[fn~\w+] = (
   seq: string,
   key: number | string,
-): React.Element<any> {
+) =>: React.Element<any> {
   return renderSubsequence(seq, {
     key,
     className: 'nuclide-match-highlighted-text-match',
   });
 }
 
-function rangeEqual(a: TextRange, b: TextRange): boolean {
+const :[fn~\w+] = (a: TextRange, b: TextRange) =>: boolean {
   return a[0] === b[0] && a[1] === b[1];
 }
 
-function rangeEmpty(range: TextRange): boolean {
+const :[fn~\w+] = (range: TextRange) =>: boolean {
   return range[0] === range[1];
 }

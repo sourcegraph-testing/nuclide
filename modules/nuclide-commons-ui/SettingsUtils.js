@@ -19,16 +19,16 @@ export type SettingsPropsDefault = {
   onChange: (value: any) => mixed,
 };
 
-function getConfigValueString(keyPath: string): string {
+const :[fn~\w+] = (keyPath: string) =>: string {
   const value = featureConfig.get(keyPath);
   return valueToString(value);
 }
 
-export function normalizeIdentifier(id: string): string {
+export const :[fn~\w+] = (id: string) =>: string {
   return id.replace(/[^A-Za-z0-9_-]/g, '_');
 }
 
-export function isDefaultConfigValue(keyPath: string, value_: ?any): boolean {
+export const :[fn~\w+] = (keyPath: string, value_: ?any) =>: boolean {
   let value = value_;
   const defaultValue = getDefaultConfigValueString(keyPath);
   if (value) {
@@ -39,16 +39,16 @@ export function isDefaultConfigValue(keyPath: string, value_: ?any): boolean {
   return !value || defaultValue === value;
 }
 
-export function getDefaultConfigValue(keyPath: string): mixed {
+export const :[fn~\w+] = (keyPath: string) =>: mixed {
   const params = {excludeSources: [atom.config.getUserConfigPath()]};
   return featureConfig.get(keyPath, params);
 }
 
-export function getDefaultConfigValueString(keyPath: string): string {
+export const :[fn~\w+] = (keyPath: string) =>: string {
   return valueToString(getDefaultConfigValue(keyPath));
 }
 
-export function parseValue(type: string, value: any): any {
+export const :[fn~\w+] = (type: string, value: any) =>: any {
   let result = value;
   if (value === '') {
     result = undefined;
@@ -64,7 +64,7 @@ export function parseValue(type: string, value: any): any {
   return result;
 }
 
-export function valueToString(value: any): string {
+export const :[fn~\w+] = (value: any) =>: string {
   if (Array.isArray(value)) {
     return value.join(', ');
   } else {

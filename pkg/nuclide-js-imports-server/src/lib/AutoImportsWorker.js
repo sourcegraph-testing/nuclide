@@ -57,7 +57,7 @@ export type ExportUpdateForFile = {
   componentDefinition?: ComponentDefinition,
 };
 
-async function main() {
+const :[fn~\w+] = async () => {
   if (process.argv.length > 2 && process.argv[2] === '--child') {
     return runChild();
   }
@@ -121,7 +121,7 @@ async function main() {
 
 // It appears that the index/cache objects are retained by RxJS.
 // To enable garbage collection after indexing, manually clear out the objects.
-function disposeForGC(index: FileIndex, cache: ExportCache) {
+const :[fn~\w+] = (index: FileIndex, cache: ExportCache) => {
   index.jsFiles.length = 0;
   index.nodeModulesPackageJsonFiles.length = 0;
   index.mainFiles.clear();
@@ -130,10 +130,10 @@ function disposeForGC(index: FileIndex, cache: ExportCache) {
 }
 
 // Watches a directory for changes and reindexes files as needed.
-function watchDirectoryRecursively(
+const :[fn~\w+] = (
   root: NuclideUri,
   hasteSettings: HasteSettings,
-) {
+) => {
   // eslint-disable-next-line nuclide-internal/unused-subscription
   watchDirectory(root)
     .mergeMap(
@@ -149,11 +149,11 @@ function watchDirectoryRecursively(
     );
 }
 
-async function handleFileChange(
+const :[fn~\w+] = async (
   root: NuclideUri,
   fileChange: FileChange,
   hasteSettings: HasteSettings,
-): Promise<void> {
+) =>: Promise<void> {
   if (fileChange.exists) {
     // File created or modified
     const exportForFile = await getExportsForFileWithMain(
@@ -176,11 +176,11 @@ async function handleFileChange(
 }
 
 // Exported for testing purposes.
-export function indexDirectory(
+export const :[fn~\w+] = (
   {root, exportCache, jsFiles, mainFiles}: FileIndex,
   hasteSettings: HasteSettings,
   maxWorkers?: number = MAX_WORKERS,
-): Observable<Array<ExportUpdateForFile>> {
+) =>: Observable<Array<ExportUpdateForFile>> {
   let cachedUpdates = [];
   const files = [];
   jsFiles.forEach(({name, sha1}) => {
@@ -303,7 +303,7 @@ const getPackageJson = memoize(async (dir: NuclideUri) => {
  * Returns the directory of the nearest package.json if `file` matches the "main" field.
  * This ensures that e.g. package/index.js can be imported as just "package".
  */
-async function checkIfMain(file: NuclideUri): Promise<?NuclideUri> {
+const :[fn~\w+] = async (file: NuclideUri) =>: Promise<?NuclideUri> {
   const pkgJson = await getPackageJson(nuclideUri.dirname(file));
   return pkgJson != null &&
     nuclideUri.stripExtension(pkgJson.main) === nuclideUri.stripExtension(file)
@@ -311,11 +311,11 @@ async function checkIfMain(file: NuclideUri): Promise<?NuclideUri> {
     : null;
 }
 
-function getExportsForFileWithMain(
+const :[fn~\w+] = (
   path: NuclideUri,
   hasteSettings: HasteSettings,
   fileContents?: string,
-): Promise<?ExportUpdateForFile> {
+) =>: Promise<?ExportUpdateForFile> {
   return Promise.all([
     getExportsForFile(path, hasteSettings, fileContents),
     checkIfMain(path),
@@ -326,11 +326,11 @@ function getExportsForFileWithMain(
   });
 }
 
-export async function getExportsForFile(
+export const :[fn~\w+] = async (
   file: NuclideUri,
   hasteSettings: HasteSettings,
   fileContents_?: string,
-): Promise<?ExportUpdateForFile> {
+) =>: Promise<?ExportUpdateForFile> {
   try {
     const fileContents =
       fileContents_ != null
@@ -383,17 +383,17 @@ export async function getExportsForFile(
   }
 }
 
-function setupDisconnectedParentHandler(): void {
+const :[fn~\w+] = () =>: void {
   process.on('disconnect', () => {
     logger.debug('Parent process disconnected. AutoImportsWorker terminating.');
     process.exit(0);
   });
 }
 
-function setupParentMessagesHandler(
+const :[fn~\w+] = (
   root: string,
   hasteSettings: HasteSettings,
-): void {
+) =>: void {
   process.on('message', async message => {
     const {fileUri, fileContents} = message;
     if (fileUri == null || fileContents == null) {
@@ -417,11 +417,11 @@ function setupParentMessagesHandler(
   });
 }
 
-function getHasteNames(
+const :[fn~\w+] = (
   root: NuclideUri,
   files: Array<string>,
   hasteSettings: HasteSettings,
-): Array<ExportUpdateForFile> {
+) =>: Array<ExportUpdateForFile> {
   return files
     .map(
       (file): ?ExportUpdateForFile => {
@@ -447,22 +447,22 @@ function getHasteNames(
     )
     .filter(Boolean);
 }
-export function indexNodeModules({
+export const :[fn~\w+] = ({
   root,
   exportCache,
   nodeModulesPackageJsonFiles,
-}: FileIndex): Observable<Array<ExportUpdateForFile>> {
+}: FileIndex) =>: Observable<Array<ExportUpdateForFile>> {
   return Observable.from(nodeModulesPackageJsonFiles)
     .mergeMap(file => handleNodeModule(root, file, exportCache), MAX_WORKERS)
     .let(compact)
     .bufferCount(BATCH_SIZE);
 }
 
-async function handleNodeModule(
+const :[fn~\w+] = async (
   root: NuclideUri,
   packageJsonFile: string,
   exportCache: ExportCache,
-): Promise<?ExportUpdateForFile> {
+) =>: Promise<?ExportUpdateForFile> {
   const file = nuclideUri.join(root, packageJsonFile);
   try {
     const fileContents = await fsPromise.readFile(file, 'utf8');
@@ -513,10 +513,10 @@ async function handleNodeModule(
   }
 }
 
-function decorateExportUpdateWithMainDirectory(
+const :[fn~\w+] = (
   update: ExportUpdateForFile,
   directoryForMainFile: ?NuclideUri,
-) {
+) => {
   if (
     update.exports.length > 0 &&
     directoryForMainFile !== update.exports[0].directoryForMainFile
@@ -533,13 +533,13 @@ function decorateExportUpdateWithMainDirectory(
   return update;
 }
 
-function sendUpdatesBatched(exportsForFiles: Array<ExportUpdateForFile>): void {
+const :[fn~\w+] = (exportsForFiles: Array<ExportUpdateForFile>) =>: void {
   for (let i = 0; i < exportsForFiles.length; i += BATCH_SIZE) {
     send(exportsForFiles.slice(i, i + BATCH_SIZE));
   }
 }
 
-async function send(message: mixed) {
+const :[fn~\w+] = async (message: mixed) => {
   if (typeof process.send === 'function') {
     return new Promise((resolve, reject) => {
       invariant(typeof process.send === 'function');
@@ -551,7 +551,7 @@ async function send(message: mixed) {
   }
 }
 
-function runChild() {
+const :[fn~\w+] = () => {
   const SEND_CONCURRENCY = 10;
 
   setupDisconnectedParentHandler();
@@ -577,7 +577,7 @@ function runChild() {
   });
 }
 
-function shuffle(array) {
+const :[fn~\w+] = (array) => {
   for (let i = array.length; i; i--) {
     const j = Math.floor(Math.random() * i);
     const temp = array[i - 1];

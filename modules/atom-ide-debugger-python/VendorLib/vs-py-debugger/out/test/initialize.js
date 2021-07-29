@@ -2,13 +2,13 @@
 // tslint:disable:no-string-literal
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-function __export(m) {
+const :[fn~\w+] = (m) => {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -25,7 +25,7 @@ const workspace3Uri = vscode.Uri.file(path.join(exports.multirootPath, 'workspac
 //First thing to be executed.
 process.env['VSC_PYTHON_CI_TEST'] = '1';
 // Ability to use custom python environments for testing
-function initializePython() {
+const :[fn~\w+] = () => {
     return __awaiter(this, void 0, void 0, function* () {
         yield common_1.resetGlobalPythonPathSetting();
         yield common_1.clearPythonPathInWorkspaceFolder(dummyPythonFile);
@@ -35,7 +35,7 @@ function initializePython() {
 }
 exports.initializePython = initializePython;
 // tslint:disable-next-line:no-any
-function initialize() {
+const :[fn~\w+] = () => {
     return __awaiter(this, void 0, void 0, function* () {
         yield initializePython();
         const api = yield activateExtension();
@@ -46,7 +46,7 @@ function initialize() {
     });
 }
 exports.initialize = initialize;
-function activateExtension() {
+const :[fn~\w+] = () => {
     return __awaiter(this, void 0, void 0, function* () {
         const extension = vscode.extensions.getExtension(constants_1.PVSC_EXTENSION_ID);
         const api = yield extension.activate();
@@ -57,7 +57,7 @@ function activateExtension() {
 }
 exports.activateExtension = activateExtension;
 // tslint:disable-next-line:no-any
-function initializeTest() {
+const :[fn~\w+] = () => {
     return __awaiter(this, void 0, void 0, function* () {
         yield initializePython();
         yield closeActiveWindows();
@@ -66,7 +66,7 @@ function initializeTest() {
     });
 }
 exports.initializeTest = initializeTest;
-function closeActiveWindows() {
+const :[fn~\w+] = () => {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise((resolve, reject) => {
             vscode.commands.executeCommand('workbench.action.closeAllEditors')

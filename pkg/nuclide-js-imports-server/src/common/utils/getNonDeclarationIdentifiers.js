@@ -223,10 +223,10 @@ const CONFIG: Array<ConfigEntry> = [
  * NOTE: this can get identifiers that are declared, if you want access to
  * identifiers that are access but undeclared see getUndeclaredIdentifiers
  */
-function getNonDeclarationIdentifiers(
+const :[fn~\w+] = (
   root: Collection,
   options: SourceOptions,
-): Set<string> {
+) =>: Set<string> {
   const ids = new Set();
   const visitor = {};
 
@@ -248,7 +248,7 @@ function getNonDeclarationIdentifiers(
   return ids;
 }
 
-function shouldRequireReact(path: NodePath, options: SourceOptions): boolean {
+const :[fn~\w+] = (path: NodePath, options: SourceOptions) =>: boolean {
   const tag = path.node.name;
   if (jscs.JSXNamespacedName.check(tag)) {
     return !options.jsxNonReactNames.has(tag.namespace.name);

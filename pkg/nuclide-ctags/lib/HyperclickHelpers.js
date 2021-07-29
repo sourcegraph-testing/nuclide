@@ -24,14 +24,14 @@ const QUALIFYING_FIELDS = ['class', 'namespace', 'struct', 'enum', 'Module'];
  * If a line number is specified by the tag, jump to that line.
  * Otherwise, we'll have to look up the pattern in the file.
  */
-function createCallback(tag: CtagsResult) {
+const :[fn~\w+] = (tag: CtagsResult) => {
   return async () => {
     const lineNumber = await getLineNumberForTag(tag);
     goToLocation(tag.file, {line: lineNumber, column: 0});
   };
 }
 
-function commonPrefixLength(a: string, b: string): number {
+const :[fn~\w+] = (a: string, b: string) =>: number {
   let i = 0;
   while (i < a.length && i < b.length && a[i] === b[i]) {
     i++;

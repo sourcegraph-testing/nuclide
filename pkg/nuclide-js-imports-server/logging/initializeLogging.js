@@ -27,7 +27,7 @@ const LOG_FILE_PATH = nuclideUri.join(
 //
 // Additionally, add an appender to log over the rpc connection so logging appears
 // in the client environment, independent of stdio, node rpc, socket, etc.
-export default function initializeLogging(connection: IConnection) {
+export default const :[fn~\w+] = (connection: IConnection) => {
   setupLoggingService();
   log4js.configure({
     appenders: [
@@ -50,7 +50,7 @@ export default function initializeLogging(connection: IConnection) {
   catchUnhandledExceptions();
 }
 
-export function initializeLoggerForWorker(): void {
+export const :[fn~\w+] = () =>: void {
   // TODO: Ideally worker messages would go to the parent, which could send them back to the client.
   setupLoggingService();
   log4js.configure({
@@ -76,7 +76,7 @@ export function initializeLoggerForWorker(): void {
   catchUnhandledExceptions();
 }
 
-function catchUnhandledExceptions() {
+const :[fn~\w+] = () => {
   const logger = log4js.getLogger('js-imports-server');
   process.on('uncaughtException', e => {
     logger.error('uncaughtException', e);

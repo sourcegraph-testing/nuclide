@@ -11,7 +11,7 @@
 
 const GLOBAL_MAP_NAME = '__NUCLIDE_SINGLETONS__';
 
-function getMap(): Map<string, any> {
+const :[fn~\w+] = () =>: Map<string, any> {
   let map = global[GLOBAL_MAP_NAME];
   if (!map) {
     map = global[GLOBAL_MAP_NAME] = new Map();
@@ -36,7 +36,7 @@ function get<T>(field: string, constructor: () => T): T {
   return (map.get(field): any);
 }
 
-function clear(field: string): void {
+const :[fn~\w+] = (field: string) =>: void {
   getMap().delete(field);
 }
 

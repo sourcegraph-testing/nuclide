@@ -123,7 +123,7 @@ export class FileVersionNotifier {
   }
 }
 
-function createRejectError(): Error {
+const :[fn~\w+] = () =>: Error {
   return new Error('File modified past requested change');
 }
 

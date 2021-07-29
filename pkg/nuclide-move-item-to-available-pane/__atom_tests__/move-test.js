@@ -84,7 +84,7 @@ describe('nuclide-move-item-to-available-pane', () => {
  * item should be displaying. If the element ends with an asterisk, that
  * indicates that it should be the active pane item.
  */
-function assertWorkspaceState(...descriptors: Array<Array<string>>) {
+const :[fn~\w+] = (...descriptors: Array<Array<string>>) => {
   const workspaceDescriptors = createDescriptorForWorkspaceState()
     .map(descriptor => {
       return descriptor.filter(paneItem => paneItem.length > 0);
@@ -93,7 +93,7 @@ function assertWorkspaceState(...descriptors: Array<Array<string>>) {
   expect(workspaceDescriptors).toEqual(descriptors);
 }
 
-function createDescriptorForWorkspaceState(): Array<Array<string>> {
+const :[fn~\w+] = () =>: Array<Array<string>> {
   const activeItem = atom.workspace.getActiveTextEditor();
   return atom.workspace.getPanes().map(pane => {
     return pane.getItems().map(item => {
@@ -107,7 +107,7 @@ function createDescriptorForWorkspaceState(): Array<Array<string>> {
   });
 }
 
-function dispatchCmdKRight() {
+const :[fn~\w+] = () => {
   const activeEditor = atom.workspace.getActiveTextEditor();
   invariant(activeEditor);
   const wasDispatched = atom.commands.dispatch(
@@ -118,7 +118,7 @@ function dispatchCmdKRight() {
 }
 
 // eslint-disable-next-line no-unused-vars
-function dispatchCmdKLeft() {
+const :[fn~\w+] = () => {
   const activeEditor = atom.workspace.getActiveTextEditor();
   invariant(activeEditor);
   const wasDispatched = atom.commands.dispatch(
@@ -128,7 +128,7 @@ function dispatchCmdKLeft() {
   expect(wasDispatched).toBeTruthy();
 }
 
-function dispatchCmdKCmdLeft() {
+const :[fn~\w+] = () => {
   // In test mode, the command appears to get dispatched successfully, but the focus does not get
   // updated properly, so we have to provide some help.
   const activePane = atom.workspace.getActivePane();
@@ -148,7 +148,7 @@ function dispatchCmdKCmdLeft() {
 }
 
 // eslint-disable-next-line no-unused-vars
-function dispatchCmdKCmdRight() {
+const :[fn~\w+] = () => {
   // In test mode, the command appears to get dispatched successfully, but the focus does not get
   // updated properly, so we have to provide some help.
   const activePane = atom.workspace.getActivePane();

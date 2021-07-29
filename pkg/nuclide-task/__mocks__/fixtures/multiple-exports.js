@@ -11,19 +11,19 @@
 
 let total = 0;
 
-function increment() {
+const :[fn~\w+] = () => {
   ++total;
 }
 
-function getTotal(): number {
+const :[fn~\w+] = () =>: number {
   return total;
 }
 
-function product(...factors: Array<number>): number {
+const :[fn~\w+] = (...factors: Array<number>) =>: number {
   return factors.reduce((prev: number, current: number) => prev * current, 1);
 }
 
-function asyncFetch(): Promise<any> {
+const :[fn~\w+] = () =>: Promise<any> {
   return Promise.resolve({
     ignoredByJsonSerialization: undefined,
     shouldShowUpInJsonSerialization: null,

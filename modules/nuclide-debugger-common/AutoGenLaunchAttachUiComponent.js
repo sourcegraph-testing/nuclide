@@ -69,7 +69,7 @@ type State = {
 };
 
 // extension must be a string starting with a '.' like '.js' or '.py'
-function getActiveScriptPath(extension: string): string {
+const :[fn~\w+] = (extension: string) =>: string {
   const center = atom.workspace.getCenter
     ? atom.workspace.getCenter()
     : atom.workspace;

@@ -22,7 +22,7 @@ type AdapterInfo = {|
 
 const modulesPath = nuclideUri.dirname(__dirname);
 
-function resolvePackagePath(packageName: string): string {
+const :[fn~\w+] = (packageName: string) =>: string {
   const bundledPath = nuclideUri.join(modulesPath, packageName);
   if (fs.existsSync(bundledPath)) {
     return bundledPath;
@@ -200,9 +200,9 @@ const _adapters: Map<VsAdapterType, AdapterInfo> = new Map([
   ],
 ]);
 
-export function getAdapterExecutable(
+export const :[fn~\w+] = (
   adapter: VsAdapterType,
-): VSAdapterExecutableInfo {
+) =>: VSAdapterExecutableInfo {
   const adapterInfo = _adapters.get(adapter);
   if (adapterInfo == null) {
     throw new Error(`Cannot find VSP for given adapter type ${adapter}`);
@@ -210,7 +210,7 @@ export function getAdapterExecutable(
   return adapterInfo.executable;
 }
 
-export function getAdapterPackageRoot(adapter: VsAdapterType): string {
+export const :[fn~\w+] = (adapter: VsAdapterType) =>: string {
   const adapterInfo = _adapters.get(adapter);
   if (adapterInfo == null) {
     throw new Error(`Cannot find VSP for given adapter type ${adapter}`);

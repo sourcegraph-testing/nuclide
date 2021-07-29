@@ -57,7 +57,7 @@ const SERIALIZED_VERSION = 2;
 // These match task types with shortcuts defined in nuclide-task-runner.json
 const COMMON_TASK_TYPES = ['build', 'run', 'test', 'debug'];
 
-function getVisible(event: Event): ?boolean {
+const :[fn~\w+] = (event: Event) =>: ?boolean {
   // $FlowFixMe(>=0.68.0) Flow suppress (T27187857)
   if (event.detail != null && typeof event.detail === 'object') {
     const {visible} = event.detail;
@@ -410,7 +410,7 @@ class Activation {
 
 createPackage(module.exports, Activation);
 
-function activateInitialPackagesObservable(): Observable<void> {
+const :[fn~\w+] = () =>: Observable<void> {
   if (atom.packages.hasActivatedInitialPackages) {
     return Observable.of(undefined);
   }
@@ -419,10 +419,10 @@ function activateInitialPackagesObservable(): Observable<void> {
   );
 }
 
-function getInitialVisibility(
+const :[fn~\w+] = (
   serializedState: ?SerializedAppState,
   preferencesForWorkingRoots: LocalStorageJsonTable<?ToolbarStatePreference>,
-): boolean {
+) =>: boolean {
   // Unfortunately, since we haven't yet been connected to the current working directory service,
   //  we don't know what root to check the previous visibility of. We could just assume it's
   // `atom.project.getDirectories()[0]`, but using explicitly serialized package state is better.

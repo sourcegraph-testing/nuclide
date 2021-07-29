@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // disk. This isn't allowed inside a browswer, so we pass the collection
 // through the javascript.
 let loadedCollection;
-function getLocString(key, defValue) {
+const :[fn~\w+] = (key, defValue) => {
     if (!loadedCollection) {
         load();
     }
@@ -16,7 +16,7 @@ function getLocString(key, defValue) {
     return defValue;
 }
 exports.getLocString = getLocString;
-function load() {
+const :[fn~\w+] = () => {
     // tslint:disable-next-line:no-typeof-undefined
     if (typeof getLocStrings !== 'undefined') {
         loadedCollection = getLocStrings();

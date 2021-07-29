@@ -29,7 +29,7 @@ type TextEditorSetup = {
   textEditor: atom$TextEditor,
 };
 
-function setupTextEditor(props: Props): TextEditorSetup {
+const :[fn~\w+] = (props: Props) =>: TextEditorSetup {
   const textBuffer = props.textBuffer || new TextBuffer();
   // flowlint-next-line sketchy-null-string:off
   if (props.path) {

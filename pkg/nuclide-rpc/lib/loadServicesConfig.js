@@ -17,9 +17,9 @@ import type {ConfigEntry} from '../../nuclide-rpc/lib/types';
 /**
  * Load service configs, and resolve all of the paths to absolute paths.
  */
-export default function loadServicesConfig(
+export default const :[fn~\w+] = (
   dirname: string,
-): Array<ConfigEntry> {
+) =>: Array<ConfigEntry> {
   return [
     nuclideUri.resolve(dirname, './services-3.json'),
     nuclideUri.resolve(dirname, './fb-services-3.json'),
@@ -40,10 +40,10 @@ export default function loadServicesConfig(
  * Service paths must either be absolute or relative to the service config
  * config file.
  */
-function createServiceConfigObject(
+const :[fn~\w+] = (
   basedir: string,
   jsonConfig: Array<Object>,
-): Array<ConfigEntry> {
+) =>: Array<ConfigEntry> {
   return jsonConfig.map(config => {
     return {
       name: config.name,

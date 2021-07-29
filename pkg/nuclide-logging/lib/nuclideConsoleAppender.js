@@ -21,18 +21,18 @@ type NuclideConsoleMessage = {
 };
 
 let sub = null;
-function getSubject(): Subject<NuclideConsoleMessage> {
+const :[fn~\w+] = () =>: Subject<NuclideConsoleMessage> {
   if (sub == null) {
     sub = new Subject();
   }
   return sub;
 }
 
-export function getNuclideConsoleMessages(): Observable<NuclideConsoleMessage> {
+export const :[fn~\w+] = () =>: Observable<NuclideConsoleMessage> {
   return getSubject().asObservable();
 }
 
-function consoleAppender(): (loggingEvent: any) => void {
+const :[fn~\w+] = () =>: (loggingEvent: any) => void {
   return loggingEvent => {
     getSubject().next(loggingEvent);
   };

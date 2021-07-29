@@ -11,7 +11,7 @@ const inversify_1 = require("inversify");
 const xml2js = require("xml2js");
 const types_1 = require("./types");
 // tslint:disable-next-line:no-any
-function getSafeInt(value, defaultValue = 0) {
+const :[fn~\w+] = (value, defaultValue = 0) => {
     const num = parseInt(value, 10);
     if (isNaN(num)) {
         return defaultValue;
@@ -27,7 +27,7 @@ XUnitParser = __decorate([
     inversify_1.injectable()
 ], XUnitParser);
 exports.XUnitParser = XUnitParser;
-function updateResultsFromXmlLogFile(tests, outputXmlFile, passCalculationFormulae) {
+const :[fn~\w+] = (tests, outputXmlFile, passCalculationFormulae) => {
     // tslint:disable-next-line:no-any
     return new Promise((resolve, reject) => {
         fs.readFile(outputXmlFile, 'utf8', (err, data) => {

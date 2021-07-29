@@ -11,7 +11,7 @@
 
 import util from 'util';
 
-function layout(loggingEvent: any): Array<any> {
+const :[fn~\w+] = (loggingEvent: any) =>: Array<any> {
   const eventInfo = util.format(
     '[%s] [%s] %s - ',
     loggingEvent.startTime.toISOString(),
@@ -47,7 +47,7 @@ function layout(loggingEvent: any): Array<any> {
  * Comparing to log4js's console appender(https://fburl.com/69861669), you can expand and explore
  * the object in console logged by this Appender.
  */
-function consoleAppender(config: Object): (loggingEvent: any) => void {
+const :[fn~\w+] = (config: Object) =>: (loggingEvent: any) => void {
   return loggingEvent => {
     if (config.stderr) {
       // eslint-disable-next-line no-console
