@@ -23,13 +23,13 @@ import nuclideUri from 'nuclide-commons/nuclideUri';
  * Atom. If you have multiple directories open, the result will be prefixed with one of their names.
  * If you only have one, it won't.
  */
-export default function humanizePath(
+export default const :[fn~\w+] = (
   path: NuclideUri,
   options: ?{
     isDirectory?: boolean,
     rootPaths?: Array<NuclideUri>,
   },
-): string {
+) =>: string {
   const isDirectory = idx(options, _ => _.isDirectory);
   const rootPaths =
     idx(options, _ => _.rootPaths) ||
@@ -57,7 +57,7 @@ export default function humanizePath(
   return nuclideUri.nuclideUriToDisplayString(normalized);
 }
 
-function normalizePath(path: NuclideUri, isDirectory_: ?boolean): NuclideUri {
+const :[fn~\w+] = (path: NuclideUri, isDirectory_: ?boolean) =>: NuclideUri {
   const isDirectory =
     isDirectory_ == null ? nuclideUri.endsWithSeparator(path) : isDirectory_;
   return isDirectory

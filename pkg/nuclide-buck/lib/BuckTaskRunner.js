@@ -92,7 +92,7 @@ export const TASKS = [
 // This must match URI defined in ../../nuclide-console/lib/ui/ConsoleContainer
 export const CONSOLE_VIEW_URI = 'atom://nuclide/console';
 
-function shouldEnableTask(taskType: TaskType, ruleType: string): boolean {
+const :[fn~\w+] = (taskType: TaskType, ruleType: string) =>: boolean {
   switch (taskType) {
     case 'build':
     case 'test':
@@ -109,7 +109,7 @@ function shouldEnableTask(taskType: TaskType, ruleType: string): boolean {
   }
 }
 
-export function isDebugTask(taskType: TaskType) {
+export const :[fn~\w+] = (taskType: TaskType) => {
   return (
     taskType === 'build-launch-debug' ||
     taskType === 'launch-debug' ||
@@ -117,9 +117,9 @@ export function isDebugTask(taskType: TaskType) {
   );
 }
 
-export function getBuckSubcommandForTaskType(
+export const :[fn~\w+] = (
   taskType: TaskType,
-): BuckSubcommand {
+) =>: BuckSubcommand {
   invariant(taskType === 'build' || taskType === 'run' || taskType === 'test');
   return taskType;
 }

@@ -15,7 +15,7 @@ exports.default = invariant;
 
 /*  strict */
 
-function invariant(condition, format) {
+const :[fn~\w+] = (condition, format) => {
   if (condition) return;
 
   let error = new Error(format);

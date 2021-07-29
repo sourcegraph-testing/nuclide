@@ -87,7 +87,7 @@ class SourceMapsCombinator {
 exports.SourceMapsCombinator = SourceMapsCombinator;
 // Hack for source-map-resolve and cutted disk letter
 // https://github.com/lydell/source-map-resolve/issues/9
-function readFileSync(diskLetter, filePath) {
+const :[fn~\w+] = (diskLetter, filePath) => {
     if (filePath.match(DISK_LETTER_RE)) {
         return fs.readFileSync(filePath);
     }
@@ -95,7 +95,7 @@ function readFileSync(diskLetter, filePath) {
         return fs.readFileSync(`${diskLetter}${filePath}`);
     }
 }
-function getDiskLetter(filePath) {
+const :[fn~\w+] = (filePath) => {
     const matched = filePath.match(DISK_LETTER_RE);
     return matched ? matched[0] : "";
 }

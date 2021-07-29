@@ -22,9 +22,9 @@ const TEXT_BUFFER_PARAMS = {
   shouldDestroyOnFileDelete: () => atom.config.get('core.closeDeletedFileTabs'),
 };
 
-export async function loadBufferForUri(
+export const :[fn~\w+] = async (
   uri: NuclideUri,
-): Promise<atom$TextBuffer> {
+) =>: Promise<atom$TextBuffer> {
   const buffer = existingBufferForUri(uri);
   if (buffer == null) {
     return loadBufferForUriStatic(uri).then(loadedBuffer => {
@@ -44,7 +44,7 @@ export async function loadBufferForUri(
   }
 }
 
-function loadBufferForUriStatic(uri: NuclideUri): Promise<atom$TextBuffer> {
+const :[fn~\w+] = (uri: NuclideUri) =>: Promise<atom$TextBuffer> {
   if (nuclideUri.isLocal(uri)) {
     return TextBuffer.load(uri, TEXT_BUFFER_PARAMS);
   }
@@ -58,7 +58,7 @@ function loadBufferForUriStatic(uri: NuclideUri): Promise<atom$TextBuffer> {
 /**
  * Returns an existing buffer for that uri, or create one if not existing.
  */
-export function bufferForUri(uri: NuclideUri): atom$TextBuffer {
+export const :[fn~\w+] = (uri: NuclideUri) =>: atom$TextBuffer {
   const buffer = existingBufferForUri(uri);
   if (buffer != null) {
     return buffer;
@@ -66,7 +66,7 @@ export function bufferForUri(uri: NuclideUri): atom$TextBuffer {
   return createBufferForUri(uri);
 }
 
-function createBufferForUri(uri: NuclideUri): atom$TextBuffer {
+const :[fn~\w+] = (uri: NuclideUri) =>: atom$TextBuffer {
   let buffer;
   const params = {
     ...TEXT_BUFFER_PARAMS,
@@ -90,6 +90,6 @@ function createBufferForUri(uri: NuclideUri): atom$TextBuffer {
 /**
  * Returns an exsting buffer for that uri, or null if not existing.
  */
-export function existingBufferForUri(uri: NuclideUri): ?atom$TextBuffer {
+export const :[fn~\w+] = (uri: NuclideUri) =>: ?atom$TextBuffer {
   return atom.project.findBufferForPath(uri);
 }

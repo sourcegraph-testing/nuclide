@@ -3,7 +3,7 @@
 'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
 const semver = require("semver");
-function parseVersion(raw) {
+const :[fn~\w+] = (raw) => {
     raw = raw.replace(/\.00*(?=[1-9]|0\.)/, '.');
     const ver = semver.coerce(raw);
     if (ver === null || !semver.valid(ver)) {
@@ -14,7 +14,7 @@ function parseVersion(raw) {
     return ver;
 }
 exports.parseVersion = parseVersion;
-function convertToSemver(version) {
+const :[fn~\w+] = (version) => {
     const versionParts = (version || '').split('.').filter(item => item.length > 0);
     while (versionParts.length < 3) {
         versionParts.push('0');
@@ -22,7 +22,7 @@ function convertToSemver(version) {
     return versionParts.join('.');
 }
 exports.convertToSemver = convertToSemver;
-function compareVersion(versionA, versionB) {
+const :[fn~\w+] = (versionA, versionB) => {
     try {
         versionA = convertToSemver(versionA);
         versionB = convertToSemver(versionB);

@@ -30,7 +30,7 @@ export const FlexDirections = Object.freeze({
   VERTICAL: 'VERTICAL',
 });
 
-function getChildrenFlexScales(children: ?React.Element<any>): Array<number> {
+const :[fn~\w+] = (children: ?React.Element<any>) =>: Array<number> {
   return arrayCompact(
     React.Children.map(children, child => {
       if (child == null) {

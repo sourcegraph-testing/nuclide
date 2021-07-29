@@ -28,7 +28,7 @@ export const MISSING_IDB_ERROR = 'MissingIdbError';
 // 2. Tunneling stays turned on even after you unsubscribe (to prevent too much on/off toggling)
 // 3. Sends a value when everything is ready (if already active, it sends 'ready' immediately)
 // 4. Guarantees that tunneling is active as long as the observable is not complete (or errored)
-export function startTunnelingIdb(uri: NuclideUri): Observable<'ready'> {
+export const :[fn~\w+] = (uri: NuclideUri) =>: Observable<'ready'> {
   if (!nuclideUri.isRemote(uri)) {
     return Observable.of('ready').concat(Observable.never());
   }
@@ -78,12 +78,12 @@ export function startTunnelingIdb(uri: NuclideUri): Observable<'ready'> {
   return tunnels.mapTo('ready');
 }
 
-export function stopTunnelingIdb(uri: NuclideUri) {
+export const :[fn~\w+] = (uri: NuclideUri) => {
   activeTunnels.delete(uri);
   changes.next();
 }
 
-export function isIdbTunneled(uri: NuclideUri): Observable<boolean> {
+export const :[fn~\w+] = (uri: NuclideUri) =>: Observable<boolean> {
   return changes
     .startWith(undefined)
     .map(() => activeTunnels.get(uri) != null)
@@ -100,7 +100,7 @@ const activeTunnels: SimpleCache<
 });
 const changes: Subject<void> = new Subject();
 
-function connectToIdb(host: NuclideUri): Observable<?number> {
+const :[fn~\w+] = (host: NuclideUri) =>: Observable<?number> {
   return Observable.defer(async () => {
     const service: SshTunnelService = await consumeFirstProvider(
       'nuclide.ssh-tunnel',

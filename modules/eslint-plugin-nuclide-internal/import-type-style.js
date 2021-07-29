@@ -15,7 +15,7 @@
 
 const DEFAULT_TYPE_POSTFIX = 'Type';
 
-function endWithTypePostfix(value) {
+const :[fn~\w+] = (value) => {
   return (
     value.length > DEFAULT_TYPE_POSTFIX.length &&
     value.lastIndexOf(DEFAULT_TYPE_POSTFIX) ===
@@ -24,7 +24,7 @@ function endWithTypePostfix(value) {
 }
 
 module.exports = function(context) {
-  function checkIdentifier(ident) {
+  const :[fn~\w+] = (ident) => {
     if (!endWithTypePostfix(ident.name)) {
       context.report({
         node: ident,

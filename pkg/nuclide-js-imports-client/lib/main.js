@@ -43,9 +43,9 @@ import QuickOpenProvider from './QuickOpenProvider';
 import JSSymbolSearchProvider from './JSSymbolSearchProvider';
 import DashProjectSymbolProvider from './DashProjectSymbolProvider';
 
-async function connectToJSImportsService(
+const :[fn~\w+] = async (
   connection: ?ServerConnection,
-): Promise<LanguageService> {
+) =>: Promise<LanguageService> {
   const [fileNotifier, host] = await Promise.all([
     getNotifierByConnection(connection),
     getHostServices(),
@@ -70,7 +70,7 @@ async function connectToJSImportsService(
   return lspService || new NullLanguageService();
 }
 
-function createLanguageService(): AtomLanguageService<LanguageService> {
+const :[fn~\w+] = () =>: AtomLanguageService<LanguageService> {
   const diagnosticsConfig = {
     version: '0.2.0',
     analyticsEventName: 'jsimports.observe-diagnostics',
@@ -115,9 +115,9 @@ function createLanguageService(): AtomLanguageService<LanguageService> {
   );
 }
 
-function onDidInsertSuggestion({
+const :[fn~\w+] = ({
   suggestion,
-}: OnDidInsertSuggestionArgument): void {
+}: OnDidInsertSuggestionArgument) =>: void {
   const {
     description,
     displayText,
@@ -142,7 +142,7 @@ function onDidInsertSuggestion({
   });
 }
 
-function getAutoImportSettings() {
+const :[fn~\w+] = () => {
   // Currently, we will get the settings when the package is initialized. This
   // means that the user would need to restart Nuclide for a change in their
   // settings to take effect. In the future, we would most likely want to observe

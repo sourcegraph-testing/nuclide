@@ -17,19 +17,19 @@ import {getLogger} from 'log4js';
 
 const logger = getLogger('nuclide-blame-provider-hg');
 
-function canProvideBlameForEditor(editor: atom$TextEditor): boolean {
+const :[fn~\w+] = (editor: atom$TextEditor) =>: boolean {
   return Boolean(hgRepositoryForEditor(editor));
 }
 
-function getBlameForEditor(editor: atom$TextEditor): Promise<BlameForEditor> {
+const :[fn~\w+] = (editor: atom$TextEditor) =>: Promise<BlameForEditor> {
   return trackTiming('blame-provider-hg:getBlameForEditor', () =>
     doGetBlameForEditor(editor),
   );
 }
 
-async function doGetBlameForEditor(
+const :[fn~\w+] = async (
   editor: atom$TextEditor,
-): Promise<BlameForEditor> {
+) =>: Promise<BlameForEditor> {
   const path = editor.getPath();
   // flowlint-next-line sketchy-null-string:off
   if (!path) {

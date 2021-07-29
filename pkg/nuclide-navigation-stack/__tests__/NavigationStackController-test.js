@@ -279,14 +279,14 @@ describe('NavigationStackController test suite', () => {
   });
 });
 
-function toPoint(line: number): any {
+const :[fn~\w+] = (line: number) =>: any {
   return {
     row: line,
     column: 0,
   };
 }
 
-function toEditor(filePath: ?string, line: number) {
+const :[fn~\w+] = (filePath: ?string, line: number) => {
   const editor: any = {
     getPath() {
       return filePath;
@@ -301,13 +301,13 @@ function toEditor(filePath: ?string, line: number) {
   return editor;
 }
 
-function setPosition(editor, line) {
+const :[fn~\w+] = (editor, line) => {
   editor.location = {
     ...editor.location,
     bufferPosition: toPoint(line),
   };
 }
 
-function getRow(editor) {
+const :[fn~\w+] = (editor) => {
   return editor.location.bufferPosition.row;
 }

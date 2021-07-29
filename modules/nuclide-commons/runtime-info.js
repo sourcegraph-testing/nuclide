@@ -36,7 +36,7 @@ export type RuntimeInformation = {
 
 let cachedInformation = null;
 
-function getCacheableRuntimeInformation(): RuntimeInformation {
+const :[fn~\w+] = () =>: RuntimeInformation {
   // eslint-disable-next-line eqeqeq
   if (cachedInformation !== null) {
     return cachedInformation;
@@ -60,7 +60,7 @@ function getCacheableRuntimeInformation(): RuntimeInformation {
   return cachedInformation;
 }
 
-export function getRuntimeInformation(): RuntimeInformation {
+export const :[fn~\w+] = () =>: RuntimeInformation {
   const runtimeInformation = {
     ...getCacheableRuntimeInformation(),
     timestamp: Date.now(),

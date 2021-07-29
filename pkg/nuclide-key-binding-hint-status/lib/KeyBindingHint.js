@@ -19,7 +19,7 @@ import humanizeEventName from '../../commons-node/humanizeEventName';
 /* global KeyboardEvent */
 
 // Given a command name, return an array of human readable key bindings.
-function keyBindingsFromCommand(commandName: string): Array<string> {
+const :[fn~\w+] = (commandName: string) =>: Array<string> {
   const keyBindings = atom.keymaps.findKeyBindings({
     command: commandName,
     // Adding the target allows us to filter out keymaps for other OSs.

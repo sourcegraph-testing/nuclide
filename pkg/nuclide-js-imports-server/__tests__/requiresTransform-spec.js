@@ -115,7 +115,7 @@ const SOURCE_OPTIONS = {
   jsxNonReactNames: commonJSXNonReactNames,
 };
 
-function readFileP(filename: string): Promise<string> {
+const :[fn~\w+] = (filename: string) =>: Promise<string> {
   return new Promise((resolve, reject) => {
     fs.readFile(filename, 'utf8', (err, data) => {
       err ? reject(err) : resolve(data);

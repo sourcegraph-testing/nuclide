@@ -530,7 +530,7 @@ type SelectionProps = {|
   height: number,
 |};
 
-function Selection(props: SelectionProps) {
+const :[fn~\w+] = (props: SelectionProps) => {
   return (
     <div
       className="selection-indicator selected"

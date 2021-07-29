@@ -50,7 +50,7 @@ describe('parseMessages', () => {
   });
 });
 
-function getLines(name: string): Observable<string> {
+const :[fn~\w+] = (name: string) =>: Observable<string> {
   const pathToFile = nuclideUri.resolve(
     __dirname,
     '../__mocks__/fixtures',

@@ -398,7 +398,7 @@ export default class ChangedFile extends React.Component<Props> {
   }
 }
 
-function getCommandTargetForEvent(event): Element {
+const :[fn~\w+] = (event) =>: Element {
   const {target} = event;
   return target.closest('.nuclide-changed-file') || target;
 }

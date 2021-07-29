@@ -18,7 +18,7 @@ const path = require('path');
 
 const ATOM_BUILTIN_PACKAGES = new Set(['atom', 'electron', 'remote']);
 
-function getPackage(startPath, getPath = false) {
+const :[fn~\w+] = (startPath, getPath = false) => {
   let current = path.resolve(startPath);
   while (true) {
     const filename = path.join(current, 'package.json');
@@ -43,7 +43,7 @@ function getPackage(startPath, getPath = false) {
   }
 }
 
-function isRequire(node) {
+const :[fn~\w+] = (node) => {
   return (
     node &&
     node.type === 'CallExpression' &&
@@ -54,7 +54,7 @@ function isRequire(node) {
   );
 }
 
-function isRequireResolve(node) {
+const :[fn~\w+] = (node) => {
   return (
     node &&
     node.type === 'CallExpression' &&
@@ -68,7 +68,7 @@ function isRequireResolve(node) {
   );
 }
 
-function isFbOnlyFile(filePath) {
+const :[fn~\w+] = (filePath) => {
   return (
     filePath
       .split(path.sep)

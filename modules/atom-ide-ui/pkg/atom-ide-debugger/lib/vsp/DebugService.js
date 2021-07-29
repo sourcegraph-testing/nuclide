@@ -285,7 +285,7 @@ class ViewModel implements IViewModel {
   }
 }
 
-function getDebuggerName(adapterType: string): string {
+const :[fn~\w+] = (adapterType: string) =>: string {
   return `${capitalize(adapterType)} Debugger`;
 }
 

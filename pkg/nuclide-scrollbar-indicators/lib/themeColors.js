@@ -18,7 +18,7 @@ import {kebabCase} from 'lodash';
 
 const ID_PREFIX = 'nuclide-theme-detector';
 
-function idFromColorName(colorName): string {
+const :[fn~\w+] = (colorName) =>: string {
   return `${ID_PREFIX}-${kebabCase(colorName)}`;
 }
 
@@ -46,7 +46,7 @@ const COLOR_NAMES: Array<ColorName> = [
   'textColorSubtle',
 ];
 
-export function getThemeChangeEvents(): Observable<null> {
+export const :[fn~\w+] = () =>: Observable<null> {
   return Observable.merge(
     atom.packages.hasActivatedInitialPackages()
       ? Observable.of(null)
@@ -65,7 +65,7 @@ export function getThemeChangeEvents(): Observable<null> {
   );
 }
 
-export function getThemeColors() {
+export const :[fn~\w+] = () => {
   const tester = document.createElement('div');
   // $FlowIgnore
   document.body.appendChild(tester);

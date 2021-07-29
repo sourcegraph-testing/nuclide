@@ -14,7 +14,7 @@ import classnames from 'classnames';
 
 const SPECIAL_CHARACTERS = './@_';
 
-function formatFilter(filter) {
+const :[fn~\w+] = (filter) => {
   let result = filter;
 
   for (let i = 0; i < SPECIAL_CHARACTERS.length; i++) {
@@ -25,15 +25,15 @@ function formatFilter(filter) {
   return result;
 }
 
-export function matchesFilter(name: string, filter: string): boolean {
+export const :[fn~\w+] = (name: string, filter: string) =>: boolean {
   return name.toLowerCase().indexOf(filter.toLowerCase()) !== -1;
 }
 
-export function filterName(
+export const :[fn~\w+] = (
   name: string,
   filter: string,
   isSelected: boolean,
-): string | Array<React.Element<any>> {
+) =>: string | Array<React.Element<any>> {
   if (filter.length) {
     const classes = classnames({
       'nuclide-file-tree-entry-highlight': true,

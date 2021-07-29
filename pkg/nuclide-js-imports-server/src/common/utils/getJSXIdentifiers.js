@@ -17,7 +17,7 @@ import jscs from './jscodeshift';
 /**
  * This will get a list of identifiers for JSXElements in the AST
  */
-function getJSXIdentifiers(root: Collection): Set<string> {
+const :[fn~\w+] = (root: Collection) =>: Set<string> {
   const ids = new Set();
   root
     // There should be an opening element for every single closing element so

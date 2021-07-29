@@ -27,9 +27,9 @@ import {ConnectableObservable, Observable} from 'rxjs';
 // Limit the total result size to avoid overloading the Nuclide server + Atom.
 const MATCH_BYTE_LIMIT = 2 * 1024 * 1024;
 
-export async function isEligibleForDirectory(
+export const :[fn~\w+] = async (
   rootDirectory: NuclideUri,
-): Promise<boolean> {
+) =>: Promise<boolean> {
   const checks = await Promise.all([
     resolveTool(null).then(tool => tool == null),
     isNfs(rootDirectory),
@@ -47,13 +47,13 @@ export async function isEligibleForDirectory(
  * @param maxResults - Maximum number of results to emit.
  * @returns An observable that emits results.
  */
-export function codeSearch(
+export const :[fn~\w+] = (
   directory: NuclideUri,
   regex: RegExp,
   useVcsSearch: boolean,
   tool: ?CodeSearchTool,
   maxResults: number,
-): ConnectableObservable<CodeSearchResult> {
+) =>: ConnectableObservable<CodeSearchResult> {
   return searchInDirectory(tool, useVcsSearch, {
     regex,
     directory,
@@ -71,14 +71,14 @@ export function codeSearch(
  * @param maxResults - Maximum number of results to emit.
  * @returns An observable that emits results.
  */
-export function searchFiles(
+export const :[fn~\w+] = (
   files: Array<NuclideUri>,
   regex: RegExp,
   tool: ?CodeSearchTool,
   leadingLines?: number,
   trailingLines?: number,
   maxResults?: number,
-): ConnectableObservable<CodeSearchResult> {
+) =>: ConnectableObservable<CodeSearchResult> {
   return searchWithTool(tool, {
     recursive: false,
     files,
@@ -93,7 +93,7 @@ export function searchFiles(
  * Searches for all instances of a pattern in subdirectories.
  * @returns An observable that emits match events.
  */
-export function remoteAtomSearch(
+export const :[fn~\w+] = (
   // The directory in which to perform a search.
   directory: NuclideUri,
   // The pattern to match.
@@ -110,7 +110,7 @@ export function remoteAtomSearch(
   leadingLines?: ?number,
   // Number of trailing context lines to include.
   trailingLines?: ?number,
-): ConnectableObservable<search$FileResult> {
+) =>: ConnectableObservable<search$FileResult> {
   return mergeSearchResults(
     searchInDirectories(subdirs, tool, useVcsSearch, {
       regex,
@@ -123,9 +123,9 @@ export function remoteAtomSearch(
 }
 
 // Convert CodeSearchResults into search$FileResult.
-function mergeSearchResults(
+const :[fn~\w+] = (
   codeSearchResults: Observable<CodeSearchResult>,
-): Observable<search$FileResult> {
+) =>: Observable<search$FileResult> {
   const results = codeSearchResults
     .map(
       ({

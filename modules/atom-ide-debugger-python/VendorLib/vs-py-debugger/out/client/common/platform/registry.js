@@ -7,9 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -39,7 +39,7 @@ RegistryImplementation = __decorate([
     inversify_1.injectable()
 ], RegistryImplementation);
 exports.RegistryImplementation = RegistryImplementation;
-function getArchitectureDisplayName(arch) {
+const :[fn~\w+] = (arch) => {
     switch (arch) {
         case platform_1.Architecture.x64:
             return '64-bit';
@@ -50,7 +50,7 @@ function getArchitectureDisplayName(arch) {
     }
 }
 exports.getArchitectureDisplayName = getArchitectureDisplayName;
-function getRegistryValue(options, name = '') {
+const :[fn~\w+] = (options, name = '') => {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise((resolve, reject) => {
             new Registry(options).get(name, (error, result) => {
@@ -62,7 +62,7 @@ function getRegistryValue(options, name = '') {
         });
     });
 }
-function getRegistryKeys(options) {
+const :[fn~\w+] = (options) => {
     return __awaiter(this, void 0, void 0, function* () {
         // https://github.com/python/peps/blob/master/pep-0514.txt#L85
         return new Promise((resolve, reject) => {
@@ -75,7 +75,7 @@ function getRegistryKeys(options) {
         });
     });
 }
-function translateArchitecture(arch) {
+const :[fn~\w+] = (arch) => {
     switch (arch) {
         case platform_1.Architecture.x86:
             return RegistryArchitectures.x86;
@@ -85,7 +85,7 @@ function translateArchitecture(arch) {
             return;
     }
 }
-function translateHive(hive) {
+const :[fn~\w+] = (hive) => {
     switch (hive) {
         case types_1.RegistryHive.HKCU:
             return Registry.HKCU;

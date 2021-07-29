@@ -11,7 +11,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // tslint:disable:no-require-imports no-var-requires
 const opn = require('opn');
 const inversify_1 = require("inversify");
-function launch(url) {
+const :[fn~\w+] = (url) => {
     opn(url);
 }
 exports.launch = launch;

@@ -83,21 +83,21 @@ export type OutlineForUi =
       editor: atom$TextEditor,
     };
 
-export function createOutlines(
+export const :[fn~\w+] = (
   editorService: ActiveEditorRegistry<OutlineProvider, ?Outline>,
-): Observable<OutlineForUi> {
+) =>: Observable<OutlineForUi> {
   return outlinesForProviderResults(editorService.getResultsStream());
 }
 
-function outlinesForProviderResults(
+const :[fn~\w+] = (
   providerResults: Observable<Result<OutlineProvider, ?Outline>>,
-): Observable<OutlineForUi> {
+) =>: Observable<OutlineForUi> {
   return providerResults.switchMap(uiOutlinesForResult);
 }
 
-function uiOutlinesForResult(
+const :[fn~\w+] = (
   result: Result<OutlineProvider, ?Outline>,
-): Observable<OutlineForUi> {
+) =>: Observable<OutlineForUi> {
   switch (result.kind) {
     case 'not-text-editor':
       return Observable.of({kind: 'not-text-editor'});
@@ -128,10 +128,10 @@ function uiOutlinesForResult(
   }
 }
 
-function rootOutline(
+const :[fn~\w+] = (
   outline: Outline,
   editor: atom$TextEditor,
-): Observable<OutlineForUi> {
+) =>: Observable<OutlineForUi> {
   const nameOnly = featureConfig.get('atom-ide-outline-view.nameOnly');
   const outlineTrees = outline.outlineTrees.map(outlineTree =>
     treeToUiTree(outlineTree, Boolean(nameOnly)),
@@ -145,10 +145,10 @@ function rootOutline(
   }));
 }
 
-function treeToUiTree(
+const :[fn~\w+] = (
   outlineTree: OutlineTree,
   nameOnly: boolean,
-): OutlineTreeForUi {
+) =>: OutlineTreeForUi {
   const shortName = nameOnly && outlineTree.representativeName != null;
   return {
     icon: nameOnly ? undefined : outlineTree.icon,
@@ -164,10 +164,10 @@ function treeToUiTree(
   };
 }
 
-function getHighlightedPaths(
+const :[fn~\w+] = (
   outline: Outline,
   editor: atom$TextEditor,
-): Observable<Array<NodePath>> {
+) =>: Observable<Array<NodePath>> {
   return (
     getCursorPositions(editor)
       .debounceTime(OUTLINE_DEBOUNCE_DELAY)
@@ -180,15 +180,15 @@ function getHighlightedPaths(
   );
 }
 
-function highlightedPathsForOutline(
+const :[fn~\w+] = (
   outline: Outline,
   position: atom$Point,
-): Array<NodePath> {
+) =>: Array<NodePath> {
   const paths = [];
-  function findHighlightedNodes(
+  const :[fn~\w+] = (
     currentNode: OutlineTree,
     currentPath: NodePath,
-  ) {
+  ) => {
     if (shouldHighlightNode(currentNode, position)) {
       paths.push(currentPath);
     }
@@ -203,10 +203,10 @@ function highlightedPathsForOutline(
   return paths;
 }
 
-function shouldHighlightNode(
+const :[fn~\w+] = (
   outlineTree: OutlineTree,
   cursorLocation: atom$Point,
-): boolean {
+) =>: boolean {
   const {startPosition, endPosition} = outlineTree;
   if (endPosition == null) {
     return false;

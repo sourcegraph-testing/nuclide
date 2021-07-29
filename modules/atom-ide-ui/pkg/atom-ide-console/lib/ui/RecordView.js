@@ -206,7 +206,7 @@ export default class RecordView extends React.Component<Props> {
   };
 }
 
-function getHighlightClassName(level: Level): string {
+const :[fn~\w+] = (level: Level) =>: string {
   switch (level) {
     case 'info':
       return 'highlight-info';
@@ -221,7 +221,7 @@ function getHighlightClassName(level: Level): string {
   }
 }
 
-function getIconName(record: Record): ?string {
+const :[fn~\w+] = (record: Record) =>: ?string {
   switch (record.kind) {
     case 'request':
       return 'chevron-right';

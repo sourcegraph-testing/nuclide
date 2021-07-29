@@ -12,12 +12,12 @@
 /* global sessionStorage */
 /* eslint-disable no-console, nuclide-internal/no-commonjs */
 
-declare function waitsForPromise(
+declare const :[fn~\w+] = (
   optionsOrFunc:
     | {shouldReject?: boolean, timeout?: number}
     | (() => Promise<mixed>),
   func?: () => Promise<mixed>,
-): void;
+) =>: void;
 
 declare class Benchmark {
   description: string;
@@ -165,7 +165,7 @@ describe('Nuclide performance', () => {
   });
 });
 
-function getRunOptions(): RunOptions {
+const :[fn~\w+] = () =>: RunOptions {
   let benchmarks = [];
   // flowlint-next-line sketchy-null-string:off
   if (process.env.BENCHMARK) {
@@ -207,7 +207,7 @@ function getRunOptions(): RunOptions {
   return options;
 }
 
-function getTestState(): Object {
+const :[fn~\w+] = () =>: Object {
   const item = sessionStorage.getItem(RUN_STATE_KEY);
   // flowlint-next-line sketchy-null-string:off
   if (item) {
@@ -224,7 +224,7 @@ function getTestState(): Object {
   };
 }
 
-function setTestState(newState: Object): void {
+const :[fn~\w+] = (newState: Object) =>: void {
   const state = getTestState();
   for (const key in newState) {
     state[key] = newState[key];
@@ -232,7 +232,7 @@ function setTestState(newState: Object): void {
   sessionStorage.setItem(RUN_STATE_KEY, JSON.stringify(state));
 }
 
-function createResultDir(): string {
+const :[fn~\w+] = () =>: string {
   if (!fs.existsSync(RESULT_DIR_ROOT)) {
     fs.mkdirSync(RESULT_DIR_ROOT);
   }
@@ -241,18 +241,18 @@ function createResultDir(): string {
   return resultDir;
 }
 
-function createResultFile(
+const :[fn~\w+] = (
   resultDir: string,
   benchmark: {name?: string},
   columns: Array<string>,
-): string {
+) =>: string {
   // $FlowFixMe
   const resultFile = path.join(resultDir, benchmark.name + '.tsv');
   writeTsv(resultFile, columns);
   return resultFile;
 }
 
-function processResultFile(resultFile: string): string {
+const :[fn~\w+] = (resultFile: string) =>: string {
   // Aggregates on the first column, averaging the other columns.
   const {columns, records} = readAllTsv(resultFile);
   const processedResultFile = resultFile.replace(/\.tsv$/, '.processed.tsv');
@@ -264,12 +264,12 @@ function processResultFile(resultFile: string): string {
   return processedResultFile;
 }
 
-function getNextTestState(
+const :[fn~\w+] = (
   benchmarks: Array<string>,
   benchmark: Benchmark,
   iteration: number,
   repetition: number,
-): Object {
+) =>: Object {
   if (repetition < benchmark.repetitions - 1) {
     // There is another repetition of this iteration to do.
     return {repetition: repetition + 1};

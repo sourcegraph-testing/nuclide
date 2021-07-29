@@ -16,7 +16,7 @@ import {trackTiming} from 'nuclide-analytics';
 
 import type {NuclideUri} from 'nuclide-commons/nuclideUri';
 
-function copyAbsolutePath(): void {
+const :[fn~\w+] = () =>: void {
   trackOperation('copyAbsolutePath', () => {
     const uri = getCurrentNuclideUri();
     // flowlint-next-line sketchy-null-string:off
@@ -27,7 +27,7 @@ function copyAbsolutePath(): void {
   });
 }
 
-function copyProjectRelativePath(): void {
+const :[fn~\w+] = () =>: void {
   trackOperation('copyProjectRelativePath', () => {
     const uri = getCurrentNuclideUri();
     // flowlint-next-line sketchy-null-string:off
@@ -48,7 +48,7 @@ function copyProjectRelativePath(): void {
   });
 }
 
-function copyRepositoryRelativePath(): void {
+const :[fn~\w+] = () =>: void {
   trackOperation('copyRepositoryRelativePath', async () => {
     const uri = getCurrentNuclideUri();
     // flowlint-next-line sketchy-null-string:off
@@ -86,7 +86,7 @@ function copyRepositoryRelativePath(): void {
   });
 }
 
-function copyBasename(): void {
+const :[fn~\w+] = () =>: void {
   trackOperation('copyBasename', async () => {
     const uri = getCurrentNuclideUri();
     if (uri == null) {
@@ -99,7 +99,7 @@ function copyBasename(): void {
   });
 }
 
-function copyHostname(): void {
+const :[fn~\w+] = () =>: void {
   trackOperation('copyHostname', async () => {
     const uri = getCurrentNuclideUri();
     if (uri == null) {
@@ -114,14 +114,14 @@ function copyHostname(): void {
   });
 }
 
-function getRepositoryRelativePath(path: NuclideUri): ?string {
+const :[fn~\w+] = (path: NuclideUri) =>: ?string {
   // TODO(peterhal): repositoryForPath is the same as projectRelativePath
   // only less robust. We'll need a version of findHgRepository which is
   // aware of remote paths.
   return null;
 }
 
-async function getArcanistRelativePath(path: NuclideUri): Promise<?string> {
+const :[fn~\w+] = async (path: NuclideUri) =>: Promise<?string> {
   try {
     const {
       getArcanistServiceByNuclideUri,
@@ -134,12 +134,12 @@ async function getArcanistRelativePath(path: NuclideUri): Promise<?string> {
   }
 }
 
-function copyToClipboard(messagePrefix: string, value: string): void {
+const :[fn~\w+] = (messagePrefix: string, value: string) =>: void {
   atom.clipboard.write(value);
   notify(`${messagePrefix}: \`\`\`${value}\`\`\``);
 }
 
-function getCurrentNuclideUri(): ?NuclideUri {
+const :[fn~\w+] = () =>: ?NuclideUri {
   const editor = atom.workspace.getActiveTextEditor();
   if (!editor) {
     notify('Nothing copied. No active text editor.');
@@ -156,11 +156,11 @@ function getCurrentNuclideUri(): ?NuclideUri {
   return path;
 }
 
-function trackOperation(eventName: string, operation: () => mixed): void {
+const :[fn~\w+] = (eventName: string, operation: () => mixed) =>: void {
   trackTiming('nuclide-clipboard-path:' + eventName, operation);
 }
 
-function notify(message: string): void {
+const :[fn~\w+] = (message: string) =>: void {
   atom.notifications.addInfo(message);
 }
 
@@ -204,13 +204,13 @@ class Activation {
 
 let activation: ?Activation = null;
 
-export function activate(state: ?mixed): void {
+export const :[fn~\w+] = (state: ?mixed) =>: void {
   if (!activation) {
     activation = new Activation();
   }
 }
 
-export function deactivate(): void {
+export const :[fn~\w+] = () =>: void {
   if (activation) {
     activation.dispose();
     activation = null;

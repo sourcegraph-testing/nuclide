@@ -223,7 +223,7 @@ describe('HackSymbolProvider', () => {
   });
 });
 
-function createDummyHackService(): any {
+const :[fn~\w+] = () =>: any {
   return {
     supportsSymbolSearch(directories: Array<NuclideUri>): Promise<boolean> {
       throw new Error(

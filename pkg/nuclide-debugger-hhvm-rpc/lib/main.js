@@ -28,9 +28,9 @@ const DEFAULT_HHVM_PATH = '/usr/local/bin/hhvm';
 // which is loaded by the dummy request thread in the debugger backend.
 const DEFAULT_STARTUP_DOC_PATH = 'scripts/vsdebug_includes.php';
 
-export async function getDebuggerArgs(
+export const :[fn~\w+] = async (
   config: HHVMAttachConfig | HHVMLaunchConfig,
-): Promise<Object> {
+) =>: Promise<Object> {
   switch (config.action) {
     case 'launch':
       const launchConfig: HHVMLaunchConfig = (config: any);
@@ -43,7 +43,7 @@ export async function getDebuggerArgs(
   }
 }
 
-function _expandPath(path: string, cwd: string): string {
+const :[fn~\w+] = (path: string, cwd: string) =>: string {
   // Expand a path to interpret ~/ as home and ./ as relative
   // to the current working directory.
   return path.startsWith('./')
@@ -54,7 +54,7 @@ function _expandPath(path: string, cwd: string): string {
     : nuclideUri.expandHomeDir(path);
 }
 
-export async function getLaunchArgs(config: HHVMLaunchConfig): Promise<Object> {
+export const :[fn~\w+] = async (config: HHVMLaunchConfig) =>: Promise<Object> {
   const launchWrapperCommand =
     config.launchWrapperCommand != null &&
     config.launchWrapperCommand.trim() !== ''
@@ -126,7 +126,7 @@ export async function getLaunchArgs(config: HHVMLaunchConfig): Promise<Object> {
   };
 }
 
-async function _getHHVMLogFilePath(): Promise<string> {
+const :[fn~\w+] = async () =>: Promise<string> {
   const path = nuclideUri.join(
     os.tmpdir(),
     `nuclide-${os.userInfo().username}-logs`,
@@ -138,7 +138,7 @@ async function _getHHVMLogFilePath(): Promise<string> {
   return path;
 }
 
-async function _createLogFile(path: string): Promise<void> {
+const :[fn~\w+] = async (path: string) =>: Promise<void> {
   // Ensure the log file exists, and is write-able by everyone so that
   // HHVM, which is running as a different user, can append to it.
   const mode = 0o666;
@@ -151,7 +151,7 @@ async function _createLogFile(path: string): Promise<void> {
   } catch (_) {}
 }
 
-async function _rotateHHVMLogs(path: string): Promise<void> {
+const :[fn~\w+] = async (path: string) =>: Promise<void> {
   let fileStat;
   try {
     fileStat = await fsPromise.stat(path);
@@ -185,7 +185,7 @@ async function _rotateHHVMLogs(path: string): Promise<void> {
   }
 }
 
-export async function getHhvmStackTraces(): Promise<Array<string>> {
+export const :[fn~\w+] = async () =>: Promise<Array<string>> {
   try {
     // $FlowFB
     const fbConfig = require('./fbConfig');
@@ -194,7 +194,7 @@ export async function getHhvmStackTraces(): Promise<Array<string>> {
   return [];
 }
 
-export async function getDebugServerLog(): Promise<string> {
+export const :[fn~\w+] = async () =>: Promise<string> {
   try {
     return fsPromise.readFile(await _getHHVMLogFilePath(), 'utf8');
   } catch (error) {
@@ -202,7 +202,7 @@ export async function getDebugServerLog(): Promise<string> {
   }
 }
 
-async function _getAttachArgs(config: HHVMAttachConfig): Promise<Object> {
+const :[fn~\w+] = async (config: HHVMAttachConfig) =>: Promise<Object> {
   const startupDocumentPath: ?string = await _getStartupDocumentPath(config);
   const logFilePath = await _getHHVMLogFilePath();
 
@@ -241,9 +241,9 @@ async function _getAttachArgs(config: HHVMAttachConfig): Promise<Object> {
   };
 }
 
-async function _getStartupDocumentPath(
+const :[fn~\w+] = async (
   config: HHVMAttachConfig | HHVMLaunchConfig,
-): Promise<?string> {
+) =>: Promise<?string> {
   if (config.startupDocumentPath != null) {
     const configPath = nuclideUri.expandHomeDir(config.startupDocumentPath);
     if (await fsPromise.exists(configPath)) {
@@ -267,7 +267,7 @@ async function _getStartupDocumentPath(
   return null;
 }
 
-async function _getHhvmPath(config: HHVMLaunchConfig): Promise<string> {
+const :[fn~\w+] = async (config: HHVMLaunchConfig) =>: Promise<string> {
   // If the client specified an HHVM runtime path, and it exists, use that.
   if (config.hhvmRuntimePath != null && config.hhvmRuntimePath !== '') {
     const exists = await fsPromise.exists(config.hhvmRuntimePath);
@@ -285,7 +285,7 @@ async function _getHhvmPath(config: HHVMLaunchConfig): Promise<string> {
   }
 }
 
-export async function getAttachTargetList(): Promise<
+export const :[fn~\w+] = async () =>: Promise<
   Array<{pid: number, command: string}>,
 > {
   const commands = await runCommand(
@@ -308,9 +308,9 @@ export async function getAttachTargetList(): Promise<
     });
 }
 
-export async function terminateHhvmWrapperProcesses(
+export const :[fn~\w+] = async (
   pid: number,
-): Promise<void> {
+) =>: Promise<void> {
   if (!Number.isNaN(pid) && pid > 0) {
     process.kill(pid, 'SIGKILL');
   } else {

@@ -213,7 +213,7 @@ export class Tree extends React.Component<TreeProps, TreeState> {
   }
 }
 
-function AbstractTreeItem({
+const :[fn~\w+] = ({
   className,
   collapsedPaths,
   focusedPath,
@@ -237,7 +237,7 @@ function AbstractTreeItem({
   node: TreeNode,
   path: NodePath,
   selectedPaths: Array<NodePath>,
-}): React.Node {
+}) =>: React.Node {
   if (node.hidden) {
     return null;
   }
@@ -483,7 +483,7 @@ class NestedTreeItem extends React.Component<NestedTreeItemProps> {
   }
 }
 
-function selectNodeAtPath(roots: Array<TreeNode>, path: NodePath): ?TreeNode {
+const :[fn~\w+] = (roots: Array<TreeNode>, path: NodePath) =>: ?TreeNode {
   if (path.length === 0) {
     return;
   }
@@ -496,11 +496,11 @@ function selectNodeAtPath(roots: Array<TreeNode>, path: NodePath): ?TreeNode {
   return node;
 }
 
-function getNextNodePath(
+const :[fn~\w+] = (
   roots: Array<TreeNode>,
   path: NodePath,
   collapsedPaths: Array<NodePath>,
-): ?NodePath {
+) =>: ?NodePath {
   if (path.length === 0) {
     return null;
   }
@@ -530,11 +530,11 @@ function getNextNodePath(
   return findNextSibling(roots, path, collapsedPaths);
 }
 
-function findNextSibling(
+const :[fn~\w+] = (
   roots: Array<TreeNode>,
   path: NodePath,
   collapsedPaths: Array<NodePath>,
-): ?NodePath {
+) =>: ?NodePath {
   if (path.length === 0) {
     return null;
   }
@@ -555,11 +555,11 @@ function findNextSibling(
   return findNextSibling(roots, leadingIndexes, collapsedPaths);
 }
 
-function getPrevNodePath(
+const :[fn~\w+] = (
   roots: Array<TreeNode>,
   path: NodePath,
   collapsedPaths: Array<NodePath>,
-): ?NodePath {
+) =>: ?NodePath {
   if (path.length === 0) {
     return null;
   }
@@ -602,6 +602,6 @@ function getPrevNodePath(
   }
 }
 
-function parsePx(px: string): number {
+const :[fn~\w+] = (px: string) =>: number {
   return px.length === 0 ? 0 : Number(px.replace('px', ''));
 }

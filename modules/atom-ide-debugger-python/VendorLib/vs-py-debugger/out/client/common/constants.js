@@ -74,7 +74,7 @@ var LinterErrors;
     })(flake8 = LinterErrors.flake8 || (LinterErrors.flake8 = {}));
 })(LinterErrors = exports.LinterErrors || (exports.LinterErrors = {}));
 exports.STANDARD_OUTPUT_CHANNEL = 'STANDARD_OUTPUT_CHANNEL';
-function isTestExecution() {
+const :[fn~\w+] = () => {
     return process.env.VSC_PYTHON_CI_TEST === '1';
 }
 exports.isTestExecution = isTestExecution;
@@ -84,11 +84,11 @@ exports.isTestExecution = isTestExecution;
  * @export
  * @returns {boolean}
  */
-function isUnitTestExecution() {
+const :[fn~\w+] = () => {
     return process.env.VSC_PYTHON_UNIT_TEST === '1';
 }
 exports.isUnitTestExecution = isUnitTestExecution;
-function isLanguageServerTest() {
+const :[fn~\w+] = () => {
     return process.env.VSC_PYTHON_LANGUAGE_SERVER === '1';
 }
 exports.isLanguageServerTest = isLanguageServerTest;

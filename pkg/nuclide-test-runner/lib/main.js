@@ -30,7 +30,7 @@ const FILE_TREE_CONTEXT_MENU_PRIORITY = 200;
  *     > limitString('foobar', 4)
  *     'fo…ar'
  */
-function limitString(str: string, length?: number = 20): string {
+const :[fn~\w+] = (str: string, length?: number = 20) =>: string {
   const strLength = str.length;
   return strLength > length
     ? `${str.substring(0, length / 2)}…${str.substring(

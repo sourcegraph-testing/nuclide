@@ -35,7 +35,7 @@ export type Settings = {
   requiresFormatRequires: boolean,
 };
 
-export function getDefaultSettings(): Settings {
+export const :[fn~\w+] = () =>: Settings {
   return {
     aliases: [['Immutable', 'immutable'], ['fbt', 'fbt']],
     alwaysAddMissingNames: [],
@@ -53,7 +53,7 @@ export function getDefaultSettings(): Settings {
   };
 }
 
-function createModuleMap(options) {
+const :[fn~\w+] = (options) => {
   return new ModuleMapClass(options);
 }
 
@@ -66,7 +66,7 @@ const defaultBuiltInTypes = Array.from(builtInTypes);
  * Calculates the current options according to the Nuclide configuration object.
  * This may get expensive in the future as the module map becomes smarter.
  */
-export function calculateOptions(settings: Settings): SourceOptions {
+export const :[fn~\w+] = (settings: Settings) =>: SourceOptions {
   return {
     blacklist: calculateBlacklist(settings),
     dontAddMissing: true,
@@ -79,7 +79,7 @@ export function calculateOptions(settings: Settings): SourceOptions {
 /**
  * Calculates a module map from the settings.
  */
-function calculateModuleMap(settings: Settings): ModuleMap {
+const :[fn~\w+] = (settings: Settings) =>: ModuleMap {
   // Construct the aliases.
   const aliases = new Map(settings.aliases);
   for (const entry of defaultAliases) {
@@ -115,7 +115,7 @@ function calculateModuleMap(settings: Settings): ModuleMap {
 /**
  * Calculates the blacklist from the settings.
  */
-function calculateBlacklist(settings: Settings): Set<TransformKey> {
+const :[fn~\w+] = (settings: Settings) =>: Set<TransformKey> {
   const blacklist = new Set();
   if (!settings.nuclideFixHeader) {
     blacklist.add('nuclide.fixHeader');

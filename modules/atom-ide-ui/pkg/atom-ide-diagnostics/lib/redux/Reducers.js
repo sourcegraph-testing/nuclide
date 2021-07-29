@@ -26,10 +26,10 @@ import * as Actions from './Actions';
 
 const MAX_MESSAGE_COUNT_PER_PROVIDER_PER_FILE = 1000;
 
-export function messages(
+export const :[fn~\w+] = (
   state: MessagesState = new Map(),
   action: Action,
-): MessagesState {
+) =>: MessagesState {
   switch (action.type) {
     case Actions.UPDATE_MESSAGES: {
       const {provider, update} = action.payload;
@@ -133,20 +133,20 @@ export function messages(
   return state;
 }
 
-export function codeActionFetcher(
+export const :[fn~\w+] = (
   state: ?CodeActionFetcher = null,
   action: Action,
-): ?CodeActionFetcher {
+) =>: ?CodeActionFetcher {
   if (action.type === Actions.SET_CODE_ACTION_FETCHER) {
     return action.payload.codeActionFetcher;
   }
   return state;
 }
 
-export function codeActionsForMessage(
+export const :[fn~\w+] = (
   state: CodeActionsState = new Map(),
   action: Action,
-): CodeActionsState {
+) =>: CodeActionsState {
   if (action.type === Actions.SET_CODE_ACTIONS) {
     state.forEach(codeActions => {
       codeActions.forEach(codeAction => codeAction.dispose());
@@ -156,10 +156,10 @@ export function codeActionsForMessage(
   return state;
 }
 
-export function descriptions(
+export const :[fn~\w+] = (
   state: DescriptionsState = new Map(),
   action: Action,
-): DescriptionsState {
+) =>: DescriptionsState {
   if (action.type === Actions.SET_DESCRIPTIONS) {
     if (!action.payload.keepDescriptions) {
       return action.payload.descriptions;
@@ -169,10 +169,10 @@ export function descriptions(
   return state;
 }
 
-export function providers(
+export const :[fn~\w+] = (
   state: Set<ObservableDiagnosticProvider> = new Set(),
   action: Action,
-): Set<ObservableDiagnosticProvider> {
+) =>: Set<ObservableDiagnosticProvider> {
   switch (action.type) {
     case Actions.ADD_PROVIDER: {
       const nextState = new Set(state);
@@ -188,10 +188,10 @@ export function providers(
   return state;
 }
 
-export function lastUpdateSource(
+export const :[fn~\w+] = (
   state: LastUpdateSource = 'Provider',
   action: Action,
-): LastUpdateSource {
+) =>: LastUpdateSource {
   switch (action.type) {
     case Actions.UPDATE_MESSAGES: {
       return 'Provider';
@@ -219,7 +219,7 @@ function mapDelete<K, V>(map: Map<K, V>, key: K): Map<K, V> {
 /**
  * Mark all messages on the provided filepath stale
  */
-function markStaleMessages(state: MessagesState, filePath: NuclideUri) {
+const :[fn~\w+] = (state: MessagesState, filePath: NuclideUri) => {
   const nextState = new Map(state);
   nextState.forEach((fileToMessages, provider) => {
     const newFileToMessages = new Map(fileToMessages);
@@ -236,9 +236,9 @@ function markStaleMessages(state: MessagesState, filePath: NuclideUri) {
   return nextState;
 }
 
-function sortUpdateMessages(
+const :[fn~\w+] = (
   update: DiagnosticProviderUpdate,
-): DiagnosticProviderUpdate {
+) =>: DiagnosticProviderUpdate {
   const newUpdate = new Map();
   for (const [filePath, updateMessages] of update) {
     newUpdate.set(

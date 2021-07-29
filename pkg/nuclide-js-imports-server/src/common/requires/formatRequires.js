@@ -104,7 +104,7 @@ const CONFIG: Array<ConfigEntry> = [
  * Array and object destructures are also valid left hand sides. Object patterns
  * are sorted.
  */
-function formatRequires(root: Collection, options: SourceOptions): void {
+const :[fn~\w+] = (root: Collection, options: SourceOptions) =>: void {
   const first = FirstNode.get(root);
   if (!first) {
     return;
@@ -146,7 +146,7 @@ function formatRequires(root: Collection, options: SourceOptions): void {
 /**
  * Tests if a variable declaration is a valid require declaration.
  */
-function isValidRequireDeclaration(node: Node): boolean {
+const :[fn~\w+] = (node: Node) =>: boolean {
   if (!hasOneRequireDeclarationOrModuleImport(node)) {
     return false;
   }
@@ -167,22 +167,22 @@ function isValidRequireDeclaration(node: Node): boolean {
   return false;
 }
 
-function isCapitalizedRequireName(node: Node, options: SourceOptions): boolean {
+const :[fn~\w+] = (node: Node, options: SourceOptions) =>: boolean {
   return isCapitalized(getModuleName(node.declarations[0].init));
 }
 
-function isCapitalizedImportName(node: Node, options: SourceOptions): boolean {
+const :[fn~\w+] = (node: Node, options: SourceOptions) =>: boolean {
   return isCapitalized(normalizeModuleName(getModuleName(node), options));
 }
 
-function normalizedRequireSource(node: Node, options: SourceOptions): string {
+const :[fn~\w+] = (node: Node, options: SourceOptions) =>: string {
   return normalizeModuleName(
     tagPatternRequire(getModuleName(node.declarations[0].init), node),
     options,
   );
 }
 
-function getModuleName(requireNode: Node): string {
+const :[fn~\w+] = (requireNode: Node) =>: string {
   let rhs = requireNode;
   const names = [];
   while (true) {
@@ -206,18 +206,18 @@ function getModuleName(requireNode: Node): string {
   return names.join('.');
 }
 
-function normalizeModuleName(name: string, options: SourceOptions): string {
+const :[fn~\w+] = (name: string, options: SourceOptions) =>: string {
   return options.moduleMap.getAlias(name);
 }
 
 // Tag pattern requires so they are not mangled by normal id requires,
 // and to make the ordering deterministic
-function tagPatternRequire(name: string, node: Node): string {
+const :[fn~\w+] = (name: string, node: Node) =>: string {
   const tag = jscs.Identifier.check(node.declarations[0].id) ? '' : '|PATTERN';
   return name + tag;
 }
 
-function isBareImport(importNode: Node): boolean {
+const :[fn~\w+] = (importNode: Node) =>: boolean {
   return importNode.specifiers.length === 0;
 }
 

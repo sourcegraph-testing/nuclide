@@ -156,7 +156,7 @@ documents.onDidClose(params => {
   connection.sendDiagnostics({uri: params.textDocument.uri, diagnostics: []});
 });
 
-function findAndSendDiagnostics(text: string, uri: NuclideUri): void {
+const :[fn~\w+] = (text: string, uri: NuclideUri) =>: void {
   if (shouldProvideFlags.diagnostics) {
     const diagnosticsForFile = diagnostics.findDiagnosticsForFile(text, uri);
     connection.sendDiagnostics({
@@ -220,11 +220,11 @@ connection.onWorkspaceSymbol(
 documents.listen(connection);
 connection.listen();
 
-function getAllTriggerCharacters(): Array<string> {
+const :[fn~\w+] = () =>: Array<string> {
   return [' ', '{', '}', '='];
 }
 
-function shouldProvideDiagnostics(params: Object, root: NuclideUri): boolean {
+const :[fn~\w+] = (params: Object, root: NuclideUri) =>: boolean {
   const diagnosticsWhitelist =
     idx(params, _ => _.initializationOptions.diagnosticsWhitelist) || [];
   return diagnosticsWhitelist.length !== 0
@@ -232,7 +232,7 @@ function shouldProvideDiagnostics(params: Object, root: NuclideUri): boolean {
     : Settings.shouldProvideDiagnosticsDefault;
 }
 
-function shouldUseRequires(params: Object, root: NuclideUri): boolean {
+const :[fn~\w+] = (params: Object, root: NuclideUri) =>: boolean {
   const requiresWhitelist =
     idx(params, _ => _.initializationOptions.requiresWhitelist) || [];
   return requiresWhitelist.some(regex => root.match(new RegExp(regex)));

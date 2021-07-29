@@ -13,7 +13,7 @@ import type {HealthStats} from './types';
 
 import os from 'os';
 
-export default function getStats(): HealthStats {
+export default const :[fn~\w+] = () =>: HealthStats {
   const stats = process.memoryUsage(); // RSS, heap and usage.
   const activeHandles = getActiveHandles();
   const activeHandlesByType = getActiveHandlesByType(Array.from(activeHandles));
@@ -29,14 +29,14 @@ export default function getStats(): HealthStats {
 }
 
 // These two functions are to defend against undocumented Node functions.
-function getActiveHandles(): Array<Object> {
+const :[fn~\w+] = () =>: Array<Object> {
   // $FlowFixMe: Private method
   return process._getActiveHandles();
 }
 
-function getActiveHandlesByType(
+const :[fn~\w+] = (
   handles: Array<Object>,
-): {[type: string]: Array<Object>} {
+) =>: {[type: string]: Array<Object>} {
   const activeHandlesByType = {
     childprocess: [],
     tlssocket: [],
@@ -53,7 +53,7 @@ function getActiveHandlesByType(
 }
 
 // Returns a list of handles which are not children of others (i.e. sockets as process pipes).
-function getTopLevelHandles(handles: Array<Object>): Array<Object> {
+const :[fn~\w+] = (handles: Array<Object>) =>: Array<Object> {
   const topLevelHandles: Array<Object> = [];
   const seen: Set<Object> = new Set();
   handles.forEach(handle => {
@@ -74,7 +74,7 @@ function getTopLevelHandles(handles: Array<Object>): Array<Object> {
   return topLevelHandles;
 }
 
-function getActiveRequests(): Array<Object> {
+const :[fn~\w+] = () =>: Array<Object> {
   // $FlowFixMe: Private method.
   return process._getActiveRequests();
 }

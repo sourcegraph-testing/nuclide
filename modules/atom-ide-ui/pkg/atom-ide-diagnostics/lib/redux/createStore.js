@@ -32,10 +32,10 @@ import {Observable} from 'rxjs';
 // accepts a fix and the diagnostic (hopefully) disappears as a result.
 const THROTTLE_MESSAGES_WITH_FIXES = 300;
 
-export default function createStore(
+export default const :[fn~\w+] = (
   messageRangeTracker: MessageRangeTracker,
   initialState: AppState = INITIAL_STATE,
-): Store {
+) =>: Store {
   const rootEpic = (actions, store) =>
     combineEpicsFromImports(Epics, 'atom-ide-diagnostics')(actions, store, {
       messageRangeTracker,
@@ -71,9 +71,9 @@ const INITIAL_STATE = {
   lastUpdateSource: 'Provider',
 };
 
-function observeAllMessagesWithFixes(
+const :[fn~\w+] = (
   store: Store,
-): Observable<Set<DiagnosticMessage>> {
+) =>: Observable<Set<DiagnosticMessage>> {
   return (
     observableFromReduxStore(store)
       .map(state => state.messages)

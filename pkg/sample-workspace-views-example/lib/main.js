@@ -19,13 +19,13 @@ import * as React from 'react';
 
 let disposables: ?UniversalDisposable = null;
 
-export function activate() {
+export const :[fn~\w+] = () => {
   disposables = registerCommandAndOpener();
 }
 
 // This example shows two different ways to create a gadget: ExampleGadgetA stores its state in a
 // separate model object while ExampleGadgetB stores its state in a React element.
-function registerCommandAndOpener(): UniversalDisposable {
+const :[fn~\w+] = () =>: UniversalDisposable {
   return new UniversalDisposable(
     // Option A
     atom.workspace.addOpener(uri => {
@@ -58,15 +58,15 @@ function registerCommandAndOpener(): UniversalDisposable {
   );
 }
 
-export function deserializeExampleGadgetA() {
+export const :[fn~\w+] = () => {
   return new ExampleGadgetA();
 }
 
-export function deserializeExampleGadgetB() {
+export const :[fn~\w+] = () => {
   return viewableFromReactElement(<ExampleGadgetB />);
 }
 
-export function deactivate(): void {
+export const :[fn~\w+] = () =>: void {
   invariant(disposables != null);
   disposables.dispose();
   disposables = null;

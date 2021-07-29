@@ -18,7 +18,7 @@ import TestUtils from 'react-dom/test-utils';
 
 let hostEl;
 
-function createWithProps(props) {
+const :[fn~\w+] = (props) => {
   return ReactDOM.render(<Checkbox {...props} />, nullthrows(hostEl));
 }
 

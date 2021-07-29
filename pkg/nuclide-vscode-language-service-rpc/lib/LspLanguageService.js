@@ -2883,11 +2883,11 @@ class JsonRpcTraceLogger {
   }
 }
 
-function createOutlineTreeHierarchy(
+const :[fn~\w+] = (
   list: Array<[SymbolInformation, OutlineTree]>,
   reconstructOutlineStrategy: ?string,
   logger: MemoryLogger,
-): OutlineTree {
+) =>: OutlineTree {
   // Sorting the list of symbols is the first thing we do! First, sort by start
   // location (smallest first) and within that by end location (largest first).
   // This results in our list being a pre-order flattening of the tree.

@@ -49,7 +49,7 @@ const CONFIG = {
  * Returns a client and server transports connected, which can be used to
  * simulate a BigDig connection.
  */
-function createTransport() {
+const :[fn~\w+] = () => {
   const clientStream = new Subject();
   const serverStream = new Subject();
   return {
@@ -76,7 +76,7 @@ function createTransport() {
  * Returns a Thrift Client Manager which the client and server lives in the
  * same computer.
  */
-function createThriftManager() {
+const :[fn~\w+] = () => {
   const tunnelTransport = createTransport();
   const thriftTransport = createTransport();
 
@@ -100,16 +100,16 @@ function createThriftManager() {
 // To avoid exposing implementation detail, this test passes a unique value
 // in the command arguments to later use it to check if the thrift server is
 // running after all clients are closed.
-async function getProcessPidByCommandArgument(
+const :[fn~\w+] = async (
   commandArgument: string,
-): Promise<?number> {
+) =>: Promise<?number> {
   const processes = await psTree();
   return processes
     .filter(p => p.commandWithArgs.includes(commandArgument))
     .map(p => p.pid)[0];
 }
 
-async function isServerRunning(commandArgument: string): Promise<boolean> {
+const :[fn~\w+] = async (commandArgument: string) =>: Promise<boolean> {
   return (await getProcessPidByCommandArgument(commandArgument)) != null;
 }
 

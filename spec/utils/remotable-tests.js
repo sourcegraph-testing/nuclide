@@ -118,7 +118,7 @@ class RemoteTestContext {
   }
 }
 
-function getDescribeFunction(focus: boolean): Function {
+const :[fn~\w+] = (focus: boolean) =>: Function {
   // Guard against `fdescribe` usages in prod.
   if (focus && process.env.SANDCASTLE === '1') {
     fdescribe('Invalid usage of `focus` in production', () => {
@@ -141,30 +141,30 @@ function getDescribeFunction(focus: boolean): Function {
 // Warning: running both tests in the same Atom instance may cause failures if the tests rely on
 // some state that is not cleared. In that case, use describeRemote and describeLocal, below, in two
 // separate integration test files.
-export function describeRemotableTest(
+export const :[fn~\w+] = (
   testName: string,
   testDescription: (context: TestContext) => void,
   focus?: boolean = false,
-): void {
+) =>: void {
   describeLocal(testName, testDescription, focus);
   describeRemote(testName, testDescription, focus);
 }
 
-export function describeRemote(
+export const :[fn~\w+] = (
   testName: string,
   testDescription: (context: TestContext) => void,
   focus?: boolean = false,
-): void {
+) =>: void {
   getDescribeFunction(focus)('Remote ' + testName, () => {
     testDescription(new RemoteTestContext());
   });
 }
 
-export function describeLocal(
+export const :[fn~\w+] = (
   testName: string,
   testDescription: (context: TestContext) => void,
   focus?: boolean = false,
-): void {
+) =>: void {
   getDescribeFunction(focus)('Local ' + testName, () => {
     testDescription(new LocalTestContext());
   });

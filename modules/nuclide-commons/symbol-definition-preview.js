@@ -24,15 +24,15 @@ type Definition = {
 const MAX_PREVIEW_LINES = 10;
 const MAX_FILESIZE = 100000;
 const WHITESPACE_REGEX = /^\s*/;
-function getIndentLevel(line: string) {
+const :[fn~\w+] = (line: string) => {
   // $FlowFixMe (>= v0.75.0)
   const match: RegExp$matchResult = WHITESPACE_REGEX.exec(line);
   return match[0].length;
 }
 
-export async function getDefinitionPreview(
+export const :[fn~\w+] = async (
   definition: Definition,
-): Promise<?{
+) =>: Promise<?{
   mime: string,
   contents: string,
   encoding: string,

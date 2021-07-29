@@ -19,10 +19,10 @@ const {match} = jscs;
  * This traverses a node to find the first identifier in nested expressions,
  * returning its name and parent node (if applicable).
  */
-function getRootIdentifierInExpression(
+const :[fn~\w+] = (
   node: ?Node,
   parent?: Node,
-): ?{name: string, parent: ?Node} {
+) =>: ?{name: string, parent: ?Node} {
   if (!node) {
     return null;
   }

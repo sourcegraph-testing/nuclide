@@ -13,9 +13,9 @@ import nuclideUri from 'nuclide-commons/nuclideUri';
 import {isSourceFile, getFileBasename, isHeaderFile} from '../utils';
 import {searchFileWithBasename} from './common';
 
-function getFrameworkStructureFromSourceDir(
+const :[fn~\w+] = (
   dir: string,
-): ?{
+) =>: ?{
   frameworkPath: string,
   frameworkName: string,
   frameworkSubFolder: string,
@@ -41,9 +41,9 @@ function getFrameworkStructureFromSourceDir(
   };
 }
 
-function getFrameworkStructureFromHeaderDir(
+const :[fn~\w+] = (
   dir: string,
-): ?{
+) =>: ?{
   frameworkPath: string,
   frameworkName: string,
   frameworkSubFolder: string,
@@ -71,9 +71,9 @@ function getFrameworkStructureFromHeaderDir(
   };
 }
 
-export async function getRelatedHeaderForSourceFromFramework(
+export const :[fn~\w+] = async (
   src: string,
-): Promise<?string> {
+) =>: Promise<?string> {
   const frameworkStructure = getFrameworkStructureFromSourceDir(
     nuclideUri.dirname(src),
   );
@@ -99,9 +99,9 @@ export async function getRelatedHeaderForSourceFromFramework(
   return headers.find(file => file != null);
 }
 
-export async function getRelatedSourceForHeaderFromFramework(
+export const :[fn~\w+] = async (
   header: string,
-): Promise<?string> {
+) =>: Promise<?string> {
   const frameworkStructure = getFrameworkStructureFromHeaderDir(
     nuclideUri.dirname(header),
   );

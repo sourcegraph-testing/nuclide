@@ -26,23 +26,23 @@ const WATCH_CONFIG_ARGS_KEY = 'nuclide-buck.watchConfigArgs';
 
 type WatchConfigSetting = 'Prompt' | 'Always' | 'Never';
 
-function readWatchConfig(): WatchConfigSetting {
+const :[fn~\w+] = () =>: WatchConfigSetting {
   // $FlowIgnore: type is guarded by write function and package.json.
   const watch = (featureConfig.get(WATCH_CONFIG_ARGS_KEY): any);
   return watch != null ? watch : 'Prompt';
 }
 
-function writeWatchConfig(setting: WatchConfigSetting): void {
+const :[fn~\w+] = (setting: WatchConfigSetting) =>: void {
   track('buck-watch-config.set', {setting});
   featureConfig.set(WATCH_CONFIG_ARGS_KEY, setting);
 }
 
 // Return whether the user elects to automatically update the compilation
 // database arguments with detected config settings.
-function promptConfigChange(
+const :[fn~\w+] = (
   prevConfigArgs: ?Array<string>,
   nextConfigArgs: Array<string>,
-): Promise<boolean> {
+) =>: Promise<boolean> {
   const watchSetting = readWatchConfig();
   if (
     nextConfigArgs.findIndex(arg => arg.startsWith('client.id')) !== -1 ||
@@ -89,9 +89,9 @@ function promptConfigChange(
   }
 }
 
-function promptTaskRunner(args: Array<string>): Promise<boolean> {
+const :[fn~\w+] = (args: Array<string>) =>: Promise<boolean> {
   return new Promise((resolve, reject) => {
-    function dismiss() {
+    const :[fn~\w+] = () => {
       notification.dismiss();
       featureConfig.set(CONFIG_KEY, false);
     }
@@ -133,11 +133,11 @@ function promptTaskRunner(args: Array<string>): Promise<boolean> {
   });
 }
 
-export function observeBuildCommands(
+export const :[fn~\w+] = (
   buckRoot: NuclideUri,
   currentTaskSettings: () => TaskSettings,
   currentUnsanitizedTaskSettings: () => UnsanitizedTaskSettings,
-): Observable<Action> {
+) =>: Observable<Action> {
   // Check the most recent Buck log at a fixed interval to check for
   // Buck command invocations.
   // We can't use Watchman because these logs are typically ignored.

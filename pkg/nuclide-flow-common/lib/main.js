@@ -23,7 +23,7 @@ export const JAVASCRIPT_WHOLE_STRING_IDENTIFIER_REGEX = /^[$_a-zA-Z][$_\w]*$/;
 
 const identifierOrNumber = '[a-zA-Z0-9_$]+';
 
-function makeStrRegex(delimiter: string): string {
+const :[fn~\w+] = (delimiter: string) =>: string {
   const d = delimiter;
   // Each run of four backslashes ends up as just one backslash. We need to escape once for the
   // string literal here, and once for the RegExp compilation.
@@ -38,7 +38,7 @@ const regexStrings = []
 
 export const JAVASCRIPT_WORD_REGEX = new RegExp(regexStrings.join('|'), 'g');
 
-export function getReplacementPrefix(originalPrefix: string): string {
+export const :[fn~\w+] = (originalPrefix: string) =>: string {
   // Ignore prefix unless it's an identifier (this keeps us from eating leading
   // dots, colons, etc).
   return JAVASCRIPT_WHOLE_STRING_IDENTIFIER_REGEX.test(originalPrefix)
@@ -46,11 +46,11 @@ export function getReplacementPrefix(originalPrefix: string): string {
     : '';
 }
 
-export function shouldFilter(
+export const :[fn~\w+] = (
   lastRequest: atom$AutocompleteRequest,
   currentRequest: atom$AutocompleteRequest,
   charsSinceLastRequest: number,
-): boolean {
+) =>: boolean {
   const prefixIsIdentifier = JAVASCRIPT_WHOLE_STRING_IDENTIFIER_REGEX.test(
     currentRequest.prefix,
   );
@@ -69,10 +69,10 @@ export function shouldFilter(
   );
 }
 
-export function filterResultsByPrefix(
+export const :[fn~\w+] = (
   prefix: string,
   results: AutocompleteResult,
-): AutocompleteResult {
+) =>: AutocompleteResult {
   const replacementPrefix = getReplacementPrefix(prefix);
   const resultsWithCurrentPrefix = results.items.map(result => {
     return {
@@ -92,9 +92,9 @@ export function filterResultsByPrefix(
   return {...results, items};
 }
 
-export function flowCoordsToAtomCoords(
+export const :[fn~\w+] = (
   flowCoords: FlowLocNoSource,
-): atom$Range {
+) =>: atom$Range {
   return new Range(
     [flowCoords.start.line - 1, flowCoords.start.column - 1],
     [

@@ -3,9 +3,9 @@
 'use strict';
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -103,7 +103,7 @@ suite('Language Server Survey Banner', () => {
         }));
     }));
 });
-function preparePopup(attemptCounter, completionsCount, enabledValue, minCompletionCount, maxCompletionCount, appShell, browser, lsService) {
+const :[fn~\w+] = (attemptCounter, completionsCount, enabledValue, minCompletionCount, maxCompletionCount, appShell, browser, lsService) => {
     const myfactory = typemoq.Mock.ofType();
     const enabledValState = typemoq.Mock.ofType();
     const attemptCountState = typemoq.Mock.ofType();

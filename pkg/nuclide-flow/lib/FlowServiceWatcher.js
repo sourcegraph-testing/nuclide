@@ -59,7 +59,7 @@ export class FlowServiceWatcher {
   }
 }
 
-async function handleFailure(pathToRoot: NuclideUri): Promise<void> {
+const :[fn~\w+] = async (pathToRoot: NuclideUri) =>: Promise<void> {
   const buttons = [
     {
       className: 'icon icon-zap',
@@ -96,7 +96,7 @@ async function handleFailure(pathToRoot: NuclideUri): Promise<void> {
   );
 }
 
-function handleNotInstalled(pathToRoot: NuclideUri): void {
+const :[fn~\w+] = (pathToRoot: NuclideUri) =>: void {
   if (!featureConfig.get(WARN_NOT_INSTALLED_CONFIG)) {
     return;
   }

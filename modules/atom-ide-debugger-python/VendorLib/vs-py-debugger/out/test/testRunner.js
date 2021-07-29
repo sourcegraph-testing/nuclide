@@ -23,7 +23,7 @@ let mocha = new Mocha({
 });
 let testFilesGlob = 'test';
 let coverageOptions;
-function configure(setupOptions, coverageOpts) {
+const :[fn~\w+] = (setupOptions, coverageOpts) => {
     if (setupOptions.testFilesSuffix) {
         testFilesGlob = setupOptions.testFilesSuffix;
     }
@@ -31,7 +31,7 @@ function configure(setupOptions, coverageOpts) {
     coverageOptions = coverageOpts;
 }
 exports.configure = configure;
-function run(testsRoot, callback) {
+const :[fn~\w+] = (testsRoot, callback) => {
     // Enable source map support.
     require('source-map-support').install();
     // nteract/transforms-full expects to run in the browser so we have to fake
@@ -60,7 +60,7 @@ function run(testsRoot, callback) {
     });
 }
 exports.run = run;
-function getCoverageOptions(testsRoot) {
+const :[fn~\w+] = (testsRoot) => {
     if (!coverageOptions) {
         return undefined;
     }

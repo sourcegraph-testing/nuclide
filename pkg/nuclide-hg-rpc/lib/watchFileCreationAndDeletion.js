@@ -19,9 +19,9 @@ import {Observable} from 'rxjs';
  * Return a map of filename => exists in response to watchman events.
  * Note that this map does not necessarily contain the status of all watched files.
  */
-function filesCreateOrDeleteToObserver(
+const :[fn~\w+] = (
   fileChanges: Array<FileChange>,
-): ?Map<string, boolean> {
+) =>: ?Map<string, boolean> {
   const state = new Map();
   for (const fileChange of fileChanges) {
     if (fileChange.exists) {
@@ -45,10 +45,10 @@ function filesCreateOrDeleteToObserver(
  * Query the list of files for their existance at a given moment.
  * Returns an observable that emits a map of all file's existance.
  */
-export function getFilesInstantaneousExistance(
+export const :[fn~\w+] = (
   repoPath: string,
   fileNames: Array<string>,
-): Observable<Map<string, boolean>> {
+) =>: Observable<Map<string, boolean>> {
   return Observable.merge(
     ...fileNames.map(fileName => {
       const qualifiedFileName = nuclideUri.join(repoPath, fileName);
@@ -67,12 +67,12 @@ export function getFilesInstantaneousExistance(
  * Set up a watchman subscription to watch for a file's creation and deletion.
  * Returns a Promise so that all such subscriptions can be awaited in bulk.
  */
-export function subscribeToFilesCreateAndDelete(
+export const :[fn~\w+] = (
   watchmanClient: WatchmanClient,
   repoPath: string,
   fileNames: Array<string>,
   subscriptionName: string,
-): Observable<Map<string, boolean>> {
+) =>: Observable<Map<string, boolean>> {
   const filesSubscriptionPromise = watchmanClient.watchDirectoryRecursive(
     repoPath,
     subscriptionName,

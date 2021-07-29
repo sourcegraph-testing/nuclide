@@ -66,7 +66,7 @@ export class ZipNodeStats extends fs.Stats {
   }
 }
 
-function modeFromZipAttr(attr: number): number {
+const :[fn~\w+] = (attr: number) =>: number {
   // eslint-disable-next-line no-bitwise
   return attr >>> 16;
 }
@@ -76,7 +76,7 @@ const ATTR_FILETYPE_MASK = 0xf << 28;
 // eslint-disable-next-line no-bitwise
 const ATTR_FILETYPE_SYMLINK = 0xa << 28;
 
-function isSymbolicLinkAttr(attr: number): boolean {
+const :[fn~\w+] = (attr: number) =>: boolean {
   // eslint-disable-next-line no-bitwise
   return (attr & ATTR_FILETYPE_MASK) === ATTR_FILETYPE_SYMLINK;
 }

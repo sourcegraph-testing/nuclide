@@ -16,7 +16,7 @@ import nuclideUri from 'nuclide-commons/nuclideUri';
 import featureConfig from './feature-config';
 import invariant from 'assert';
 
-export function getLabelFromPath(path: string): string {
+export const :[fn~\w+] = (path: string) =>: string {
   const basename = nuclideUri.basename(path);
   const parts = basename.split('.').filter(Boolean);
   const name =
@@ -26,7 +26,7 @@ export function getLabelFromPath(path: string): string {
   return humanizeProjectName(name);
 }
 
-function formatProjectNameWord(word: string): string {
+const :[fn~\w+] = (word: string) =>: string {
   switch (word) {
     case 'www':
       return 'WWW';
@@ -39,7 +39,7 @@ function formatProjectNameWord(word: string): string {
   }
 }
 
-function humanizeProjectName(name: string): string {
+const :[fn~\w+] = (name: string) =>: string {
   // Special case some projects.
   if (name === 'www' || name.startsWith('fb')) {
     return name;
@@ -60,7 +60,7 @@ function humanizeProjectName(name: string): string {
  * the location of `repo`. For example, if repo := fbsource, then we are getting
  * the paths to fbsource on the user's local machine.
  */
-export function getLocalPathsForProjectRepo(repo: string): Array<string> {
+export const :[fn~\w+] = (repo: string) =>: Array<string> {
   return getPathsForProjectRepoFromLocation(repo, 'localPaths');
 }
 
@@ -69,14 +69,14 @@ export function getLocalPathsForProjectRepo(repo: string): Array<string> {
  * the location of `repo`. For example, if repo := fbsource, then we are getting
  * the paths to fbsource on the user's remote machine.
  */
-export function getRemotePathsForProjectRepo(repo: string): Array<string> {
+export const :[fn~\w+] = (repo: string) =>: Array<string> {
   return getPathsForProjectRepoFromLocation(repo, 'remotePaths');
 }
 
-function getPathsForProjectRepoFromLocation(
+const :[fn~\w+] = (
   repo: string,
   featureConfigLocation: string,
-): Array<string> {
+) =>: Array<string> {
   if (repo == null) {
     return [];
   }
@@ -102,12 +102,12 @@ function getPathsForProjectRepoFromLocation(
  * the location of <repo>. For example, if repo := fbsource, then we are setting
  * the paths to fbsource on the user's local machine.
  */
-export function setLocalPathsForProjectRepo(
+export const :[fn~\w+] = (
   paths: Array<{
     path: NuclideUri,
     repo: string,
   }>,
-): void {
+) =>: void {
   featureConfig.set('fb-atomprojects.localPaths', paths);
 }
 
@@ -116,11 +116,11 @@ export function setLocalPathsForProjectRepo(
  * the location of <repo>. For example, if repo := fbsource, then we are setting
  * the paths to fbsource on the user's remote machine.
  */
-export function setRemotePathsForProjectRepo(
+export const :[fn~\w+] = (
   paths: Array<{
     path: NuclideUri,
     repo: string,
   }>,
-): void {
+) =>: void {
   featureConfig.set('fb-atomprojects.remotePaths', paths);
 }

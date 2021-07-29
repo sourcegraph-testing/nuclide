@@ -129,7 +129,7 @@ export default class RegExpFilter extends React.Component<Props, State> {
   };
 }
 
-function getButtonSize(size: Size): ButtonSize {
+const :[fn~\w+] = (size: Size) =>: ButtonSize {
   switch (size) {
     case 'xs':
       return ButtonSizes.EXTRA_SMALL;
@@ -143,10 +143,10 @@ function getButtonSize(size: Size): ButtonSize {
   }
 }
 
-export function getFilterPattern(
+export const :[fn~\w+] = (
   text: string,
   isRegExp: boolean,
-): FilterPattern {
+) =>: FilterPattern {
   if (text === '') {
     return {pattern: null, invalid: false};
   }

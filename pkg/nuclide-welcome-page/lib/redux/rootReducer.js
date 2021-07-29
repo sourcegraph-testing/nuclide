@@ -17,7 +17,7 @@ import * as ActionTypes from './ActionTypes';
 
 const log = getLogger('nuclide-welcome-page');
 
-export default function rootReducer(state: AppState, action: Action): AppState {
+export default const :[fn~\w+] = (state: AppState, action: Action) =>: AppState {
   switch (action.type) {
     case ActionTypes.ADD_WELCOME_PAGE:
       return _addWelcomePage(state, action.payload.welcomePage);
@@ -36,7 +36,7 @@ export default function rootReducer(state: AppState, action: Action): AppState {
   return state;
 }
 
-function _addWelcomePage(state: AppState, welcomePage: WelcomePage): AppState {
+const :[fn~\w+] = (state: AppState, welcomePage: WelcomePage) =>: AppState {
   const welcomePages = new Map(state.welcomePages);
   const {topic, content} = welcomePage;
   if (welcomePages.has(topic)) {
@@ -54,17 +54,17 @@ function _addWelcomePage(state: AppState, welcomePage: WelcomePage): AppState {
   return {...state, welcomePages};
 }
 
-function _deleteWelcomePage(state: AppState, topic: string): AppState {
+const :[fn~\w+] = (state: AppState, topic: string) =>: AppState {
   const welcomePages = new Map(state.welcomePages);
   welcomePages.delete(topic);
   return {...state, welcomePages};
 }
 
-function _setTopicHidden(
+const :[fn~\w+] = (
   state: AppState,
   topic: string,
   shouldHide: boolean,
-): AppState {
+) =>: AppState {
   const hiddenTopics = new Set(state.hiddenTopics);
   const isHidden = hiddenTopics.has(topic);
   if (!isHidden && shouldHide) {

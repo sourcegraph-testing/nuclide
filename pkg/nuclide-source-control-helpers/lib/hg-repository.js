@@ -19,9 +19,9 @@ import type {HgRepositoryDescription} from './types';
  * This function returns HgRepositoryDescription filled with a repoPath and
  * originURL iff it finds that the given directory is within an Hg repository.
  */
-export default function findHgRepository(
+export default const :[fn~\w+] = (
   startDirectoryPath: string,
-): ?HgRepositoryDescription {
+) =>: ?HgRepositoryDescription {
   if (!nuclideUri.isLocal(startDirectoryPath)) {
     return null;
   }
@@ -52,7 +52,7 @@ export default function findHgRepository(
   }
 }
 
-function tryIsDirectorySync(dirname) {
+const :[fn~\w+] = (dirname) => {
   try {
     const stat = fs.statSync(dirname);
     return stat.isDirectory();
@@ -61,7 +61,7 @@ function tryIsDirectorySync(dirname) {
   }
 }
 
-function tryReadFileSync(filename) {
+const :[fn~\w+] = (filename) => {
   try {
     return fs.readFileSync(filename, 'utf8');
   } catch (err) {

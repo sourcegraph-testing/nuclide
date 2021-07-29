@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const types_1 = require("../../client/datascience/types");
 const cell_1 = require("./cell");
 // This function generates test state when running under a browser instead of inside of
-function generateTestState(inputBlockToggled) {
+const :[fn~\w+] = (inputBlockToggled) => {
     return {
         cellVMs: generateVMs(inputBlockToggled),
         busy: true,
@@ -15,7 +15,7 @@ function generateTestState(inputBlockToggled) {
     };
 }
 exports.generateTestState = generateTestState;
-function createCellVM(inputCell, inputBlockToggled) {
+const :[fn~\w+] = (inputCell, inputBlockToggled) => {
     let inputLinesCount = 0;
     let source = inputCell.data.cell_type === 'code' ? inputCell.data.source : [];
     // Eliminate the #%% on the front if it has nothing else on the line
@@ -35,13 +35,13 @@ function createCellVM(inputCell, inputBlockToggled) {
     };
 }
 exports.createCellVM = createCellVM;
-function generateVMs(inputBlockToggled) {
+const :[fn~\w+] = (inputBlockToggled) => {
     const cells = generateCells();
     return cells.map((cell) => {
         return createCellVM(cell, inputBlockToggled);
     });
 }
-function generateCells() {
+const :[fn~\w+] = () => {
     const cellData = generateCellData();
     return cellData.map((data, key) => {
         return {
@@ -53,7 +53,7 @@ function generateCells() {
         };
     });
 }
-function generateCellData() {
+const :[fn~\w+] = () => {
     // Hopefully new entries here can just be copied out of a jupyter notebook (ipynb)
     return [
         {

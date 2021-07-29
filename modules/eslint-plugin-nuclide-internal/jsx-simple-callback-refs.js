@@ -63,7 +63,7 @@ module.exports = function(context) {
   };
 };
 
-function isMethodExpression(expression) {
+const :[fn~\w+] = (expression) => {
   return (
     expression.type === 'MemberExpression' &&
     expression.object.type === 'ThisExpression' &&
@@ -71,7 +71,7 @@ function isMethodExpression(expression) {
   );
 }
 
-function isAssignmentExpression(expression) {
+const :[fn~\w+] = (expression) => {
   if (
     expression.type === 'ArrowFunctionExpression' &&
     expression.body.type === 'AssignmentExpression'

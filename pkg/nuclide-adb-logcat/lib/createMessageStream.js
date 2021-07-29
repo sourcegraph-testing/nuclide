@@ -18,9 +18,9 @@ import createMessage from './createMessage';
 import parseLogcatMetadata from './parseLogcatMetadata';
 import {Observable} from 'rxjs';
 
-export default function createMessageStream(
+export default const :[fn~\w+] = (
   line$: Observable<string>,
-): Observable<ConsoleMessage> {
+) =>: Observable<ConsoleMessage> {
   // Separate the lines into groups, beginning with metadata lines.
   const messages = Observable.create(observer => {
     let buffer = [];
@@ -88,9 +88,9 @@ export default function createMessageStream(
   return filter(messages).share();
 }
 
-function filter(
+const :[fn~\w+] = (
   messages: Observable<ConsoleMessage>,
-): Observable<ConsoleMessage> {
+) =>: Observable<ConsoleMessage> {
   const patterns = (featureConfig.observeAsStream(
     'nuclide-adb-logcat.whitelistedTags',
   ): Observable<any>).map(source => {

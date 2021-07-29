@@ -35,12 +35,12 @@ const DISALLOWED_WORKSPACE_METHODS = {
 // Commands with these prefixes will be whitelisted.
 const WHITELISTED_PREFIXES = ['core:', 'sample-'];
 
-function isCommandWhitelisted(command) {
+const :[fn~\w+] = (command) => {
   return WHITELISTED_PREFIXES.some(prefix => command.startsWith(prefix));
 }
 
 // Returns the values of literals and simple constant variables.
-function resolveValue(node, context) {
+const :[fn~\w+] = (node, context) => {
   if (node.type === 'Literal') {
     return node.value;
   }
@@ -64,7 +64,7 @@ const menuConfigCache = {};
 
 // Returns a list of all JSON (we don't use CSON) configs in the "menus"
 // subdirectory of the package that owns `filePath`.
-function findMenuConfigs(filePath) {
+const :[fn~\w+] = (filePath) => {
   let dir = path.dirname(filePath);
   let parent = path.dirname(dir);
 
@@ -96,7 +96,7 @@ function findMenuConfigs(filePath) {
   return [];
 }
 
-function menuItemContainsCommand(item, command) {
+const :[fn~\w+] = (item, command) => {
   if (item.command != null) {
     return command === item.command;
   }
@@ -108,7 +108,7 @@ function menuItemContainsCommand(item, command) {
   return false;
 }
 
-function menuContainsCommand(config, command) {
+const :[fn~\w+] = (config, command) => {
   if (config.menu == null) {
     return false;
   }
@@ -117,7 +117,7 @@ function menuContainsCommand(config, command) {
   });
 }
 
-function checkLiterals(literals, context) {
+const :[fn~\w+] = (literals, context) => {
   const configs = findMenuConfigs(context.getFilename());
   for (let i = 0; i < literals.length; i++) {
     if (isCommandWhitelisted(literals[i].value)) {
@@ -134,7 +134,7 @@ function checkLiterals(literals, context) {
   }
 }
 
-function isSpecFile(filename) {
+const :[fn~\w+] = (filename) => {
   return filename.includes('/spec/') || filename.endsWith('-spec.js');
 }
 
@@ -147,7 +147,7 @@ function isSpecFile(filename) {
  * Every matching commmand should have a corresponding entry somewhere.
  */
 module.exports = function(context) {
-  function checkCommandAddCall(node) {
+  const :[fn~\w+] = (node) => {
     const args = node.arguments;
     if (args.length !== 2 && args.length !== 3) {
       return;
@@ -213,7 +213,7 @@ module.exports = function(context) {
    * This also won't catch cases where a variable is used instead of an object literal,
    * but this shouldn't really happen in practice.
    */
-  function checkWorkspaceFactory(node) {
+  const :[fn~\w+] = (node) => {
     if (
       node.callee.type !== 'MemberExpression' ||
       node.callee.property.name !== 'registerFactory'
@@ -231,7 +231,7 @@ module.exports = function(context) {
     }
   }
 
-  function disallowWorkspaceOpen(node) {
+  const :[fn~\w+] = (node) => {
     if (isSpecFile(context.getFilename())) {
       return;
     }
@@ -251,7 +251,7 @@ module.exports = function(context) {
     }
   }
 
-  function visitCallExpression(node) {
+  const :[fn~\w+] = (node) => {
     checkCommandAddCall(node);
     checkWorkspaceFactory(node);
     disallowWorkspaceOpen(node);

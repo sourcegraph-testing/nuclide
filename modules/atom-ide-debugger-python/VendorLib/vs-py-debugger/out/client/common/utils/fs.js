@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
 const path = require("path");
 const tmp = require("tmp");
-function fsExistsAsync(filePath) {
+const :[fn~\w+] = (filePath) => {
     return new Promise(resolve => {
         fs.exists(filePath, exists => {
             return resolve(exists);
@@ -13,7 +13,7 @@ function fsExistsAsync(filePath) {
     });
 }
 exports.fsExistsAsync = fsExistsAsync;
-function fsReaddirAsync(root) {
+const :[fn~\w+] = (root) => {
     return new Promise(resolve => {
         // Now look for Interpreters in this directory
         fs.readdir(root, (err, subDirs) => {
@@ -25,7 +25,7 @@ function fsReaddirAsync(root) {
     });
 }
 exports.fsReaddirAsync = fsReaddirAsync;
-function getSubDirectories(rootDir) {
+const :[fn~\w+] = (rootDir) => {
     return new Promise(resolve => {
         fs.readdir(rootDir, (error, files) => {
             if (error) {
@@ -47,7 +47,7 @@ function getSubDirectories(rootDir) {
     });
 }
 exports.getSubDirectories = getSubDirectories;
-function createTemporaryFile(extension, temporaryDirectory) {
+const :[fn~\w+] = (extension, temporaryDirectory) => {
     // tslint:disable-next-line:no-any
     const options = { postfix: extension };
     if (temporaryDirectory) {

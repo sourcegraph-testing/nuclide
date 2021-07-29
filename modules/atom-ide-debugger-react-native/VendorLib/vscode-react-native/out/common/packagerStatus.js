@@ -4,7 +4,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Q = require("q");
 const request_1 = require("./node/request");
-function ensurePackagerRunning(packagerAddress, packagerPort, error) {
+const :[fn~\w+] = (packagerAddress, packagerPort, error) => {
     let statusURL = `http://${packagerAddress}:${packagerPort}/status`;
     return request_1.Request.request(statusURL, true)
         .then((body) => {

@@ -120,14 +120,14 @@ export class Completions {
 
 // Provides autocompletion of IDs that could be imported. When selected
 // the entire import line is added.
-export function provideFullImportCompletions(
+export const :[fn~\w+] = (
   importInformation: ImportInformation,
   importsFormatter: ImportFormatter,
   autoImportsManager: AutoImportsManager,
   nuclideFormattedUri: NuclideUri,
   line: string,
   lineNum: number,
-): Array<CompletionItem> {
+) =>: Array<CompletionItem> {
   const {ids, importType} = importInformation;
   const exportsIndex = autoImportsManager.exportsManager.getExportsIndex();
   // 1) Find all IDs that fuzzily match the given string.
@@ -167,14 +167,14 @@ export function provideFullImportCompletions(
 
 // Given a list of IDs that are already typed, provide autocompletion for
 // the files that those IDs might be imported from.
-export function provideImportFileCompletions(
+export const :[fn~\w+] = (
   importInformation: ImportInformation,
   importsFormatter: ImportFormatter,
   autoImportsManager: AutoImportsManager,
   nuclideFormattedUri: NuclideUri,
   line: string,
   lineNum: number,
-): Array<CompletionItem> {
+) =>: Array<CompletionItem> {
   const {ids, importType} = importInformation;
   // Intersect all exports for `ids` and then filter/sort the result.
   const suggestions = findCommonSuggestions(
@@ -209,11 +209,11 @@ export function provideImportFileCompletions(
 
 // Find a list of URIs that contain all the given exports,
 // and return a representative export for each one.
-function findCommonSuggestions(
+const :[fn~\w+] = (
   autoImportsManager: AutoImportsManager,
   ids: Array<string>,
   importType: ImportType,
-): Array<JSExport> {
+) =>: Array<JSExport> {
   const suggestionsForEachId = ids.map(id =>
     autoImportsManager.findFilesWithSymbol(id),
   );
@@ -229,10 +229,10 @@ function findCommonSuggestions(
   return suggestionsForEachId[0].filter(e => commonUris.has(e.uri));
 }
 
-function filterSuggestions(
+const :[fn~\w+] = (
   suggestions: Array<JSExport>,
   importType: ImportType,
-): Array<JSExport> {
+) =>: Array<JSExport> {
   // Filter out suggestions based on the import type
   switch (importType) {
     case 'defaultValue':
@@ -258,7 +258,7 @@ function filterSuggestions(
 }
 
 // Exported for testing
-export function getImportInformation(line: string): ?ImportInformation {
+export const :[fn~\w+] = (line: string) =>: ?ImportInformation {
   for (const importType of Object.keys(IMPORT_STATEMENT_REGEXES)) {
     const importStatement = line.match(IMPORT_STATEMENT_REGEXES[importType]);
     if (importStatement && importStatement.length > 1) {
@@ -290,11 +290,11 @@ export function getImportInformation(line: string): ?ImportInformation {
   return null;
 }
 
-function createLineEdit(
+const :[fn~\w+] = (
   lineNum: number,
   lineText: string,
   newText: string,
-): TextEdit {
+) =>: TextEdit {
   return {
     range: {
       start: {line: lineNum, character: 0},
@@ -304,12 +304,12 @@ function createLineEdit(
   };
 }
 
-function isImportStatement(line: string): boolean {
+const :[fn~\w+] = (line: string) =>: boolean {
   return /^\s*import/.test(line) || /^const/.test(line);
 }
 
 //
-function canBeTypeImported(exp: JSExport): boolean {
+const :[fn~\w+] = (exp: JSExport) =>: boolean {
   return (
     exp.type !== 'FunctionDeclaration' &&
     exp.type !== 'FunctionExpression' &&
@@ -317,7 +317,7 @@ function canBeTypeImported(exp: JSExport): boolean {
   );
 }
 
-function positionIsAtLineEnd(line: string, position: Object): boolean {
+const :[fn~\w+] = (line: string, position: Object) =>: boolean {
   if (line.length === position.character) {
     return true;
   }

@@ -96,10 +96,10 @@ export type ErrorMessage = {
 const ERROR_MESSAGE_LIMIT = 1000;
 
 // TODO: This should be a custom marshaller registered in the TypeRegistry
-export function decodeError(
+export const :[fn~\w+] = (
   message: Object,
   encodedError: ?(Object | string),
-): ?(Error | string) {
+) =>: ?(Error | string) {
   if (encodedError != null && typeof encodedError === 'object') {
     let messageStr = JSON.stringify(message);
     if (messageStr.length > ERROR_MESSAGE_LIMIT) {
@@ -119,12 +119,12 @@ export function decodeError(
   }
 }
 
-export function createCallMessage(
+export const :[fn~\w+] = (
   protocol: string,
   functionName: string,
   id: number,
   args: Object,
-): CallMessage {
+) =>: CallMessage {
   return {
     protocol,
     type: 'call',
@@ -134,13 +134,13 @@ export function createCallMessage(
   };
 }
 
-export function createCallObjectMessage(
+export const :[fn~\w+] = (
   protocol: string,
   methodName: string,
   objectId: number,
   id: number,
   args: Object,
-): CallObjectMessage {
+) =>: CallObjectMessage {
   return {
     protocol,
     type: 'call-object',
@@ -151,12 +151,12 @@ export function createCallObjectMessage(
   };
 }
 
-export function createPromiseMessage(
+export const :[fn~\w+] = (
   protocol: string,
   id: number,
   responseId: number,
   result: any,
-): PromiseResponseMessage {
+) =>: PromiseResponseMessage {
   return {
     protocol,
     type: 'response',
@@ -166,12 +166,12 @@ export function createPromiseMessage(
   };
 }
 
-export function createNextMessage(
+export const :[fn~\w+] = (
   protocol: string,
   id: number,
   responseId: number,
   value: any,
-): NextMessage {
+) =>: NextMessage {
   return {
     protocol,
     type: 'next',
@@ -181,11 +181,11 @@ export function createNextMessage(
   };
 }
 
-export function createCompleteMessage(
+export const :[fn~\w+] = (
   protocol: string,
   id: number,
   responseId: number,
-): CompleteMessage {
+) =>: CompleteMessage {
   return {
     protocol,
     type: 'complete',
@@ -194,12 +194,12 @@ export function createCompleteMessage(
   };
 }
 
-export function createObserveErrorMessage(
+export const :[fn~\w+] = (
   protocol: string,
   id: number,
   responseId: number,
   error: any,
-): ErrorMessage {
+) =>: ErrorMessage {
   return {
     protocol,
     type: 'error',
@@ -209,11 +209,11 @@ export function createObserveErrorMessage(
   };
 }
 
-export function createDisposeMessage(
+export const :[fn~\w+] = (
   protocol: string,
   id: number,
   objectId: number,
-): DisposeMessage {
+) =>: DisposeMessage {
   return {
     protocol,
     type: 'dispose',
@@ -222,10 +222,10 @@ export function createDisposeMessage(
   };
 }
 
-export function createUnsubscribeMessage(
+export const :[fn~\w+] = (
   protocol: string,
   id: number,
-): UnsubscribeMessage {
+) =>: UnsubscribeMessage {
   return {
     protocol,
     type: 'unsubscribe',
@@ -233,12 +233,12 @@ export function createUnsubscribeMessage(
   };
 }
 
-export function createErrorResponseMessage(
+export const :[fn~\w+] = (
   protocol: string,
   id: number,
   responseId: number,
   error: any,
-): ErrorResponseMessage {
+) =>: ErrorResponseMessage {
   return {
     protocol,
     type: 'error-response',
@@ -252,7 +252,7 @@ export function createErrorResponseMessage(
  * Format the error before sending over the web socket.
  * TODO: This should be a custom marshaller registered in the TypeRegistry
  */
-function formatError(error: any): ?(Object | string) {
+const :[fn~\w+] = (error: any) =>: ?(Object | string) {
   if (error instanceof Error) {
     return {
       message: error.message,

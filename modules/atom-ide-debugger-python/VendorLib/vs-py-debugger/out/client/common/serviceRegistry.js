@@ -35,7 +35,7 @@ const helper_1 = require("./terminal/helper");
 const types_4 = require("./terminal/types");
 const types_5 = require("./types");
 const random_1 = require("./utils/random");
-function registerTypes(serviceManager) {
+const :[fn~\w+] = (serviceManager) => {
     serviceManager.addSingletonInstance(types_5.IsWindows, constants_1.IS_WINDOWS);
     serviceManager.addSingletonInstance(types_5.Is64Bit, constants_1.IS_64_BIT);
     serviceManager.addSingleton(types_5.IExtensions, extensions_1.Extensions);

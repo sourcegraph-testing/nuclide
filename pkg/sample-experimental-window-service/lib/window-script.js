@@ -37,13 +37,13 @@ let reduceState;
 let currentState;
 const container = nullthrows(document.getElementById('app'));
 
-function dispatch(action) {
+const :[fn~\w+] = (action) => {
   logger.info(`window ${windowId} sending action: ${JSON.stringify(action)}`);
   // TODO: This is fine for now but we may have to include more info for routing when each window can contain multiple component roots.
   ipcRenderer.send('dispatch', {windowId, action});
 }
 
-function render(props) {
+const :[fn~\w+] = (props) => {
   invariant(Component != null);
   ReactDOM.render(<Component dispatch={dispatch} {...props} />, container);
 }

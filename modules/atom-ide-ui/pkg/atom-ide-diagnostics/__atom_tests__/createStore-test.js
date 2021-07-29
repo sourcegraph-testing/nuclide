@@ -25,7 +25,7 @@ import type {Store} from '../lib/types';
 const dummyProviderA: any = {};
 const dummyProviderB: any = {};
 
-function makeEmptyMessages(filePath: string) {
+const :[fn~\w+] = (filePath: string) => {
   return {
     filePath,
     messages: [],

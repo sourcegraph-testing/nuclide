@@ -13,52 +13,52 @@ import {Observable, ConnectableObservable} from 'rxjs';
 
 // Contains services that let us test marshalling of Errors.
 
-export async function promiseError(message: string): Promise<void> {
+export const :[fn~\w+] = async (message: string) =>: Promise<void> {
   throw new Error(message);
 }
 
-export async function promiseErrorString(message: string): Promise<void> {
+export const :[fn~\w+] = async (message: string) =>: Promise<void> {
   throw message;
 }
 
-export function promiseErrorUndefined(): Promise<void> {
+export const :[fn~\w+] = () =>: Promise<void> {
   // eslint-disable-next-line no-throw-literal
   throw undefined;
 }
 
-export function promiseErrorCode(code: number): Promise<void> {
+export const :[fn~\w+] = (code: number) =>: Promise<void> {
   throw createErrorCode(code);
 }
 
-export function observableError(
+export const :[fn~\w+] = (
   message: string,
-): ConnectableObservable<number> {
+) =>: ConnectableObservable<number> {
   return createErrorObservable(new Error(message));
 }
 
-export function observableErrorString(
+export const :[fn~\w+] = (
   message: string,
-): ConnectableObservable<number> {
+) =>: ConnectableObservable<number> {
   return createErrorObservable(message);
 }
 
-export function observableErrorUndefined(): ConnectableObservable<number> {
+export const :[fn~\w+] = () =>: ConnectableObservable<number> {
   return createErrorObservable(undefined);
 }
 
-export function observableErrorCode(
+export const :[fn~\w+] = (
   code: number,
-): ConnectableObservable<number> {
+) =>: ConnectableObservable<number> {
   return createErrorObservable(createErrorCode(code));
 }
 
-function createErrorObservable(error: any): ConnectableObservable<number> {
+const :[fn~\w+] = (error: any) =>: ConnectableObservable<number> {
   return Observable.create(observer => {
     observer.error(error);
   }).publish();
 }
 
-function createErrorCode(code: number) {
+const :[fn~\w+] = (code: number) => {
   const e = new Error();
   // $FlowIssue - Error should have a code
   e.code = code;

@@ -54,7 +54,7 @@ export type BuckEvent =
     }
   | {type: 'build-output', output: BuckBuildOutput};
 
-function convertJavaLevel(level: string): Level {
+const :[fn~\w+] = (level: string) =>: Level {
   switch (level) {
     case 'INFO':
       return 'info';
@@ -66,9 +66,9 @@ function convertJavaLevel(level: string): Level {
   return 'log';
 }
 
-export function getEventsFromSocket(
+export const :[fn~\w+] = (
   socketStream: Observable<BuckWebSocketMessage>,
-): Observable<BuckEvent> {
+) =>: Observable<BuckEvent> {
   const log = (message, level = 'log') =>
     Observable.of({
       type: 'log',
@@ -153,9 +153,9 @@ export function getEventsFromSocket(
   );
 }
 
-export function getEventsFromProcess(
+export const :[fn~\w+] = (
   processStream: Observable<LegacyProcessMessage>, // TODO(T17463635)
-): Observable<BuckEvent> {
+) =>: Observable<BuckEvent> {
   return Observable.fromPromise(
     passesGK('nuclide_buck_superconsole'),
   ).switchMap(useSuperconsole => {
@@ -247,16 +247,16 @@ export function getEventsFromProcess(
   });
 }
 
-export function combineEventStreams(
+export const :[fn~\w+] = (
   subcommand: BuckSubcommand,
   socketEvents: Observable<BuckEvent>,
   processEvents: Observable<BuckEvent>,
-): Observable<BuckEvent> {
+) =>: Observable<BuckEvent> {
   // Every build finishes with a 100% progress event.
-  function isBuildFinishEvent(event: BuckEvent) {
+  const :[fn~\w+] = (event: BuckEvent) => {
     return event.type === 'progress' && event.progress === 1;
   }
-  function isRegularLogMessage(event: BuckEvent) {
+  const :[fn~\w+] = (event: BuckEvent) => {
     return event.type === 'log' && event.level === 'log';
   }
   // Socket stream never stops, so use the process lifetime.
@@ -310,10 +310,10 @@ export function combineEventStreams(
   return mergedEvents;
 }
 
-export function getDiagnosticEvents(
+export const :[fn~\w+] = (
   events: Observable<BuckEvent>,
   buckRoot: string,
-): Observable<BuckEvent> {
+) =>: Observable<BuckEvent> {
   const diagnosticsParser = new DiagnosticsParser();
   return events.flatMap(event => {
     // For log messages, try to detect compile errors and emit diagnostics.

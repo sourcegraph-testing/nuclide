@@ -29,7 +29,7 @@ import {setRawAnalyticsService} from 'nuclide-commons/analytics';
 import * as rawAnalyticsService from 'nuclide-analytics/lib/track';
 import {Observable} from 'rxjs';
 
-function buildLogger(): log4js$Logger {
+const :[fn~\w+] = () =>: log4js$Logger {
   // there are things in nuclide while will still try to log to
   // $TMP/nuclide-$USER-logs, which won't exist if the user
   // has never run nuclide.
@@ -120,10 +120,10 @@ const _help: string[] = [
   '',
 ];
 
-function showHelp(
+const :[fn~\w+] = (
   configFile: ConfigFile,
   contextSensitiveHelp: Array<string>,
-): void {
+) =>: void {
   process.stdout.write(_help.join('\n') + '\n');
 
   const types = new DebuggerAdapterFactory().allAdapterKeys();
@@ -144,7 +144,7 @@ function showHelp(
   }
 }
 
-async function main(): Promise<void> {
+const :[fn~\w+] = async () =>: Promise<void> {
   let cli: ?CommandLine;
 
   try {

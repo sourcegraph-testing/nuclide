@@ -167,7 +167,7 @@ export class PanelView extends React.Component<Props, State> {
   };
 }
 
-function parseMessage(raw_: string): Object {
+const :[fn~\w+] = (raw_: string) =>: Object {
   const raw = raw_.trim();
   let message;
   if (raw === '') {
@@ -191,7 +191,7 @@ class InvalidInputError extends Error {
   }
 }
 
-function getGrammar(scopeName: string): Observable<atom$Grammar> {
+const :[fn~\w+] = (scopeName: string) =>: Observable<atom$Grammar> {
   const grammar = atom.grammars.grammarForScopeName(scopeName);
   if (grammar != null) {
     return Observable.of(grammar);

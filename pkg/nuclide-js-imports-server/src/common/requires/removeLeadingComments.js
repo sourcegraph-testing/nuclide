@@ -21,7 +21,7 @@ import FirstNode from '../utils/FirstNode';
  *   - if there is space betwee comment N-1 and first, comments 0 to N-1
  *   - else comments 0 to N-2
  */
-function removeLeadingComments(root: Collection): Array<Node> {
+const :[fn~\w+] = (root: Collection) =>: Array<Node> {
   const firstPath = FirstNode.get(root);
   if (!firstPath) {
     return [];

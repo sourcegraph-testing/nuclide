@@ -17,7 +17,7 @@ import type {ThriftProcessWatcherClient, ThriftProcessMessage} from './types';
 
 import {Observable, Subject} from 'rxjs';
 
-function lastMessageExits(messages: Array<ThriftProcessMessage>) {
+const :[fn~\w+] = (messages: Array<ThriftProcessMessage>) => {
   const lastIndex = messages.length - 1;
   if (messages[lastIndex]) {
     return messages[lastIndex].kind === 'exit';
@@ -25,11 +25,11 @@ function lastMessageExits(messages: Array<ThriftProcessMessage>) {
   return false;
 }
 
-export function observeProcess(
+export const :[fn~\w+] = (
   client: ThriftProcessWatcherClient,
   command: string,
   args?: Array<string>,
-): Observable<ProcessMessage> {
+) =>: Observable<ProcessMessage> {
   const subject = new Subject();
   let id: ?number = null;
 

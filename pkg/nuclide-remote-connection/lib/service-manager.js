@@ -36,7 +36,7 @@ const useLocalRpc =
 let localRpcClient: ?RpcConnection<Transport> = null;
 
 // Creates a local RPC client that connects to a separate process.
-function createLocalRpcClient(): RpcConnection<Transport> {
+const :[fn~\w+] = () =>: RpcConnection<Transport> {
   // The Electron Node process won't support --inspect until v1.7.x.
   // In the meantime, try to find a more standard Node process.
   const fbNodeRun = nuclideUri.join(
@@ -89,7 +89,7 @@ function createLocalRpcClient(): RpcConnection<Transport> {
   );
 }
 
-export function getlocalService(serviceName: string): Object {
+export const :[fn~\w+] = (serviceName: string) =>: Object {
   if (useLocalRpc) {
     if (localRpcClient == null) {
       localRpcClient = createLocalRpcClient();
@@ -111,10 +111,10 @@ export function getlocalService(serviceName: string): Object {
  *    `nuclide://$host/$path`. The function will use the $host from remote path to
  *    create a remote service or create a local service if the uri is local path.
  */
-export function getServiceByNuclideUri(
+export const :[fn~\w+] = (
   serviceName: string,
   uri: ?NuclideUri = null,
-): ?any {
+) =>: ?any {
   const hostname = nuclideUri.getHostnameOpt(uri);
   return getService(serviceName, hostname);
 }
@@ -125,10 +125,10 @@ export function getServiceByNuclideUri(
  *    `nuclide://$host/$path`. The function will use the $host from remote path to
  *    create a remote service or create a local service if the uri is local path.
  */
-export function awaitServiceByNuclideUri(
+export const :[fn~\w+] = (
   serviceName: string,
   uri: ?NuclideUri = null,
-): Promise<?any> {
+) =>: Promise<?any> {
   const hostname = nuclideUri.getHostnameOpt(uri);
   return awaitService(serviceName, hostname);
 }
@@ -137,10 +137,10 @@ export function awaitServiceByNuclideUri(
  * Create or get cached service.
  * null connection implies get local service.
  */
-export function getServiceByConnection(
+export const :[fn~\w+] = (
   serviceName: string,
   connection: ?ServerConnection,
-): Object {
+) =>: Object {
   if (connection == null) {
     return getlocalService(serviceName);
   } else {
@@ -152,7 +152,7 @@ export function getServiceByConnection(
  * Create or get a cached service. If hostname is null or empty string,
  * it returns a local service, otherwise a remote service will be returned.
  */
-export function getService(serviceName: string, hostname: ?string): ?Object {
+export const :[fn~\w+] = (serviceName: string, hostname: ?string) =>: ?Object {
   if (hostname != null && hostname !== '') {
     const serverConnection = ServerConnection.getByHostname(hostname);
     if (serverConnection == null) {
@@ -168,10 +168,10 @@ export function getService(serviceName: string, hostname: ?string): ?Object {
  * Asynchronously create or get a cached service. If hostname is null or empty
  * string, it returns a local service, otherwise a remote service will be returned.
  */
-export function awaitService(
+export const :[fn~\w+] = (
   serviceName: string,
   hostname: ?string,
-): Promise<?Object> {
+) =>: Promise<?Object> {
   if (hostname != null && hostname !== '') {
     return ServerConnection.connectionAddedToHost(hostname)
       .first()

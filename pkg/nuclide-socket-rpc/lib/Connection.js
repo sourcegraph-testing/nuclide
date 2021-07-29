@@ -100,6 +100,6 @@ export class ConnectionFactory {
   }
 }
 
-function trace(message: string) {
+const :[fn~\w+] = (message: string) => {
   getLogger('SocketService').trace(message);
 }

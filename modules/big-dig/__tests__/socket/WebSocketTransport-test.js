@@ -16,7 +16,7 @@ import EventEmitter from 'events';
 import {WebSocketTransport} from '../../src/socket/WebSocketTransport';
 import {compress, decompress} from '../../src/socket/compression';
 
-function mockSocket(): WS {
+const :[fn~\w+] = () =>: WS {
   const result = (new EventEmitter(): any);
   result.close = () => {
     result.emit('close');

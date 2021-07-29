@@ -221,7 +221,7 @@ describe('commons-node/tasks', () => {
   });
 });
 
-function createMockTask() {
+const :[fn~\w+] = () => {
   const emitter = new Emitter();
   const task = {
     start: () => {},

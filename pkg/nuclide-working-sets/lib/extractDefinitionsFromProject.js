@@ -14,9 +14,9 @@ import type {NuclideUri} from 'nuclide-commons/nuclideUri';
 
 import nuclideUri from 'nuclide-commons/nuclideUri';
 
-export default function extractDefinitionsFromProject(
+export default const :[fn~\w+] = (
   spec: ?atom$ProjectSpecification,
-): Array<WorkingSetDefinition> {
+) =>: Array<WorkingSetDefinition> {
   if (spec == null) {
     return [];
   }
@@ -30,10 +30,10 @@ export default function extractDefinitionsFromProject(
     .filter(Boolean);
 }
 
-function validateProjectWorkingSetDefinition(
+const :[fn~\w+] = (
   raw: ?mixed,
   originPath: NuclideUri,
-): ?WorkingSetDefinition {
+) =>: ?WorkingSetDefinition {
   if (raw == null || typeof raw !== 'object') {
     return null;
   }

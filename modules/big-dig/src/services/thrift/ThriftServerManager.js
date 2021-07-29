@@ -153,9 +153,9 @@ export class ThriftServerManager {
   }
 }
 
-function createSuccessResponse(
+const :[fn~\w+] = (
   connectionOptions: ConnectionOptions,
-): SuccessResponse {
+) =>: SuccessResponse {
   return {
     type: 'response',
     success: true,
@@ -163,7 +163,7 @@ function createSuccessResponse(
   };
 }
 
-function createFailureResponse(errorMessage: string): FailureResponse {
+const :[fn~\w+] = (errorMessage: string) =>: FailureResponse {
   return {
     type: 'response',
     success: false,
@@ -171,7 +171,7 @@ function createFailureResponse(errorMessage: string): FailureResponse {
   };
 }
 
-function createFailureMessage(id: string, errorMessage: string): ThriftMessage {
+const :[fn~\w+] = (id: string, errorMessage: string) =>: ThriftMessage {
   return {
     id,
     payload: createFailureResponse(errorMessage),

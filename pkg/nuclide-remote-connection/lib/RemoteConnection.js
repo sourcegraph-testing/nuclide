@@ -446,12 +446,12 @@ export class RemoteConnection {
   }
 }
 
-function hasAtomProjectFormat(filepath) {
+const :[fn~\w+] = (filepath) => {
   const ext = nuclideUri.extname(filepath);
   return ext === '.json' || ext === '.cson' || ext === '.toml';
 }
 
-function getProjectManager(): Promise<?ProjectManager> {
+const :[fn~\w+] = () =>: Promise<?ProjectManager> {
   return observableFromSubscribeFunction(cb =>
     atom.packages.serviceHub.consume('nuclide.project-manager', '0.0.0', cb),
   )

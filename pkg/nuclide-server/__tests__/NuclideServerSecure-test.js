@@ -93,7 +93,7 @@ describe('Nuclide Secure Server test suite', () => {
   });
 });
 
-function generateCertificates() {
+const :[fn~\w+] = () => {
   const out = child_process
     .execSync(`${gen_certs_path} -s localhost`)
     .toString('utf8');

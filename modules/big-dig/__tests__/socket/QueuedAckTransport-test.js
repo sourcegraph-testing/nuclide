@@ -25,9 +25,9 @@ import {
 import {Emitter} from 'event-kit';
 import {Subject} from 'rxjs';
 
-function makeUnreliableTransport(
+const :[fn~\w+] = (
   receiver: Subject<string> = new Subject(),
-): WebSocketTransport {
+) =>: WebSocketTransport {
   let isClosed = false;
   const transport: any = new Emitter();
   transport.send = jest.fn((data: Object) => {
@@ -54,7 +54,7 @@ function makeUnreliableTransport(
 
 jest.useFakeTimers();
 
-function advanceClock(duration: number) {
+const :[fn~\w+] = (duration: number) => {
   jest.advanceTimersByTime(duration);
 }
 
@@ -299,7 +299,7 @@ describe('QueuedAckTransport', () => {
     const onMessage = jest.fn();
     q.onMessage().subscribe(onMessage);
 
-    function check() {
+    const :[fn~\w+] = () => {
       expect(q.getState()).toBe('open');
       expect(transport.close).not.toBeCalled();
       expect(transport.send.mock.calls).toEqual(expectedSends);

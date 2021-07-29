@@ -13,7 +13,7 @@ var _invariant2 = _interopRequireDefault(_invariant);
 
 var _DebuggerError = require("./../DebuggerError.js");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const :[fn~\w+] = (obj) => { return obj && obj.__esModule ? obj : { default: obj }; }
 
 class MessageMarshaller {
   constructor() {

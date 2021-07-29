@@ -27,7 +27,7 @@ const JAVA_FIXTURES = nuclideUri.join(
 const THREAD_ID = 1;
 const JAVA_DEBUGGER_PKG = nuclideUri.join(__dirname, '..');
 
-function makeSource(name: string): DebugProtocol.Source {
+const :[fn~\w+] = (name: string) =>: DebugProtocol.Source {
   return {
     name,
     path: nuclideUri.join(JAVA_FIXTURES, name),
@@ -50,20 +50,20 @@ async function checkResponse<T: DebugProtocol.base$Response>(
   return response;
 }
 
-async function checkLine(
+const :[fn~\w+] = async (
   session: VsDebugSession,
   expectedLine: number,
-): Promise<void> {
+) =>: Promise<void> {
   await checkResponse(session.stackTrace({threadId: THREAD_ID}), response => {
     expect(response.body.stackFrames[0].line).toBe(expectedLine);
   });
 }
 
-async function withSessionLaunch(
+const :[fn~\w+] = async (
   className: string,
   breakpoints?: DebugProtocol.SetBreakpointsArguments,
   sessionContinuation: (VsDebugSession, any) => Promise<void>,
-): Promise<void> {
+) =>: Promise<void> {
   let session = null;
   try {
     session = new VsDebugSession(
@@ -127,7 +127,7 @@ async function withSessionLaunch(
   }
 }
 
-async function continueSession(session: VsDebugSession): Promise<void> {
+const :[fn~\w+] = async (session: VsDebugSession) =>: Promise<void> {
   await Promise.all([
     session
       .observeContinuedEvents()
@@ -137,10 +137,10 @@ async function continueSession(session: VsDebugSession): Promise<void> {
   ]);
 }
 
-async function verifyUnverifiedBreakpoints(
+const :[fn~\w+] = async (
   session: VsDebugSession,
   unverifiedBreakpoints: any,
-): Promise<void> {
+) =>: Promise<void> {
   if (unverifiedBreakpoints.length > 0) {
     let allBreakpointsVerified = false;
     await session

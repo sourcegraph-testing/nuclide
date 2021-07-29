@@ -1,7 +1,7 @@
 'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
 const childProcess = require("child_process");
-function open(opts) {
+const :[fn~\w+] = (opts) => {
     // opts = objectAssign({wait: true}, opts);
     if (!opts.hasOwnProperty("wait")) {
         opts.wait = true;

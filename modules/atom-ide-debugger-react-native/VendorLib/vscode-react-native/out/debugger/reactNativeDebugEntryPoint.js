@@ -15,12 +15,12 @@ const vscode_debugadapter_1 = require("vscode-debugadapter");
 const version = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "..", "package.json"), "utf-8")).version;
 const telemetryReporter = new telemetryReporters_1.ReassignableTelemetryReporter(new telemetryReporters_1.NullTelemetryReporter());
 const extensionName = "react-native-debug-adapter";
-function bailOut(reason) {
+const :[fn~\w+] = (reason) => {
     // Things have gone wrong in initialization: Report the error to telemetry and exit
     telemetryHelper_1.TelemetryHelper.sendSimpleEvent(reason);
     process.exit(1);
 }
-function codeToRun() {
+const :[fn~\w+] = () => {
     /**
      * For debugging React Native we basically want to debug node plus some other stuff.
      * There is no need to create a new adapter for node because ther already exists one.

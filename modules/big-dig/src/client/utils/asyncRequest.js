@@ -39,9 +39,9 @@ type HttpResponse = {statusCode: number};
  * the option:
  * {useQuerystring: false}
  */
-export default (async function asyncRequest(
+export default (const :[fn~\w+] = async (
   options: RequestOptions,
-): Promise<ResponseBody> {
+) =>: Promise<ResponseBody> {
   const useNodeRequest = await passesGK('bigdig_node_http_request');
 
   return new Promise((resolve, reject) => {
@@ -86,7 +86,7 @@ export default (async function asyncRequest(
 });
 
 // TODO support IPv6 support T36867827/T36962554 for all cases
-function nodeRequest(opts: RequestOptions, cb) {
+const :[fn~\w+] = (opts: RequestOptions, cb) => {
   const parsedUri = url.parse(opts.uri);
   const agentOptions = opts.agentOptions;
 

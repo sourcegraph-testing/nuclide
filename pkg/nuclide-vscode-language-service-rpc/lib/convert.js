@@ -75,7 +75,7 @@ import {
 } from 'nuclide-commons/tokenized-text';
 import {arrayCompact} from 'nuclide-commons/collection';
 
-export function localPath_lspUri(filepath: NuclideUri): string {
+export const :[fn~\w+] = (filepath: NuclideUri) =>: string {
   // NuclideUris are either a local file path, or nuclide://<host><path>.
   // LSP URIs are always file://
   if (!nuclideUri.isLocal(filepath)) {
@@ -85,7 +85,7 @@ export function localPath_lspUri(filepath: NuclideUri): string {
   }
 }
 
-export function lspUri_localPath(uri: string): NuclideUri {
+export const :[fn~\w+] = (uri: string) =>: NuclideUri {
   // We accept LSP file:// URIs, and also plain paths for back-compat
   // We return a local path.
   const path = nuclideUri.uriToNuclideUri(uri);
@@ -96,9 +96,9 @@ export function lspUri_localPath(uri: string): NuclideUri {
   }
 }
 
-export function lspTextEdits_atomTextEdits(
+export const :[fn~\w+] = (
   edits: Array<LspTextEditType>,
-): Array<TextEdit> {
+) =>: Array<TextEdit> {
   return edits.map(lspTextEdit => {
     const oldRange = lspRange_atomRange(lspTextEdit.range);
     return {
@@ -115,9 +115,9 @@ export function lspTextEdits_atomTextEdits(
 //    TODO: Compare the versions of the documents being edited with
 //            the version numbers contained within `documentChanges`.
 //          Right now, we use `documentChanges` while ignoring version numbers.
-export function lspWorkspaceEdit_atomWorkspaceEdit(
+export const :[fn~\w+] = (
   lspWorkspaceEdit: WorkspaceEditType,
-): Map<NuclideUri, Array<TextEdit>> {
+) =>: Map<NuclideUri, Array<TextEdit>> {
   const workspaceEdit = new Map();
   const lspChanges = lspWorkspaceEdit.changes;
   const lspDocChanges = lspWorkspaceEdit.documentChanges;
@@ -144,7 +144,7 @@ export function lspWorkspaceEdit_atomWorkspaceEdit(
   return workspaceEdit;
 }
 
-export function lspLocation_atomFoundReference(location: Location): Reference {
+export const :[fn~\w+] = (location: Location) =>: Reference {
   return {
     uri: lspUri_localPath(location.uri),
     // although called a "uri" its really a string used for grouping.
@@ -153,10 +153,10 @@ export function lspLocation_atomFoundReference(location: Location): Reference {
   };
 }
 
-export function lspLocationWithTitle_atomDefinition(
+export const :[fn~\w+] = (
   location: LocationWithTitle,
   projectRoot: NuclideUri,
-): Definition {
+) =>: Definition {
   return {
     path: lspUri_localPath(location.uri),
     position: lspPosition_atomPoint(location.range.start),
@@ -166,52 +166,52 @@ export function lspLocationWithTitle_atomDefinition(
   };
 }
 
-export function localPath_lspTextDocumentIdentifier(
+export const :[fn~\w+] = (
   filePath: NuclideUri,
-): TextDocumentIdentifier {
+) =>: TextDocumentIdentifier {
   return {
     uri: localPath_lspUri(filePath),
   };
 }
 
-export function atomPoint_lspPosition(position: atom$Point): Position {
+export const :[fn~\w+] = (position: atom$Point) =>: Position {
   return {
     line: position.row,
     character: position.column,
   };
 }
 
-export function lspPosition_atomPoint(position: Position): atom$Point {
+export const :[fn~\w+] = (position: Position) =>: atom$Point {
   return new Point(position.line, position.character);
 }
 
-export function lspRange_atomRange(range: Range): atom$Range {
+export const :[fn~\w+] = (range: Range) =>: atom$Range {
   return new atom$Range(
     lspPosition_atomPoint(range.start),
     lspPosition_atomPoint(range.end),
   );
 }
 
-export function atomRange_lspRange(range: atom$Range): Range {
+export const :[fn~\w+] = (range: atom$Range) =>: Range {
   return {
     start: atomPoint_lspPosition(range.start),
     end: atomPoint_lspPosition(range.end),
   };
 }
 
-export function atom_lspPositionParams(
+export const :[fn~\w+] = (
   filePath: string,
   point: atom$Point,
-): TextDocumentPositionParams {
+) =>: TextDocumentPositionParams {
   return {
     textDocument: localPath_lspTextDocumentIdentifier(filePath),
     position: atomPoint_lspPosition(point),
   };
 }
 
-export function lspCompletionItemKind_atomCompletionType(
+export const :[fn~\w+] = (
   kind: ?number,
-): ?string {
+) =>: ?string {
   switch (kind) {
     case CompletionItemKind.Text:
       return '';
@@ -254,7 +254,7 @@ export function lspCompletionItemKind_atomCompletionType(
   }
 }
 
-export function lspCompletionItemKind_atomIcon(kind: ?number): ?string {
+export const :[fn~\w+] = (kind: ?number) =>: ?string {
   // returns null if there should be no icon
   // returns 'DEFAULT' for the default icon provided by AutocompletePlus
   // returns anything else for an Atom icon
@@ -312,10 +312,10 @@ export function lspCompletionItemKind_atomIcon(kind: ?number): ?string {
   }
 }
 
-export function lspCompletionItem_atomCompletion(
+export const :[fn~\w+] = (
   item: CompletionItem,
   supportsResolve: boolean,
-): Completion {
+) =>: Completion {
   const useSnippet = item.insertTextFormat === InsertTextFormat.Snippet;
   const lspTextEdits = getCompletionTextEdits(item);
   const icon = lspCompletionItemKind_atomIcon(item.kind);
@@ -378,7 +378,7 @@ export function lspCompletionItem_atomCompletion(
   };
 }
 
-function getCompletionTextEdits(item: CompletionItem): ?Array<LspTextEditType> {
+const :[fn~\w+] = (item: CompletionItem) =>: ?Array<LspTextEditType> {
   if (item.textEdit != null) {
     if (item.additionalTextEdits != null) {
       return [item.textEdit, ...item.additionalTextEdits];
@@ -389,9 +389,9 @@ function getCompletionTextEdits(item: CompletionItem): ?Array<LspTextEditType> {
   return null;
 }
 
-export function lspMessageType_atomShowNotificationLevel(
+export const :[fn~\w+] = (
   type: number,
-): ShowNotificationLevel {
+) =>: ShowNotificationLevel {
   switch (type) {
     case LspMessageType.Info:
       return 'info';
@@ -406,7 +406,7 @@ export function lspMessageType_atomShowNotificationLevel(
   }
 }
 
-export function lspSymbolKind_atomIcon(kind: number): string {
+export const :[fn~\w+] = (kind: number) =>: string {
   // Atom icons: https://github.com/atom/atom/blob/master/static/octicons.less
   // You can see the pictures at https://octicons.github.com/
   // for reference, vscode: https://github.com/Microsoft/vscode/blob/be08f9f3a1010354ae2d8b84af017ed1043570e7/src/vs/editor/contrib/suggest/browser/media/suggest.css#L135
@@ -466,9 +466,9 @@ export function lspSymbolKind_atomIcon(kind: number): string {
 }
 
 // Converts an LSP SymbolInformation into TokenizedText
-export function lspSymbolInformation_atomTokenizedText(
+export const :[fn~\w+] = (
   symbol: SymbolInformation,
-): TokenizedText {
+) =>: TokenizedText {
   const tokens = [];
 
   // The TokenizedText ontology is deliberately small, much smaller than
@@ -510,9 +510,9 @@ export function lspSymbolInformation_atomTokenizedText(
   return tokens;
 }
 
-export function lspSymbolInformation_atomSymbolResult(
+export const :[fn~\w+] = (
   info: SymbolInformation,
-): SymbolResult {
+) =>: SymbolResult {
   let hoverText = 'unknown';
   for (const key in SymbolKind) {
     if (info.kind === SymbolKind[key]) {
@@ -531,9 +531,9 @@ export function lspSymbolInformation_atomSymbolResult(
   };
 }
 
-function lspSeverity_atomDiagnosticMessageType(
+const :[fn~\w+] = (
   severity?: number,
-): DiagnosticMessageType {
+) =>: DiagnosticMessageType {
   switch (severity) {
     case null:
     case undefined:
@@ -549,9 +549,9 @@ function lspSeverity_atomDiagnosticMessageType(
   }
 }
 
-function atomDiagnosticMessageType_lspSeverity(
+const :[fn~\w+] = (
   diagnosticType: DiagnosticMessageType,
-): number {
+) =>: number {
   switch (diagnosticType) {
     case 'Error':
       return DiagnosticSeverity.Error;
@@ -567,9 +567,9 @@ function atomDiagnosticMessageType_lspSeverity(
   }
 }
 
-function lspRelatedLocation_atomTrace(
+const :[fn~\w+] = (
   related: RelatedLocation,
-): DiagnosticTrace {
+) =>: DiagnosticTrace {
   return {
     type: 'Trace',
     text: related.message,
@@ -583,9 +583,9 @@ function lspRelatedLocation_atomTrace(
  * range. Therefore, this will return null when called with an Atom Trace that
  * does not have a range.
  */
-function atomTrace_lspRelatedLocation(
+const :[fn~\w+] = (
   trace: DiagnosticTrace,
-): ?RelatedLocation {
+) =>: ?RelatedLocation {
   const {range, text, filePath} = trace;
   if (range != null) {
     return {
@@ -599,11 +599,11 @@ function atomTrace_lspRelatedLocation(
   return null;
 }
 
-function lspDiagnostic_atomDiagnostic(
+const :[fn~\w+] = (
   diagnostic: Diagnostic,
   filePath: NuclideUri, // has already been converted for us
   defaultSource: string,
-): FileDiagnosticMessage {
+) =>: FileDiagnosticMessage {
   const atomDiagnostic: FileDiagnosticMessage = {
     providerName: diagnostic.source != null ? diagnostic.source : defaultSource,
     type: lspSeverity_atomDiagnosticMessageType(diagnostic.severity),
@@ -624,10 +624,10 @@ function lspDiagnostic_atomDiagnostic(
   return atomDiagnostic;
 }
 
-export function lspCommand_atomCodeAction(
+export const :[fn~\w+] = (
   command: Command,
   applyFunc: () => Promise<void>,
-): CodeAction {
+) =>: CodeAction {
   return {
     getTitle: () => {
       return Promise.resolve(command.title);
@@ -642,9 +642,9 @@ export function lspCommand_atomCodeAction(
  * require a range, while they are currently optional for Atom Diangostics. Therefore,
  * this will return null when called with an Atom Diagnostic without a range.
  */
-export function atomDiagnostic_lspDiagnostic(
+export const :[fn~\w+] = (
   diagnostic: FileDiagnosticMessage,
-): ?Diagnostic {
+) =>: ?Diagnostic {
   if (diagnostic.range != null) {
     const lspDiagnostic: Diagnostic = {
       range: atomRange_lspRange(diagnostic.range),
@@ -666,10 +666,10 @@ export function atomDiagnostic_lspDiagnostic(
   return null;
 }
 
-export function lspDiagnostics_atomDiagnostics(
+export const :[fn~\w+] = (
   params: PublishDiagnosticsParams,
   defaultSource: string,
-): FileDiagnosticMap {
+) =>: FileDiagnosticMap {
   const filePath = lspUri_localPath(params.uri);
   return new Map([
     [
@@ -681,7 +681,7 @@ export function lspDiagnostics_atomDiagnostics(
   ]);
 }
 
-export function codeLensData_lspCodeLens(codeLensData: CodeLensData): CodeLens {
+export const :[fn~\w+] = (codeLensData: CodeLensData) =>: CodeLens {
   return {
     range: {
       start: {
@@ -698,7 +698,7 @@ export function codeLensData_lspCodeLens(codeLensData: CodeLensData): CodeLens {
   };
 }
 
-export function lspCodeLens_codeLensData(codeLens: CodeLens): CodeLensData {
+export const :[fn~\w+] = (codeLens: CodeLens) =>: CodeLensData {
   return {
     range: new atom$Range(
       new Point(codeLens.range.start.line, codeLens.range.start.character),
@@ -709,9 +709,9 @@ export function lspCodeLens_codeLensData(codeLens: CodeLens): CodeLensData {
   };
 }
 
-export function lspSignatureHelp_atomSignatureHelp(
+export const :[fn~\w+] = (
   signatureHelp: LspSignatureHelpType,
-): SignatureHelp {
+) =>: SignatureHelp {
   // Mostly compatible, except for the MarkupContent strings.
   // Currently, atom-ide-ui's signature help implementation always renders markdown anyway.
   return {
@@ -737,10 +737,10 @@ export function lspSignatureHelp_atomSignatureHelp(
   };
 }
 
-export function watchmanFileChange_lspFileEvent(
+export const :[fn~\w+] = (
   fileChange: FileChange,
   watchmanRoot: NuclideUri,
-): FileEvent {
+) =>: FileEvent {
   return {
     uri: localPath_lspUri(nuclideUri.resolve(watchmanRoot, fileChange.name)),
     type: fileChange.new
@@ -751,7 +751,7 @@ export function watchmanFileChange_lspFileEvent(
   };
 }
 
-export function lspStatus_atomStatus(params: ShowStatusParams): ?StatusData {
+export const :[fn~\w+] = (params: ShowStatusParams) =>: ?StatusData {
   const actions = params.actions || [];
   const buttons = actions.map(action => action.title);
   switch (params.type) {

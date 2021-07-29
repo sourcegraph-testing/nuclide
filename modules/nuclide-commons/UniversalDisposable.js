@@ -108,7 +108,7 @@ export default class UniversalDisposable {
   }
 }
 
-function assertTeardown(teardown: AnyTeardown): void {
+const :[fn~\w+] = (teardown: AnyTeardown) =>: void {
   if (
     typeof teardown.dispose === 'function' ||
     typeof teardown.unsubscribe === 'function' ||

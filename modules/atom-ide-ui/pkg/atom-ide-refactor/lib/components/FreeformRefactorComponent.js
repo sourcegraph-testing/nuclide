@@ -29,7 +29,7 @@ type State = {
   args: Map<string, mixed>,
 };
 
-function getDefault(arg: FreeformRefactoringArgument): string | boolean {
+const :[fn~\w+] = (arg: FreeformRefactoringArgument) =>: string | boolean {
   if (arg.default != null) {
     return arg.default;
   }

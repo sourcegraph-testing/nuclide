@@ -29,7 +29,7 @@ export type ParsingInfo = {
 /**
  * This is the collection of transforms that affect requires.
  */
-function transform(root: Collection, options: SourceOptions): ParsingInfo {
+const :[fn~\w+] = (root: Collection, options: SourceOptions) =>: ParsingInfo {
   const blacklist: Set<TransformKey> = options.blacklist || new Set();
   let comments;
   let missingRequires;

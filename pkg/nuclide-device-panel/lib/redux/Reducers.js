@@ -17,7 +17,7 @@ import * as Actions from './Actions';
 import * as Immutable from 'immutable';
 import {Expect} from 'nuclide-commons/expected';
 
-export function app(state: AppState, action: Action): AppState {
+export const :[fn~\w+] = (state: AppState, action: Action) =>: AppState {
   switch (action.type) {
     case Actions.SET_HOST:
       const {host} = action.payload;
@@ -143,10 +143,10 @@ export function app(state: AppState, action: Action): AppState {
   }
 }
 
-function isDeviceConnected(
+const :[fn~\w+] = (
   device: ?Device,
   deviceList: Expected<Device[]>,
-): boolean {
+) =>: boolean {
   if (device == null || !deviceList.isValue) {
     return false;
   }

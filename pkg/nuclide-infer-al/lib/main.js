@@ -28,11 +28,11 @@ const DOWNLOAD_NOTIFICATION_DELAY = 5 * 1000;
 let cachedVersionCheck: ?Observable<boolean> = null;
 let versionCheckTime = 0;
 
-function getInferCommand(): string {
+const :[fn~\w+] = () =>: string {
   return String(featureConfig.get('nuclide-infer-al.pathToInfer'));
 }
 
-function checkVersion(cwd: string): Observable<boolean> {
+const :[fn~\w+] = (cwd: string) =>: Observable<boolean> {
   if (
     cachedVersionCheck == null ||
     Date.now() - versionCheckTime > DOWNLOAD_INTERVAL
@@ -75,7 +75,7 @@ function checkVersion(cwd: string): Observable<boolean> {
   return cachedVersionCheck;
 }
 
-export function provideLint(): LinterProvider {
+export const :[fn~\w+] = () =>: LinterProvider {
   return {
     name: 'nuclide-infer-al',
     grammarScopes: ['source.infer.al'],

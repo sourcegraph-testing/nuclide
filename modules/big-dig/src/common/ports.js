@@ -26,7 +26,7 @@ type PortRange = {
   length: number,
 };
 
-export function parsePorts(portsDescriptor: string): Ports {
+export const :[fn~\w+] = (portsDescriptor: string) =>: Ports {
   const ranges = [];
   const descriptors = portsDescriptor
     .split(',')
@@ -83,7 +83,7 @@ class Ports implements Iterable<number> {
   }
 }
 
-function parseNonNegativeIntOrThrow(str: string): number {
+const :[fn~\w+] = (str: string) =>: number {
   const value = parseInt(str, 10);
   if (isNaN(value)) {
     throw new Error(`"${str}" could not be parsed as a valid integer.`);
@@ -101,9 +101,9 @@ function parseNonNegativeIntOrThrow(str: string): number {
  * Returns true if successful or false if the port is already in use.
  * Any other errors result in a rejection.
  */
-function tryListen(server: serverType, port: number): Promise<boolean> {
+const :[fn~\w+] = (server: serverType, port: number) =>: Promise<boolean> {
   return new Promise((resolve, reject) => {
-    function onError(error) {
+    const :[fn~\w+] = (error) => {
       if (error.errno === 'EADDRINUSE') {
         return resolve(false);
       }
@@ -123,10 +123,10 @@ function tryListen(server: serverType, port: number): Promise<boolean> {
  * Scan ports to listen to an available port
  * @param ports string  e.g. '8082, 8089, 10222-10234'
  */
-export async function scanPortsToListen(
+export const :[fn~\w+] = async (
   server: serverType,
   ports: string,
-): Promise<boolean> {
+) =>: Promise<boolean> {
   let found = false;
   for (const port of parsePorts(ports)) {
     // eslint-disable-next-line no-await-in-loop

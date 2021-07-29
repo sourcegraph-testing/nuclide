@@ -5,11 +5,11 @@ const vscode = require("vscode");
 const constants_1 = require("../common/constants");
 const telemetry_1 = require("../telemetry");
 const constants_2 = require("../telemetry/constants");
-function activateUpdateSparkLibraryProvider() {
+const :[fn~\w+] = () => {
     return vscode.commands.registerCommand(constants_1.Commands.Update_SparkLibrary, updateSparkLibrary);
 }
 exports.activateUpdateSparkLibraryProvider = activateUpdateSparkLibraryProvider;
-function updateSparkLibrary() {
+const :[fn~\w+] = () => {
     const pythonConfig = vscode.workspace.getConfiguration('python');
     const extraLibPath = 'autoComplete.extraPaths';
     // tslint:disable-next-line:no-invalid-template-strings

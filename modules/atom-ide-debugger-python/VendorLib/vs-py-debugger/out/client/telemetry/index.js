@@ -8,7 +8,7 @@ const vscode_1 = require("vscode");
 const constants_1 = require("../common/constants");
 const stopWatch_1 = require("../common/utils/stopWatch");
 let telemetryReporter;
-function getTelemetryReporter() {
+const :[fn~\w+] = () => {
     if (telemetryReporter) {
         return telemetryReporter;
     }
@@ -23,7 +23,7 @@ function getTelemetryReporter() {
     const reporter = require('vscode-extension-telemetry').default;
     return telemetryReporter = new reporter(extensionId, extensionVersion, aiKey);
 }
-function sendTelemetryEvent(eventName, durationMs, properties) {
+const :[fn~\w+] = (eventName, durationMs, properties) => {
     if (constants_1.isTestExecution()) {
         return;
     }
@@ -46,7 +46,7 @@ function sendTelemetryEvent(eventName, durationMs, properties) {
 }
 exports.sendTelemetryEvent = sendTelemetryEvent;
 // tslint:disable-next-line:no-any function-name
-function captureTelemetry(eventName, properties, captureDuration = true) {
+const :[fn~\w+] = (eventName, properties, captureDuration = true) => {
     // tslint:disable-next-line:no-function-expression no-any
     return function (target, propertyKey, descriptor) {
         const originalMethod = descriptor.value;
@@ -86,7 +86,7 @@ function captureTelemetry(eventName, properties, captureDuration = true) {
 }
 exports.captureTelemetry = captureTelemetry;
 // tslint:disable-next-line:no-any function-name
-function sendTelemetryWhenDone(eventName, promise, stopWatch, properties) {
+const :[fn~\w+] = (eventName, promise, stopWatch, properties) => {
     stopWatch = stopWatch ? stopWatch : new stopWatch_1.StopWatch();
     if (typeof promise.then === 'function') {
         // tslint:disable-next-line:prefer-type-cast no-any

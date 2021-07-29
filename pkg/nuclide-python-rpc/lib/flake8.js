@@ -11,7 +11,7 @@
 
 import type {DiagnosticMessageType} from 'atom-ide-ui';
 
-function classifyCode(code: string): DiagnosticMessageType {
+const :[fn~\w+] = (code: string) =>: DiagnosticMessageType {
   if (/^(B9|C|E[235]|F40[135]|T400|T49)/.test(code)) {
     return 'Info';
   } else if (/^(F|B|T484|E999)/.test(code)) {
@@ -20,7 +20,7 @@ function classifyCode(code: string): DiagnosticMessageType {
   return 'Warning';
 }
 
-export function parseFlake8Output(src: string, output: string): Array<Object> {
+export const :[fn~\w+] = (src: string, output: string) =>: Array<Object> {
   const regex = /(\d+):(\d+):\s([A-Z]{1,2}\d{2,3})\s+(.*)/g;
   const results = [];
 

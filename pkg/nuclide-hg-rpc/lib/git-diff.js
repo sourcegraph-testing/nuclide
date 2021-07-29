@@ -13,10 +13,10 @@ import fsPromise from 'nuclide-commons/fsPromise';
 import {Observable} from 'rxjs';
 import {runCommandDetailed} from 'nuclide-commons/process';
 
-export function gitDiffStrings(
+export const :[fn~\w+] = (
   oldString: string,
   newString: string,
-): Observable<string> {
+) =>: Observable<string> {
   return makeTempFiles(oldString, newString).switchMap(
     ([oldTempFile, newTempFile]) =>
       runCommandDetailed(
@@ -39,10 +39,10 @@ export function gitDiffStrings(
   );
 }
 
-function makeTempFiles(
+const :[fn~\w+] = (
   oldString: string,
   newString: string,
-): Observable<[string, string]> {
+) =>: Observable<[string, string]> {
   let oldFilePath: string;
   let newFilePath: string;
   return Observable.forkJoin(
@@ -73,9 +73,9 @@ function makeTempFiles(
   });
 }
 
-function writeContentsToFile(
+const :[fn~\w+] = (
   contents: string,
   filePath: string,
-): Observable<void> {
+) =>: Observable<void> {
   return Observable.fromPromise(fsPromise.writeFile(filePath, contents));
 }

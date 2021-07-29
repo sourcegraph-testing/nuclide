@@ -304,7 +304,7 @@ export class BuckBuildSystem {
   }
 }
 
-function runBuckCommand(
+const :[fn~\w+] = (
   buckService: BuckService,
   buckRoot: string,
   buildTarget: string,
@@ -313,7 +313,7 @@ function runBuckCommand(
   debug: boolean,
   simulator: ?string,
   skipLaunchAfterInstall?: boolean = false,
-): Observable<LegacyProcessMessage> {
+) =>: Observable<LegacyProcessMessage> {
   // TODO(T17463635)
   if (debug) {
     // Stop any existing debugging sessions, as install hangs if an existing
@@ -360,26 +360,26 @@ function runBuckCommand(
   }
 }
 
-function getCommandStringForResolvedBuildTarget(
+const :[fn~\w+] = (
   target: ResolvedBuildTarget,
-): string {
+) =>: string {
   const {qualifiedName, flavors} = target;
   const separator = flavors.length > 0 ? '#' : '';
   return `${qualifiedName}${separator}${flavors.join(',')}`;
 }
 
-function splitTargets(buildTarget: string): Array<string> {
+const :[fn~\w+] = (buildTarget: string) =>: Array<string> {
   return buildTarget.trim().split(/\s+/);
 }
 
-function isOneWorldDevice(simulator: ?string): boolean {
+const :[fn~\w+] = (simulator: ?string) =>: boolean {
   return simulator != null && /^localhost:\d+$/.test(simulator);
 }
 
-function openExopackageTunnelIfNeeded(
+const :[fn~\w+] = (
   host: NuclideUri,
   simulator: ?string,
-): Observable<'ready'> {
+) =>: Observable<'ready'> {
   // We need to create this tunnel for exopackage installations to work as
   // buck expects this port to be open. We don't need it in the case of
   // installing to One World though because it's handled by adbmux.

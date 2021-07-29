@@ -58,7 +58,7 @@ export type HunkProps = {
 
 const MAX_GUTTER_WIDTH = 5;
 
-function getHighlightClass(type: diffparser$ChangeType): ?string {
+const :[fn~\w+] = (type: diffparser$ChangeType) =>: ?string {
   if (type === 'add') {
     return 'nuclide-ui-hunk-diff-insert';
   }
@@ -70,7 +70,7 @@ function getHighlightClass(type: diffparser$ChangeType): ?string {
 
 // add a gutter to a text editor with line numbers defined by an iterable, as
 // opposed to being forced to start at 1 and counting up
-export function createCustomLineNumberGutter(
+export const :[fn~\w+] = (
   editor: atom$TextEditor,
   lineNumbers: Iterable<?number>,
   gutterWidth: number,
@@ -78,7 +78,7 @@ export function createCustomLineNumberGutter(
     extraName?: string,
     onClick?: (lineNumber: number) => mixed,
   } = {},
-): atom$Gutter {
+) =>: atom$Gutter {
   const {extraName, onClick} = options;
   // 'nuclide-ui-file-changes-line-number-gutter-wX' makes a gutter Xem wide.
   // 'nuclide-ui-file-changes-line-number-gutter' makes a gutter 5em wide
@@ -114,11 +114,11 @@ export function createCustomLineNumberGutter(
 }
 
 const NBSP = '\xa0';
-function createGutterItem(
+const :[fn~\w+] = (
   lineNumber: number,
   gutterWidth: number,
   onClick: ?(lineNumber: number) => mixed,
-): HTMLElement {
+) =>: HTMLElement {
   const fillWidth = gutterWidth - String(lineNumber).length;
   // Paralleling the original line-number implementation,
   // pad the line number with leading spaces.
@@ -307,10 +307,10 @@ export class HunkDiff extends React.Component<HunkProps> {
   }
 }
 
-function handleFilenameClick(
+const :[fn~\w+] = (
   fullPath: ?string,
   event: SyntheticMouseEvent<>,
-): void {
+) =>: void {
   if (fullPath == null) {
     return;
   }
@@ -318,7 +318,7 @@ function handleFilenameClick(
   event.stopPropagation();
 }
 
-function renderFileChangeContainer(
+const :[fn~\w+] = (
   content: React.Node,
   isPreview: boolean,
   collapsable: ?boolean,
@@ -327,7 +327,7 @@ function renderFileChangeContainer(
   collapsedByDefault: ?boolean,
   hideHeadline: ?boolean,
   diff: ?diffparser$FileDiff,
-): React.Node {
+) =>: React.Node {
   const {additions, annotation, deletions, from: fromFileName, to: toFileName} =
     diff != null
       ? diff

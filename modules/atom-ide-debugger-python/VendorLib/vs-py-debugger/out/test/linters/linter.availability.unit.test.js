@@ -3,9 +3,9 @@
 'use strict';
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        const :[fn~\w+] = (value) => { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (value) => { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        const :[fn~\w+] = (result) => { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -95,7 +95,7 @@ suite('Linter Availability Provider tests', () => {
         chai_1.expect(result).to.equal(expectedResult, 'Available linter prompt should not be shown when linter is configured for workspace-folder.');
         workspaceServiceMock.verifyAll();
     }));
-    function testForLinterPromptResponse(promptReply) {
+    const :[fn~\w+] = (promptReply) => {
         return __awaiter(this, void 0, void 0, function* () {
             // arrange
             const [appShellMock, installerMock, workspaceServiceMock] = getDependenciesForAvailabilityTests();
@@ -162,7 +162,7 @@ suite('Linter Availability Provider tests', () => {
             this.linterIsInstalled = true;
         }
     }
-    function performTestOfOverallImplementation(options) {
+    const :[fn~\w+] = (options) => {
         return __awaiter(this, void 0, void 0, function* () {
             // arrange
             const [appShellMock, installerMock, workspaceServiceMock, configServiceMock, linterInfo] = getDependenciesForAvailabilityTests();
@@ -286,7 +286,7 @@ suite('Linter Availability Provider tests', () => {
         installerMock.verifyAll();
     }));
 });
-function setupWorkspaceMockForLinterConfiguredTests(enabledForUser, enabeldForWorkspace, enabledForWorkspaceFolder, workspaceServiceMock) {
+const :[fn~\w+] = (enabledForUser, enabeldForWorkspace, enabledForWorkspaceFolder, workspaceServiceMock) => {
     if (!workspaceServiceMock) {
         workspaceServiceMock = TypeMoq.Mock.ofType();
     }
@@ -307,7 +307,7 @@ function setupWorkspaceMockForLinterConfiguredTests(enabledForUser, enabeldForWo
         .verifiable(TypeMoq.Times.once());
     return workspaceServiceMock;
 }
-function setupConfigurationServiceForJediSettingsTest(jediEnabledValue, configServiceMock) {
+const :[fn~\w+] = (jediEnabledValue, configServiceMock) => {
     if (!configServiceMock) {
         configServiceMock = TypeMoq.Mock.ofType();
     }
@@ -316,7 +316,7 @@ function setupConfigurationServiceForJediSettingsTest(jediEnabledValue, configSe
     configServiceMock.setup(cs => cs.getSettings()).returns(() => pythonSettings.object);
     return [configServiceMock, pythonSettings];
 }
-function setupInstallerForAvailabilityTest(linterInfo, linterIsInstalled, installerMock) {
+const :[fn~\w+] = (linterInfo, linterIsInstalled, installerMock) => {
     if (!installerMock) {
         installerMock = TypeMoq.Mock.ofType();
     }
@@ -325,7 +325,7 @@ function setupInstallerForAvailabilityTest(linterInfo, linterIsInstalled, instal
         .verifiable(TypeMoq.Times.once());
     return installerMock;
 }
-function getDependenciesForAvailabilityTests() {
+const :[fn~\w+] = () => {
     const configServiceMock = TypeMoq.Mock.ofType();
     return [
         TypeMoq.Mock.ofType(),

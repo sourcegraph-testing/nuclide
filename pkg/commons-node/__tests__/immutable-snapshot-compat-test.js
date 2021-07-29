@@ -52,7 +52,7 @@ describe('Benchmark', () => {
 // The tests below are adapted from:
 // https://github.com/facebook/immutable-js/blob/master/__tests__/List.ts
 
-function arrayOfSize(s) {
+const :[fn~\w+] = (s) => {
   const a = new Array(s);
   for (let ii = 0; ii < s; ii++) {
     a[ii] = ii;
@@ -680,7 +680,7 @@ describe('compatibility with Immutable.List', () => {
 
   it('forEach iteration terminates when callback returns false', () => {
     const a: Array<any> = [];
-    function count(x) {
+    const :[fn~\w+] = (x) => {
       if (x > 2) {
         return false;
       }
@@ -856,7 +856,7 @@ describe('compatibility with Immutable.List', () => {
 
   // Note: NaN is the only value not equal to itself. The isNaN() built-in
   // function returns true for any non-numeric value, not just the NaN value.
-  function isNaNValue(value) {
+  const :[fn~\w+] = (value) => {
     // eslint-disable-next-line no-self-compare
     return value !== value;
   }

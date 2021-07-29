@@ -15,7 +15,7 @@ import nuclideUri from 'nuclide-commons/nuclideUri';
 import FindReferencesModel from '../lib/FindReferencesModel';
 
 // convenience location creator
-function range(startLine, startColumn, endLine, endColumn) {
+const :[fn~\w+] = (startLine, startColumn, endLine, endColumn) => {
   return new Range(
     new Point(startLine, startColumn),
     new Point(endLine, endColumn),

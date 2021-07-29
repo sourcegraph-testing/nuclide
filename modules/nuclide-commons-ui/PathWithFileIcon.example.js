@@ -14,14 +14,14 @@ import * as React from 'react';
 import {Block} from './Block';
 import PathWithFileIcon, {DecorationIcons} from './PathWithFileIcon';
 
-function ListItem(props: {children?: mixed}): React.Element<any> {
+const :[fn~\w+] = (props: {children?: mixed}) =>: React.Element<any> {
   return (
     // $FlowFixMe(>=0.53.0) Flow suppress
     <div className="list-item">{props.children}</div>
   );
 }
 
-function BasicExample(): React.Element<any> {
+const :[fn~\w+] = () =>: React.Element<any> {
   return (
     <div>
       <Block>
@@ -57,7 +57,7 @@ function BasicExample(): React.Element<any> {
   );
 }
 
-function DecorationIconExample(): React.Node {
+const :[fn~\w+] = () =>: React.Node {
   return (
     <div>
       <Block>

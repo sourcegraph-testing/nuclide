@@ -288,18 +288,18 @@ export class ResizeObservable extends DOMObserverObservable<
   }
 }
 
-function lastRectPerTarget(
+const :[fn~\w+] = (
   entries: Array<ResizeObserverEntry>,
-): Map<HTMLElement, DOMRectReadOnly> {
+) =>: Map<HTMLElement, DOMRectReadOnly> {
   const rectMap = new Map();
   entries.forEach(entry => rectMap.set(entry.target, entry.contentRect));
   return rectMap;
 }
 
-function remeasureContentRect(
+const :[fn~\w+] = (
   element: HTMLElement,
   contentRect: DOMRectReadOnly,
-): DOMRectReadOnly {
+) =>: DOMRectReadOnly {
   const {clientHeight, clientWidth} = element;
 
   // Client height/width include padding

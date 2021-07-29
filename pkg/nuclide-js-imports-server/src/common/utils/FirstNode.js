@@ -42,7 +42,7 @@ const FirstNode = {
   },
 };
 
-function isValidFirstNode(path: NodePath): boolean {
+const :[fn~\w+] = (path: NodePath) =>: boolean {
   // A new line literal is okay.
   if (match(path, {expression: {value: NewLine.literal}})) {
     return true;

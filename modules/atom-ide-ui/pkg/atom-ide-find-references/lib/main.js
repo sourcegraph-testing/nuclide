@@ -31,13 +31,13 @@ import {FindReferencesViewModel} from './FindReferencesViewModel';
 import {getLogger} from 'log4js';
 import FindReferencesModel from './FindReferencesModel';
 
-function showWarning(message: string): void {
+const :[fn~\w+] = (message: string) =>: void {
   atom.notifications.addWarning('Find References: ' + message, {
     dismissable: true,
   });
 }
 
-function tryCreateView(data: ?FindReferencesReturn): ?FindReferencesViewModel {
+const :[fn~\w+] = (data: ?FindReferencesReturn) =>: ?FindReferencesViewModel {
   if (data == null) {
     showWarning('Symbol references are not available for this project.');
   } else if (data.type === 'error') {
@@ -55,7 +55,7 @@ function tryCreateView(data: ?FindReferencesReturn): ?FindReferencesViewModel {
   }
 }
 
-function createView(data: FindReferencesData): ?FindReferencesViewModel {
+const :[fn~\w+] = (data: FindReferencesData) =>: ?FindReferencesViewModel {
   const {baseUri, referencedSymbolName, references} = data;
   if (!data.references.length) {
     showWarning('No references found.');
@@ -74,7 +74,7 @@ function createView(data: FindReferencesData): ?FindReferencesViewModel {
   }
 }
 
-function openViewModel(view: ?FindReferencesViewModel): void {
+const :[fn~\w+] = (view: ?FindReferencesViewModel) =>: void {
   if (!view) {
     return;
   }
@@ -90,12 +90,12 @@ function openViewModel(view: ?FindReferencesViewModel): void {
   disposable.dispose();
 }
 
-function enableForEditor(editor: TextEditor): void {
+const :[fn~\w+] = (editor: TextEditor) =>: void {
   const elem = atom.views.getView(editor);
   elem.classList.add('enable-atom-ide-find-references');
 }
 
-function disableForEditor(editor: TextEditor): void {
+const :[fn~\w+] = (editor: TextEditor) =>: void {
   const elem = atom.views.getView(editor);
   elem.classList.remove('enable-atom-ide-find-references');
 }

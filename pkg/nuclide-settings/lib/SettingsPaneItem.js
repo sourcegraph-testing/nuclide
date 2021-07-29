@@ -258,12 +258,12 @@ export default class SettingsPaneItem extends React.Component<Props, State> {
   }
 }
 
-function getOrder(schema: atom$ConfigSchema): number {
+const :[fn~\w+] = (schema: atom$ConfigSchema) =>: number {
   // $FlowFixMe(>=0.68.0) Flow suppress (T27187857)
   return typeof schema.order === 'number' ? schema.order : 0;
 }
 
-function getTitle(schema: atom$ConfigSchema, settingName: string): string {
+const :[fn~\w+] = (schema: atom$ConfigSchema, settingName: string) =>: string {
   let title = schema.title;
   // flowlint-next-line sketchy-null-string:off
   if (!title) {
@@ -276,17 +276,17 @@ function getTitle(schema: atom$ConfigSchema, settingName: string): string {
   return title;
 }
 
-function getDescription(schema: atom$ConfigSchema): string {
+const :[fn~\w+] = (schema: atom$ConfigSchema) =>: string {
   return schema.description || '';
 }
 
 // Remove spaces and hyphens
-function strip(str: string): string {
+const :[fn~\w+] = (str: string) =>: string {
   return str.replace(/\s+/g, '').replace(/-+/g, '');
 }
 
 /** Returns true if filter matches search string. Return true if filter is empty. */
-function matchesFilter(filter: string, searchString: string): boolean {
+const :[fn~\w+] = (filter: string, searchString: string) =>: boolean {
   if (filter.length === 0) {
     return true;
   }

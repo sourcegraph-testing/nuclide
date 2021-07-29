@@ -9,13 +9,13 @@
  * @format
  */
 
-function aggregateTable(
+const :[fn~\w+] = (
   columns: Array<string>,
   records: Array<Object>,
   keyColumn: string,
   aggregator: (values: Array<string>, decimalPlaces: number) => string = avg,
   decimalPlaces: number = 2,
-): Array<Object> {
+) =>: Array<Object> {
   // Map data set into arrays of values keyed by distinct keyColumn values and columns.
   const groupedValues = {};
   records.forEach(record => {
@@ -52,7 +52,7 @@ function aggregateTable(
   return aggregatedRecords;
 }
 
-function avg(values: Array<string>, decimalPlaces: number = 2): string {
+const :[fn~\w+] = (values: Array<string>, decimalPlaces: number = 2) =>: string {
   return aggregate(
     values,
     processedValues => {
@@ -63,11 +63,11 @@ function avg(values: Array<string>, decimalPlaces: number = 2): string {
   );
 }
 
-function aggregate(
+const :[fn~\w+] = (
   values: Array<string>,
   numericAggregator: (values: Array<number>) => number,
   decimalPlaces: number = 2,
-): string {
+) =>: string {
   if (values.length === 0) {
     return '';
   }
@@ -80,15 +80,15 @@ function aggregate(
   return values.join(',');
 }
 
-function numeric(values: Array<string>): Array<number> {
+const :[fn~\w+] = (values: Array<string>) =>: Array<number> {
   return values.map(value => parseFloat(value));
 }
 
-function areAllNumeric(values: Array<string>): boolean {
+const :[fn~\w+] = (values: Array<string>) =>: boolean {
   return values.every(value => !isNaN(parseFloat(value)));
 }
 
-function areAllTheSame(values: Array<string>): boolean {
+const :[fn~\w+] = (values: Array<string>) =>: boolean {
   return values.every(value => value === values[0]);
 }
 

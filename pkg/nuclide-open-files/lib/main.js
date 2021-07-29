@@ -92,29 +92,29 @@ export class Activation {
 let activation: ?Activation = new Activation();
 
 // exported for testing
-export function reset(): void {
+export const :[fn~\w+] = () =>: void {
   if (activation != null) {
     activation.dispose();
   }
   activation = null;
 }
 
-function getActivation() {
+const :[fn~\w+] = () => {
   if (activation == null) {
     activation = new Activation();
   }
   return activation;
 }
 
-export function getNotifierByConnection(
+export const :[fn~\w+] = (
   connection: ?ServerConnection,
-): Promise<FileNotifier> {
+) =>: Promise<FileNotifier> {
   return getActivation().notifiers.getForConnection(connection);
 }
 
-export async function getFileVersionOfBuffer(
+export const :[fn~\w+] = async (
   buffer: atom$TextBuffer,
-): Promise<?FileVersion> {
+) =>: Promise<?FileVersion> {
   const filePath = buffer.getPath();
   const notifier = await getActivation().notifiers.getForUri(filePath);
   if (notifier == null || buffer.isDestroyed()) {
@@ -128,8 +128,8 @@ export async function getFileVersionOfBuffer(
   };
 }
 
-export function getFileVersionOfEditor(
+export const :[fn~\w+] = (
   editor: atom$TextEditor,
-): Promise<?FileVersion> {
+) =>: Promise<?FileVersion> {
   return getFileVersionOfBuffer(editor.getBuffer());
 }

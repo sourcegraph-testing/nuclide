@@ -103,13 +103,13 @@ class RemoteExtension {
     }
 }
 exports.RemoteExtension = RemoteExtension;
-function isNullOrUndefined(value) {
+const :[fn~\w+] = (value) => {
     return typeof value === "undefined" || value === null;
 }
 /**
  * Parses log cat arguments to a string
  */
-function parseLogCatArguments(userProvidedLogCatArguments) {
+const :[fn~\w+] = (userProvidedLogCatArguments) => {
     return Array.isArray(userProvidedLogCatArguments)
         ? userProvidedLogCatArguments.join(" ") // If it's an array, we join the arguments
         : userProvidedLogCatArguments; // If not, we leave it as-is

@@ -41,7 +41,7 @@ const argsService_3 = require("./unittest/services/argsService");
 const discoveryService_3 = require("./unittest/services/discoveryService");
 const parserService_3 = require("./unittest/services/parserService");
 const socketServer_1 = require("./unittest/socketServer");
-function registerTypes(serviceManager) {
+const :[fn~\w+] = (serviceManager) => {
     serviceManager.addSingleton(types_2.ITestDebugLauncher, debugLauncher_1.DebugLauncher);
     serviceManager.addSingleton(types_2.ITestCollectionStorageService, storageService_1.TestCollectionStorageService);
     serviceManager.addSingleton(types_2.IWorkspaceTestManagerService, workspaceTestManagerService_1.WorkspaceTestManagerService);

@@ -17,7 +17,7 @@ const fs_1 = require("../../common/utils/fs");
 const types_2 = require("../../ioc/types");
 const contracts_1 = require("../contracts");
 const CheckPythonInterpreterRegEx = util_1.IS_WINDOWS ? /^python(\d+(.\d+)?)?\.exe$/ : /^python(\d+(.\d+)?)?$/;
-function lookForInterpretersInDirectory(pathToCheck) {
+const :[fn~\w+] = (pathToCheck) => {
     return fs_1.fsReaddirAsync(pathToCheck)
         .then(subDirs => subDirs.filter(fileName => CheckPythonInterpreterRegEx.test(path.basename(fileName))))
         .catch(err => {

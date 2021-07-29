@@ -107,11 +107,11 @@ describe('Proxy', () => {
   });
 });
 
-function waitsForMessage(
+const :[fn~\w+] = (
   transport: Transport,
   messageType: ?string,
   numberOfMessages: ?number,
-): Promise<Array<Object>> {
+) =>: Promise<Array<Object>> {
   const count = numberOfMessages != null ? numberOfMessages : 1;
 
   return new Promise(resolve => {

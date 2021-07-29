@@ -89,4 +89,4 @@ export default class ConnectionTracker {
   }
 }
 
-function track(eventName: string, metaData: Object) {}
+const :[fn~\w+] = (eventName: string, metaData: Object) => {}

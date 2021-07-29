@@ -36,10 +36,10 @@ import {getProviders} from '../providers';
 import shallowEqual from 'shallowequal';
 import * as Immutable from 'immutable';
 
-export function pollDevicesEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .ofType(Actions.TOGGLE_DEVICE_POLLING)
     .map(action => {
@@ -67,10 +67,10 @@ export function pollDevicesEpic(
     });
 }
 
-export function setDevicesEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .ofType(Actions.SET_DEVICES)
     .switchMap(action => {
@@ -83,10 +83,10 @@ export function setDevicesEpic(
     .map(tasks => Actions.setDeviceTasks(tasks));
 }
 
-export function pollProcessesEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions
     .ofType(Actions.TOGGLE_PROCESS_POLLING)
     .switchMap(action => {
@@ -117,10 +117,10 @@ export function pollProcessesEpic(
     });
 }
 
-export function setDeviceEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.SET_DEVICE).switchMap(action => {
     invariant(action.type === Actions.SET_DEVICE);
     const state = store.getState();
@@ -135,10 +135,10 @@ export function setDeviceEpic(
   });
 }
 
-export function setDeviceTypesEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.SET_DEVICE_TYPES).switchMap(action => {
     invariant(action.type === Actions.SET_DEVICE_TYPES);
     const state = store.getState();
@@ -156,10 +156,10 @@ const deviceTypeTaskCache = new SimpleCache({
     JSON.stringify([state.host, state.deviceType, providerName]),
 });
 
-export function setDeviceTypeEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.SET_DEVICE_TYPE).switchMap(action => {
     const state = store.getState();
     return Observable.of(
@@ -183,10 +183,10 @@ export function setDeviceTypeEpic(
   });
 }
 
-export function setProcessesEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.SET_PROCESSES).switchMap(action => {
     const state = store.getState();
     return getProcessTasks(state).switchMap(processTasks =>
@@ -195,10 +195,10 @@ export function setProcessesEpic(
   });
 }
 
-export function setAppInfoEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return observeProcessNamesOfInterest(actions, store)
     .switchMap(processNames => {
       const {device, host} = store.getState();
@@ -211,10 +211,10 @@ export function setAppInfoEpic(
     .map(appInfoTables => Actions.setAppInfoTables(appInfoTables));
 }
 
-export function setDeviceTypeComponentsEpic(
+export const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Action> {
+) =>: Observable<Action> {
   return actions.ofType(Actions.SET_DEVICE_TYPE).switchMap(action => {
     invariant(action.type === Actions.SET_DEVICE_TYPE);
     const {deviceType} = action.payload;
@@ -275,10 +275,10 @@ function uniqueArray<T>(array: Array<T>): Array<T> {
 // are needed by the AppInfo providers are observed. A new value is produced
 // every time the list of process names changes (a new process started running
 // or a running process was shut down).
-function observeProcessNamesOfInterest(
+const :[fn~\w+] = (
   actions: ActionsObservable<Action>,
   store: Store,
-): Observable<Array<string>> {
+) =>: Observable<Array<string>> {
   return actions
     .ofType(Actions.SET_PROCESSES)
     .map(action => {
@@ -302,12 +302,12 @@ function observeProcessNamesOfInterest(
 // AppInfoRow contains the values observed on each provider for the
 // corresponding application name.
 // This observable only emits a value when any of value is changed.
-function observeAppInfoTables(
+const :[fn~\w+] = (
   processNames: Array<string>,
   providers: Array<DeviceAppInfoProvider>,
   host: string,
   device: Device,
-): Observable<Map<string, Array<AppInfoRow>>> {
+) =>: Observable<Map<string, Array<AppInfoRow>>> {
   const observables = processNames.map(processName => {
     const providersForProcess = providers.filter(
       provider => provider.getProcessName() === processName,
@@ -329,11 +329,11 @@ function observeAppInfoTables(
   return Observable.combineLatest(...observables, resultSelector);
 }
 
-function observeAppInfoTable(
+const :[fn~\w+] = (
   tableProviders: Array<DeviceAppInfoProvider>,
   host: string,
   device: Device,
-): Observable<Array<AppInfoRow>> {
+) =>: Observable<Array<AppInfoRow>> {
   return observeAppInfoProviderValues(tableProviders, host, device).map(
     values => {
       return tableProviders.map((provider, index) => ({
@@ -351,11 +351,11 @@ function observeAppInfoTable(
 // returns an observer to an array of all the produced values from the
 // providers. A new array is produced every time any of values changes.
 const APP_INFO_UPDATE_INTERVAL = 3000;
-function observeAppInfoProviderValues(
+const :[fn~\w+] = (
   providers: Array<DeviceAppInfoProvider>,
   host: string,
   device: Device,
-): Observable<Array<{value: string, isError?: boolean}>> {
+) =>: Observable<Array<{value: string, isError?: boolean}>> {
   const observables = providers.map(provider =>
     Observable.timer(0, APP_INFO_UPDATE_INTERVAL)
       .switchMap(() => {
@@ -377,9 +377,9 @@ function observeAppInfoProviderValues(
   return Observable.combineLatest(...observables);
 }
 
-function getInfoTables(
+const :[fn~\w+] = (
   state: AppState,
-): Observable<Map<string, Map<string, string>>> {
+) =>: Observable<Map<string, Map<string, string>>> {
   const device = state.device;
   if (device == null) {
     return Observable.of(new Map());
@@ -415,7 +415,7 @@ function getInfoTables(
     .map(infoTables => new Map(infoTables));
 }
 
-function getProcessTasks(state: AppState): Observable<ProcessTask[]> {
+const :[fn~\w+] = (state: AppState) =>: Observable<ProcessTask[]> {
   const device = state.device;
   if (device == null) {
     return Observable.of([]);
@@ -440,7 +440,7 @@ function getProcessTasks(state: AppState): Observable<ProcessTask[]> {
 }
 
 // Generates a map of device tasks for each device identifier.
-function getDeviceTasks(state: AppState): Observable<Map<string, Array<Task>>> {
+const :[fn~\w+] = (state: AppState) =>: Observable<Map<string, Array<Task>>> {
   const {devices, deviceType, host} = state;
   if (deviceType == null) {
     return Observable.empty();
@@ -460,11 +460,11 @@ function getDeviceTasks(state: AppState): Observable<Map<string, Array<Task>>> {
 
 // Generates a pair of device identifier + tasks for it. The identifier is always for the device passed in.
 // It's convenient to make a Map out of these tuples.
-function getDeviceTasksForDevice(
+const :[fn~\w+] = (
   providers: Array<DeviceTaskProvider>,
   device: Device,
   host: NuclideUri,
-): Observable<[string, Array<Task>]> {
+) =>: Observable<[string, Array<Task>]> {
   // A single observable per each provider for this device.
   const perProviderAndDevice = providers.map(provider =>
     getDeviceTasksForProvider(device, provider, host),
@@ -487,11 +487,11 @@ function getDeviceTasksForDevice(
     ]);
 }
 
-function getDeviceTasksForProvider(
+const :[fn~\w+] = (
   device: Device,
   provider: DeviceTaskProvider,
   host: NuclideUri,
-): Observable<Array<DevicePanelTask>> {
+) =>: Observable<Array<DevicePanelTask>> {
   return provider
     .getDeviceTasks(host, device)
     .catch(() => Observable.of([]))

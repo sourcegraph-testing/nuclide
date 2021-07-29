@@ -20,9 +20,9 @@ export type DnsLookup = {
   family: DnsFamily,
 };
 
-export default (async function lookupPreferIpv6(
+export default (const :[fn~\w+] = async (
   host: string,
-): Promise<DnsLookup> {
+) =>: Promise<DnsLookup> {
   try {
     return await lookup(host, 6);
   } catch (e) {
@@ -33,7 +33,7 @@ export default (async function lookupPreferIpv6(
   }
 });
 
-function lookup(host: string, family: DnsFamily): Promise<DnsLookup> {
+const :[fn~\w+] = (host: string, family: DnsFamily) =>: Promise<DnsLookup> {
   return new Promise((resolve, reject) => {
     dns.lookup(
       host,

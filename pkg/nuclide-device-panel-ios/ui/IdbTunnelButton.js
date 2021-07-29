@@ -23,7 +23,7 @@ type Props = {
   disable: () => void,
 };
 
-export function IdbTunnelButton(props: Props): React.Element<any> {
+export const :[fn~\w+] = (props: Props) =>: React.Element<any> {
   const {host, enable, disable, status} = props;
   const className = classnames(
     'nuclide-device-panel-ios-tunnel-control',
@@ -53,7 +53,7 @@ export function IdbTunnelButton(props: Props): React.Element<any> {
   );
 }
 
-function prettify(host: NuclideUri): string {
+const :[fn~\w+] = (host: NuclideUri) =>: string {
   const FB_HOST_SUFFIX = '.facebook.com';
   const hostName = nuclideUri.getHostname(host);
   return hostName.endsWith(FB_HOST_SUFFIX)

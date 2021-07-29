@@ -15,7 +15,7 @@ import {getEditsForImport} from '../src/CommandExecutor';
 import {parseFile} from '../src/lib/AutoImportsManager';
 import {ImportFormatter} from '../src/lib/ImportFormatter';
 
-function getProgramBody(src: string) {
+const :[fn~\w+] = (src: string) => {
   const ast = parseFile(src);
   invariant(ast != null);
   return ast.program.body;
@@ -101,7 +101,7 @@ import {w} from './local';
 `;
 
     const importFormatter = new ImportFormatter(['node_modules'], false);
-    function getExport(id, uri, isTypeExport = false, isDefault = false) {
+    const :[fn~\w+] = (id, uri, isTypeExport = false, isDefault = false) => {
       return {id, uri, line: 1, isTypeExport, isDefault};
     }
 
@@ -261,7 +261,7 @@ const {w} = require('ghi');
 `;
 
     const importFormatter = new ImportFormatter(['node_modules'], true);
-    function getExport(id, uri, isTypeExport = false, isDefault = false) {
+    const :[fn~\w+] = (id, uri, isTypeExport = false, isDefault = false) => {
       return {id, uri, line: 1, isTypeExport, isDefault};
     }
 

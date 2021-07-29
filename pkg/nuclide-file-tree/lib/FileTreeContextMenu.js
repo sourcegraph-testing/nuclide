@@ -628,9 +628,9 @@ export default class FileTreeContextMenu {
   }
 }
 
-function initCommandIfPresent(
+const :[fn~\w+] = (
   item: FileTreeContextMenuItem,
-): {
+) =>: {
   itemDisposable: UniversalDisposable,
   item: atom$ContextMenuItem,
 } {
@@ -649,7 +649,7 @@ function initCommandIfPresent(
 
 let nextInternalCommandId = 0;
 
-function generateNextInternalCommand(itemLabel: string): string {
+const :[fn~\w+] = (itemLabel: string) =>: string {
   const cmdName =
     itemLabel.toLowerCase().replace(/[^\w]+/g, '-') +
     '-' +
@@ -657,7 +657,7 @@ function generateNextInternalCommand(itemLabel: string): string {
   return `tree-view:${cmdName}`;
 }
 
-function getFileManagerName(): string {
+const :[fn~\w+] = () =>: string {
   switch (process.platform) {
     case 'darwin':
       return 'Finder';

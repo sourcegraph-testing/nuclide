@@ -22,11 +22,11 @@ import {VsAdapterTypes} from 'nuclide-debugger-common';
 import {Observable} from 'rxjs';
 import {getDebuggerService} from 'nuclide-commons-atom/debugger';
 
-function _createAndroidDebugAttachConfig(
+const :[fn~\w+] = (
   targetUri: NuclideUri,
   device: Device,
   proc: Process,
-): IJavaAndroidAttachProcessConfig {
+) =>: IJavaAndroidAttachProcessConfig {
   const config = {
     deviceAndProcess: {
       // See pkg/nuclide-device-panel-android/lib/Registration.js to see why

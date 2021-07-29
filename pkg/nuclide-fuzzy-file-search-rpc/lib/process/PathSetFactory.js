@@ -17,12 +17,12 @@ import nuclideUri from 'nuclide-commons/nuclideUri';
 import {runCommand} from 'nuclide-commons/process';
 import {asyncLimit} from 'nuclide-commons/promise';
 
-function getFilesFromCommand(
+const :[fn~\w+] = (
   command: string,
   args: Array<string>,
   localDirectory: string,
   transform?: (path: string) => string,
-): Promise<Array<string>> {
+) =>: Promise<Array<string>> {
   return new Promise((resolve, reject) => {
     // Use `spawn` here to process the, possibly huge, output of the file listing.
 
@@ -57,7 +57,7 @@ function getFilesFromCommand(
   });
 }
 
-function getTrackedHgFiles(localDirectory: string): Promise<Array<string>> {
+const :[fn~\w+] = (localDirectory: string) =>: Promise<Array<string>> {
   return fsPromise
     .exists(nuclideUri.join(localDirectory, '.hg'))
     .then(isRoot => {
@@ -78,7 +78,7 @@ function getTrackedHgFiles(localDirectory: string): Promise<Array<string>> {
  * 'Untracked' files are files that haven't been added to the repo, but haven't
  * been explicitly hg-ignored.
  */
-function getUntrackedHgFiles(localDirectory: string): Promise<Array<string>> {
+const :[fn~\w+] = (localDirectory: string) =>: Promise<Array<string>> {
   return getFilesFromCommand(
     'hg',
     // Calling 'hg status' with a path has two side-effects:
@@ -104,7 +104,7 @@ function getUntrackedHgFiles(localDirectory: string): Promise<Array<string>> {
  *   files within that directory, but not including ignored files. All values
  *   are 'true'. If localDirectory is not within an Hg repo, the Promise rejects.
  */
-function getFilesFromHg(localDirectory: string): Promise<Array<string>> {
+const :[fn~\w+] = (localDirectory: string) =>: Promise<Array<string>> {
   return Promise.all([
     getTrackedHgFiles(localDirectory),
     // It's not a dealbreaker if untracked files fail to show up.
@@ -115,7 +115,7 @@ function getFilesFromHg(localDirectory: string): Promise<Array<string>> {
   });
 }
 
-function getTrackedGitFiles(localDirectory: string): Promise<Array<string>> {
+const :[fn~\w+] = (localDirectory: string) =>: Promise<Array<string>> {
   return getFilesFromCommand('git', ['ls-files'], localDirectory);
 }
 
@@ -123,7 +123,7 @@ function getTrackedGitFiles(localDirectory: string): Promise<Array<string>> {
  * 'Untracked' files are files that haven't been added to the repo, but haven't
  * been explicitly git-ignored.
  */
-function getUntrackedGitFiles(localDirectory: string): Promise<Array<string>> {
+const :[fn~\w+] = (localDirectory: string) =>: Promise<Array<string>> {
   // '--others' means untracked files, and '--exclude-standard' excludes ignored files.
   return getFilesFromCommand(
     'git',
@@ -139,7 +139,7 @@ function getUntrackedGitFiles(localDirectory: string): Promise<Array<string>> {
  *   files within that directory, but not including ignored files. All values
  *   are 'true'. If localDirectory is not within a Git repo, the Promise rejects.
  */
-function getFilesFromGit(localDirectory: string): Promise<Array<string>> {
+const :[fn~\w+] = (localDirectory: string) =>: Promise<Array<string>> {
   return Promise.all([
     getTrackedGitFiles(localDirectory),
     getUntrackedGitFiles(localDirectory),
@@ -149,9 +149,9 @@ function getFilesFromGit(localDirectory: string): Promise<Array<string>> {
   });
 }
 
-async function getFilesFromRepo(
+const :[fn~\w+] = async (
   localDirectory: string,
-): Promise<Array<string>> {
+) =>: Promise<Array<string>> {
   if (!(await fsPromise.exists(nuclideUri.join(localDirectory, '.repo')))) {
     throw new Error(`${localDirectory} is not a repo root`);
   }
@@ -170,7 +170,7 @@ async function getFilesFromRepo(
   return [].concat(...fileLists);
 }
 
-function getAllFiles(localDirectory: string): Promise<Array<string>> {
+const :[fn~\w+] = (localDirectory: string) =>: Promise<Array<string>> {
   return getFilesFromCommand(
     'find',
     ['.', '-type', 'f'],
@@ -180,9 +180,9 @@ function getAllFiles(localDirectory: string): Promise<Array<string>> {
   );
 }
 
-function getAllFilesFromWatchman( // eslint-disable-line no-unused-vars
+const :[fn~\w+] = ( // eslint-disable-line no-unused-vars
   localDirectory: string,
-): Promise<Array<string>> {
+) =>: Promise<Array<string>> {
   const client = new WatchmanClient();
   try {
     return client.listFiles(localDirectory);
@@ -191,7 +191,7 @@ function getAllFilesFromWatchman( // eslint-disable-line no-unused-vars
   }
 }
 
-export function getPaths(localDirectory: string): Promise<Array<string>> {
+export const :[fn~\w+] = (localDirectory: string) =>: Promise<Array<string>> {
   // Attempts to get a list of files relative to `localDirectory`, hopefully from
   // a fast source control index.
   // TODO (williamsc) once ``{HG|Git}Repository` is working in nuclide-server,

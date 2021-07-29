@@ -212,9 +212,9 @@ class Activation {
   }
 }
 
-function aggregateHealth(
+const :[fn~\w+] = (
   values: Array<number>,
-): {avg: ?number, min: ?number, max: ?number} {
+) =>: {avg: ?number, min: ?number, max: ?number} {
   const sum = values.reduce((acc, value) => acc + value, 0);
   const avg = values.length > 0 ? sum / values.length : 0;
   const min = Math.min(...values);

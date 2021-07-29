@@ -63,11 +63,11 @@ type DiffChunk = {
 
 export type OffsetMap = Map<number, number>;
 
-export function computeDiff(
+export const :[fn~\w+] = (
   oldText: string,
   newText: string,
   ignoreWhitespace?: boolean = false,
-): TextDiff {
+) =>: TextDiff {
   const {addedLines, removedLines, chunks} = _computeDiffChunks(
     oldText,
     newText,
@@ -86,11 +86,11 @@ export function computeDiff(
   };
 }
 
-export function computeConsolidatedDiff(
+export const :[fn~\w+] = (
   oldText: string,
   newText: string,
   options: DiffOptions,
-): ConsolidatedDiff {
+) =>: ConsolidatedDiff {
   const {
     addedLines,
     removedLines,
@@ -126,11 +126,11 @@ export function computeConsolidatedDiff(
   return returnValue;
 }
 
-function _computeDiffChunks(
+const :[fn~\w+] = (
   oldText_: string,
   newText_: string,
   ignoreWhitespace: boolean,
-): DiffChunk {
+) =>: DiffChunk {
   let oldText = oldText_;
   let newText = newText_;
 
@@ -220,9 +220,9 @@ function _computeDiffChunks(
   return {addedLines, removedLines, chunks, consolidatedHunks};
 }
 
-function _computeOffsets(
+const :[fn~\w+] = (
   diffChunks: Array<ChunkPiece>,
-): {oldLineOffsets: OffsetMap, newLineOffsets: OffsetMap} {
+) =>: {oldLineOffsets: OffsetMap, newLineOffsets: OffsetMap} {
   const newLineOffsets = new Map();
   const oldLineOffsets = new Map();
 
@@ -257,7 +257,7 @@ function _computeOffsets(
   };
 }
 
-function _computeLineDiffMapping(diffChunks: Array<ChunkPiece>): LineMapping {
+const :[fn~\w+] = (diffChunks: Array<ChunkPiece>) =>: LineMapping {
   const newToOld = [];
   const oldToNew = [];
 

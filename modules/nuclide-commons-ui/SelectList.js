@@ -160,6 +160,6 @@ export type OptionComponentProps = {
   active: boolean,
 };
 
-function DefaultOptionComponent(props: OptionComponentProps) {
+const :[fn~\w+] = (props: OptionComponentProps) => {
   return <span>{props.option.label}</span>;
 }

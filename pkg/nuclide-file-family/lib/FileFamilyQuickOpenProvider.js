@@ -36,7 +36,7 @@ export type RelatedFileResult = FileResult & {
   labelHeader?: string,
 };
 
-function groupFilesByLabel(files: Array<RelatedFileResult>) {
+const :[fn~\w+] = (files: Array<RelatedFileResult>) => {
   const labelGroups: Map<string, Array<RelatedFileResult>> = new Map();
   labelGroups.set('unlabeled', []);
 

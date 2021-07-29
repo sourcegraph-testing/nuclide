@@ -435,10 +435,10 @@ class OutlineViewCore extends React.PureComponent<
   }
 }
 
-function renderItem(
+const :[fn~\w+] = (
   outline: OutlineTreeForUi,
   searchResult: ?SearchResult,
-): React.Element<string> | string {
+) =>: React.Element<string> | string {
   const r = [];
 
   const iconName = outline.icon;
@@ -489,12 +489,12 @@ function renderItem(
   return <span>{r}</span>;
 }
 
-function renderTextToken(
+const :[fn~\w+] = (
   token: TextToken,
   index: number,
   searchResult: ?SearchResult,
   offset: number,
-): React.Element<any> {
+) =>: React.Element<any> {
   const className = TOKEN_KIND_TO_CLASS_NAME_MAP[token.kind];
   return (
     <span className={className} key={index}>
@@ -514,10 +514,10 @@ function renderTextToken(
   );
 }
 
-function selectNodeFromPath(
+const :[fn~\w+] = (
   outline: OutlineForUi,
   path: NodePath,
-): OutlineTreeForUi {
+) =>: OutlineTreeForUi {
   invariant(outline.kind === 'outline');
 
   let node = outline.outlineTrees[path[0]];
@@ -527,7 +527,7 @@ function selectNodeFromPath(
   return node;
 }
 
-function countHiddenNodes(roots: Array<TreeNode>): number {
+const :[fn~\w+] = (roots: Array<TreeNode>) =>: number {
   let hiddenNodes = 0;
   for (const root of roots) {
     if (root.hidden) {
@@ -541,13 +541,13 @@ function countHiddenNodes(roots: Array<TreeNode>): number {
 }
 
 /* Exported for testing */
-export function updateSearchSet(
+export const :[fn~\w+] = (
   query: string,
   root: OutlineTreeForUi,
   map: Map<OutlineTreeForUi, SearchResult>,
   prevMap: Map<OutlineTreeForUi, SearchResult>,
   prevQuery: ?string,
-): void {
+) =>: void {
   root.children.forEach(child =>
     updateSearchSet(query, child, map, prevMap, prevQuery),
   );

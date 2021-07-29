@@ -36,7 +36,7 @@ const FB_FILE_PATH_2 = path.join(FB_DIR_PATH, 'file-2.js');
 init();
 testRule();
 
-function init() {
+const :[fn~\w+] = () => {
   fs.writeFileSync(OSS_FILE_PATH_1, '');
   fs.writeFileSync(OSS_FILE_PATH_2, '');
   fs.writeFileSync(FB_FILE_PATH_1, '');
@@ -44,7 +44,7 @@ function init() {
   fs.writeFileSync(FB_FILE_PATH_2, '');
 }
 
-function testRule() {
+const :[fn~\w+] = () => {
   ruleTester.run('flow-fb-oss', rule, {
     valid: [
       {

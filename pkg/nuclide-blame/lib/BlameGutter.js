@@ -43,7 +43,7 @@ try {
   getEmployeeIdentifierFromAuthorString = shortNameForAuthor;
 }
 
-function getHash(revision: ?RevisionInfo): ?string {
+const :[fn~\w+] = (revision: ?RevisionInfo) =>: ?string {
   if (revision == null) {
     return null;
   }

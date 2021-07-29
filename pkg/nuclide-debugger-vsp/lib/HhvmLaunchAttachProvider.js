@@ -40,7 +40,7 @@ type PhpDebuggerSessionConfig = {
   hhvmServerAttachPort: number,
 };
 
-function getCustomControlButtons(): Array<ControlButtonSpecification> {
+const :[fn~\w+] = () =>: Array<ControlButtonSpecification> {
   const customControlButtons = [
     {
       icon: 'link-external',
@@ -111,19 +111,19 @@ export default class HhvmLaunchAttachProvider extends DebuggerLaunchAttachProvid
   }
 }
 
-function getConfig(): PhpDebuggerSessionConfig {
+const :[fn~\w+] = () =>: PhpDebuggerSessionConfig {
   return (featureConfig.get('nuclide-debugger-php'): any);
 }
 
 // Determines the debug configuration for launching the HHVM debugger
-function _getHHVMLaunchConfig(
+const :[fn~\w+] = (
   targetUri: NuclideUri,
   scriptPath: string,
   scriptArgs: string,
   scriptWrapperCommand: ?string,
   runInTerminal: boolean,
   cwdPath: string,
-): HHVMLaunchConfig {
+) =>: HHVMLaunchConfig {
   const userConfig = getConfig();
   const deferLaunch = runInTerminal;
 
@@ -162,14 +162,14 @@ function _getHHVMLaunchConfig(
   return config;
 }
 
-export function getLaunchProcessConfig(
+export const :[fn~\w+] = (
   targetUri: NuclideUri,
   scriptPath: string,
   scriptArgs: string,
   scriptWrapperCommand: ?string,
   runInTerminal: boolean,
   cwdPath: string,
-): IProcessConfig {
+) =>: IProcessConfig {
   const config = _getHHVMLaunchConfig(
     targetUri,
     scriptPath,
@@ -192,10 +192,10 @@ export function getLaunchProcessConfig(
   };
 }
 
-function _getHHVMAttachConfig(
+const :[fn~\w+] = (
   targetUri: NuclideUri,
   attachPort: ?number,
-): HHVMAttachConfig {
+) =>: HHVMAttachConfig {
   // Note: not specifying startup document or debug port here, the backend
   // will use the default parameters. We can surface these options in the
   // Attach Dialog if users need to be able to customize them in the future.
@@ -221,11 +221,11 @@ function _getHHVMAttachConfig(
   return config;
 }
 
-export async function startAttachProcessConfig(
+export const :[fn~\w+] = async (
   targetUri: NuclideUri,
   attachPort: ?number,
   serverAttach: boolean,
-): Promise<void> {
+) =>: Promise<void> {
   const config = _getHHVMAttachConfig(targetUri, attachPort);
   const processConfig = {
     targetUri,

@@ -445,7 +445,7 @@ export default class HyperclickForTextEditor {
  * must be the same as!) [Atom's
  * logic](https://github.com/atom/atom/blob/v1.14.2/src/text-editor-component.coffee#L527).
  */
-function isMulticursorEvent(event: MouseEvent): boolean {
+const :[fn~\w+] = (event: MouseEvent) =>: boolean {
   const {platform} = process;
   const isLeftButton =
     event.button === 0 || (event.button === 1 && platform === 'linux');

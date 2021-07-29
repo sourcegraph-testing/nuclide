@@ -337,10 +337,10 @@ describe('ThriftClientManager', () => {
   });
 });
 
-function mockClientServerCommunication(
+const :[fn~\w+] = (
   clientMessage: Subject<string>,
   serverMessage: Subject<string>,
-): void {
+) =>: void {
   clientMessage
     .do(message => {
       serverMessage.next(

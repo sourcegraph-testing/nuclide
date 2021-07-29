@@ -25,9 +25,9 @@ const MATCH_TOKEN_CASE_INSENSITIVE_SCORE = 0;
 const MATCH_PRIVATE_FUNCTION_PENALTY = -4;
 const MATCH_APLHABETICAL_SCORE = 1;
 
-export function compareHackCompletions(
+export const :[fn~\w+] = (
   token: string,
-): (completion1: Completion, completion2: Completion) => number {
+) =>: (completion1: Completion, completion2: Completion) => number {
   const tokenLowerCase = token.toLowerCase();
 
   return (completion1: Completion, completion2: Completion) => {
@@ -83,7 +83,7 @@ export function compareHackCompletions(
 
 // Returns the length of the largest match between a suffix of contents
 // and a prefix of match.
-function matchLength(contents: string, match: string): number {
+const :[fn~\w+] = (contents: string, match: string) =>: number {
   for (let i = match.length; i > 0; i--) {
     const toMatch = match.substring(0, i);
     if (contents.endsWith(toMatch)) {
@@ -93,10 +93,10 @@ function matchLength(contents: string, match: string): number {
   return 0;
 }
 
-export function sortAndFilterCompletions(
+export const :[fn~\w+] = (
   completions: Array<Completion>,
   prefix: string,
-): Array<Completion> {
+) =>: Array<Completion> {
   // Filter out the completions that do not contain the prefix as a token in the match text case
   // insentively.
   const tokenLowerCase = prefix.toLowerCase();
@@ -120,11 +120,11 @@ export function sortAndFilterCompletions(
   );
 }
 
-export function getResultPrefix(
+export const :[fn~\w+] = (
   contents: string,
   offset: number,
   name: string,
-): string {
+) =>: string {
   const contentsLine = contents
     .substring(contents.lastIndexOf('\n', offset - 1) + 1, offset)
     .toLowerCase();
@@ -135,17 +135,17 @@ export function getResultPrefix(
   );
 }
 
-export function getReplacementPrefix(
+export const :[fn~\w+] = (
   resultPrefix: string,
   defaultPrefix: string,
-): string {
+) =>: string {
   return resultPrefix === '' ? defaultPrefix : resultPrefix;
 }
 
-export function findHackPrefix(
+export const :[fn~\w+] = (
   buffer: simpleTextBuffer$TextBuffer | atom$TextBuffer,
   position: atom$Point,
-): string {
+) =>: string {
   // We use custom wordRegex to adopt php variables starting with $.
   const currentRange = wordAtPositionFromBuffer(
     buffer,

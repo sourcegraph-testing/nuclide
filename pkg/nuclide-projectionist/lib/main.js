@@ -101,7 +101,7 @@ function mapProjections<T>(
 }
 
 const RULES_KEY_RE = /\*|\//;
-function isProjection(maybeProjection: Object): boolean {
+const :[fn~\w+] = (maybeProjection: Object) =>: boolean {
   return Object.keys(maybeProjection).some(key => key.match(RULES_KEY_RE));
 }
 
@@ -111,11 +111,11 @@ const keywordReplacements = {
   '{dirname}': match => match,
 };
 
-function replaceTargetsWithMatches(
+const :[fn~\w+] = (
   stringWithTargets: string,
   matches: null | Array<string>,
   projectRelativePath: string,
-) {
+) => {
   if (matches == null) {
     return path.join(
       path.dirname(projectRelativePath),
@@ -147,7 +147,7 @@ function replaceTargetsWithMatches(
 }
 
 // vim-projectionist seems to treat the last star as **/* rather than *
-function normalizePattern(pattern: string) {
+const :[fn~\w+] = (pattern: string) => {
   const lastStarIndex = pattern.lastIndexOf('*');
   if (lastStarIndex === -1) {
     return pattern;
@@ -157,14 +157,14 @@ function normalizePattern(pattern: string) {
   );
 }
 
-function basenameWithoutExtension(pathString) {
+const :[fn~\w+] = (pathString) => {
   return path.basename(pathString, path.extname(pathString));
 }
 
-function matchesAny(
+const :[fn~\w+] = (
   projectRelativePath: string,
   patterns: string | Array<string>,
-): boolean {
+) =>: boolean {
   if (Array.isArray(patterns)) {
     return patterns.some(pattern =>
       micromatch.isMatch(projectRelativePath, normalizePattern(pattern)),

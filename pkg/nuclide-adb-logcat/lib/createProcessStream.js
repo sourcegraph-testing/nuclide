@@ -14,7 +14,7 @@ import {compact} from 'nuclide-commons/observable';
 import featureConfig from 'nuclide-commons-atom/feature-config';
 import {Observable} from 'rxjs';
 
-export function createProcessStream(): Observable<string> {
+export const :[fn~\w+] = () =>: Observable<string> {
   const processEvents = observeProcess(
     ((featureConfig.get('nuclide-adb-logcat.pathToAdb'): any): string),
     ['logcat', '-v', 'long'],
@@ -70,7 +70,7 @@ export function createProcessStream(): Observable<string> {
   );
 }
 
-function parseError(line: string): ?string {
+const :[fn~\w+] = (line: string) =>: ?string {
   const match = line.match(/^ERROR:\s*(.*)/);
   return match == null ? null : match[1].trim();
 }

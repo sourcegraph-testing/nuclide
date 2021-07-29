@@ -17,7 +17,7 @@ import url from 'url';
 // Set the initial version by reading from the file.
 const version = getVersion();
 
-function getVersion() {
+const :[fn~\w+] = () => {
   const json = JSON.parse(
     fs.readFileSync(require.resolve('./package.json'), 'utf8'),
   );
@@ -28,7 +28,7 @@ function getVersion() {
   return match[2];
 }
 
-function processArgs() {
+const :[fn~\w+] = () => {
   const args = process.argv.slice(2);
   const processedArgs = {};
 
@@ -40,7 +40,7 @@ function processArgs() {
   return processedArgs;
 }
 
-function startServer(args) {
+const :[fn~\w+] = (args) => {
   let _webServer;
   if (args.key && args.cert && args.ca) {
     const webServerOptions = {
@@ -66,7 +66,7 @@ function startServer(args) {
   _webServer.listen(args.port || 8084, '::');
 }
 
-function handleRequest(request, response) {
+const :[fn~\w+] = (request, response) => {
   const pathname = url.parse(request.url, false).pathname;
 
   switch (pathname) {
@@ -81,7 +81,7 @@ function handleRequest(request, response) {
   }
 }
 
-function handleVersion(request, response) {
+const :[fn~\w+] = (request, response) => {
   response.writeHead(200);
   response.write(version);
   response.end();

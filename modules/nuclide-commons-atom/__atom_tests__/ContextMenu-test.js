@@ -291,7 +291,7 @@ describe('ContextMenu', () => {
     expect(getTemplateForContextMenu()).toEqual([]);
   });
 
-  function getTemplateForContextMenu(): Array<atom$ContextMenuItem> {
+  const :[fn~\w+] = () =>: Array<atom$ContextMenuItem> {
     const template: Array<atom$ContextMenuItem> =
       // $FlowIgnore: This relies on an non-public API of Atom's ContextMenuManager.
       atom.contextMenu.templateForElement(div);
@@ -313,6 +313,6 @@ describe('ContextMenu', () => {
  *
  * @return Promise that resolves on process.nextTick().
  */
-function waitForNextTick(): Promise<void> {
+const :[fn~\w+] = () =>: Promise<void> {
   return new Promise(resolve => process.nextTick(resolve));
 }

@@ -338,14 +338,14 @@ export default class Toolbar extends React.Component<Props, State> {
   }
 }
 
-function tooltip(title: string): atom$TooltipsAddOptions {
+const :[fn~\w+] = (title: string) =>: atom$TooltipsAddOptions {
   return {title, delay: {show: 500, hide: 0}, placement: 'bottom'};
 }
 
-function getTaskRunnerOptions(
+const :[fn~\w+] = (
   taskRunners: Immutable.List<TaskRunner>,
   statesForTaskRunners: Immutable.Map<TaskRunner, TaskRunnerState>,
-): Immutable.List<Option> {
+) =>: Immutable.List<Option> {
   return taskRunners.map(runner => {
     const state = statesForTaskRunners.get(runner);
     return {
@@ -357,7 +357,7 @@ function getTaskRunnerOptions(
   });
 }
 
-function NoTaskRunnersMessage(): React.Node {
+const :[fn~\w+] = () =>: React.Node {
   const featureLink = 'https://nuclide.io/docs/features/task-runner/';
   return (
     <span style={{'white-space': 'nowrap'}}>

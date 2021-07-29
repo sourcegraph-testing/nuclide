@@ -39,11 +39,11 @@ const COPIED_FILE_PAIR_REGEX = /(.+) \((.+)/;
  * if the operation fails for whatever reason, including invalid input (e.g. if
  * you pass a filePath that does not exist at the given revision).
  */
-export function fetchFileContentAtRevision(
+export const :[fn~\w+] = (
   filePath: NuclideUri,
   revision: string,
   workingDirectory: string,
-): ConnectableObservable<string> {
+) =>: ConnectableObservable<string> {
   const args = ['cat', '--rev', revision, filePath];
   const execOptions = {
     cwd: workingDirectory,
@@ -51,11 +51,11 @@ export function fetchFileContentAtRevision(
   return hgRunCommand(args, execOptions).publish();
 }
 
-export function batchFetchFileContentsAtRevision(
+export const :[fn~\w+] = (
   filePaths: Array<NuclideUri>,
   revision: string,
   workingDirectory: string,
-): ConnectableObservable<Map<NuclideUri, string>> {
+) =>: ConnectableObservable<Map<NuclideUri, string>> {
   const args = ['cat', '--rev', revision, ...filePaths, '-Tjson'];
   const execOptions = {
     cwd: workingDirectory,
@@ -79,10 +79,10 @@ export function batchFetchFileContentsAtRevision(
  * if the operation fails for whatever reason, including invalid input (e.g. if
  * you pass an invalid revision).
  */
-export function fetchFilesChangedAtRevision(
+export const :[fn~\w+] = (
   revision: string,
   workingDirectory: string,
-): ConnectableObservable<RevisionFileChanges> {
+) =>: ConnectableObservable<RevisionFileChanges> {
   const args = [
     'log',
     '--template',
@@ -107,10 +107,10 @@ export function fetchFilesChangedAtRevision(
  * if the operation fails for whatever reason, including invalid input (e.g. if
  * you pass an invalid revision).
  */
-export function fetchFilesChangedSinceRevision(
+export const :[fn~\w+] = (
   revision: string,
   workingDirectory: string,
-): ConnectableObservable<Array<string>> {
+) =>: ConnectableObservable<Array<string>> {
   const args = ['status', '--rev', revision, '-Tjson'];
   const execOptions = {
     cwd: workingDirectory,
@@ -133,10 +133,10 @@ export function fetchFilesChangedSinceRevision(
  * @param workingDirectory The absolute path to the working directory of the hg repository.
  * @return A RevisionFileChanges object where the paths are all absolute paths.
  */
-export function parseRevisionFileChangeOutput(
+export const :[fn~\w+] = (
   output: string,
   workingDirectory: string,
-): RevisionFileChanges {
+) =>: RevisionFileChanges {
   const lines = output.trim().split('\n');
   let allFiles = lines[0].slice(ALL_FILES_LABEL.length + 1).trim();
   allFiles = allFiles.length ? allFiles.split(' ') : [];
@@ -180,10 +180,10 @@ export function parseRevisionFileChangeOutput(
   };
 }
 
-function absolutize(filePath: string, workingDirectory: string): string {
+const :[fn~\w+] = (filePath: string, workingDirectory: string) =>: string {
   return nuclideUri.join(workingDirectory, filePath);
 }
 
-function absolutizeAll(filePaths: Array<string>, workingDirectory: string) {
+const :[fn~\w+] = (filePaths: Array<string>, workingDirectory: string) => {
   return filePaths.map(filePath => absolutize(filePath, workingDirectory));
 }

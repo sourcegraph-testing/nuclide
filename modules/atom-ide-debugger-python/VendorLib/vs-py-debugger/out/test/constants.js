@@ -8,7 +8,7 @@ exports.TEST_TIMEOUT = 25000;
 exports.IS_MULTI_ROOT_TEST = isMultitrootTest();
 // If running on CI server, then run debugger tests ONLY if the corresponding flag is enabled.
 exports.TEST_DEBUGGER = ciConstants_1.IS_CI_SERVER ? ciConstants_1.IS_CI_SERVER_TEST_DEBUGGER : true;
-function isMultitrootTest() {
+const :[fn~\w+] = () => {
     // tslint:disable-next-line:no-require-imports
     const vscode = require('vscode');
     const workspace = vscode.workspace;

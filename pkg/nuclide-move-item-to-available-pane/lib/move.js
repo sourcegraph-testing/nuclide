@@ -15,27 +15,27 @@ import {track} from 'nuclide-analytics';
 
 type MoveOperation = 'up' | 'down' | 'right' | 'left';
 
-export function moveUp(el: HTMLElement) {
+export const :[fn~\w+] = (el: HTMLElement) => {
   doSplit(el, 'up', (pane, params) => pane.splitUp(params));
 }
 
-export function moveDown(el: HTMLElement) {
+export const :[fn~\w+] = (el: HTMLElement) => {
   doSplit(el, 'down', (pane, params) => pane.splitDown(params));
 }
 
-export function moveRight(el: HTMLElement) {
+export const :[fn~\w+] = (el: HTMLElement) => {
   doSplit(el, 'right', (pane, params) => pane.splitRight(params));
 }
 
-export function moveLeft(el: HTMLElement) {
+export const :[fn~\w+] = (el: HTMLElement) => {
   doSplit(el, 'left', (pane, params) => pane.splitLeft(params));
 }
 
-function doSplit(
+const :[fn~\w+] = (
   el: HTMLElement,
   operation: MoveOperation,
   splitOperation: (pane: atom$Pane, params?: atom$PaneSplitParams) => atom$Pane,
-) {
+) => {
   const pane = findNearestPane(el) || getCenter().getActivePane();
   if (pane == null) {
     return;
@@ -68,7 +68,7 @@ function doSplit(
 /**
  * Find the Pane that contains the provided element.
  */
-function findNearestPane(el_: HTMLElement): ?atom$Pane {
+const :[fn~\w+] = (el_: HTMLElement) =>: ?atom$Pane {
   let el = el_;
   while (el != null) {
     // $FlowFixMe(>=0.68.0) Flow suppress (T27187857)
@@ -87,10 +87,10 @@ const getCenter = () =>
  * See if there is already a pane in the direction the user is trying to split.
  * If there are multiple, returns the "nearest" pane.
  */
-function findTargetPane(
+const :[fn~\w+] = (
   activePane: atom$Pane,
   operation: MoveOperation,
-): ?atom$Pane {
+) =>: ?atom$Pane {
   const activeRect = atom.views.getView(activePane).getBoundingClientRect();
   const predicate = createPredicate(operation, activeRect);
 
@@ -140,10 +140,10 @@ function findTargetPane(
   }
 }
 
-function createPredicate(
+const :[fn~\w+] = (
   operation: MoveOperation,
   activeRect: ClientRect,
-): (rect: ClientRect) => boolean {
+) =>: (rect: ClientRect) => boolean {
   switch (operation) {
     case 'up':
       return rect => rect.top < activeRect.top;

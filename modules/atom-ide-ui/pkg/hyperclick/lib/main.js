@@ -17,7 +17,7 @@ import createPackage from 'nuclide-commons-atom/createPackage';
 import Hyperclick from './Hyperclick';
 
 // Legacy providers have a default priority of 0.
-function fixLegacyProvider(provider: HyperclickProvider) {
+const :[fn~\w+] = (provider: HyperclickProvider) => {
   if (provider.priority == null) {
     provider.priority = 0;
   }

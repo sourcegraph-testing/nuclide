@@ -40,23 +40,23 @@ const entityObserver: Map<string, rxjs$IObserver<WatchEvent>> = new Map();
 const watchedDirectories: Set<string> = new Set();
 
 let watchmanClient: ?WatchmanClient = null;
-function getWatchmanClient(): WatchmanClient {
+const :[fn~\w+] = () =>: WatchmanClient {
   if (watchmanClient == null) {
     watchmanClient = new WatchmanClient();
   }
   return watchmanClient;
 }
 
-export function watchFile(
+export const :[fn~\w+] = (
   filePath: NuclideUri,
-): ConnectableObservable<WatchResult> {
+) =>: ConnectableObservable<WatchResult> {
   return watchEntity(filePath, true).publish();
 }
 
-export function watchWithNode(
+export const :[fn~\w+] = (
   watchedPath: NuclideUri,
   isDirectory?: boolean,
-): ConnectableObservable<WatchResult> {
+) =>: ConnectableObservable<WatchResult> {
   return Observable.create(observer => {
     const watcher = fs.watch(
       watchedPath,
@@ -82,23 +82,23 @@ export function watchWithNode(
   }).publish();
 }
 
-export function watchDirectory(
+export const :[fn~\w+] = (
   directoryPath: NuclideUri,
-): ConnectableObservable<WatchResult> {
+) =>: ConnectableObservable<WatchResult> {
   return watchEntity(directoryPath, false).publish();
 }
 
-function watchEntity(
+const :[fn~\w+] = (
   entityPath: string,
   isFile: boolean,
-): Observable<WatchResult> {
+) =>: Observable<WatchResult> {
   return Observable.fromPromise(
     getRealOrWatchablePath(entityPath, isFile),
   ).switchMap(realPath => debounceDeletes(entityWatches.get(realPath)));
 }
 
 // Register an observable for the given path.
-function registerWatch(path: string): Observable<WatchResult> {
+const :[fn~\w+] = (path: string) =>: Observable<WatchResult> {
   return Observable.create(observer => {
     entityObserver.set(path, observer);
     return () => {
@@ -109,10 +109,10 @@ function registerWatch(path: string): Observable<WatchResult> {
     .share();
 }
 
-async function getRealOrWatchablePath(
+const :[fn~\w+] = async (
   entityPath: string,
   isFile: boolean,
-): Promise<string> {
+) =>: Promise<string> {
   try {
     const stat = await fsPromise.stat(entityPath);
     if (stat.isFile() !== isFile) {
@@ -138,9 +138,9 @@ async function getRealOrWatchablePath(
   }
 }
 
-export function watchDirectoryRecursive(
+export const :[fn~\w+] = (
   directoryPath: NuclideUri,
-): ConnectableObservable<string> {
+) =>: ConnectableObservable<string> {
   const client = getWatchmanClient();
   if (client.hasSubscription(directoryPath)) {
     return Observable.of('EXISTING').publish();
@@ -172,10 +172,10 @@ export function watchDirectoryRecursive(
     .publish();
 }
 
-function onWatcherChange(
+const :[fn~\w+] = (
   subscription: WatchmanSubscription,
   entries: Array<FileChange>,
-): void {
+) =>: void {
   const directoryChanges = new Set();
   entries.forEach(entry => {
     const entryPath = nuclideUri.join(subscription.path, entry.name);
@@ -203,7 +203,7 @@ function onWatcherChange(
   });
 }
 
-async function unwatchDirectoryRecursive(directoryPath: string): Promise<void> {
+const :[fn~\w+] = async (directoryPath: string) =>: Promise<void> {
   watchedDirectories.delete(directoryPath);
   await getWatchmanClient().unwatch(directoryPath);
 }

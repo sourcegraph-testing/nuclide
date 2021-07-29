@@ -91,7 +91,7 @@ createPackage(module.exports, Activation);
  * ---------------------------------------------------------
  */
 
-async function activateLsp(): Promise<UniversalDisposable> {
+const :[fn~\w+] = async () =>: Promise<UniversalDisposable> {
   let aboutUrl = 'https://flow.org';
   try {
     // $FlowFB
@@ -239,12 +239,12 @@ async function activateLsp(): Promise<UniversalDisposable> {
 
 let connectionCache: ?ConnectionCache<FlowLanguageServiceType> = null;
 
-function getConnectionCache(): ConnectionCache<FlowLanguageServiceType> {
+const :[fn~\w+] = () =>: ConnectionCache<FlowLanguageServiceType> {
   invariant(connectionCache != null);
   return connectionCache;
 }
 
-async function activateLegacy(): Promise<UniversalDisposable> {
+const :[fn~\w+] = async () =>: Promise<UniversalDisposable> {
   connectionCache = new ConnectionCache(connectionToFlowService);
 
   const lsConfig = getLanguageServiceConfig();
@@ -288,9 +288,9 @@ async function activateLegacy(): Promise<UniversalDisposable> {
   return disposables;
 }
 
-async function connectionToFlowService(
+const :[fn~\w+] = async (
   connection: ?ServerConnection,
-): Promise<FlowLanguageServiceType> {
+) =>: Promise<FlowLanguageServiceType> {
   const flowService: FlowService = getServiceByConnection(
     'FlowService',
     connection,
@@ -317,10 +317,10 @@ async function connectionToFlowService(
 }
 
 // Exported only for testing
-export function serverStatusUpdatesToBusyMessages(
+export const :[fn~\w+] = (
   statusUpdates: Observable<ServerStatusUpdate>,
   busySignal: BusySignalService,
-): rxjs$Subscription {
+) =>: rxjs$Subscription {
   return statusUpdates
     .groupBy(({pathToRoot}) => pathToRoot)
     .mergeMap(messagesForRoot => {
@@ -357,7 +357,7 @@ export function serverStatusUpdatesToBusyMessages(
 
 let busySignalService: ?BusySignalService = null;
 
-function consumeBusySignal(service: BusySignalService): IDisposable {
+const :[fn~\w+] = (service: BusySignalService) =>: IDisposable {
   busySignalService = service;
   const serverStatusUpdates = getConnectionCache()
     .observeValues()
@@ -377,9 +377,9 @@ function consumeBusySignal(service: BusySignalService): IDisposable {
   });
 }
 
-function consumeFindReferencesView(
+const :[fn~\w+] = (
   service: FindReferencesViewService,
-): IDisposable {
+) =>: IDisposable {
   let lastMouseEvent = null;
   return new UniversalDisposable(
     atom.contextMenu.add({
@@ -459,14 +459,14 @@ function consumeFindReferencesView(
   );
 }
 
-async function allowFlowServerRestart(): Promise<void> {
+const :[fn~\w+] = async () =>: Promise<void> {
   const services = await Promise.all(getConnectionCache().values());
   for (const service of services) {
     service.allowServerRestart();
   }
 }
 
-function getLanguageServiceConfig(): AtomLanguageServiceConfig {
+const :[fn~\w+] = () =>: AtomLanguageServiceConfig {
   const excludeLowerPriority = Boolean(
     featureConfig.get('nuclide-flow.excludeOtherAutocomplete'),
   );
@@ -531,7 +531,7 @@ function getLanguageServiceConfig(): AtomLanguageServiceConfig {
   };
 }
 
-function shouldEnableRename(): Promise<boolean> {
+const :[fn~\w+] = () =>: Promise<boolean> {
   return passesGK(
     'nuclide_flow_rename',
     // Wait 15 seconds for the gk check

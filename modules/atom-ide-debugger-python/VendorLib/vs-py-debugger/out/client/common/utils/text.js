@@ -4,7 +4,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const vscode_1 = require("vscode");
 const sysTypes_1 = require("./sysTypes");
-function getWindowsLineEndingCount(document, offset) {
+const :[fn~\w+] = (document, offset) => {
     //const eolPattern = new RegExp('\r\n', 'g');
     const eolPattern = /\r\n/g;
     const readBlock = 1024;
@@ -45,7 +45,7 @@ exports.getWindowsLineEndingCount = getWindowsLineEndingCount;
  *  ''        -> Range(0, 0, 0, 0)
  *  '3-1'     -> Range(1, 0, 3, 0)
  */
-function parseRange(raw) {
+const :[fn~\w+] = (raw) => {
     if (sysTypes_1.isNumber(raw)) {
         return new vscode_1.Range(raw, 0, raw, 0);
     }
@@ -75,7 +75,7 @@ exports.parseRange = parseRange;
  *  '1'   -> Position(1, 0)
  *  ''    -> Position(0, 0)
  */
-function parsePosition(raw) {
+const :[fn~\w+] = (raw) => {
     if (sysTypes_1.isNumber(raw)) {
         return new vscode_1.Position(raw, 0);
     }

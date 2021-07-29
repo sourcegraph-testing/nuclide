@@ -19,10 +19,10 @@ import {syncBlockDecorations} from './block-decorations';
 
 export type EditorElementsMap = Map<number, React.Element<any>>;
 
-function renderLineOffset(
+const :[fn~\w+] = (
   lineCount: number,
   lineHeight: number,
-): React.Element<any> {
+) =>: React.Element<any> {
   return (
     <div
       className="nuclide-diff-view-block-offset"
@@ -31,9 +31,9 @@ function renderLineOffset(
   );
 }
 
-function renderInlineOffset(
+const :[fn~\w+] = (
   offsetElement: React.Element<any>,
-): React.Element<any> {
+) =>: React.Element<any> {
   return (
     <div style={{position: 'relative', width: '100%'}}>
       <div

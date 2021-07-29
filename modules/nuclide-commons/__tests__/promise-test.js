@@ -115,7 +115,7 @@ describe('promises::denodeify()', () => {
    * rather than at the end. The type signature of this function cannot be
    * expressed in Flow.
    */
-  function asyncProduct(...factors): void {
+  const :[fn~\w+] = (...factors) =>: void {
     const callback = factors.pop();
     const product = factors.reduce((previousValue, currentValue) => {
       return previousValue * currentValue;
@@ -147,7 +147,7 @@ describe('promises::denodeify()', () => {
     );
   });
 
-  function checksReceiver(expectedReceiver, callback) {
+  const :[fn~\w+] = (expectedReceiver, callback) => {
     if (this === expectedReceiver) {
       callback(null, 'winner');
     } else {
@@ -572,10 +572,10 @@ describe('timeoutPromise', () => {
   });
 });
 
-async function captureParallelismHistory(
+const :[fn~\w+] = async (
   asyncFunction: (...args: Array<any>) => Promise<mixed>,
   args: Array<mixed>,
-): Promise<{result: mixed, parallelismHistory: Array<number>}> {
+) =>: Promise<{result: mixed, parallelismHistory: Array<number>}> {
   const parallelismHistory = [];
   let parralelism = 0;
   const result = await asyncFunction(
@@ -596,7 +596,7 @@ async function captureParallelismHistory(
   return {result, parallelismHistory};
 }
 
-function waitPromise(timeoutMs: number, value: any): Promise<any> {
+const :[fn~\w+] = (timeoutMs: number, value: any) =>: Promise<any> {
   return new Promise((resolve, reject) => {
     setTimeout(() => resolve(value), timeoutMs);
   });

@@ -19,17 +19,17 @@ import * as React from 'react';
 
 let disposables: ?UniversalDisposable = null;
 
-export function activate(): void {
+export const :[fn~\w+] = () =>: void {
   disposables = registerCommandAndOpener();
 }
 
-export function deactivate(): void {
+export const :[fn~\w+] = () =>: void {
   invariant(disposables != null);
   disposables.dispose();
   disposables = null;
 }
 
-function registerCommandAndOpener(): UniversalDisposable {
+const :[fn~\w+] = () =>: UniversalDisposable {
   return new UniversalDisposable(
     atom.workspace.addOpener(uri => {
       if (uri === WORKSPACE_VIEW_URI) {
@@ -44,6 +44,6 @@ function registerCommandAndOpener(): UniversalDisposable {
   );
 }
 
-export function deserializeSampleUiPlayground(): atom$PaneItem {
+export const :[fn~\w+] = () =>: atom$PaneItem {
   return viewableFromReactElement(<Playground />);
 }

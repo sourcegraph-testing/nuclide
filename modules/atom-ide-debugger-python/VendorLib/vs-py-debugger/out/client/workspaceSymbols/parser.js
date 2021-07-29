@@ -10,7 +10,7 @@ const NamedRegexp = require('named-js-regexp');
 const fuzzy = require('fuzzy');
 const IsFileRegEx = /\tkind:file\tline:\d+$/g;
 const LINE_REGEX = '(?<name>\\w+)\\t(?<file>.*)\\t\\/\\^(?<code>.*)\\$\\/;"\\tkind:(?<type>\\w+)\\tline:(?<line>\\d+)$';
-function matchNamedRegEx(data, regex) {
+const :[fn~\w+] = (data, regex) => {
     const compiledRegexp = NamedRegexp(regex, 'g');
     const rawMatch = compiledRegexp.exec(data);
     if (rawMatch !== null) {
@@ -89,7 +89,7 @@ CTagKinMapping.forEach((value, key) => {
 Object.keys(newValuesAndKeys).forEach(key => {
     CTagKinMapping.set(key, newValuesAndKeys[key]);
 });
-function parseTags(workspaceFolder, tagFile, query, token, maxItems = 200) {
+const :[fn~\w+] = (workspaceFolder, tagFile, query, token, maxItems = 200) => {
     return fs_1.fsExistsAsync(tagFile).then(exists => {
         if (!exists) {
             return Promise.resolve([]);
@@ -122,7 +122,7 @@ function parseTags(workspaceFolder, tagFile, query, token, maxItems = 200) {
     });
 }
 exports.parseTags = parseTags;
-function parseTagsLine(workspaceFolder, line, searchPattern) {
+const :[fn~\w+] = (workspaceFolder, line, searchPattern) => {
     if (IsFileRegEx.test(line)) {
         return;
     }

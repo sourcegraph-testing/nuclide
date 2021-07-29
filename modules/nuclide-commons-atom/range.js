@@ -20,11 +20,11 @@ import {wordAtPositionFromBuffer} from 'nuclide-commons/range';
  * in which case it uses the optional includeNonWordCharacters, default true.
  * (I know that's a weird default but it follows Atom's convention...)
  */
-export function wordAtPosition(
+export const :[fn~\w+] = (
   editor: atom$TextEditor,
   position: atom$PointObject,
   wordRegex?: RegExp | {includeNonWordCharacters: boolean},
-): ?{wordMatch: Array<string>, range: atom$Range} {
+) =>: ?{wordMatch: Array<string>, range: atom$Range} {
   let wordRegex_;
   if (wordRegex instanceof RegExp) {
     wordRegex_ = wordRegex;
@@ -59,11 +59,11 @@ export function wordAtPosition(
  *   defaults to first non-whitespace character
  * @return atom$Range  the trimmed range
  */
-export function trimRange(
+export const :[fn~\w+] = (
   editor: atom$TextEditor,
   rangeToTrim: atom$Range,
   stopRegex: RegExp = /\S/,
-): atom$Range {
+) =>: atom$Range {
   const buffer = editor.getBuffer();
   let {start, end} = rangeToTrim;
   buffer.scanInRange(stopRegex, rangeToTrim, ({range, stop}) => {
@@ -77,10 +77,10 @@ export function trimRange(
   return new Range(start, end);
 }
 
-function getSingleWordAtPosition(
+const :[fn~\w+] = (
   editor: atom$TextEditor,
   position: atom$Point,
-): ?string {
+) =>: ?string {
   const match = wordAtPosition(editor, position);
   // We should only receive a single identifier from a single point.
   if (match == null || match.wordMatch.length !== 1) {
@@ -98,10 +98,10 @@ function getSingleWordAtPosition(
  *   from
  * @param event   the MouseEvent containing the screen position of the click
  */
-export function getWordFromMouseEvent(
+export const :[fn~\w+] = (
   editor: atom$TextEditor,
   event: MouseEvent,
-): ?string {
+) =>: ?string {
   // We can't immediately get the identifier right-clicked on from
   // the MouseEvent. Using its target element content would work in
   // some cases but wouldn't work if there was additional content
@@ -121,7 +121,7 @@ export function getWordFromMouseEvent(
  * @param editor  the editor containing the 'active' word when the keybinding is
  *   triggered
  */
-export function getWordFromCursorOrSelection(editor: atom$TextEditor): ?string {
+export const :[fn~\w+] = (editor: atom$TextEditor) =>: ?string {
   const selection = editor.getSelectedText();
   if (selection && selection.length > 0) {
     return selection;

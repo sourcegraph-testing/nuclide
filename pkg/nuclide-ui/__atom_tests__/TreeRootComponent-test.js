@@ -21,7 +21,7 @@ import {TreeNodeComponent} from '../TreeNodeComponent';
 import {TreeRootComponent} from '../TreeRootComponent';
 import invariant from 'assert';
 
-function clickNodeWithLabel(component: TreeRootComponent, label: string): void {
+const :[fn~\w+] = (component: TreeRootComponent, label: string) =>: void {
   const nodeComponents = getNodeComponents(component);
   const labelNode = ReactDOM.findDOMNode(nodeComponents[label]);
   invariant(labelNode instanceof Element);
@@ -31,7 +31,7 @@ function clickNodeWithLabel(component: TreeRootComponent, label: string): void {
 /**
  * Returns an object whose keys are labels and values are TreeNodeComponent's.
  */
-function getNodeComponents(component: TreeRootComponent): any {
+const :[fn~\w+] = (component: TreeRootComponent) =>: any {
   const nodeComponents = {};
   TestUtils.scryRenderedComponentsWithType(
     component,

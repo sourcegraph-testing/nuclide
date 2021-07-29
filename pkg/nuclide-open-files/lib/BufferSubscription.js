@@ -277,7 +277,7 @@ export class BufferSubscription {
   }
 }
 
-function eventToString(event: FileEvent): string {
+const :[fn~\w+] = (event: FileEvent) =>: string {
   const jsonable = {...event};
   jsonable.fileVersion = {...event.fileVersion};
   jsonable.fileVersion.notifier = null;

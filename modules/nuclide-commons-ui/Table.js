@@ -543,7 +543,7 @@ export class Table<T: Object> extends React.Component<Props<T>, State<T>> {
   }
 }
 
-function EmptyCellContent(): React.Node {
+const :[fn~\w+] = () =>: React.Node {
   return <div />;
 }
 
@@ -1016,7 +1016,7 @@ export function _calculatePreferredColumnWidths<T: Object>(options: {
  * checks and assumes that the rows and columns are equal. (They can be checked separatedly iff
  * necessary.)
  */
-function compareCheapProps(a: mixed, b: mixed, key: ?string): boolean | void {
+const :[fn~\w+] = (a: mixed, b: mixed, key: ?string) =>: boolean | void {
   switch (key) {
     case undefined:
       // This is a magic way of telling `shallowEqual()` to use the default comparison for the
@@ -1031,7 +1031,7 @@ function compareCheapProps(a: mixed, b: mixed, key: ?string): boolean | void {
   }
 }
 
-function compareState(a: mixed, b: mixed, key: ?string): boolean | void {
+const :[fn~\w+] = (a: mixed, b: mixed, key: ?string) =>: boolean | void {
   switch (key) {
     case undefined:
       return undefined;
